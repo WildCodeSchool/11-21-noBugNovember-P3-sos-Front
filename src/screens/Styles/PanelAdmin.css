@@ -4,7 +4,7 @@
 
 }
 .btn-side-bar{
-    width:80%;
+     width:80%;
 }
 .side-bar{
     display: flex;
@@ -18,7 +18,11 @@
     width: 20vw;
     min-width: 250px;
 }
-
+.bloc-btn-side-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .content-container{
     background-color: gold;
     height: 100vh;
