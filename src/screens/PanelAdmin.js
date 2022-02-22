@@ -5,9 +5,9 @@ const PanelAdmin =()=>{
         <div className='panel-admin-container'>
             <div className='side-bar'>
               <div className='bloc-btn-side-bar'>
-                <button className='btn-side-bar'>Catégorie</button>
-                <button className='btn-side-bar'>Sous-Catégorie</button>
-                <button className='btn-side-bar'>Ville</button>
+                <button className='btn-side-bar'>Catégories</button>
+                <button className='btn-side-bar'>Sous-Catégories</button>
+                <button className='btn-side-bar'>Villes</button>
                 <button className='btn-side-bar'>Articles</button>
               </div>
             </div>
