@@ -1,16 +1,24 @@
 .panel-admin-container{
     display: flex;
     flex-direction: row;
+
+}
+.btn-side-bar{
+    width:80%;
 }
 .side-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     /*Ajouter variable root*/
     background-color: darkcyan;
     border-bottom-right-radius: 30%;
     height:100vh;
     width: 20vw;
     min-width: 250px;
-
 }
+
 .content-container{
     background-color: gold;
     height: 100vh;

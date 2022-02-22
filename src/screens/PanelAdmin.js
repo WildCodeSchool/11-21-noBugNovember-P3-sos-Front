@@ -3,7 +3,14 @@ import ArticleForm from "../components/ArticleForm";
 const PanelAdmin =()=>{
     return (
         <div className='panel-admin-container'>
-            <div className='side-bar'>test</div>
+            <div className='side-bar'>
+              <div className='bloc-btn-side-bar'>
+                <button className='btn-side-bar'>Catégorie</button>
+                <button className='btn-side-bar'>Sous-Catégorie</button>
+                <button className='btn-side-bar'>Ville</button>
+                <button className='btn-side-bar'>Articles</button>
+              </div>
+            </div>
             <div className='content-container'>
                 <ArticleForm />
             </div>
