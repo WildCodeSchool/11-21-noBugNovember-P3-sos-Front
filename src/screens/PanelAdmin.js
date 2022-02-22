@@ -1,8 +1,8 @@
 import './Styles/PanelAdmin.css'
 const PanelAdmin =()=>{
     return (
-        <div className='PanelAdmin-Container'>
-
+        <div className='panelAdmin-Container'>
+            <div className='side-bar'>test</div>
         </div>
     )
 }
