@@ -1,0 +1,9 @@
+.article-form-container{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+.article-form{
+    display: flex;
+    flex-direction: column;
+}
