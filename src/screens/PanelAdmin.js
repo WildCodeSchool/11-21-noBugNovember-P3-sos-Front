@@ -1,16 +1,17 @@
 import './Styles/PanelAdmin.css'
 import { Link } from "react-router-dom";
 import ArticleForm from "../components/ArticleForm";
+import logo from '../assets/logoW.png'
 const PanelAdmin =()=>{
     return (
         <div className='panel-admin-container'>
             <div className='side-bar'>
-              <img className='logo-panel' src='' alt="logo panel"/>
+              <img className='logo-panel' src={logo} alt="logo panel"/>
               <div className='bloc-link-side-bar'>
-                <Link to="/ArticleForm">Articles</Link>
-                <Link to="">Catégories</Link>
-                <Link to="">Sous-Catégories</Link>
-                <Link to="">Villes</Link>
+                <Link to="/ArticleForm">Les articles</Link>
+                <Link to="">Les catégories</Link>
+                <Link to="">Les sous-catégories</Link>
+                <Link to="">Les villes</Link>
               </div>
 
             </div>

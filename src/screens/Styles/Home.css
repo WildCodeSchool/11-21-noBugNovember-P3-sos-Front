@@ -1,0 +1,61 @@
+.wrapperHome {
+  width: 95vw;
+  height: 90vh;
+  margin: auto;
+}
+
+.logoHolder {
+  left: 0;
+  width: 200px;
+  margin-top: 20px;
+}
+.logoHolder img {
+  width: 100%;
+}
+
+.wrapRaw {
+  display: flex;
+  flex-direction: column;
+}
+
+.splitWrap {
+  height: 80vh;
+  width: 100%;
+  bottom: 0;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.splitOrange {
+  width: 40%;
+  background-color: orange;
+  height: 70%;
+  border-radius: 0 250px 0 0;
+}
+.holderBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* .holderBtn:nth-child(1) {
+  margin: 10px;
+} */
+
+.splitGreen {
+  width: 55%;
+  background-color: darkgreen;
+  background-image: url(../../assets/illus.png);
+  background-position: 300% -45%;
+  background-repeat: no-repeat;
+  height: 100%;
+  border-radius: 250px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 55px;
+}
