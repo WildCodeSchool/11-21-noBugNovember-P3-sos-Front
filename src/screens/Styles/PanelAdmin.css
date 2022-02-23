@@ -7,7 +7,7 @@
      width:80%;
 }
 .logo-panel{
-    height:100px;
+    height:90px;
     width: auto;
     object-fit: cover;
     margin: 30px;
@@ -24,8 +24,7 @@
     border-bottom-right-radius: 221px ;
     border-left: 1px solid #707070;
     height:100vh;
-    width: 20vw;
-    min-width: 250px;
+    width: 250px;
 }
 .bloc-link-side-bar{
     display: flex;
