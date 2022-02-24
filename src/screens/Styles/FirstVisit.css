@@ -1,0 +1,51 @@
+.wrapperFirstVisit {
+  width: 95vw;
+  height: 90vh;
+  margin: auto;
+  padding-top: 3rem;
+}
+
+.wrapChild {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+}
+
+.wrapChild h2 {
+  color: var(--clr-orange);
+  font-size: 3.5rem;
+}
+
+.wrapChild p {
+  color: var(--clr-orange);
+  margin-top: 2rem;
+}
+
+.WrapSearchBar {
+  width: 25%;
+  background: var(--clr-green3);
+  height: 5rem;
+  margin-top: 16rem;
+  border-radius: 0 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.WrapSearchBar h3 {
+  color: var(--clr-white);
+  font-weight: normal;
+  font-size: 2rem;
+}
+
+.WrapSearchBar select {
+  height: 4rem;
+  border-radius: 0 2rem;
+  padding: 0 0px 0px 2rem;
+  appearance: none;
+  width: 16rem;
+}
