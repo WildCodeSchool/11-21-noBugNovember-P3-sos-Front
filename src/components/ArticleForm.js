@@ -1,5 +1,8 @@
 import './Styles/ArticleForm.css'
 import {useState} from "react";
+
+import BouttonPublier from './BouttonPublier';
+
 const ArticleForm =()=>{
     const [article,setArticle]=useState({title:"",urlImg:"",textArticle:""})
     return(
@@ -9,7 +12,7 @@ const ArticleForm =()=>{
           <div className="articles-and-types">
             
             <div className="bloc-article">
-              <h3 className="titre-colonne">Nouvel article</h3>
+              <h3 className="titres-colonnes">Nouvel article</h3>
               
               <form className='article-form'>
                 
@@ -19,15 +22,17 @@ const ArticleForm =()=>{
                                                       
                   <input placeholder="Url de l'image" value={article.urlImg}/>
                                    
-                  <textarea placeholder="Article" value={article.textArticle}/>
+                  <textarea id='txt-article' placeholder="Texte de l'article" value={article.textArticle}/>
+
                   <input placeholder='URL des liens à télécharger' value={article.urlTelechargement}/>
                   
               </form>
             </div>
 
             <div className="types-articles">
-            <h3 className="titre-colonne">Type d'articles</h3>
+            <h3 className="titres-colonnes">Type d'articles</h3>
 
+            <div className="bloc-deroulant-publier">
                 <form className="drop-down-type">
                         <select name="type-opt" className="list-deroulante">
                           <option>Type 1</option>
@@ -50,6 +55,8 @@ const ArticleForm =()=>{
                           <option>Sous-Catégorie 3</option>
                         </select>
                 </form>
+                <BouttonPublier />
+                </div>
             </div>
 
 

@@ -1,29 +1,31 @@
 .article-form-container{
     display: flex;
     flex-direction: column;
-    align-content: space-around;
-    margin: 2rem;
+    /* align-content: space-around; */
+    padding:3.7rem 3rem;
+    width:  80vw ;/* largeur du composant (partie droite)*/
+    height: 100vh;
 }
+
+.bjr-user{
+color:var(clear-green5);
+margin-bottom : 8rem;
+}
+
 .article-form{
     display: flex;
     flex-direction: column;
 }
-.article-form > input{
-    height: 2.5rem;
-    width: 57.2rem;
-}
-.article-form > textarea{
-    height: 15rem;
-    width: 57.2rem;
 
-}
+
 
 /* BLOC ARTICLES AND TYPES*/
 .articles-and-types{
     display: flex;
     flex-direction: row;
     align-items: top;
-    box-sizing: border-box; /* Box Sizing */
+    justify-content: left;
+    padding-left : 3rem;
 }
 
 .types-articles, .bloc-article {
@@ -32,36 +34,71 @@
     justify-content: flex-start;
 }
 
-.titre-colonne {
-    margin: 0 0 1rem 0;
+.titres-colonnes {
+    margin: 0 0 2rem 0;
 }
 
 /* BLOC ARTICLES */
 .bloc-article {
-    border : 2px solid blue;
+    /* border : 2px solid blue; */
     height: auto;
-    width: 25rem;
-    
+    width: 90rem;
 }
+
+.article-form > :nth-child(n){
+    height: 5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+}
+
+
+#txt-article{
+    resize: none;
+        height: 200px;
+}
+
+
 
 /*TYPES ARTICLES*/
 .types-articles{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin-left : 2rem;
 }
 
 .drop-down-type{
     display:flex;
     flex-direction: column;
+    /* border: 2px solid green; */
     
 }
 
 .list-deroulante{
-    height: 36px;
-    width: 152px;
+    height: 5rem;
+    width: 20rem;
     border-radius: 0px 19px;
     opacity: 1;
     padding : 0.5rem;
     margin-bottom: 1.5rem;
 
+
+}
+
+/* .btn-send-art {
+    height: 5rem;
+    width: 15.2rem;
+    border-radius: 0px 19px;
+    opacity: 1;
+    padding :  0.5rem;
+    margin: 0;
+    background : #E38454; 
+    border: 2px solid ;
+} */
+
+.bloc-deroulant-publier{
+/* border: 3px solid pink; */
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between
 }
