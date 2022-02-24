@@ -1,13 +1,162 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,400;0,800;1,200;1,400;1,800&display=swap");
+/* --------------------- */
+/* Root                  */
+/* --------------------- */
+
+/* --------------------- */
+/* Break Points          */
+/* 70em (1120px)Ordi     */
+/* 45em (688px) Tablette */
+/* --------------------- */
+
+html {
+  font-size: 62.5%;
+  /*1rem = 10px */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  /******* colors *******/
+
+  /* --clr-dark: 230 35% 7%; */
+  /* color: hsl(var(--clr-white) / 0.8); */
+  --clr-green5: hsl(var(--clr-green) / 0.6);
+  --clr-green4: hsl(var(--clr-green) / 0.7);
+  --clr-green3: hsl(var(--clr-green) / 0.8);
+  --clr-green2: hsl(var(--clr-green) / 0.9);
+  --clr-green: #226d68;
+
+  --clr-orange5: hsl(var(--clr-orange) / 0.6);
+  --clr-orange4: hsl(var(--clr-orange) / 0.7);
+  --clr-orange3: hsl(var(--clr-orange) / 0.8);
+  --clr-orange2: hsl(var(--clr-orange) / 0.9);
+  --clr-orange: #e38454;
+
+  --clr-white: #fff;
+
+  /******* font-sizes *******/
+  /* --fs-h1: clamp(min, ratio, max); Exemple pour avoir une typo responsive*/
+  /* --fs-h1: clamp(5rem, 8vw + 1rem, 9.375rem); Exemple pour avoir une typo responsive*/
+  /* --fs-h6: clamp(1rem, 4vw + 0.5rem, 3rem); Exemple pour avoir une typo responsive*/
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.8rem;
+  --fs-h4: 1.6rem;
+  --fs-body: 1.6rem;
+
+  /******* font-families *******/
+  --ff-body: "Work Sans", sans-serif;
+}
+
+/******* Tablet *******/
+@media screen and (max-width: 45em) {
+  :root {
+    /* font-sizes */
+    --fs-h2: 4rem;
+  }
+}
+
+/******* Phone *******/
+@media screen and (max-width: 35em) {
+  :root {
+    /* font-sizes */
+  }
+}
+
+/* --------------------- */
+/*      Reset            */
+/* --------------------- */
+
+/******* Box sizing *******/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/******* Body *******/
+body {
+  min-height: 100vh;
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+}
+
+/******* Images *******/
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* ----------------------- */
+/*  Utility classes Typo   */
+/* ----------------------- */
+
+h1,
+h2 {
+  font-weight: normal;
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+h1 {
+  color: var(--clr-orange);
+  font-size: 2.5rem;
+}
+
+h2 {
+  color: var(--clr-white);
+}
+
+h3 {
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+.border-btn {
+  border-radius: 2.6rem 2.6rem 0 2.6rem;
+}
+
+button {
+  padding: 1em;
+  border-radius: 0 2rem;
+  margin: 0 1.5rem;
+}
+
+.btnGreen {
+  background-color: var(--clr-green);
+  color: var(--clr-white);
+}
+.btnOrange {
+  background-color: var(--clr-orange);
+  color: var(--clr-white);
 }
