@@ -1,13 +1,16 @@
 import "./App.css";
-import PanelAdmin from "./screens/PanelAdmin";
 import Home from "./screens/Home";
+import PanelAdmin from './screens/PanelAdmin'
+
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      {/*PanelAdmin est ajouter ici juste pour des tests a supprimer ensuite*/}
-       <PanelAdmin />
-      {/*<Home />*/}
+      <Route path="/Home" element={Home}></Route>
+      <Route path="/PanelAdmin" element={PanelAdmin}></Route>
+
+      
     </div>
   );
 }
