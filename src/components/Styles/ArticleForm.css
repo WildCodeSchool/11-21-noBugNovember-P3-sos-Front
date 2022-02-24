@@ -2,8 +2,66 @@
     display: flex;
     flex-direction: column;
     align-content: space-around;
+    margin: 2rem;
 }
 .article-form{
     display: flex;
     flex-direction: column;
+}
+.article-form > input{
+    height: 2.5rem;
+    width: 57.2rem;
+}
+.article-form > textarea{
+    height: 15rem;
+    width: 57.2rem;
+
+}
+
+/* BLOC ARTICLES AND TYPES*/
+.articles-and-types{
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    box-sizing: border-box; /* Box Sizing */
+}
+
+.types-articles, .bloc-article {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.titre-colonne {
+    margin: 0 0 1rem 0;
+}
+
+/* BLOC ARTICLES */
+.bloc-article {
+    border : 2px solid blue;
+    height: auto;
+    width: 25rem;
+    
+}
+
+/*TYPES ARTICLES*/
+.types-articles{
+    border: 2px solid red;
+    margin-left : 2rem;
+}
+
+.drop-down-type{
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.list-deroulante{
+    height: 36px;
+    width: 152px;
+    border-radius: 0px 19px;
+    opacity: 1;
+    padding : 0.5rem;
+    margin-bottom: 1.5rem;
+
 }

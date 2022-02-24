@@ -1,7 +1,6 @@
 .panel-admin-container{
     display: flex;
     flex-direction: row;
-
 }
 .btn-side-bar{
      width:80%;
@@ -40,4 +39,7 @@
     background-color: #C8DBDA;
     height: 100vh;
     width:80vw;
+}
+.bloc-link-side-bar>a:hover{
+    text-decoration: underline;
 }
