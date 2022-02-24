@@ -12,6 +12,7 @@ const Home = () => {
       <div className="wrapRaw">
         <h1>
           Les mêmes chances pour tous <br />
+          Découvrez ...
         </h1>
         <div className="splitWrap">
           <div className="splitOrange">
@@ -27,11 +28,15 @@ const Home = () => {
                   name="searchBar"
                   placeholder="Rechercher"
                 ></input>
-                <select name="citySelect" id="citySelect">
-                  <option value="">Villes</option>
-                  <option value="Grenoble">Grenoble</option>
-                  <option value="Paris">Paris</option>
-                </select>
+                <div className="select-style">
+                  <select name="citySelect" id="citySelect">
+                    <option value="" disabled selected hidden>
+                      Ville
+                    </option>
+                    <option value="Grenoble">Grenoble</option>
+                    <option value="Paris">Paris</option>
+                  </select>
+                </div>
               </div>
               <button> Chercher</button>{" "}
             </div>
@@ -41,6 +46,10 @@ const Home = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat
+            </p>
+            <p>
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat
             </p>
             <p>

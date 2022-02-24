@@ -19,17 +19,17 @@ html {
 
   /* --clr-dark: 230 35% 7%; */
   /* color: hsl(var(--clr-white) / 0.8); */
-  --clr-green5: hsl(var(--clr-green) / 0.6);
-  --clr-green4: hsl(var(--clr-green) / 0.7);
-  --clr-green3: hsl(var(--clr-green) / 0.8);
-  --clr-green2: hsl(var(--clr-green) / 0.9);
-  --clr-green: #226d68;
+  --clr-green: #3b7c77;
+  --clr-green2: #629692;
+  --clr-green3: #85ada9;
+  --clr-green4: #a3c2bf;
+  --clr-green5: #b0cac8;
 
-  --clr-orange5: hsl(var(--clr-orange) / 0.6);
-  --clr-orange4: hsl(var(--clr-orange) / 0.7);
-  --clr-orange3: hsl(var(--clr-orange) / 0.8);
-  --clr-orange2: hsl(var(--clr-orange) / 0.9);
-  --clr-orange: #e38454;
+  --clr-orange: #e38360;
+  --clr-orange2: #e99c81;
+  --clr-orange4: #eeb5a0;
+  --clr-orange3: #f0c0af;
+  --clr-orange5: #f2c1b0;
 
   --clr-white: #fff;
 
@@ -149,7 +149,6 @@ p {
 button {
   padding: 1em;
   border-radius: 0 2rem;
-  margin: 0 1.5rem;
 }
 
 .btnGreen {
