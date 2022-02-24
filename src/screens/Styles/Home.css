@@ -18,6 +18,10 @@
   flex-direction: column;
 }
 
+.wrapRaw h1 {
+  color: var(--clr-orange);
+}
+
 .splitWrap {
   height: 80vh;
   width: 100%;
@@ -31,7 +35,7 @@
 
 .splitOrange {
   width: 40%;
-  background-color: orange;
+  background-color: #e38454;
   height: 70%;
   border-radius: 0 250px 0 0;
 }
@@ -47,7 +51,7 @@
 
 .splitGreen {
   width: 55%;
-  background-color: darkgreen;
+  background-color: #226d68;
   background-image: url(../../assets/illus.png);
   background-position: 300% -45%;
   background-repeat: no-repeat;
