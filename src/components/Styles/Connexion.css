@@ -1,0 +1,13 @@
+.connexion-container{
+    display: flex;
+    flex-direction: column;    
+    height: 5rem;
+    margin-bottom: 15rem;
+    width: 80vw;     
+}
+
+.connexion-container > :nth-child(n){
+    border-radius: 0px 19px;
+    height: 10rem;
+    width: 20rem;
+}

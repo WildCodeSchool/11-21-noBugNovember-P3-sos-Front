@@ -1,16 +1,18 @@
-import logo from './logo.svg'
-import './App.css'
+import "./App.css";
+import Home from "./screens/Home";
 import PanelAdmin from './screens/PanelAdmin'
-import Home from './screens/Home'
+
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className='App'>
-      {/*PanelAdmin est ajouter ici juste pour des tests a supprimer ensuite*/}
-       <PanelAdmin />
-      {/*<Home />*/}
+    <div className="App">
+      <Route path="/Home" element={Home}></Route>
+      <Route path="/PanelAdmin" element={PanelAdmin}></Route>
+
+      
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

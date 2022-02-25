@@ -1,0 +1,14 @@
+.btn-send-art {
+    height: 5rem;
+    width: 20rem;
+    border-radius: 0px 19px;
+    opacity: 1;
+    padding :  0.5rem;
+    margin: 0;
+    background : var(--clr-orange); 
+    border: 2px solid ;
+    margin-bottom: 1.5rem;
+}
+.btn-send-art:active {   
+    box-shadow: inset -1px -1px 5px 1px #000000;
+}
