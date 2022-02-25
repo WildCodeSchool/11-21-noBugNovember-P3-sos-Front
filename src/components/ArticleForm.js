@@ -1,9 +1,12 @@
 import './Styles/ArticleForm.css'
 import {useState} from "react";
+import TinyArticle from './TinyArticle'
 
 import BouttonPublier from './BouttonPublier';
 
-const ArticleForm =()=>{
+
+const ArticleForm=()=>{
+
     const [article,setArticle]=useState({title:"",urlImg:"",textArticle:""})
     return(
       <div className='article-form-container'>
@@ -15,8 +18,10 @@ const ArticleForm =()=>{
               <h3 className="titres-colonnes">Nouvel article</h3>
               
               <form className='article-form'>
+                <TinyArticle />
+
                 
-                  <input className='input-article-title' placeholder="Titre de l'article" value={article.title} />
+                  {/* <input className='input-article-title' placeholder="Titre de l'article" value={article.title} />
                              
                   <input className='input-article-intro' placeholder="Intro de l'article" value={article.intro} />
                                                       
@@ -24,7 +29,7 @@ const ArticleForm =()=>{
                                    
                   <textarea id='txt-article' placeholder="Texte de l'article" value={article.textArticle}/>
 
-                  <input placeholder='URL des liens à télécharger' value={article.urlTelechargement}/>
+                  <input placeholder='URL des liens à télécharger' value={article.urlTelechargement}/> */}
                   
               </form>
             </div>

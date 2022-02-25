@@ -20,8 +20,8 @@ const PanelAdmin =()=>{
 
             </div>
             <div className='content-container'>
-                <Connexion />
-                {/* <ArticleForm /> */}
+                {/* <Connexion /> */}
+                <ArticleForm />
             </div>
         </div>
     )
