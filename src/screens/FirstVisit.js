@@ -1,3 +1,4 @@
+import Parcours from "../components/Parcours";
 import "./Styles/FirstVisit.css";
 
 const FirstVisit = () => {
@@ -27,6 +28,7 @@ const FirstVisit = () => {
             </select>
           </div>
         </div>
+        <Parcours />
       </div>
     </>
   );
