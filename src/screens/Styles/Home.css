@@ -25,7 +25,7 @@
 }
 
 .splitWrap {
-  height: 80vh;
+  height: 70vh;
   width: 100%;
   bottom: 0;
   position: relative;
@@ -41,7 +41,11 @@
   background-color: var(--clr-orange);
   height: 70%;
   border-radius: 0 25rem 0 0;
-  padding: 6rem 0 0 4rem;
+  padding: 6rem 0 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 .holderBtn {
   display: flex;
@@ -66,7 +70,7 @@
 }
 
 .holderSearchBar {
-  margin-top: 7rem;
+  width: 90%;
 }
 
 .holderSearchBar button {
@@ -84,28 +88,32 @@
 .SearchBar {
   display: flex;
   justify-content: space-around;
-  width: 55%;
+  /* width: 90%; */
   background: var(--clr-green3);
   height: 5.5rem;
   align-items: center;
   margin: 1rem 0 1rem 0;
   border-radius: 0 2rem;
+  font-size: var(--fs-corps);
+}
+.SearchBar input {
+  height: 4rem;
+  border-radius: 0 2rem;
 }
 
-.SearchBar input,
 .SearchBar select {
   height: 4rem;
   border-radius: 0 2rem;
-  padding: 0 0px 0px 2rem;
+  padding: 0 1rem 0px 2rem;
   appearance: none;
-  width: 16rem;
+  /* width: 16rem; */
 }
 
 .splitGreen {
   width: 55%;
   background-color: var(--clr-green);
   background-image: url(../../assets/illus.png);
-  background-position: -914% -56%;
+  /* background-position: -914% -56%; */
   background-repeat: no-repeat;
   height: 100%;
   border-radius: 25rem 0 0 0;
@@ -120,4 +128,88 @@
 .splitGreen p {
   margin: 3rem 0rem;
   font-size: 1.8rem;
+}
+
+/******* Small computer *******/
+@media screen and (max-width: 80em) {
+  .splitGreen {
+    width: 40%;
+    padding: 0 3.5rem;
+  }
+
+  .splitGreen p {
+    margin: 1rem 0rem;
+    font-size: 1.4rem;
+  }
+
+  .splitOrange {
+    width: 55%;
+  }
+}
+/******* Large Tablet *******/
+@media screen and (max-width: 60em) {
+  .splitWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 80vh;
+  }
+  .splitOrange,
+  .splitGreen {
+    width: 90%;
+    margin-top: 3em;
+  }
+
+  .splitOrange {
+    border-radius: 0 0 25rem 0;
+    padding: 0rem 0 0 2rem;
+  }
+}
+@media screen and (max-width: 40em) {
+  .splitWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 80vh;
+  }
+
+  .splitGreen {
+    width: 100%;
+    margin-top: 3em;
+    min-height: 35vh;
+    justify-content: flex-end;
+    padding-bottom: 2em;
+  }
+
+  .splitOrange {
+    border-radius: 0 0 25rem 0;
+    padding: 0rem 0 0 2rem;
+    width: 100%;
+    margin-top: 3em;
+    justify-content: space-around;
+    min-height: 40vh;
+  }
+
+  .holderSearchBar {
+    width: auto;
+    height: auto;
+  }
+  .SearchBar {
+    display: flex;
+    /* justify-content: space-around; */
+    width: auto;
+    background: var(--clr-green3);
+    height: auto;
+    align-items: center;
+    margin: 1rem 0 1rem 0;
+    border-radius: 0 2rem;
+    font-size: var(--fs-corps);
+    flex-direction: column;
+  }
+
+  .SearchBar > * {
+    margin: 0.4em;
+  }
 }
