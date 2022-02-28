@@ -18,19 +18,19 @@ const ArticleForm=()=>{
               <h3 className="titres-colonnes">Nouvel article</h3>
               
               <form className='article-form'>
-                <TinyArticle />
+
 
                 
-                  {/* <input className='input-article-title' placeholder="Titre de l'article" value={article.title} />
+                  <input className='input-article-title' placeholder="Titre de l'article" value={article.title} />
                              
                   <input className='input-article-intro' placeholder="Intro de l'article" value={article.intro} />
                                                       
                   <input placeholder="Url de l'image" value={article.urlImg}/>
-                                   
-                  <textarea id='txt-article' placeholder="Texte de l'article" value={article.textArticle}/>
 
+
+                  <TinyArticle />
                   <input placeholder='URL des liens à télécharger' value={article.urlTelechargement}/> */}
-                  
+
               </form>
             </div>
 
