@@ -40,10 +40,10 @@
     margin: 1em;
 }
 .content-container{
-    /* background-color: #C8DBDA; */
     height: 100vh;
-   
+    width: 100vw;
 }
+
 .bloc-link-side-bar>a:hover{
     text-decoration: underline;
 }

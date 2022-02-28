@@ -28,7 +28,7 @@ const ArticleForm=()=>{
                   <input placeholder="Url de l'image" value={article.urlImg}/>
 
 
-                  <TinyArticle />
+                  <TinyArticle setArticle={setArticle} />
                   <input placeholder='URL des liens à télécharger' value={article.urlTelechargement}/> */}
 
               </form>
