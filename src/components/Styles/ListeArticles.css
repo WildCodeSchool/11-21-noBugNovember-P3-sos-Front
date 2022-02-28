@@ -15,7 +15,7 @@ margin-bottom : 8rem;
 .search-bar-form{
     display: flex;
     flex-direction: row;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     justify-content: space-between;
 }
 
@@ -88,6 +88,6 @@ justify-content: space-between
 .titres-tableau {
     display: flex;
     flex-direction: row;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     justify-content: space-between
 }

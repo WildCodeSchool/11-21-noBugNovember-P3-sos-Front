@@ -4,13 +4,14 @@
     border: 2px solid red;
     border-radius: 20px 0;
     margin: 4rem 0;
+    background-color: white;
     
 }
 
 .table-header{
-    border: 2px solid blue;
+    border: 2px solid red;
     height: 5rem;
-    border-radius: 20px;
+    border-radius: 20px 0 !important;
     background-color: blue;
     margin-bottom: 10px; /*DEVRAIT SEPARER LES TITRES DU CONTENU DES CELULLES*/
 
@@ -18,7 +19,7 @@
 
 .titre1-tableau{
 font-size :   var(--fs-h4);
-background-color: var(--clr-white) ;
+
 }
 
 .cellules-tableau{
@@ -48,6 +49,6 @@ background-color: var(--clr-white) ;
 
 
 .contour-cellule{
-    border: 2px solid white;
+    border: 2px solid #226d6838 ;
     text-align: center;
 }
