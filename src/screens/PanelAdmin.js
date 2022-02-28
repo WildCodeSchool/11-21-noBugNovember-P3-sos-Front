@@ -1,8 +1,7 @@
 import './Styles/PanelAdmin.css'
 import { Link } from "react-router-dom";
 import ArticleForm from "../components/ArticleForm";
-import ListeArticles from "../components/ListeArticles"
-
+import ListArticles from '../components/ListArticles'
 
 
 import logo from '../assets/logoW.png'
@@ -21,10 +20,9 @@ const PanelAdmin =()=>{
 
             </div>
             <div className='content-container'>
-                <ArticleForm />
-                         {/*=> NOUVEL ARTICLE */}
-                {/* <ListeArticles />     */}
-                    {/* => LISTE DES ARTICLES */}
+                {/* <Connexion /> */}
+                {/*<ArticleForm />*/}
+              <ListArticles />
             </div>
         </div>
     )

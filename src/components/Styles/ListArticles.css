@@ -1,0 +1,29 @@
+.container-card{
+    display: flex;
+    flex-direction: column;
+
+}
+.header-card{
+    display: flex;
+    margin: 0 0 5rem 0;
+    width: 70vw;
+    justify-content: space-between;
+
+}
+.header-card:nth-child(1){
+    width: 15rem;
+}
+.item-header-card{
+    height: 5rem;
+
+    text-align: left;
+    margin:0 1rem 0 1rem;
+    background-color: var(--clr-white);
+}
+.card{
+    width:70vw;
+    height: 8rem;
+    background-color: var(--clr-white);
+    border-bottom: 1px solid black;
+    margin: 0 0 0 1rem;
+}
