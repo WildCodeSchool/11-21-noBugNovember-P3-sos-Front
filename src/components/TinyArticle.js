@@ -1,9 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import './Styles/TinyArticle.css'
 
 export default function TinyArticle() {
+  const [value,setValue]=useState('');
   const editorRef = useRef(null);
+  const handleClick = () =>{
+
+    console.log('TINY MCE CONTENT ',value)
+  }
   const log = () => {
     if (editorRef.current) {
       console.log(editorRef.current.getContent());
@@ -12,8 +17,9 @@ export default function TinyArticle() {
   return (
     <>
       <Editor apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
+              onEditorChange={(newValue, editor) => setValue(newValue)}
         onInit={(evt, editor) => editorRef.current = editor}
-        initialValue="<p>This is the initial content of the editor.</p>"
+        initialValue="<p>Ecrire le corp de l'article ici</p>"
         init={{
           height: 300,
           menubar: false,
@@ -29,7 +35,8 @@ export default function TinyArticle() {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
-      <button onClick={log} className="editor-btn-tiny">Log editor content</button>
+      <button onClick={log}>Send</button>
+
     </>
   );
 }
