@@ -19,10 +19,10 @@ export default function TinyArticle() {
       <Editor apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
               onEditorChange={(newValue, editor) => setValue(newValue)}
         onInit={(evt, editor) => editorRef.current = editor}
-        initialValue="<p>Ecrire le corp de l'article ici</p>"
+        initialValue=""
         init={{
           height: 300,
-          menubar: false,
+          menubar: true,
           plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',
@@ -35,8 +35,7 @@ export default function TinyArticle() {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
-      <button onClick={log}>Send</button>
-
+<div className="valuuue">{value}</div>
     </>
   );
 }
