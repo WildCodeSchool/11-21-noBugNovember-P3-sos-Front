@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import './Styles/TinyArticle.css'
 
 export default function TinyArticle() {
   const editorRef = useRef(null);
@@ -14,7 +15,7 @@ export default function TinyArticle() {
         onInit={(evt, editor) => editorRef.current = editor}
         initialValue="<p>This is the initial content of the editor.</p>"
         init={{
-          height: 500,
+          height: 300,
           menubar: false,
           plugins: [
             'advlist autolink lists link image charmap print preview anchor',
@@ -28,7 +29,7 @@ export default function TinyArticle() {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
-      <button onClick={log}>Log editor content</button>
+      <button onClick={log} className="editor-btn-tiny">Log editor content</button>
     </>
   );
 }

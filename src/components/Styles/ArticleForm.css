@@ -64,6 +64,7 @@ margin-bottom : 8rem;
 .types-articles{
     /* border: 2px solid red; */
     margin-left : 2rem;
+    height: 100%;
 }
 
 .drop-down-type{

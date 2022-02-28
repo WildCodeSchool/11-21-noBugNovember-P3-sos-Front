@@ -1,63 +1,63 @@
-import './Styles/ArticleForm.css'
+import './Styles/ListeArticles.css'
 import {useState} from "react";
 
 import BouttonPublier from './BouttonPublier';
 
 const ArticleForm =()=>{
-    const [article,setArticle]=useState({title:"",urlImg:"",textArticle:""})
+    const [search,setSearch]=useState({searchTitle:""})
     return(
       <div className='article-form-container'>
         <h2 className='bjr-user'>Bonjour Rachid,</h2>
 
           <div className="articles-and-types">
             
-            <div className="bloc-article">
-              <h3 className="titres-colonnes">Nouvel article</h3>
+            <div className="bloc-article-list">
+              <h3 className="titres-colonnes">Liste des articles</h3>
               
-              <form className='article-form'>
+              <form className='search-bar-form'>
                 
-                  <input className='input-article-title' placeholder="Titre de l'article" value={article.title} />
-                             
-                  <input className='input-article-intro' placeholder="Intro de l'article" value={article.intro} />
-                                                      
-                  <input placeholder="Url de l'image" value={article.urlImg}/>
-                                   
-                  <textarea id='txt-article' placeholder="Texte de l'article" value={article.textArticle}/>
+                <input type="search" name="searching" id="" className="button2 btnWhite" placeholder="Mots-clés" />
+                
+                <select name="categorie-opt" className="button2">
+                  <option>Catégorie 1</option>
+                  <option>Catégorie 2</option>
+                  <option>Catégorie 3</option>
+                </select>
 
-                  <input placeholder='URL des liens à télécharger' value={article.urlTelechargement}/>
-                  
+                <select name="scategorie-opt" className="button2">
+                  <option>Sous-Catégorie 1</option>
+                  <option>Sous-Catégorie 2</option>
+                  <option>Sous-Catégorie 3</option>
+                </select>
+
+                <select name="ville-opt" className="button2">
+                  <option>Ville 1</option>
+                  <option>Ville 2</option>
+                  <option>Ville 3</option>
+                </select>
+
+                <button type="submit" className="button2 btnOrange">Lancer la recherche</button>
+
               </form>
-            </div>
 
-            <div className="types-articles">
-            <h3 className="titres-colonnes">Type d'articles</h3>
-
-            <div className="bloc-deroulant-publier">
-                <form className="drop-down-type">
-                        <select name="type-opt" className="list-deroulante">
-                          <option>Type 1</option>
-                          <option>Type 2</option>
-                          <option>Type 3</option>
-                        </select>
-                        <select name="secteur-opt" className="list-deroulante">
-                          <option>Secteur 1</option>
-                          <option>Secteur 2</option>
-                          <option>Secteur 3</option>
-                        </select>
-                        <select name="categorie-opt" className="list-deroulante">
-                          <option>Catégorie 1</option>
-                          <option>Catégorie 2</option>
-                          <option>Catégorie 3</option>
-                        </select>
-                        <select name="scategorie-opt" className="list-deroulante">
-                          <option>Sous-Catégorie 1</option>
-                          <option>Sous-Catégorie 2</option>
-                          <option>Sous-Catégorie 3</option>
-                        </select>
-                </form>
-                <BouttonPublier />
+              <div className="tableau">
+                <div className="titres-tableau">
+                  <div>Titre</div>
+                  <div>Catégorie</div>
+                  <div>Sous-catégorie</div>
+                  <div>Downloads</div>
+                  <div>Action</div>
                 </div>
+              </div>
+              
+
+
+
+
             </div>
+
+            
+                
 
 
 

@@ -41,7 +41,8 @@
 }
 .content-container{
     /* background-color: #C8DBDA; */
-    height: 100vh;
+    min-height: 100vh; /*Pour que le contenu de la page s'adapte bien*/
+    /* height: 100%; */
    
 }
 .bloc-link-side-bar>a:hover{
