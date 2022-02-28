@@ -9,20 +9,22 @@ const ArticleForm=()=>{
 
     const [article,setArticle]=useState({title:"",urlImg:"",textArticle:""})
     return(
+      <div className='article-form-container'>
+        <h2 className='bjr-user'>Bonjour Rachid,</h2>
 
-          <div className="bloc-content-row">
+          <div className="articles-and-types">
 
 {/* BLOC DE GAUCHE = ARTICLE */}
 
             <div className="bloc-article">
-              <h3 className="titres-blocs">Nouvel article</h3>
+              <h3 className="titres-colonnes">Nouvel article</h3>
               
               <form className='article-form'>
 
                 
-                  <input className='' placeholder="Titre de l'article" value={article.title} />
+                  <input className='input-article-title' placeholder="Titre de l'article" value={article.title} />
 
-                  <input className='' placeholder="Intro de l'article" value={article.intro} />
+                  <input className='input-article-intro' placeholder="Intro de l'article" value={article.intro} />
                                                       
                   <input placeholder="Url de l'image" value={article.urlImg}/>
 
@@ -37,7 +39,7 @@ const ArticleForm=()=>{
 
 {/* BLOC DE DROITE = TYPES D'ARTICLES */}
             <div className="types-articles">
-            <h3 className="titres-blocs">Type d'articles</h3>
+            <h3 className="titres-colonnes">Type d'articles</h3>
 
             <div className="bloc-deroulant-publier">
                 <form className="drop-down-type">
@@ -70,6 +72,7 @@ const ArticleForm=()=>{
 
             </div>
           
+      </div>
     )
 }
 export default ArticleForm

@@ -17,12 +17,17 @@ const PanelAdmin =()=>{
                 <Link to="">Les sous-catégories</Link>
                 <Link to="">Les villes</Link>
               </div>
-
             </div>
+{/* Tout le contenu side bar peut etre rempalcer par le component SIDE BAR ADMIN Crée*/}
+
             <div className='content-container'>
+            <h2 className='bjr-user'>Bonjour [Rachid],</h2>
+
                 {/* <Connexion /> */}
-                {/*<ArticleForm />*/}
+                {/* <ArticleForm /> */}
               <ListArticles />
+
+
             </div>
         </div>
     )

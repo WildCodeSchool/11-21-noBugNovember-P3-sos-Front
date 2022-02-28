@@ -13,7 +13,11 @@ export default function TinyArticle(props) {
       <Editor apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
               onEditorChange={(newValue, editor) => setArticle({textArticle: `${newValue}`})}
         onInit={(evt, editor) => editorRef.current = editor}
-        initialValue=""
+        initialValue="<em>Mon doux Rachid, 
+        je t'écris ces quelques mots pour te dire à quel point je t'aime et oh comment les couchés de soleil avec toi me manque.
+        <br>Reviens moi vite. <br><br>
+
+        Ta chère et tendre Clothilde.</em>"
         init={{
           height: 300,
           menubar: true,

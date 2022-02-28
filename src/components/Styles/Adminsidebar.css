@@ -1,18 +1,3 @@
-.panel-admin-container{
-    display: flex;
-    flex-direction: row;
-    background : #C8DBDA;
-
-}
-.btn-side-bar{
-     width:80%;
-}
-.logo-panel{
-    height:90px;
-    width: auto;
-    object-fit: cover;
-    margin: 30px;
-}
 .side-bar{
     display: flex;
     flex-direction: column;
@@ -20,7 +5,6 @@
     color:#FFFFFF;
     justify-content: flex-start;
     align-content: flex-start;
-     /*Ajouter variable root*/
     background-color: #226D68;
     border-bottom-right-radius: 221px ;
     border-left: 1px solid #707070;
@@ -29,6 +13,14 @@
     min-width:33rem;
     
 }
+
+.logo-panel{
+    height:90px;
+    width: auto;
+    object-fit: cover;
+    margin: 30px;
+}
+
 .bloc-link-side-bar{
     display: flex;
     flex-direction: column;
@@ -39,18 +31,6 @@
     color:#FFFFFF;
     margin: 1em;
 }
-.content-container{
-    height: 100vh;
-    width: 100vw;
-    border: 2px solid red;
-    padding: 3rem;
-}
-
-.bjr-user{
-    font-size: var(--fs-h1);
-    color:var(--clr-green);
-    margin-bottom : 8rem;
-    }
 
 .bloc-link-side-bar>a:hover{
     text-decoration: underline;
