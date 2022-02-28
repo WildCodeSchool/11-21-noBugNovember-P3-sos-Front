@@ -2,21 +2,39 @@
   width: 50%;
   height: 20.5em;
   margin: auto;
-  background-color: #00ffff;
-  margin-top: 50px;
+  background-color: var(--clr-green);
+  margin-top: 150px;
   display: flex;
 }
 
+.leftAlignCard {
+  flex-direction: row;
+}
+
+.rightAlignCard {
+  flex-direction: row-reverse;
+}
+
 .imgCard {
-  background-color: blue;
   height: 100%;
   width: 50%;
   position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgCard img {
+  max-width: 150%;
 }
 
 .holderContent {
   width: 35%;
   margin: auto;
   height: 100%;
-  background-color: purple;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
