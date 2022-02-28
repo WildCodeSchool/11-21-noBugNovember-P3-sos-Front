@@ -4,6 +4,18 @@
   margin: auto;
   padding-top: 3rem;
 }
+.wrapperLogo {
+  width: 100vw;
+  height: 7em;
+  padding-top: 3rem;
+  background: white;
+  padding-left: 2vw;
+}
+.bgGreen {
+  background-color: var(--clr-green5);
+  height: 100vh;
+  width: 100vw;
+}
 
 .logoHolder {
   left: 0;

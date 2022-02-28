@@ -1,0 +1,22 @@
+.cardDetails {
+  width: 50%;
+  height: 20.5em;
+  margin: auto;
+  background-color: #00ffff;
+  margin-top: 50px;
+  display: flex;
+}
+
+.imgCard {
+  background-color: blue;
+  height: 100%;
+  width: 50%;
+  position: relative;
+}
+
+.holderContent {
+  width: 35%;
+  margin: auto;
+  height: 100%;
+  background-color: purple;
+}

@@ -1,16 +1,18 @@
-import "./App.css";
-import Home from "./screens/Home";
-import PanelAdmin from "./screens/PanelAdmin";
-import FirstVisit from "./screens/FirstVisit";
+import './App.css'
+import Home from './screens/Home'
+import PanelAdmin from './screens/PanelAdmin'
+import FirstVisit from './screens/FirstVisit'
+import ArticlesGrid from './screens/ArticlesGrid'
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       {/* <FirstVisit /> */}
-      <Home />
+      {/* <Home /> */}
       {/* <PanelAdmin /> */}
+      <ArticlesGrid />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
