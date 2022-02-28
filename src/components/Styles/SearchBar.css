@@ -1,0 +1,58 @@
+.holderSearchBar {
+  width: 90%;
+}
+
+.SearchBar {
+  display: flex;
+  justify-content: space-around;
+  /* width: 90%; */
+  background: var(--clr-green3);
+  height: 5.5rem;
+  align-items: center;
+  margin: 1rem 0 1rem 0;
+  border-radius: 0 2rem;
+  font-size: var(--fs-corps);
+}
+.SearchBar input {
+  height: 4rem;
+  border-radius: 0 2rem;
+  padding: 0 1rem 0 2rem;
+}
+
+.SearchBar select {
+  height: 4rem;
+  border-radius: 0 2rem;
+  padding: 0 1rem 0 2rem;
+  appearance: none;
+  /* width: 16rem; */
+}
+
+/******* Large Tablet *******/
+@media screen and (max-width: 60em) {
+  .SearchBar {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .holderSearchBar {
+    width: auto;
+    height: auto;
+  }
+  .SearchBar {
+    display: flex;
+    /* justify-content: space-around; */
+    width: auto;
+    background: var(--clr-green3);
+    height: auto;
+    align-items: center;
+    margin: 1rem 0 1rem 0;
+    border-radius: 0 2rem;
+    font-size: var(--fs-corps);
+    flex-direction: column;
+  }
+
+  .SearchBar > * {
+    margin: 0.4em;
+  }
+}
