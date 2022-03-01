@@ -1,0 +1,7 @@
+.page-connection{
+    padding: 2rem;
+    border: 5px solid var(--clr-orange);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

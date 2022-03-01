@@ -10,7 +10,7 @@ const ArticleForm=()=>{
     const [article,setArticle]=useState({title:"",urlImg:"",textArticle:""})
     return(
 <>
-<h2 className='bjr-user'>Bonjour Rachid,</h2>
+<h2 className='bjr-user'>Bonjour [userName],</h2>
 
 
           <div className="bloc-content-row">
