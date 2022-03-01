@@ -1,0 +1,10 @@
+.articleGridHolderSearchBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.articleGridSearchBar {
+  width: 30%;
+}

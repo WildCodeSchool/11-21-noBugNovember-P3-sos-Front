@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,400;0,800;1,200;1,400;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,400;0,800;1,200;1,400;1,800&display=swap");
 /* --------------------- */
 /* Root                  */
 /* --------------------- */
@@ -32,6 +32,7 @@ html {
   --clr-orange5: #f2c1b0;
 
   --clr-white: #fff;
+  --clr-bg-green: #d7e5e4;
 
   /******* font-sizes *******/
   /* --fs-h1: clamp(min, ratio, max); Exemple pour avoir une typo responsive*/
@@ -45,7 +46,7 @@ html {
   --fs-corps: 1.4rem;
 
   /******* font-families *******/
-  --ff-body: 'Work Sans', sans-serif;
+  --ff-body: "Work Sans", sans-serif;
 }
 
 /******* Tablet *******/
@@ -101,8 +102,8 @@ select {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 

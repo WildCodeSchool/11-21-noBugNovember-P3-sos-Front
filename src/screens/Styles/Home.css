@@ -102,6 +102,10 @@
   font-size: 1.8rem;
 }
 
+.articleGridBgGreen {
+  background-color: var(--clr-bg-green);
+}
+
 /******* Small computer *******/
 @media screen and (max-width: 80em) {
   .homeSplitGreen {
