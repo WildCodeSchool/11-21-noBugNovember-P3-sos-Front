@@ -1,10 +1,12 @@
 import './Styles/Connexion.css'
 import { Link } from 'react-router-dom'
+import logo from '../assets/logo.png'
 
 const Connexion = ()=> {
     return (
         <>
-        <h2 className='bjr-user'>Bonjour ,</h2>
+
+        <img src={logo} alt="logoconnexion" className="logoconnexion" />
         <div className="bloc-login">
             
             <form className="login-access">
