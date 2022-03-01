@@ -4,10 +4,6 @@
     /* border: 3px solid red; */
 }
 
-.bloc-content-row{
-    display: flex;
-    justify-content: space-between;
-}
 
 .liste-articles{
     padding: 1rem;

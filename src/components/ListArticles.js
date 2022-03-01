@@ -8,6 +8,8 @@ import BarreRechercheArticles from './BarreRechercheArticles';
 
 const ListArticles = ()=> {
   return (
+<>
+    <h2 className='bjr-user'>Bonjour [Rachid],</h2>
     <div className='bloc-content-column'>
       <h3 className="titres-colonnes">Liste des articles</h3>
 
@@ -47,7 +49,7 @@ const ListArticles = ()=> {
       </div> */}
 
 </div>
-
+</>
   )
 }
 export default ListArticles;

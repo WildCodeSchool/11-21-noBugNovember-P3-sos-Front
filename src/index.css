@@ -173,6 +173,7 @@ button {
 .btnOrange {
   background-color: var(--clr-orange);
   color: var(--clr-white);
+  cursor: pointer;
 }
 
 .btnWhite {

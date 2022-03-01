@@ -9,6 +9,9 @@ const ArticleForm=()=>{
 
     const [article,setArticle]=useState({title:"",urlImg:"",textArticle:""})
     return(
+<>
+<h2 className='bjr-user'>Bonjour Rachid,</h2>
+
 
           <div className="bloc-content-row">
 
@@ -69,7 +72,7 @@ const ArticleForm=()=>{
 
 
             </div>
-          
+            </>  
     )
 }
 export default ArticleForm
