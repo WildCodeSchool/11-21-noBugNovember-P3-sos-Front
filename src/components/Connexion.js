@@ -11,7 +11,7 @@ const Connexion = ()=> {
                 <h1>ACCES ADMIN</h1>               
                 <input placeholder="Email" type='email' className="input-login-email button2"/>
                 <input placeholder="Mot de passe" type='password' className="input-login-pass button2" />                
-                <button className='button2 btnOrange'>Connexion</button>
+                <Link to="/admin-controler"><button className='button2 btnOrange'>Connexion</button></Link>
                 <Link to="/admin-controler" className="forgotten-password">mot de passe oublié ?</Link>
                 {/* Link a mettre ici */}
 </form> 
