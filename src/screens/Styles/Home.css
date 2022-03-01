@@ -1,42 +1,30 @@
-.wrapperHome {
+.homeWrapper {
   width: 95vw;
   height: 90vh;
   margin: auto;
   padding-top: 3rem;
 }
-.wrapperLogo {
-  width: 100vw;
-  height: 7em;
-  padding-top: 3rem;
-  background: white;
-  padding-left: 2vw;
-}
-.bgGreen {
-  background-color: var(--clr-green5);
-  height: 100vh;
-  width: 100vw;
-}
 
-.logoHolder {
+.homeLogoHolder {
   left: 0;
   width: 20rem;
 }
 
-.logoHolder img {
+.homeLogoHolder img {
   width: 100%;
 }
 
-.wrapRaw {
+.homeWrapRaw {
   display: flex;
   flex-direction: column;
   margin-top: 3rem;
 }
 
-.wrapRaw h1 {
+.homeWrapRaw h1 {
   color: var(--clr-orange);
 }
 
-.splitWrap {
+.homeSplitWrap {
   height: 70vh;
   width: 100%;
   bottom: 0;
@@ -48,7 +36,7 @@
   padding-bottom: 3rem;
 }
 
-.splitOrange {
+.homeSplitOrange {
   width: 40%;
   background-color: var(--clr-orange);
   height: 70%;
@@ -59,14 +47,14 @@
   align-items: flex-start;
   justify-content: space-evenly;
 }
-.holderBtn {
+.homeHolderBtn {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
 
-.holderBtn button {
+.homeHolderBtn button {
   padding: 1rem;
   border-radius: 0 2rem;
   margin: 0 2.5rem;
@@ -81,7 +69,7 @@
   color: white;
 }
 
-.searchButton {
+.homeSearchButton {
   background: var(--clr-green);
   color: white;
   width: 20rem;
@@ -93,7 +81,7 @@
   align-content: center;
 }
 
-.splitGreen {
+.homeSplitGreen {
   width: 55%;
   background-color: var(--clr-green);
   background-image: url(../../assets/illus.png);
@@ -109,49 +97,49 @@
   color: var(--clr-white);
 }
 
-.splitGreen p {
+.homeSplitGreen p {
   margin: 3rem 0rem;
   font-size: 1.8rem;
 }
 
 /******* Small computer *******/
 @media screen and (max-width: 80em) {
-  .splitGreen {
+  .homeSplitGreen {
     width: 40%;
     padding: 0 3.5rem;
   }
 
-  .splitGreen p {
+  .homeSplitGreen p {
     margin: 1rem 0rem;
     font-size: 1.4rem;
   }
 
-  .splitOrange {
+  .homeSplitOrange {
     width: 55%;
   }
 }
 /******* Large Tablet *******/
 @media screen and (max-width: 60em) {
-  .splitWrap {
+  .homeSplitWrap {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: nowrap;
     height: 80vh;
   }
-  .splitOrange,
-  .splitGreen {
+  .homeSplitOrange,
+  .homeSplitGreen {
     width: 90%;
     margin-top: 3em;
   }
 
-  .splitOrange {
+  .homeSplitOrange {
     border-radius: 0 0 25rem 0;
     padding: 0rem 0 0 2rem;
   }
 }
 @media screen and (max-width: 40em) {
-  .splitWrap {
+  .homeSplitWrap {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,7 +147,7 @@
     height: 80vh;
   }
 
-  .splitGreen {
+  .homeSplitGreen {
     width: 100%;
     margin-top: 3em;
     min-height: 35vh;
@@ -167,7 +155,7 @@
     padding-bottom: 2em;
   }
 
-  .splitOrange {
+  .homeSplitOrange {
     border-radius: 0 0 25rem 0;
     padding: 0rem 0 0 2rem;
     width: 100%;
