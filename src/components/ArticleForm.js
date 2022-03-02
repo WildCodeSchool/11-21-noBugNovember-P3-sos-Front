@@ -1,7 +1,7 @@
 import './Styles/ArticleForm.css'
 import {useState, useEffect, useRef} from "react";
 import TinyArticle from './TinyArticle'
-
+import axios from 'axios'
 import BouttonPublier from './BouttonPublier';
 
 
@@ -16,7 +16,7 @@ const ArticleForm=()=>{
       categorie:'',
       scat:''
     })
-
+    const [selectSecteur,setSelectSecteur]=useState()
   const articleTitle=useRef()
   const articleIntro=useRef()
   const articleUrlImg=useRef()
@@ -67,6 +67,10 @@ const ArticleForm=()=>{
   const handleChangeSecteur=(e)=>{
     articleSecteur.current=e.target.value
   }
+  useEffect(()=>{
+    axios.get('http://localhost:4242/secteurs').then(response=> setSelectSecteur(response.data))
+
+  },[])
     return(
       <div className='article-form-container'>
         <h2 className='bjr-user'>Bonjour Rachid,</h2>
@@ -86,14 +90,12 @@ const ArticleForm=()=>{
               <div className="bloc-deroulant-publier">
                   <form className="drop-down-type">
                           <select name="type-opt" className="list-deroulante" ref={articleType} onChange={handleChangeType}>
-                            <option value='1'>Type 1</option>
-                            <option value='2'>Type 2</option>
-                            <option value='3'>Type 3</option>
+                            <option>Type 1</option>
+                            <option>Type 2</option>
+                            <option>Type 3</option>
                           </select>
                           <select name="secteur-opt" className="list-deroulante" ref={articleSecteur} onChange={handleChangeSecteur}>
-                            <option>Secteur 1</option>
-                            <option>Secteur 2</option>
-                            <option>Secteur 3</option>
+                            {selectSecteur?selectSecteur.map((secteur)=><option key={secteur.id_secteur}>{secteur.nom_secteur}</option>):""}
                           </select>
                           <select name="categorie-opt" className="list-deroulante" ref={articleCategorie} onChange={handleChangeCategorie}>
                             <option>Catégorie 1</option>
@@ -106,9 +108,9 @@ const ArticleForm=()=>{
                             <option>Sous-Catégorie 3</option>
                           </select>
                   </form>
-                  <BouttonPublier />
-                  <button onClick={collectDatas}> recup datas</button>
-                  </div>
+                   <BouttonPublier article={article} collectDatas={collectDatas}/>
+
+              </div>
             </div>
           </div>
       </div>
