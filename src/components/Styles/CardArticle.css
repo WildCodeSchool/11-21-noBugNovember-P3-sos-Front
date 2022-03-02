@@ -1,5 +1,5 @@
 .cardDetails {
-  width: 50%;
+  width: clamp(250px, 80vw, 1000px);
   height: 20.5em;
   margin: auto;
   background-color: var(--clr-green);
@@ -37,4 +37,38 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+}
+
+.holderContent h2 {
+  font-size: clamp(1.6rem, 1.1558rem + 1.2338vw, 3rem);
+}
+
+.holderContent p {
+  font-size: clamp(1.2rem, 1.0597rem + 0.3896vw, 1.8rem);
+}
+
+@media screen and (max-width: 40em) {
+  .leftAlignCard {
+    flex-direction: column;
+  }
+
+  .rightAlignCard {
+    flex-direction: column;
+  }
+
+  .cardDetails {
+    height: 30em;
+    align-items: center;
+  }
+  .imgCard {
+    width: 100%;
+  }
+
+  .imgCard img {
+    max-width: 100%;
+  }
+
+  .holderContent {
+    width: 80%;
+  }
 }

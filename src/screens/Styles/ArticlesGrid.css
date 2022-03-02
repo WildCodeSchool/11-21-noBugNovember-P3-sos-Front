@@ -8,3 +8,24 @@
 .articleGridSearchBar {
   width: 30%;
 }
+
+.articleGridBgGreen {
+  background-color: var(--clr-bg-green);
+}
+
+@media screen and (max-width: 100em) {
+  .articleGridSearchBar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 75em) {
+  .articleGridSearchBar {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 60em) {
+  .articleGridSearchBar {
+    width: 80%;
+  }
+}
