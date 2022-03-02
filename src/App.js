@@ -7,8 +7,8 @@ import Parcours from "./components/Parcours";
 function App() {
   return (
     <div className="App">
-      {/* <FirstVisit /> */}
-      <Home />
+      <FirstVisit />
+      {/* <Home /> */}
       {/* <PanelAdmin /> */}
     </div>
   );
