@@ -1,18 +1,20 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect,} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 export default function TinyArticle(props) {
-  const {setArticle}=props
+  const {articleText}=props
   const [value,setValue]=useState('');
   const editorRef = useRef(null);
 
 
+  // onEditorChange={(newValue, editor) => setArticle({textArticle:newValue})}
   return (
     <>
       <Editor apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
-              onEditorChange={(newValue, editor) => setArticle({textArticle: `${newValue}`})}
+              onEditorChange={(newValue, editor) => articleText.current=newValue}
+              ref={articleText}
         onInit={(evt, editor) => editorRef.current = editor}
-        initialValue="<p>Ecrire le corp de l'article ici</p>"
+        initialValue=""
         init={{
           height: 500,
           menubar: true,
@@ -28,6 +30,7 @@ export default function TinyArticle(props) {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
+
 
 
     </>
