@@ -16,7 +16,10 @@ const ArticleForm=()=>{
       categorie:'',
       scat:''
     })
-    const [selectSecteur,setSelectSecteur]=useState()
+  const [selectSecteur,setSelectSecteur]=useState()
+  const [selectCategorie,setSelectCategorie]=useState()
+  const [selectSousCategorie,setSelectSousCategorie]=useState()
+  // *********************************REF**************************************
   const articleTitle=useRef()
   const articleIntro=useRef()
   const articleUrlImg=useRef()
@@ -26,14 +29,14 @@ const ArticleForm=()=>{
   const articleCategorie=useRef()
   const articleScat=useRef()
   const articleSecteur=useRef('1')
-
+  //***************************************************************************
   const collectDatas = () => {
-    setArticle({title:articleTitle,
+    setArticle({titre:articleTitle,
       intro:articleIntro,
-      urlImg:articleUrlImg,
-      urlTelechargement:articleUrlTelechargment,
-      textArticle:articleText,
       type:articleType,
+      para1:articleText,
+      image:articleUrlImg,
+      lien2:articleUrlTelechargment,
       categorie:articleCategorie,
       secteur:articleSecteur,
       scat:articleScat
@@ -69,6 +72,8 @@ const ArticleForm=()=>{
   }
   useEffect(()=>{
     axios.get('http://localhost:4242/secteurs').then(response=> setSelectSecteur(response.data))
+    axios.get('http://localhost:4242/categories').then(response=> setSelectCategorie(response.data))
+    axios.get('http://localhost:4242/sousCategories').then(response=> setSelectSousCategorie(response.data))
 
   },[])
     return(
@@ -98,18 +103,15 @@ const ArticleForm=()=>{
                             {selectSecteur?selectSecteur.map((secteur)=><option key={secteur.id_secteur}>{secteur.nom_secteur}</option>):""}
                           </select>
                           <select name="categorie-opt" className="list-deroulante" ref={articleCategorie} onChange={handleChangeCategorie}>
-                            <option>Catégorie 1</option>
-                            <option>Catégorie 2</option>
-                            <option>Catégorie 3</option>
+                            {selectCategorie?selectCategorie.map((categorie)=><option key={categorie.id_categorie}>{categorie.nom_categorie}</option>):""}
                           </select>
                           <select name="scategorie-opt" className="list-deroulante" ref={articleScat} onChange={handleChangeScat}>
-                            <option>Sous-Catégorie 1</option>
-                            <option>Sous-Catégorie 2</option>
-                            <option>Sous-Catégorie 3</option>
+                            {selectSousCategorie?selectSousCategorie.map((sousCategorie)=><option key={sousCategorie.id_sous_categorie}>{sousCategorie.nom_sous_categorie}</option>):""}
+
                           </select>
                   </form>
                    <BouttonPublier article={article} collectDatas={collectDatas}/>
-
+                
               </div>
             </div>
           </div>
