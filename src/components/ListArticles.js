@@ -1,19 +1,23 @@
 import './Styles/ListArticles.css'
+// import iconemodifier from '../assets/icones/Edit.png'
+// import iconesupprimer from '../assets/icones/Delete.png'
+// import iconevisibilite from '../assets/icones/VisibleEye.png'
+
+import NewTable from './NewTable';
+import BarreRechercheArticles from './BarreRechercheArticles';
+
 const ListArticles = ()=> {
   return (
-    <div className='container-card'>
-      <div className='header-card'>
-        <div className='item-header-card'>Titre</div>
-        <div className='item-header-card'>Catégorie</div>
-        <div className='item-header-card'>Sous catégorie</div>
-        <div className='item-header-card'>Nb Tél</div>
-        <div className='item-header-card'>Actions</div>
-      </div>
-      <div className='list-cards'>
-        <div className='card'></div>
-        <div className='card'> </div>
-      </div>
-    </div>
+<>
+    <h2 className='bjr-user'>Bonjour [userName],</h2>
+    <div className='bloc-content-column'>
+      <h3 className="titres-colonnes">Liste des articles</h3>
+
+<BarreRechercheArticles />
+<NewTable />
+
+</div>
+</>
   )
 }
 export default ListArticles;

@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: row;
     background : #C8DBDA;
+    border: 2px solid pink;
+    height: 100%;
+    min-height: 100vh;
 
 }
 .btn-side-bar{
@@ -42,7 +45,15 @@
 .content-container{
     height: 100vh;
     width: 100vw;
+    border: 2px solid red;
+    padding: 3rem;
 }
+
+.bjr-user{
+    font-size: var(--fs-h1);
+    color:var(--clr-green);
+    margin-bottom : 8rem;
+    }
 
 .bloc-link-side-bar>a:hover{
     text-decoration: underline;

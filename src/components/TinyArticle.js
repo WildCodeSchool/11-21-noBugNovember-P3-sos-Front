@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect,} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import './Styles/TinyArticle.css'
 
 export default function TinyArticle(props) {
   const {articleText}=props
@@ -16,7 +17,7 @@ export default function TinyArticle(props) {
         onInit={(evt, editor) => editorRef.current = editor}
         initialValue=""
         init={{
-          height: 500,
+          height: 300,
           menubar: true,
           plugins: [
             'advlist autolink lists image print',

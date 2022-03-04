@@ -1,29 +1,19 @@
-.container-card{
-    display: flex;
-    flex-direction: column;
+.titres-colonnes{
+    height: 100%;
+    width: 100%;
+    /* border: 3px solid red; */
+}
 
-}
-.header-card{
-    display: flex;
-    margin: 0 0 5rem 0;
-    width: 70vw;
-    justify-content: space-between;
 
+.liste-articles{
+    padding: 1rem;
+    border: 3px solid blue;
+    width: 100%;
+    text-align: center;
 }
-.header-card:nth-child(1){
-    width: 15rem;
-}
-.item-header-card{
-    height: 5rem;
 
-    text-align: left;
-    margin:0 1rem 0 1rem;
-    background-color: var(--clr-white);
+.liste-titre, .liste-categorie, .liste-souscategorie, .liste-telechargement, .liste-actions {
+    background-color: white;
 }
-.card{
-    width:70vw;
-    height: 8rem;
-    background-color: var(--clr-white);
-    border-bottom: 1px solid black;
-    margin: 0 0 0 1rem;
-}
+
+

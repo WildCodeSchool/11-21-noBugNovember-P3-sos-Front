@@ -77,45 +77,54 @@ const ArticleForm=()=>{
 
   },[])
     return(
-      <div className='article-form-container'>
-        <h2 className='bjr-user'>Bonjour Rachid,</h2>
-          <div className="articles-and-types">
-            <div className="bloc-article">
-              <h3 className="titres-colonnes">Nouvel article</h3>
-              <form className='article-form'>
-                  <input className='input-article-title' placeholder="Titre de l'article"  ref={articleTitle} onChange={handleChangeTitle}/>
-                  <input className='input-article-intro' placeholder="Intro de l'article" ref={articleIntro} onChange={handleChangeIntro}/>
-                  <input placeholder="Url de l'image" ref={articleUrlImg} onChange={handleChangeUrlImg}/>
-                  <TinyArticle  articleText={articleText} />
-                  <input placeholder='URL des liens à télécharger' ref={articleUrlTelechargment} onChange={handleChangeUrlTelechargement}/>
-              </form>
-            </div>
-            <div className="types-articles">
-              <h3 className="titres-colonnes">Type d'articles</h3>
-              <div className="bloc-deroulant-publier">
-                  <form className="drop-down-type">
-                          <select name="type-opt" className="list-deroulante" ref={articleType} onChange={handleChangeType}>
-                            <option>Type 1</option>
-                            <option>Type 2</option>
-                            <option>Type 3</option>
-                          </select>
-                          <select name="secteur-opt" className="list-deroulante" ref={articleSecteur} onChange={handleChangeSecteur}>
-                            {selectSecteur?selectSecteur.map((secteur)=><option key={secteur.id_secteur}>{secteur.nom_secteur}</option>):""}
-                          </select>
-                          <select name="categorie-opt" className="list-deroulante" ref={articleCategorie} onChange={handleChangeCategorie}>
-                            {selectCategorie?selectCategorie.map((categorie)=><option key={categorie.id_categorie}>{categorie.nom_categorie}</option>):""}
-                          </select>
-                          <select name="scategorie-opt" className="list-deroulante" ref={articleScat} onChange={handleChangeScat}>
-                            {selectSousCategorie?selectSousCategorie.map((sousCategorie)=><option key={sousCategorie.id_sous_categorie}>{sousCategorie.nom_sous_categorie}</option>):""}
 
-                          </select>
-                  </form>
-                   <BouttonPublier article={article} collectDatas={collectDatas}/>
-                
-              </div>
-            </div>
-          </div>
+<>
+  <h2 className='bjr-user'>Bonjour [userName],</h2>
+  <div className="articles-and-types">
+    <div className="bloc-content-row">
+
+{/* BLOC DE GAUCHE = ARTICLE */}
+
+      <div className="bloc-article">
+
+        <h3 className="titres-colonnes">Nouvel article</h3>
+
+        <form className='article-form'>
+          <input className='input-article-title' placeholder="Titre de l'article"  ref={articleTitle} onChange={handleChangeTitle}/>
+          <input className='input-article-intro' placeholder="Intro de l'article" ref={articleIntro} onChange={handleChangeIntro}/>
+          <input placeholder="Url de l'image" ref={articleUrlImg} onChange={handleChangeUrlImg}/>
+          <TinyArticle  articleText={articleText} />
+          <input placeholder='URL des liens à télécharger' ref={articleUrlTelechargment} onChange={handleChangeUrlTelechargement}/>
+        </form>
       </div>
+
+
+      <div className="types-articles">
+        <h3 className="titres-colonnes">Type d'articles</h3>
+        <div className="bloc-deroulant-publier">
+        <form className="drop-down-type">
+          <select name="type-opt" className="list-deroulante" ref={articleType} onChange={handleChangeType}>
+            <option>Type 1</option>
+            <option>Type 2</option>
+            <option>Type 3</option>
+          </select>
+          <select name="secteur-opt" className="list-deroulante" ref={articleSecteur} onChange={handleChangeSecteur}>
+            {selectSecteur?selectSecteur.map((secteur)=><option key={secteur.id_secteur}>{secteur.nom_secteur}</option>):""}
+          </select>
+          <select name="categorie-opt" className="list-deroulante" ref={articleCategorie} onChange={handleChangeCategorie}>
+            {selectCategorie?selectCategorie.map((categorie)=><option key={categorie.id_categorie}>{categorie.nom_categorie}</option>):""}
+          </select>
+          <select name="scategorie-opt" className="list-deroulante" ref={articleScat} onChange={handleChangeScat}>
+            {selectSousCategorie?selectSousCategorie.map((sousCategorie)=><option key={sousCategorie.id_sous_categorie}>{sousCategorie.nom_sous_categorie}</option>):""}
+          </select>
+        </form>
+        <BouttonPublier article={article} collectDatas={collectDatas}/>
+      </div>
+    </div>
+  </div>
+  </div>
+</> 
+
     )
 }
 export default ArticleForm
