@@ -1,3 +1,4 @@
+import Parcours from "../components/Parcours";
 import "./Styles/FirstVisit.css";
 import Header from "../components/Header.js";
 
@@ -24,6 +25,7 @@ const FirstVisit = () => {
           </div>
           <button>Valider</button>
         </div>
+        <Parcours />
       </div>
     </>
   );
