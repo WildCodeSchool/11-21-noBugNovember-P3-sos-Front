@@ -1,23 +1,21 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect,} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import './Styles/TinyArticle.css'
 
 export default function TinyArticle(props) {
-  const {setArticle}=props
+  const {articleText}=props
   const [value,setValue]=useState('');
   const editorRef = useRef(null);
 
 
+  // onEditorChange={(newValue, editor) => setArticle({textArticle:newValue})}
   return (
     <>
       <Editor apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
-              onEditorChange={(newValue, editor) => setArticle({textArticle: `${newValue}`})}
+              onEditorChange={(newValue, editor) => articleText.current=newValue}
+              ref={articleText}
         onInit={(evt, editor) => editorRef.current = editor}
-        initialValue="<em>Mon doux Rachid, 
-        je t'écris ces quelques mots pour te dire à quel point je t'aime et oh comment les couchés de soleil avec toi me manque.
-        <br>Reviens moi vite. <br><br>
-
-        Ta chère et tendre Clothilde.</em>"
+        initialValue=""
         init={{
           height: 300,
           menubar: true,
@@ -33,6 +31,7 @@ export default function TinyArticle(props) {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
+
 
 
     </>
