@@ -44,7 +44,6 @@
 }
 
 .holderContent p {
-  font-size: clamp(1.2rem, 1.0597rem + 0.3896vw, 1.8rem);
 }
 
 @media screen and (max-width: 40em) {

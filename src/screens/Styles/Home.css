@@ -2,7 +2,6 @@
   width: 95vw;
   height: 90vh;
   margin: auto;
-  padding-top: 3rem;
 }
 
 .homeLogoHolder {
@@ -52,33 +51,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-}
-
-.homeHolderBtn button {
-  padding: 1rem;
-  border-radius: 0 2rem;
-  margin: 0 2.5rem;
-  width: 20rem;
-  height: 4rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  background: var(--clr-green);
-  color: white;
-}
-
-.homeSearchButton {
-  background: var(--clr-green);
-  color: white;
-  width: 20rem;
-  height: 4rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
 }
 
 .homeSplitGreen {

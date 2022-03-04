@@ -141,23 +141,36 @@ h3 {
 }
 
 p {
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 1.0597rem + 0.3896vw, 1.6rem);
 }
 
-.border-btn {
+/*Border Radius */
+
+.borderRadius {
   border-radius: 2.6rem 2.6rem 0 2.6rem;
 }
 
-button {
-  padding: 1em;
+/*Bouton vert -- Class à mettre sur tout les btn vert*/
+
+.buttonGreen {
+  padding: 1rem;
   border-radius: 0 2rem;
+  margin: 0 2.5rem;
+  width: 20rem;
+  height: 4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background: var(--clr-green);
+  color: var(--clr-white);
+  cursor: pointer;
+  border: solid 5px transparent;
+  box-sizing: border-box;
 }
 
-.btnGreen {
-  background-color: var(--clr-green);
-  color: var(--clr-white);
-}
-.btnOrange {
-  background-color: var(--clr-orange);
-  color: var(--clr-white);
+.buttonGreen:hover {
+  background: var(--clr-green2);
+  border: solid 5px var(--clr-bg-green);
 }

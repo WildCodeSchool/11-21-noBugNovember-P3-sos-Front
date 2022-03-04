@@ -5,8 +5,8 @@ import Header from "../components/Header.js";
 const FirstVisit = () => {
   return (
     <>
+      <Header />
       <div className="wrapperFirstVisit">
-        <Header />
         <div className="wrapChild">
           <h2>Le parcours type d'un porteur de projet</h2>
           <p>
