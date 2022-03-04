@@ -1,16 +1,12 @@
 import SearchBar from "../components/SearchBar";
+import Header from "../components/Header";
 import "./Styles/Home.css";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className="homeWrapper">
-      <div className="homeLogoHolder">
-        <img
-          src={require("../assets/logo.png")}
-          alt="logo Sos jeunes pousses"
-        />
-      </div>
+      <Header />
       <div className="homeWrapRaw">
         <h1>
           Les mêmes chances pour tous <br />
@@ -20,13 +16,15 @@ const Home = () => {
           <div className="homeSplitOrange">
             <div className="homeHolderBtn">
               <h2>Première Visite ?</h2>
-              <Link to="/">
+              <Link to="/etapes">
                 <button> Commencer</button>
               </Link>
             </div>
             <h2>Tu connais la plate-forme ?</h2>
             <SearchBar />
-            <button className="homeSearchButton"> Chercher</button>
+            <Link to="/articlesGrid">
+              <button className="homeSearchButton"> Chercher</button>
+            </Link>
           </div>
           <div className="homeSplitGreen">
             <p>

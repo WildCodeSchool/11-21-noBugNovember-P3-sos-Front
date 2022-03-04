@@ -14,6 +14,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/etapes" element={<FirstVisit />} />
+        <Route path="/articlesGrid" element={<ArticlesGrid />} />
+        <Route path="/admin" element={PanelAdmin} />
       </Routes>
     </div>
   );

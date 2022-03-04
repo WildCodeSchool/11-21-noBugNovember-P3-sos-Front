@@ -1,4 +1,11 @@
 .headerWrapperLogo {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
+.headerWrapperLogo h5 {
+  color: var(--clr-green);
 }
 
 .headerLogoHolder {
