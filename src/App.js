@@ -7,10 +7,10 @@ import ArticlesGrid from "./screens/ArticlesGrid";
 function App() {
   return (
     <div className="App">
-      <FirstVisit />
+      {/* <FirstVisit /> */}
       {/* <Home /> */}
       {/* <PanelAdmin /> */}
-      {/* <ArticlesGrid /> */}
+      <ArticlesGrid />
     </div>
   );
 }

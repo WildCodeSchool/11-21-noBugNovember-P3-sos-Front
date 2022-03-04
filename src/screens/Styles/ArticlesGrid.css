@@ -13,6 +13,16 @@
   background-color: var(--clr-bg-green);
 }
 
+.holderSlider {
+  width: 80%;
+  margin: auto;
+}
+
+.slick-initialized .slick-slide {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 100em) {
   .articleGridSearchBar {
     width: 50%;
