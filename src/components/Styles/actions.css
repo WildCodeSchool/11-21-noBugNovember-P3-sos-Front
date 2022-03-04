@@ -1,0 +1,54 @@
+.list-table{
+    width: 100%;
+    height: 100%;
+    border: 2px solid red;
+    border-radius: 20px 0;
+    margin: 4rem 0;
+    background-color: white;
+    
+}
+
+.table-header{
+    border: 2px solid red;
+    height: 5rem;
+    border-radius: 20px 0 !important;
+    background-color: blue;
+    margin-bottom: 10px; /*DEVRAIT SEPARER LES TITRES DU CONTENU DES CELULLES*/
+
+}
+
+.titre1-tableau{
+font-size :   var(--fs-h4);
+
+}
+
+.cellules-tableau{
+    background-color: rgba(255, 255, 255, 0.548);
+}
+
+.action-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color:white;
+   
+}
+
+.action-icon{
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+    height:30px;
+    width: 30px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+
+.contour-cellule{
+    border: 2px solid #226d6838 ;
+    text-align: center;
+}

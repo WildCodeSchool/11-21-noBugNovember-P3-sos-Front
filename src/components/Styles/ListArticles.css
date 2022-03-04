@@ -1,0 +1,19 @@
+.titres-colonnes{
+    height: 100%;
+    width: 100%;
+    /* border: 3px solid red; */
+}
+
+
+.liste-articles{
+    padding: 1rem;
+    border: 3px solid blue;
+    width: 100%;
+    text-align: center;
+}
+
+.liste-titre, .liste-categorie, .liste-souscategorie, .liste-telechargement, .liste-actions {
+    background-color: white;
+}
+
+
