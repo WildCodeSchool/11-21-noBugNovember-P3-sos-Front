@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ArticleForm from "../components/ArticleForm";
 import ListArticles from '../components/ListArticles'
 import Adminsidebar from '../components/Adminsidebar';
+import ModificationArticle from '../components/ModificationArticle';
 
 
 import logo from '../assets/logoW.png'
@@ -18,8 +19,9 @@ const PanelAdmin =()=>{
             <div className='content-container'>
 
 
-                <ArticleForm />
-              {/* <ListArticles /> */}
+                {/* <ArticleForm /> */}
+            <ListArticles /> 
+              {/* <ModificationArticle /> */}
 
 
             </div>
