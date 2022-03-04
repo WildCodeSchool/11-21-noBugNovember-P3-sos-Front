@@ -1,12 +1,12 @@
 import "./App.css";
 
-import * as ReactDOM from "react-dom";
-import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
-import Home from "./screens/Home";
+import { Routes, Route } from "react-router-dom";
 
-import PanelAdmin from "./screens/PanelAdmin";
-import FirstVisit from "./screens/FirstVisit";
 import ArticlesGrid from "./screens/ArticlesGrid";
+import FirstVisit from "./screens/FirstVisit";
+import IdentificationAdmin from "./screens/IdentificationAdmin";
+import Home from "./screens/Home";
+import PanelAdmin from "./screens/PanelAdmin";
 import Parcours from "./components/Parcours";
 
 function App() {
@@ -16,7 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/etapes" element={<FirstVisit />} />
         <Route path="/articlesGrid" element={<ArticlesGrid />} />
-        <Route path="/admin" element={PanelAdmin} />
+        <Route path="admin-controler" element={<PanelAdmin />}></Route>
+        <Route path="admin" element={<IdentificationAdmin />}></Route>
       </Routes>
     </div>
   );
