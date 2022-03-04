@@ -1,5 +1,6 @@
 import SearchBar from "../components/SearchBar";
 import "./Styles/Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -19,7 +20,9 @@ const Home = () => {
           <div className="homeSplitOrange">
             <div className="homeHolderBtn">
               <h2>Première Visite ?</h2>
-              <button> Commencer</button>
+              <Link to="/">
+                <button> Commencer</button>
+              </Link>
             </div>
             <h2>Tu connais la plate-forme ?</h2>
             <SearchBar />
