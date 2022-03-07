@@ -19,19 +19,20 @@ html {
 
   /* --clr-dark: 230 35% 7%; */
   /* color: hsl(var(--clr-white) / 0.8); */
-  --clr-green5: hsl(var(--clr-green) / 0.6);
-  --clr-green4: hsl(var(--clr-green) / 0.7);
-  --clr-green3: hsl(var(--clr-green) / 0.8);
-  --clr-green2: hsl(var(--clr-green) / 0.9);
-  --clr-green: #226d68;
+  --clr-green: #3b7c77;
+  --clr-green2: #629692;
+  --clr-green3: #85ada9;
+  --clr-green4: #a3c2bf;
+  --clr-green5: #b0cac8;
 
-  --clr-orange5: hsl(var(--clr-orange) / 0.6);
-  --clr-orange4: hsl(var(--clr-orange) / 0.7);
-  --clr-orange3: hsl(var(--clr-orange) / 0.8);
-  --clr-orange2: hsl(var(--clr-orange) / 0.9);
-  --clr-orange: #e38454;
+  --clr-orange: #e38360;
+  --clr-orange2: #e99c81;
+  --clr-orange3: #eeb5a0;
+  --clr-orange4: #f0c0af;
+  --clr-orange5: #f2c1b0;
 
   --clr-white: #fff;
+  --clr-bg-green: #d7e5e4;
 
   /******* font-sizes *******/
   /* --fs-h1: clamp(min, ratio, max); Exemple pour avoir une typo responsive*/
@@ -42,6 +43,7 @@ html {
   --fs-h3: 1.8rem;
   --fs-h4: 1.6rem;
   --fs-body: 1.6rem;
+  --fs-corps: 1.4rem;
 
   /******* font-families *******/
   --ff-body: "Work Sans", sans-serif;
@@ -139,24 +141,66 @@ h3 {
 }
 
 p {
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 1.0597rem + 0.3896vw, 1.6rem);
 }
 
-.border-btn {
+/*Border Radius */
+
+.borderRadius {
   border-radius: 2.6rem 2.6rem 0 2.6rem;
 }
 
-button {
-  padding: 1em;
+/*Bouton vert -- Class à mettre sur tout les btn vert*/
+
+.buttonGreen {
+  padding: 1rem;
   border-radius: 0 2rem;
-  margin: 0 1.5rem;
+  margin: 0 2.5rem;
+  width: 20rem;
+  height: 4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background: var(--clr-green);
+  color: var(--clr-white);
+  cursor: pointer;
+  border: solid 5px transparent;
+  box-sizing: border-box;
 }
 
-.btnGreen {
+.buttonGreen:hover {
+  background: var(--clr-green2);
+  border: solid 5px var(--clr-bg-green);
+}
+
+.button2 {
+  height: 5rem;
+  width: 20rem;
+  opacity: 1;
+  padding: 0.5rem;
+  margin: 0 1rem;
+
+  padding: 0.5rem 2rem;
+  border-radius: 0 2rem;
+  text-align: left;
+}
+
+/* .btnGreen {
   background-color: var(--clr-green);
   color: var(--clr-white);
-}
+} */
 .btnOrange {
   background-color: var(--clr-orange);
   color: var(--clr-white);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnWhite {
+  background-color: var(--clr-white);
+  /* color: var(--clr-green); */
 }

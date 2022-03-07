@@ -1,0 +1,7 @@
+.search-bar-form{
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid red; */
+    justify-content: left;
+    margin: 2rem 0;
+}

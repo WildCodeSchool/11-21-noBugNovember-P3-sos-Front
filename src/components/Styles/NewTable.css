@@ -1,0 +1,45 @@
+.customTable{
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.tableau-titres{
+background-color: #5d9996;
+margin: 20px;
+font-size : 1.6rem;
+}
+
+.tableau-titres > tr > th {
+    padding: 1rem;
+} 
+
+.colonnedestitres{
+    width: 500px;
+    text-align: left !important;
+}
+
+#colonnedeslogos{
+display: flex;
+flex-direction: row ;
+justify-content: space-around;
+}
+
+.iconesActions{
+width: 25px;
+/* border: 2px solid blue; */
+margin: 0 10px;
+}
+
+.iconesActions:hover {
+cursor: pointer;
+}
+
+.tableau-contenu-ligne {
+    font-size: 1.3rem ;
+}
+
+.tableau-contenu-ligne > td {
+    padding: 1rem;
+    background-color: white;
+} 
