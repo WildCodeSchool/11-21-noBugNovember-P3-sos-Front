@@ -7,5 +7,6 @@
     padding: 10rem ;
     min-height: 100vh;
     height: 100%;
+    width: 100vw;
     background-color: #C8DBDA;
 }
