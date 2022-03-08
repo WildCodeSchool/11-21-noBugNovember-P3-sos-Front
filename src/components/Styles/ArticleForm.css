@@ -4,6 +4,7 @@
     flex-direction: row;
     align-items: top;
     justify-content: left;
+    height: 100%;
     border: 2px solid orange
 }
 
@@ -11,14 +12,16 @@
 .bloc-article {
     border : 2px solid blue;
     height: auto;
-    width: 90rem;
+    width: 100%;
 }
 
 /* BLOC TYPE D ARTICLES = DROITE*/
 .types-articles{
     border: 2px solid red;
     margin-left : 2rem;
-    height: 100%;
+    height: auto;
+    width: fit-content;
+    display: flex;
 }
 
 /* ELEMENTS POUR LES 2 blocs : Articles et Types Articles*/
@@ -53,12 +56,15 @@
 
 
 .bloc-deroulant-publier{
-height: 100%;
+height: auto;
+width: fit-content;
 display: flex;
+height: 100%;
 flex-direction: column;
 justify-content: space-between;
 border: 2px solid violet;
 }
+
 
 .drop-down-type{
     display:flex;

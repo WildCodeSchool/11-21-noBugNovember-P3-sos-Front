@@ -1,29 +1,30 @@
-.wrapperHome {
+.homeWrapper {
   width: 95vw;
   height: 90vh;
   margin: auto;
 }
 
-.logoHolder {
+.homeLogoHolder {
   left: 0;
-  width: 200px;
-  margin-top: 20px;
+  width: 20rem;
 }
-.logoHolder img {
+
+.homeLogoHolder img {
   width: 100%;
 }
 
-.wrapRaw {
+.homeWrapRaw {
   display: flex;
   flex-direction: column;
+  margin-top: 3rem;
 }
 
-.wrapRaw h1 {
+.homeWrapRaw h1 {
   color: var(--clr-orange);
 }
 
-.splitWrap {
-  height: 80vh;
+.homeSplitWrap {
+  height: 70vh;
   width: 100%;
   bottom: 0;
   position: relative;
@@ -31,35 +32,107 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  padding-bottom: 3rem;
 }
 
-.splitOrange {
+.homeSplitOrange {
   width: 40%;
-  background-color: #e38454;
+  background-color: var(--clr-orange);
   height: 70%;
-  border-radius: 0 250px 0 0;
+  border-radius: 0 25rem 0 0;
+  padding: 6rem 0 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
-.holderBtn {
+.homeHolderBtn {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
-/* .holderBtn:nth-child(1) {
-  margin: 10px;
-} */
 
-.splitGreen {
+.homeSplitGreen {
   width: 55%;
-  background-color: #226d68;
+  background-color: var(--clr-green);
   background-image: url(../../assets/illus.png);
-  background-position: 300% -45%;
+  /* background-position: -914% -56%; */
   background-repeat: no-repeat;
   height: 100%;
-  border-radius: 250px 0 0 0;
+  border-radius: 25rem 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 55px;
+  padding: 0 13.5rem;
+  color: var(--clr-white);
+}
+
+.homeSplitGreen p {
+  margin: 3rem 0rem;
+  font-size: 1.8rem;
+}
+
+/******* Small computer *******/
+@media screen and (max-width: 80em) {
+  .homeSplitGreen {
+    width: 40%;
+    padding: 0 3.5rem;
+  }
+
+  .homeSplitGreen p {
+    margin: 1rem 0rem;
+    font-size: 1.4rem;
+  }
+
+  .homeSplitOrange {
+    width: 55%;
+  }
+}
+/******* Large Tablet *******/
+@media screen and (max-width: 60em) {
+  .homeSplitWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 80vh;
+  }
+  .homeSplitOrange,
+  .homeSplitGreen {
+    width: 90%;
+    margin-top: 3em;
+  }
+
+  .homeSplitOrange {
+    border-radius: 0 0 25rem 0;
+    padding: 0rem 0 0 2rem;
+  }
+}
+@media screen and (max-width: 40em) {
+  .homeSplitWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 80vh;
+  }
+
+  .homeSplitGreen {
+    width: 100%;
+    margin-top: 3em;
+    min-height: 35vh;
+    justify-content: flex-end;
+    padding-bottom: 2em;
+  }
+
+  .homeSplitOrange {
+    border-radius: 0 0 25rem 0;
+    padding: 0rem 0 0 2rem;
+    width: 100%;
+    margin-top: 3em;
+    justify-content: space-around;
+    min-height: 40vh;
+  }
 }
