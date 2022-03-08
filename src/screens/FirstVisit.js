@@ -1,15 +1,12 @@
+import Parcours from "../components/Parcours";
 import "./Styles/FirstVisit.css";
+import Header from "../components/Header.js";
 
 const FirstVisit = () => {
   return (
     <>
+      <Header />
       <div className="wrapperFirstVisit">
-        <div className="logoHolder">
-          <img
-            src={require("../assets/logo.png")}
-            alt="logo Sos jeunes pousses"
-          />
-        </div>
         <div className="wrapChild">
           <h2>Le parcours type d'un porteur de projet</h2>
           <p>
@@ -26,7 +23,9 @@ const FirstVisit = () => {
               <option value="Paris">Paris</option>
             </select>
           </div>
+          <button>Valider</button>
         </div>
+        <Parcours />
       </div>
     </>
   );

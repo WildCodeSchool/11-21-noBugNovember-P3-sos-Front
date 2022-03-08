@@ -12,3 +12,33 @@
 .articleGridBgGreen {
   background-color: var(--clr-bg-green);
 }
+<<<<<<< HEAD
+=======
+
+.holderSlider {
+  width: 80%;
+  margin: auto;
+}
+
+.slick-initialized .slick-slide {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 100em) {
+  .articleGridSearchBar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 75em) {
+  .articleGridSearchBar {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 60em) {
+  .articleGridSearchBar {
+    width: 80%;
+  }
+}
+>>>>>>> detailarticle

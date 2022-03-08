@@ -1,47 +1,46 @@
-import Header from '../components/Header.js'
-import CardArticle from '../components/CardArticle.js'
-import CarouselCat from '../components/CarouselCat.js'
-import SearchBar from '../components/SearchBar.js'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
 import './Styles/ArticlesGrid.css'
 
-function Articles() {
-  const [results, setResults] = useState([])
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
-  useEffect(() => {
-    axios.get('http://localhost:4242/articles').then((response) => {
-      setResults(response.data)
+import CarouselCat from '../components/CarouselCat.js'
+import CardArticle from '../components/CardArticle.js'
+import Header from '../components/Header.js'
+import SearchBar from '../components/SearchBar.js'
 
-      console.log(results)
-    })
-  }, [])
+import { ArticleContext } from '../context/ArticleContext'
+
+const ArticlesGrid = () => {
+  const { articles } = useContext(ArticleContext)
+
   return (
     <>
       <Header />
       <div className='articleGridBgGreen'>
+        {' '}
         <div className='articleGridHolderSearchBar'>
           <div className='articleGridSearchBar'>
             <SearchBar />
             <CarouselCat />
           </div>
         </div>
-        {results.map((result, id) => {
+        {articles.map((result, id) => {
           return (
-            <CardArticle
-              id={id}
-              titre={result.titre}
-              intro={result.intro}
-              image={result.image}
-              para1={result.para1}
-              para2={result.para2}
-              para3={result.para3}
-              nom_ville={result.nom_ville}
-              nom_region={result.nom_region}
-              nom_categorie={result.nom_categorie}
-              nom_sous_categorie={result.nom_sous_categorie}
-              nom_secteur={result.nom_secteur}
-            />
+            <Link to={`articleDetail/${result.id_article}`}>
+              <CardArticle
+                key={result.id_article}
+                id={result.id_article}
+                titre={result.titre}
+                intro={result.intro}
+                image={result.image}
+                para1={result.para1}
+                nom_ville={result.nom_ville}
+                nom_region={result.nom_region}
+                nom_categorie={result.nom_categorie}
+                nom_sous_categorie={result.nom_sous_categorie}
+                nom_secteur={result.nom_secteur}
+              />
+            </Link>
           )
         })}
       </div>
@@ -49,4 +48,4 @@ function Articles() {
   )
 }
 
-export default Articles
+export default ArticlesGrid

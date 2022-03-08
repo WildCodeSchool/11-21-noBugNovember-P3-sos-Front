@@ -1,9 +1,75 @@
-.article-form-container{
+/* BLOC ARTICLES AND TYPES*/
+.bloc-content-row{
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-content: left;
+    border: 2px solid orange
+}
+
+/* BLOC ARTICLES = GAUCHE */
+.bloc-article {
+    border : 2px solid blue;
+    height: auto;
+    width: 90rem;
+}
+
+/* BLOC TYPE D ARTICLES = DROITE*/
+.types-articles{
+    border: 2px solid red;
+    margin-left : 2rem;
+    height: 100%;
+}
+
+/* ELEMENTS POUR LES 2 blocs : Articles et Types Articles*/
+.titres-blocs {
+    margin: 0 0 2rem 0;
+}
+
+.bloc-article, .types-articles  {
     display: flex;
     flex-direction: column;
-    align-content: space-around;
+    justify-content: flex-start;
 }
+
+
+
+/*ElEMENTS BLOC ARTICLE*/
+
 .article-form{
     display: flex;
     flex-direction: column;
+}
+
+.article-form > :nth-child(n){
+    height: 5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 2px solid rgb(97, 142, 184);
+}
+
+/*ElEMENTS BLOC TYPE ARTICLE*/
+
+
+.bloc-deroulant-publier{
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+border: 2px solid violet;
+}
+
+.drop-down-type{
+    display:flex;
+    flex-direction: column;
+}
+
+.list-deroulante{
+    height: 5rem;
+    width: 20rem;
+    border-radius: 0px 19px;
+    opacity: 1;
+    padding : 0.5rem;
+    margin-bottom: 1.5rem;
 }
