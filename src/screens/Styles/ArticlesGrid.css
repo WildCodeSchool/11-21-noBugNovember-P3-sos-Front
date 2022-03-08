@@ -8,3 +8,7 @@
 .articleGridSearchBar {
   width: 30%;
 }
+
+.articleGridBgGreen {
+  background-color: var(--clr-bg-green);
+}

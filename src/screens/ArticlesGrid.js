@@ -1,27 +1,29 @@
-import Header from "../components/Header.js";
-import CardArticle from "../components/CardArticle.js";
-import SearchBar from "../components/SearchBar.js";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import "./Styles/ArticlesGrid.css";
+import Header from '../components/Header.js'
+import CardArticle from '../components/CardArticle.js'
+import CarouselCat from '../components/CarouselCat.js'
+import SearchBar from '../components/SearchBar.js'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import './Styles/ArticlesGrid.css'
 
 function Articles() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:4242/articles").then((response) => {
-      setResults(response.data);
+    axios.get('http://localhost:4242/articles').then((response) => {
+      setResults(response.data)
 
-      console.log(results);
-    });
-  }, []);
+      console.log(results)
+    })
+  }, [])
   return (
     <>
       <Header />
-      <div className="articleGridBgGreen">
-        <div className="articleGridHolderSearchBar">
-          <div className="articleGridSearchBar">
+      <div className='articleGridBgGreen'>
+        <div className='articleGridHolderSearchBar'>
+          <div className='articleGridSearchBar'>
             <SearchBar />
+            <CarouselCat />
           </div>
         </div>
         {results.map((result, id) => {
@@ -40,11 +42,11 @@ function Articles() {
               nom_sous_categorie={result.nom_sous_categorie}
               nom_secteur={result.nom_secteur}
             />
-          );
+          )
         })}
       </div>
     </>
-  );
+  )
 }
 
-export default Articles;
+export default Articles
