@@ -1,9 +1,6 @@
-import "./Styles/ListArticles.css";
-
-import ArticlesTable from "./ArticlesTable";
-import BarreRechercheArticles from "./BarreRechercheArticles";
-import publishIcon from "../assets/publish.svg";
+import publishIcon from "../../assets/publish.svg";
 import { Link } from "react-router-dom";
+import TableauCategories from "./TableauCategories";
 
 const ListArticles = () => {
   return (
@@ -16,10 +13,8 @@ const ListArticles = () => {
         </Link>
       </div>
       <div className="bloc-content-column">
-        <h3 className="titreMenu">Liste des articles</h3>
-
-        <BarreRechercheArticles />
-        <ArticlesTable />
+        <h3 className="titreMenu">Liste des categories</h3>
+        <TableauCategories />
       </div>
     </>
   );

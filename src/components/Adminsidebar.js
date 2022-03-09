@@ -11,6 +11,7 @@ function Adminsidebar() {
           <img className="logo-panel" src={logo} alt="logo panel" />
         </Link>
         <div className="bloc-link-side-bar">
+          <Link to="articleForm">Publier un article</Link>
           <Link to="articles">Les articles</Link>
           <Link to="categories">Les catégories</Link>
           <Link to="">Les sous-catégories</Link>

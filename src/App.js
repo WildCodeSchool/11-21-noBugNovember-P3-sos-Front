@@ -9,6 +9,7 @@ import Home from "./screens/Home";
 import PanelAdmin from "./screens/PanelAdmin";
 import ArticleDetail from "./screens/ArticleDetail";
 import ArticleContextProvider from "./context/ArticleContext";
+import ListeCategorie from "./components/Admin/ListeCategorie";
 
 import Parcours from "./components/Parcours";
 import ListArticles from "./components/ListArticles";
@@ -29,7 +30,8 @@ function App() {
           <Route path="admin" element={<IdentificationAdmin />}></Route>
           <Route path="admin-controler" element={<PanelAdmin />}>
             <Route path="articles" element={<ListArticles />} />
-            <Route path="categories" element={<ArticleForm />} />
+            <Route path="articleForm" element={<ArticleForm />} />
+            <Route path="categories" element={<ListeCategorie />} />
           </Route>
         </Routes>
       </ArticleContextProvider>
