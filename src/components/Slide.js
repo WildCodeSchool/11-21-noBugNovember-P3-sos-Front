@@ -4,13 +4,14 @@ const Slide = ({
   indexImg,
   handleSlideClick,
   idSlide,
-  headline,
-  src,
+  // headline,
+  // src,
   button,
 }) => {
   let slideContent = useRef()
   let classSlide = 'slide'
 
+  //Paralax effect
   const handleMouseMove = (e) => {
     const el = slideContent.current
     const r = el.getBoundingClientRect()
@@ -24,7 +25,6 @@ const Slide = ({
     slideContent.current.style.setProperty('--y', 0)
   }
 
-  console.log('slt', indexImg, idSlide)
   if (indexImg === idSlide) {
     classSlide += ' slide--current'
   } else if (indexImg - 1 === idSlide) {
@@ -42,13 +42,13 @@ const Slide = ({
         onMouseMove={(e) => handleMouseMove(e)}
         onMouseLeave={(e) => handleMouseLeave(e)}
       >
-        <div className='slide__image-wrapper'>
+        {/* <div className='slide__image-wrapper'>
           <img className='slide__image' alt={headline} src={src} />
-        </div>
+        </div> */}
 
         <article className='slide__content'>
-          <h2 className='slide__headline'>{headline}</h2>
-          <button className='slide__action btn'>{button}</button>
+          <button className='slide__headline borderRadius'>{button}</button>
+          {/* <button className='slide__action btn'></button> */}
         </article>
       </li>
     </>

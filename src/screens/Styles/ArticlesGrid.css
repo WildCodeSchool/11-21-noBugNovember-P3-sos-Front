@@ -11,9 +11,8 @@
 
 .articleGridBgGreen {
   background-color: var(--clr-bg-green);
+  overflow-x: hidden;
 }
-<<<<<<< HEAD
-=======
 
 .holderSlider {
   width: 80%;
@@ -41,4 +40,3 @@
     width: 80%;
   }
 }
->>>>>>> detailarticle

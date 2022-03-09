@@ -17,7 +17,6 @@ const ArticlesGrid = () => {
     <>
       <Header />
       <div className='articleGridBgGreen'>
-        {' '}
         <div className='articleGridHolderSearchBar'>
           <div className='articleGridSearchBar'>
             <SearchBar />
