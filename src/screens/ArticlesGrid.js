@@ -3,6 +3,7 @@ import './Styles/ArticlesGrid.css'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import CarouselCat from '../components/CarouselCat.js'
+
 import CardArticle from '../components/CardArticle.js'
 import Header from '../components/Header.js'
 import SearchBar from '../components/SearchBar.js'
