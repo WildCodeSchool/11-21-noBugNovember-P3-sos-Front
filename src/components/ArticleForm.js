@@ -31,7 +31,7 @@ const ArticleForm=()=>{
   const [selectCategorie,setSelectCategorie]=useState()
   const [selectSousCategorie,setSelectSousCategorie]=useState()
 
-  const [chooseSelectCategorie,setChooseSelectCategorie]= useState([])
+  const [chooseSelectCategorie,setChooseSelectCategorie]= useState()
   const [chooseSelectSousCategorie, setChooseSelectSousCategorie] = useState([])
   const [chooseSelectSecteur, setChooseSelectSecteur] = useState([])
   const [chooseSelectVille, setChooseSelectVille] = useState([])
@@ -86,22 +86,7 @@ const ArticleForm=()=>{
   const handleChangeLien1=(e)=>{
 
   }
-  // const handleChangeType=(e)=>{
-  //   articleType.current=e.target.value
-  // }
-  // const handleChangeCategorie=(e)=>{
-  //   articleCategorie.current=e.target.value
-  // }
-  // const handleChangeScat=(e)=>{
-  //   articleScat.current=e.target.value
-  // }
-  // const handleChangeSecteur=(e)=>{
-  //   articleSecteur.current=e.target.value
-  // }
 
-  // const handleChangeVille=(e)=>{
-  //   articleVille.current=e.target.value
-  // }
   useEffect(()=>{
     axios.get('http://localhost:4242/secteurs').then(response=> setSelectSecteur(response.data))
     axios.get('http://localhost:4242/categories').then(response=> setSelectCategorie(response.data))
@@ -111,13 +96,14 @@ const ArticleForm=()=>{
 
   },[])
 
-useEffect(() => {
-  setChooseSelectCategorie(selectCategorie)
-  setChooseSelectSousCategorie(selectSousCategorie)
-  setChooseSelectSecteur(selectSecteur)
-  setChooseSelectVille(selectVille)
-  console.log('ETAT VARIABLE SELECTCATEGORIE :',selectCategorie,'ETAT VARIABLE SELECTSOUSCATEGORIE :',selectSousCategorie, 'ETAT VARIABLE SELECTSECTEUR :',selectSecteur, 'ETAT VARIABLE SELECTVILLE :',selectVille)
-}, [selectCategorie, selectSousCategorie,selectSecteur, selectVille]) 
+// useEffect(() => {
+//   setChooseSelectCategorie(selectCategorie)
+//   setChooseSelectSousCategorie(selectSousCategorie)
+//   setChooseSelectSecteur(selectSecteur)
+//   setChooseSelectVille(selectVille)
+//   console.log('ETAT CATEGORIE',selectCategorie)
+//   console.log('ETAT VARIABLE SELECTCATEGORIE :',selectCategorie,'ETAT VARIABLE SELECTSOUSCATEGORIE :',selectSousCategorie, 'ETAT VARIABLE SELECTSECTEUR :',selectSecteur, 'ETAT VARIABLE SELECTVILLE :',selectVille)
+// }, [selectCategorie, selectSousCategorie,selectSecteur, selectVille])
 
   // {selectVille?selectVille.map((ville) =><option key={ville.id_ville}>{ville.nom_ville}</option>):""}>
 // const test = 
@@ -147,10 +133,6 @@ useEffect(() => {
             <input placeholder='URL du lien à télécharger N°3' /*ref={articleUrlTelechargment3} onChange={handleChangeUrlTelechargement3}/*//>
 
 
-            {/* <input placeholder='Lien 1' ref={lien1} onChange={handleChangeLien1}/> */}
-            {/* <input placeholder='Lien 2' ref={lien2} onChange={handleChangeLien1}/>
-            <input placeholder='Lien 3' ref={lien3} onChange={handleChangeLien1}/> */}
-
           </div>
         </div>
 
@@ -161,9 +143,7 @@ useEffect(() => {
               <div className="drop-down-type">
 
 
-                {/* <select name="categorie-opt" className="list-deroulante" ref={articleCategorie} onChange={handleChangeCategorie}>
-                  {selectCategorie?selectCategorie.map((categorie)=><option key={categorie.id_categorie}>{categorie.nom_categorie}</option>):""}
-                </select> */}
+
 
                 <div className="selectDiv">
                   <Select 
@@ -171,9 +151,11 @@ useEffect(() => {
                 options={selectCategorie}
                 className="basic-multi-select"
                 classNamePrefix="select"
+
                 closeMenuOnSelect={true}
                 onChange={(e) => setChooseSelectCategorie(e)}
                 styles={colourStyles}
+
                 theme={(theme) => ({
                   ...theme,
                   borderRadius: 0,
@@ -187,23 +169,18 @@ useEffect(() => {
                 })}/>
                 </div>
 
-                {/* <select name="scategorie-opt" className="list-deroulante" ref={articleScat} onChange={handleChangeScat}>
-                  {selectSousCategorie?selectSousCategorie.map((sousCategorie)=><option key={sousCategorie.id_sous_categorie}>{sousCategorie.nom_sous_categorie}</option>):""}
-                </select>
-
-                <select name="secteur-opt" className="list-deroulante" ref={articleSecteur} onChange={handleChangeSecteur}>
-                  {selectSecteur?selectSecteur.map((secteur)=><option key={secteur.id_secteur}>{secteur.nom_secteur}</option>):""}
-                </select> */}
-                <div className="selectDiv">
+               <div className="selectDiv">
                 <Select
                 isMulti
                 placeholder="Choix de sous-catégorie(s)"
                 options={selectSousCategorie}
                 className="basic-multi-select"
                 classNamePrefix="select"
+
                 closeMenuOnSelect={true}
                 onChange={(e) => setChooseSelectSousCategorie(e)}
                 styles={colourStyles}
+
                 theme={(theme) => ({
                   ...theme,
                   borderRadius: 0,
@@ -241,11 +218,6 @@ useEffect(() => {
                 })}/>
                 </div>
 
-                {/* Intégration bouton ville DE BASE*/}
-                {/* <select name="secteur-opt" className="list-deroulante" ref={articleVille} placeholder="Choisir une villle" onChange={handleChangeVille}>
-                  {selectVille?selectVille.map((ville)=><option key={ville.id_ville}>{ville.nom_ville}</option>):""}
-                </select> */}
-
 
                 <div className="selectDiv">
                 <Select
@@ -271,6 +243,7 @@ useEffect(() => {
 
 
               </div>
+              { console.log('ETAT VAR' , selectCategorie,selectSecteur,selectVille,selectSousCategorie) }
             <BouttonPublier article={article} collectDatas={collectDatas}/>
           </div>
         </div>
@@ -280,70 +253,6 @@ useEffect(() => {
 
 
 
-/* 
-// <>
-//   <h2 className='bjr-user'>Bonjour [userName],</h2>
-//   <div className="articles-and-types">
-//     <div className="bloc-content-row">
-
-
-
-
-//       <div className="bloc-article">
-
-//         <h3 className="titres-colonnes">Nouvel article</h3>
-
-//         <form className='article-form'>
-//           <input className='input-article-title' placeholder="Titre de l'article"  ref={articleTitle} onChange={handleChangeTitle}/>
-//           <input className='input-article-intro' placeholder="Intro de l'article" ref={articleIntro} onChange={handleChangeIntro}/>
-//           <input placeholder="Url de l'image" ref={articleUrlImg} onChange={handleChangeUrlImg}/>
-//           <TinyArticle  articleText={articleText} />
-//           <input placeholder='URL des liens à télécharger' ref={articleUrlTelechargment} onChange={handleChangeUrlTelechargement}/>
-//         </form>
-//       </div>
-
-
-
-
-
-
-//       <div className="types-articles">
-//         <h3 className="">Type d'articles</h3>
-//         <div className="bloc-deroulant-publier">
-//           <form className="drop-down-type">
-
-
-//             <select name="categorie-opt" className="list-deroulante" ref={articleCategorie} onChange={handleChangeCategorie}>
-//               {selectCategorie?selectCategorie.map((categorie)=><option key={categorie.id_categorie}>{categorie.nom_categorie}</option>):""}
-//             </select>
-
-
-//             <select name="scategorie-opt" className="list-deroulante" ref={articleScat} onChange={handleChangeScat}>
-//               {selectSousCategorie?selectSousCategorie.map((sousCategorie)=><option key={sousCategorie.id_sous_categorie}>{sousCategorie.nom_sous_categorie}</option>):""}
-//             </select>
-
-//             <select name="secteur-opt" className="list-deroulante" ref={articleSecteur} onChange={handleChangeSecteur}>
-//               {selectSecteur?selectSecteur.map((secteur)=><option key={secteur.id_secteur}>{secteur.nom_secteur}</option>):""}
-//             </select>
- */
-
-       /* <Select
-            isMulti
-            options={selectVille}
-            className="basic-multi-select"
-            classNamePrefix="select"
-            closeMenuOnSelect={false}
-            onChange={(e) => setChooseSelectVille(e)}
-            /> */
-            
-            
-  /* </form> 
-           <BouttonPublier article={article} collectDatas={collectDatas}/>
-       </div>
-    </div>
-  </div>
-  </div>
-</>*/
     )
 }
 export default ArticleForm
