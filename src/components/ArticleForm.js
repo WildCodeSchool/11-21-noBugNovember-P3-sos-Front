@@ -2,11 +2,17 @@ import './Styles/ArticleForm.css'
 import {useState, useEffect, useRef} from "react";
 import TinyArticle from './TinyArticle'
 import axios from 'axios'
-import Select from 'react-select'
+import Select, { StylesConfig }from 'react-select'
 
 import BouttonPublier from './BouttonPublier';
-import { getWidth } from 'react-slick/lib/utils/innerSliderUtils';
 
+
+// STYLES CONFIG SELECT
+const colourStyles: StylesConfig = {
+  control: (styles) => ({ ...styles, backgroundColor: 'white',  width: "20vw", padding: ".5rem"
+  //  height: "5rem" FOU LE BORDEL
+   }),
+};
 
 const ArticleForm=()=>{
     const [article,setArticle]=useState({title:"",
@@ -127,7 +133,7 @@ useEffect(() => {
       <form className="bloc-content-row">
         <div className="bloc-article">
         
-          <h3 className="titres-colonnes">Nouvel article</h3>
+          <h3 className="titreMenu">Nouvel article</h3>
 
           <div className='article-form'>
             <input className='input-article-title' placeholder="Titre de l'article"  ref={articleTitle} onChange={handleChangeTitle}/>
@@ -150,7 +156,7 @@ useEffect(() => {
 
 
         <div className="types-articles">
-          <h3 className="">Type d'articles</h3>
+          <h3 className="titreMenu">Type d'article</h3>
             <div className="bloc-deroulant-publier">
               <div className="drop-down-type">
 
@@ -159,24 +165,27 @@ useEffect(() => {
                   {selectCategorie?selectCategorie.map((categorie)=><option key={categorie.id_categorie}>{categorie.nom_categorie}</option>):""}
                 </select> */}
 
-                <Select
+                <div className="selectDiv">
+                  <Select 
                 placeholder="Choix de la catégorie"
-                options={selectCategorie}//A FAIRE
+                options={selectCategorie}
                 className="basic-multi-select"
                 classNamePrefix="select"
-                closeMenuOnSelect={false}
-                onChange={(e) => setChooseSelectCategorie(e)}//A FAIRE
-               
+                closeMenuOnSelect={true}
+                onChange={(e) => setChooseSelectCategorie(e)}
+                styles={colourStyles}
                 theme={(theme) => ({
                   ...theme,
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: 'salmon',
-                    primary: 'lightgray',
+                    primary25: 'rgba(228, 144, 114, 0.659)',
+                    primary: 'rgba(228, 144, 114, 0.659)',
+                    
                   },
                   
                 })}/>
+                </div>
 
                 {/* <select name="scategorie-opt" className="list-deroulante" ref={articleScat} onChange={handleChangeScat}>
                   {selectSousCategorie?selectSousCategorie.map((sousCategorie)=><option key={sousCategorie.id_sous_categorie}>{sousCategorie.nom_sous_categorie}</option>):""}
@@ -185,46 +194,52 @@ useEffect(() => {
                 <select name="secteur-opt" className="list-deroulante" ref={articleSecteur} onChange={handleChangeSecteur}>
                   {selectSecteur?selectSecteur.map((secteur)=><option key={secteur.id_secteur}>{secteur.nom_secteur}</option>):""}
                 </select> */}
-                
+                <div className="selectDiv">
                 <Select
                 isMulti
                 placeholder="Choix de sous-catégorie(s)"
-                options={selectSousCategorie}//A FAIRE
+                options={selectSousCategorie}
                 className="basic-multi-select"
                 classNamePrefix="select"
-                closeMenuOnSelect={false}
-                onChange={(e) => setChooseSelectSousCategorie(e)}//A FAIRE
-               
+                closeMenuOnSelect={true}
+                onChange={(e) => setChooseSelectSousCategorie(e)}
+                styles={colourStyles}
                 theme={(theme) => ({
                   ...theme,
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: 'salmon',
-                    primary: 'lightgray',
+                    primary25: 'rgba(228, 144, 114, 0.659)',
+                    primary: 'rgba(228, 144, 114, 0.659)',
                   },
                   
                 })}/>
+                </div>
 
+                <div className="selectDiv">
                 <Select
                 isMulti
                 placeholder="Choix de secteur(s)"
-                options={selectSecteur}//A FAIRE
+                options={selectSecteur}
                 className="basic-multi-select"
                 classNamePrefix="select"
-                closeMenuOnSelect={false}
-                onChange={(e) => setChooseSelectSecteur(e)} //A FAIRE
-               
+                closeMenuOnSelect={true}
+                onChange={(e) => setChooseSelectSecteur(e)} 
+
+                styles={colourStyles}
+
+
                 theme={(theme) => ({
                   ...theme,
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: 'salmon',
-                    primary: 'lightgray',
+                    primary25: 'rgba(228, 144, 114, 0.659)',
+                    primary: 'rgba(228, 144, 114, 0.659)',
                   },
                   
                 })}/>
+                </div>
 
                 {/* Intégration bouton ville DE BASE*/}
                 {/* <select name="secteur-opt" className="list-deroulante" ref={articleVille} placeholder="Choisir une villle" onChange={handleChangeVille}>
@@ -232,27 +247,27 @@ useEffect(() => {
                 </select> */}
 
 
-
-                {/* Test du Select facon TBHT */}
+                <div className="selectDiv">
                 <Select
                 isMulti
                 placeholder="Choix de ville(s)"
                 options={selectVille}
                 className="basic-multi-select"
                 classNamePrefix="select"
-                closeMenuOnSelect={false}
+                closeMenuOnSelect={true}
                 onChange={(e) => setChooseSelectVille(e)}
-               
+                styles={colourStyles}
                 theme={(theme) => ({
                   ...theme,
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: 'salmon',
-                    primary: 'lightgray',
+                    primary25: 'rgba(228, 144, 114, 0.659)',
+                    primary: 'rgba(228, 144, 114, 0.659)',
                   },
-                  
                 })}/>
+                </div>
+
 
 
               </div>

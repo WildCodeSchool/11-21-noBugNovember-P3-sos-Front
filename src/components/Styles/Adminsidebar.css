@@ -2,23 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color:#FFFFFF;
+    color:var(--clr-white);
     justify-content: flex-start;
     align-content: flex-start;
-    background-color: #226D68;
-    border-bottom-right-radius: 221px ;
-    border-left: 1px solid #707070;
+    background-color: var(--clr-green);
+    border-bottom-right-radius: 22.1rem ;
+    /* border-left: 1px solid #707070; */
     height:100vh;
-    width: 20vw;
-    min-width:33rem;
+    width: 22rem;
+    padding: 1.2rem;
     
 }
 
 .logo-panel{
-    height:90px;
-    width: auto;
+    width: 100%;
     object-fit: cover;
-    margin: 30px;
+    margin: 3rem
 }
 
 .bloc-link-side-bar{
@@ -28,10 +27,12 @@
 }
 .bloc-link-side-bar>a{
     text-decoration: none;
-    color:#FFFFFF;
+    color: var(--clr-white);
     margin: 1em;
+    font-size: 2rem;
 }
 
 .bloc-link-side-bar>a:hover{
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    color: var(--clr-orange2)
 }
