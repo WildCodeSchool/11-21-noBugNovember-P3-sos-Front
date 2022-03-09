@@ -22,7 +22,9 @@ const ArticleDetail = () => {
                       <button>Retour</button>
                     </Link>
                   </div>
-                  <h2>{result.titre} </h2>
+                  <div className="articleDetailTitre">
+                    <h2>{result.titre} </h2>
+                  </div>
                   <div className="articleDetailFirst">
                     <div className="articleDetailImage">
                       <img src={result.image} alt={result.tire}></img>
