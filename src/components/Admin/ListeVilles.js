@@ -1,11 +1,9 @@
-import "./Styles/ListeCategorie.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { useContext } from "react";
-import { CategoriesContext } from "../../context/CategoriesContext";
-import "./Styles/ListeCategorie.css";
+import { VillesContext } from "../../context/VillesContext";
 
-const ListeCategorie = () => {
-  const { categories } = useContext(CategoriesContext);
+const ListeVilles = () => {
+  const { villes } = useContext(VillesContext);
 
   return (
     <>
@@ -32,7 +30,7 @@ const ListeCategorie = () => {
             },
             {
               field: "value",
-              headerName: "Nom",
+              headerName: "Nom de Ville",
               headerClassName: "headerTableau",
               minWidth: 110,
               flex: 0.5,
@@ -68,7 +66,7 @@ const ListeCategorie = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
-          rows={categories}
+          rows={villes}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />
@@ -77,14 +75,14 @@ const ListeCategorie = () => {
             className="newCategoInput"
             type="text"
             name="myInput"
-            placeholder="Nouvelle Catégorie"
+            placeholder="Nouvelle Ville"
             size="30"
             required
           ></input>
-          <button className="button2 adminButton">Ajouter categorie</button>
+          <button className="button2 adminButton">Ajouter Ville</button>
         </div>
       </div>
     </>
   );
 };
-export default ListeCategorie;
+export default ListeVilles;

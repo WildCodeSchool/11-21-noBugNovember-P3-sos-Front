@@ -255,6 +255,12 @@ const ArticleForm = () => {
                     })}
                   />
                 </div>
+                <div className="publishButton">
+                  <BouttonPublier
+                    article={article}
+                    collectDatas={collectDatas}
+                  />
+                </div>
               </div>
               {console.log(
                 "ETAT VAR",
@@ -263,7 +269,6 @@ const ArticleForm = () => {
                 selectVille,
                 selectSousCategorie
               )}
-              <BouttonPublier article={article} collectDatas={collectDatas} />
             </div>
           </div>
         </form>

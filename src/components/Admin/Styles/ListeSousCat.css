@@ -1,13 +1,4 @@
-.newCategoContent {
-  margin-top: 3rem;
-}
-
-.newCategoInput {
-  height: 4rem;
-  padding: 2rem;
-}
-
-.adminButton {
+.adminSousCatButton {
   background-color: var(--clr-orange);
   text-align: center;
   color: var(--clr-white);
@@ -16,6 +7,6 @@
   box-sizing: border-box;
 }
 
-.adminButton:hover {
+.adminSousCatButton:hover {
   border: solid 5px var(--clr-green);
 }

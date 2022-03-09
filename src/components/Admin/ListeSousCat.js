@@ -1,11 +1,10 @@
-import "./Styles/ListeCategorie.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { useContext } from "react";
-import { CategoriesContext } from "../../context/CategoriesContext";
-import "./Styles/ListeCategorie.css";
+import { SousCategoriesContext } from "../../context/SousCategoriesContext";
+import "./Styles/ListeSousCat.css";
 
-const ListeCategorie = () => {
-  const { categories } = useContext(CategoriesContext);
+const ListeSousCategories = () => {
+  const { sousCategories } = useContext(SousCategoriesContext);
 
   return (
     <>
@@ -68,7 +67,7 @@ const ListeCategorie = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
-          rows={categories}
+          rows={sousCategories}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />
@@ -77,14 +76,16 @@ const ListeCategorie = () => {
             className="newCategoInput"
             type="text"
             name="myInput"
-            placeholder="Nouvelle Catégorie"
+            placeholder="Nouvelle Sous-catégorie"
             size="30"
             required
           ></input>
-          <button className="button2 adminButton">Ajouter categorie</button>
+          <button className="button2 adminSousCatButton">
+            Ajouter sous-categorie
+          </button>
         </div>
       </div>
     </>
   );
 };
-export default ListeCategorie;
+export default ListeSousCategories;
