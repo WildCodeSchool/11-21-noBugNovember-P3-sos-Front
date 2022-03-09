@@ -10,8 +10,8 @@ function Adminsidebar() {
         <div className='side-bar'>
               <img className='logo-panel' src={logo} alt="logo panel"/>
               <div className='bloc-link-side-bar'>
-                <Link to="/ArticleForm">Les articles</Link>
-                <Link to="">Les catégories</Link>
+                <Link to="articles">Les articles</Link>
+                <Link to="categories">Les catégories</Link>
                 <Link to="">Les sous-catégories</Link>
                 <Link to="">Les villes</Link>
               </div>

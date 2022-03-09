@@ -8,6 +8,8 @@ import IdentificationAdmin from "./screens/IdentificationAdmin";
 import Home from "./screens/Home";
 import PanelAdmin from "./screens/PanelAdmin";
 import Parcours from "./components/Parcours";
+import ListArticles from "./components/ListArticles"
+import ArticleForm from "./components/ArticleForm"
 
 function App() {
   return (
@@ -16,8 +18,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/etapes" element={<FirstVisit />} />
         <Route path="/articlesGrid" element={<ArticlesGrid />} />
-        <Route path="admin-controler" element={<PanelAdmin />}></Route>
         <Route path="admin" element={<IdentificationAdmin />}></Route>
+        <Route path="admin-controler" element={<PanelAdmin />}>
+          <Route path="articles" element={<ListArticles/>} />
+          <Route path="categories" element={<ArticleForm/>} />
+        </Route>
+
       </Routes>
     </div>
   );
