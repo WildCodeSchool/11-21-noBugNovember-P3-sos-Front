@@ -11,7 +11,7 @@ const ListArticles = ()=> {
 <>
     <h2 className='bjr-user'>Bonjour [userName],</h2>
     <div className='bloc-content-column'>
-      <h3 className="titres-colonnes">Liste des articles</h3>
+      <h3 className="titreMenu">Liste des articles</h3>
 
 <BarreRechercheArticles />
 <NewTable />
