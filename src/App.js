@@ -10,6 +10,10 @@ import PanelAdmin from "./screens/PanelAdmin";
 import ArticleDetail from "./screens/ArticleDetail";
 import ArticleContextProvider from "./context/ArticleContext";
 
+import Parcours from "./components/Parcours";
+import ListArticles from "./components/ListArticles";
+import ArticleForm from "./components/ArticleForm";
+
 function App() {
   return (
     <div className="App">
@@ -18,12 +22,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/etapes" element={<FirstVisit />} />
           <Route path="/articlesGrid" element={<ArticlesGrid />} />
-          <Route path="admin-controler" element={<PanelAdmin />}></Route>
-          <Route path="admin" element={<IdentificationAdmin />}></Route>
           <Route
             path="/articlesGrid/articleDetail/:id"
             element={<ArticleDetail />}
           ></Route>
+          <Route path="admin" element={<IdentificationAdmin />}></Route>
+          <Route path="admin-controler" element={<PanelAdmin />}>
+            <Route path="articles" element={<ListArticles />} />
+            <Route path="categories" element={<ArticleForm />} />
+          </Route>
         </Routes>
       </ArticleContextProvider>
     </div>
