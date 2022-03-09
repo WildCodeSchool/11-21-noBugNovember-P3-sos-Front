@@ -7,6 +7,7 @@ import FirstVisit from "./screens/FirstVisit";
 import IdentificationAdmin from "./screens/IdentificationAdmin";
 import Home from "./screens/Home";
 import PanelAdmin from "./screens/PanelAdmin";
+
 import Parcours from "./components/Parcours";
 
 function App() {
