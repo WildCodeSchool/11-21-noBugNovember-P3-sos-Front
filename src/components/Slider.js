@@ -5,41 +5,16 @@ import Slide from './Slide.js'
 import SliderControl from './SliderControl.js'
 import './Styles/CarouselCat.scss'
 
-// export const categories = [
-//   {
-//     id: 0,
-//     headline: 'New Fashion Apparel',
-//     button: 'Shop now',
-//     src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/fashion.jpg',
-//   },
-//   {
-//     id: 1,
-//     headline: 'In The Wilderness',
-//     button: 'Book travel',
-//     src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg',
-//   },
-//   {
-//     id: 2,
-//     headline: 'For Your Current Mood',
-//     button: 'Listen',
-//     src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/guitar.jpg',
-//   },
-//   {
-//     id: 3,
-//     headline: 'Focus On The Writing',
-//     button: 'Get Focused',
-//     src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg',
-//   },
-// ]
-
 const Slider = () => {
   const [indexImg, setIndexImg] = useState(0)
 
   const { categories } = useContext(CategoriesContext)
+  console.log('index', categories)
 
   console.log('length', categories.length)
   const heading = 'Exemple Slider'
   console.log('initial', indexImg)
+
   const wrapperTransform = {
     transform: `translateX(-${indexImg * (100 / categories.length)}%)`,
   }
@@ -49,18 +24,15 @@ const Slider = () => {
     .toLowerCase()}`
 
   const handlePreviousClick = () => {
-    // WORK
     console.log('handleClick', indexImg)
-
     const previous = indexImg - 1
-    setIndexImg(previous < 0 ? categories.length - 1 : previous) // bug
+    setIndexImg(previous < 0 ? categories.length - 1 : previous)
   }
 
   const handleNextClick = () => {
-    // WORK
     console.log('handleNextClick', indexImg)
     const next = indexImg + 1
-    setIndexImg(next === categories.length ? 0 : next) // bug
+    setIndexImg(next === categories.length ? 0 : next)
   }
 
   const handleSlideClick = (id_categorie) => {

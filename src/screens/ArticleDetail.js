@@ -1,46 +1,46 @@
-import { ArticleContext } from "../context/ArticleContext";
-import Header from "../components/Header";
-import { useContext } from "react";
-import { useParams, Link } from "react-router-dom";
-import "./Styles/ArticleDetail.css";
+import { ArticleContext } from '../context/ArticleContext'
+import Header from '../components/Header'
+import { useContext } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import './Styles/ArticleDetail.css'
 
 const ArticleDetail = () => {
-  const { articles } = useContext(ArticleContext);
-  let { id } = useParams();
+  const { articles } = useContext(ArticleContext)
+  let { id } = useParams()
   return (
     <>
       <Header />
-      <div className="detailArticlegGreen">
-        <div className="articleDetailWrapper">
+      <div className='detailArticlegGreen'>
+        <div className='articleDetailWrapper'>
           {articles
             .filter((el) => el.id_article === parseInt(id))
             .map((result) => {
               return (
                 <>
-                  <div className="returnButton">
-                    <Link to="/articlesGrid">
+                  <div className='returnButton'>
+                    <Link to='/articlesGrid'>
                       <button>Retour</button>
                     </Link>
                   </div>
                   <h2>{result.titre} </h2>
-                  <div className="articleDetailFirst">
-                    <div className="articleDetailImage">
+                  <div className='articleDetailIntro'>
+                    <p id='articleDetailIntro'>{result.intro}</p>
+                  </div>
+                  <div className='articleDetailFirst'>
+                    <div className='articleDetailImage'>
                       <img src={result.image} alt={result.tire}></img>
                     </div>
-                    <div className="articleDetailIntro">
-                      <p id="articleDetailIntro">{result.intro}</p>
+                    <div className='articleDetailPara'>
+                      <p id='articleDetailPara'>{result.para1}</p>
                     </div>
                   </div>
-                  <div className="articleDetailPara">
-                    <p id="articleDetailPara">{result.para1}</p>
-                  </div>
                 </>
-              );
+              )
             })}
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ArticleDetail;
+export default ArticleDetail

@@ -12,18 +12,18 @@ const Slide = ({
   let classSlide = 'slide'
 
   //Paralax effect
-  const handleMouseMove = (e) => {
-    const el = slideContent.current
-    const r = el.getBoundingClientRect()
+  // const handleMouseMove = (e) => {
+  //   const el = slideContent.current
+  //   const r = el.getBoundingClientRect()
 
-    el.style.setProperty('--x', e.clientX - (r.left + Math.floor(r.width / 2)))
-    el.style.setProperty('--y', e.clientY - (r.top + Math.floor(r.height / 2)))
-  }
+  //   el.style.setProperty('--x', e.clientX - (r.left + Math.floor(r.width / 2)))
+  //   el.style.setProperty('--y', e.clientY - (r.top + Math.floor(r.height / 2)))
+  // }
 
-  const handleMouseLeave = (e) => {
-    slideContent.current.style.setProperty('--x', 0)
-    slideContent.current.style.setProperty('--y', 0)
-  }
+  // const handleMouseLeave = (e) => {
+  //   slideContent.current.style.setProperty('--x', 0)
+  //   slideContent.current.style.setProperty('--y', 0)
+  // }
 
   if (indexImg === idSlide) {
     classSlide += ' slide--current'
@@ -39,8 +39,8 @@ const Slide = ({
         ref={slideContent}
         className={classSlide}
         onClick={() => handleSlideClick(idSlide)}
-        onMouseMove={(e) => handleMouseMove(e)}
-        onMouseLeave={(e) => handleMouseLeave(e)}
+        // onMouseMove={(e) => handleMouseMove(e)}
+        // onMouseLeave={(e) => handleMouseLeave(e)}
       >
         {/* <div className='slide__image-wrapper'>
           <img className='slide__image' alt={headline} src={src} />
