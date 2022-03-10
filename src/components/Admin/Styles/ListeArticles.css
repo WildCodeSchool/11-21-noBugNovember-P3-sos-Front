@@ -1,0 +1,13 @@
+.firstContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.firstContent img {
+  width: 50%;
+}
+
+.publishContent {
+  display: flex;
+  justify-content: end;
+}

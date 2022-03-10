@@ -13,7 +13,7 @@ const ArticleDetail = () => {
       <div className="detailArticlegGreen">
         <div className="articleDetailWrapper">
           {articles
-            .filter((el) => el.id_article === parseInt(id))
+            .filter((el) => el.id === parseInt(id))
             .map((result) => {
               return (
                 <>
