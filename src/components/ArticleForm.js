@@ -1,5 +1,5 @@
 import './Styles/ArticleForm.css'
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react";
 import TinyArticle from './TinyArticle'
 import axios from 'axios'
 import Select, { StylesConfig }from 'react-select'
@@ -30,7 +30,12 @@ const ArticleForm=()=>{
   const [selectCategorie,setSelectCategorie]=useState()
   const [selectSousCategorie,setSelectSousCategorie]=useState()
 
-  const [articleAvantage,setArticleAvantage]=useState('Aucun')
+  const [articleAvantage,setArticleAvantage]=useState('')
+  const [articleTitle,setArticleTitle]=useState('')
+  const [articleIntro,setArticleIntro]=useState('')
+  const [articleUrlImg,setArticleUrlImg]=useState('')
+  const [articleContent,setArticleContent]=useState('')
+  const [articleUrlTelechargement,setUrlTelechargement]=useState('')
   const [articleLien1,setArticleLien1]=useState('')
   const [articleLien2,setArticleLien2]=useState('')
   const [articleLien3,setArticleLien3]=useState('')
@@ -40,25 +45,12 @@ const ArticleForm=()=>{
   const [chooseSelectSecteur, setChooseSelectSecteur] = useState([])
   const [chooseSelectVille, setChooseSelectVille] = useState([])
 
-  // *********************************REF**************************************
-  const articleTitle=useRef()
-  const articleIntro=useRef()
-  const articleUrlImg=useRef()
-  const articleUrlTelechargment=useRef()
-  const articleText=useRef()
-  const articleCategorie=useRef()
-  const articleScat=useRef()
-  const articleSecteur=useRef('')
-  const articleVille=useRef()
-  // const articleLien1=useRef('')
-  const articleSousCategorie=useRef('')
-  //***************************************************************************
   const collectDatas = (event) => {
       event.preventDefault()
     setArticle({
       titre:articleTitle,
       intro:articleIntro,
-      para1:articleText,
+      para1:articleContent,
       avantage:articleAvantage,
       lien1:articleLien1,
       lien2:articleLien2,
@@ -71,26 +63,31 @@ const ArticleForm=()=>{
       secteur:chooseSelectSecteur,
       ville:chooseSelectVille
     })
-    console.log(" ALL DATAS ",article)
+    console.warn(" ALL DATAS ",article)
   }
   const handleChangeTitle=(e)=>{
-      articleTitle.current=e.target.value
+      setArticleTitle(e.target.value)
   }
   const handleChangeIntro=(e)=>{
-    articleIntro.current=e.target.value
+    setArticleIntro(e.target.value)
   }
   const handleChangeUrlImg=(e)=>{
-    articleUrlImg.current=e.target.value
+    setArticleUrlImg(e.target.value)
+  }
+  const handleChangeAvantage=(e)=>{
+      setArticleAvantage(e.target.value)
   }
   const handleChangeLien1=(e)=>{
-    articleLien1.current=e.target.value
+    setArticleLien1(e.target.value)
   }
-  const handleChangeText=(e)=>{
-    articleText.current=e.target.value
+  const handleChangeLien2=(e)=>{
+    setArticleLien2(e.target.value)
+  }
+  const handleChangeLien3=(e)=>{
+    setArticleLien3(e.target.value)
   }
 
   const handleChangeCategorie=(value)=>{
-
     const {id}=value
     console.log('VALUEEEEEEEEEEE',id)
     setChooseSelectCategorie(id)
@@ -134,15 +131,14 @@ const ArticleForm=()=>{
           <h3 className="titreMenu">Nouvel article</h3>
 
           <div className='article-form'>
-            <input className='input-article-title' placeholder="Titre de l'article"  ref={articleTitle} onChange={handleChangeTitle}/>
-            <input className='input-article-intro' placeholder="Intro de l'article" ref={articleIntro} onChange={handleChangeIntro}/>
-            <input placeholder="Url de l'image" ref={articleUrlImg} onChange={handleChangeUrlImg}/>
-            <TinyArticle  articleText={articleText} />
-            <input className='input-article-intro' placeholder="Texte présentant les avantages de l'article" /*ref={articleAvantage} onChange={handleChangeAvantage}*/ />
-
+            <input className='input-article-title' placeholder="Titre de l'article"   onChange={handleChangeTitle}/>
+            <input className='input-article-intro' placeholder="Intro de l'article"  onChange={handleChangeIntro}/>
+            <input placeholder="Url de l'image"  onChange={handleChangeUrlImg}/>
+            <TinyArticle  setArticleContent={setArticleContent} />
+            <input className='input-article-intro' placeholder="Texte présentant les avantages de l'article" onChange={handleChangeAvantage}/>
             <input placeholder='URL du lien à télécharger N°1'  onChange={handleChangeLien1}/>
-            <input placeholder='URL du lien à télécharger N°2' /*ref={articleUrlTelechargment2} onChange={handleChangeUrlTelechargement2}*//>
-            <input placeholder='URL du lien à télécharger N°3' /*ref={articleUrlTelechargment3} onChange={handleChangeUrlTelechargement3}/*//>
+            <input placeholder='URL du lien à télécharger N°2'  onChange={handleChangeLien2}/>
+            <input placeholder='URL du lien à télécharger N°3'  onChange={handleChangeLien3}/>
           </div>
         </div>
 
@@ -152,7 +148,6 @@ const ArticleForm=()=>{
               <div className="drop-down-type">
                 <div className="selectDiv">
                   <Select
-                    ref={articleCategorie}
                     placeholder="Choix de la catégorie"
                     options={selectCategorie}
                     className="basic-multi-select"
@@ -232,7 +227,8 @@ const ArticleForm=()=>{
                   })}/>
                 </div>
               </div>
-            <BouttonPublier article={article} collectDatas={collectDatas}/>
+              <button onClick={collectDatas}>TEST</button>
+            <BouttonPublier article={article}  collectDatas={collectDatas}/>
           </div>
         </div>
         </form>

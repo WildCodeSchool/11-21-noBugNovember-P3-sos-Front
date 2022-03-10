@@ -4,14 +4,14 @@ import axios from "axios"
 const BouttonPublier = (props) => {
   const {article,collectDatas}=props
   const sendDatas = () =>{
+    console.log('COLLECT DATAS ======>',article)
     axios.post(`http://localhost:4242/articles/`,{article}).
       then(response=>console.log(response,article)).catch(error=>console.error('---Erreur envoi article--- ',error))
   }
   return (
       <div>
-        <button  onClick={collectDatas, sendDatas} className="btn-forme btnOrange">Publier l'article</button>
+        <button  onClick={collectDatas && sendDatas} className="btn-forme btnOrange">Publier l'article</button>
       </div>
   )
 }
-
-export default BouttonPublier; 
+export default BouttonPublier;
