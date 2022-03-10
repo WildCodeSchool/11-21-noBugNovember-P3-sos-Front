@@ -98,21 +98,21 @@ const ArticleForm=()=>{
   const handleChangeSecteur=(value)=>{
     let extractedValue=[]
       for (let i =0; i< value.length ;i++){
-        extractedValue.push(value[i].value)
+        extractedValue.push(value[i].id)
       }
       setChooseSelectSecteur(extractedValue)
   }
   const handleChangeSousCategorie=(value)=>{
     let extractedValue=[]
     for (let i =0; i< value.length ;i++){
-      extractedValue.push(value[i].value)
+      extractedValue.push(value[i].id)
     }
     setChooseSelectSousCategorie(extractedValue)
   }
   const handleChangeVille=(value)=>{
     let extractedValue=[]
     for (let i =0; i< value.length ;i++){
-      extractedValue.push(value[i].value)
+      extractedValue.push(value[i].id)
     }
     setChooseSelectVille(extractedValue)
   }
@@ -160,7 +160,7 @@ const ArticleForm=()=>{
                     closeMenuOnSelect={true}
                     onChange={(value)=>handleChangeCategorie(value)}
                     styles={colourStyles}
-                  theme={(theme) => ({
+                    theme={(theme) => ({
                     ...theme,
                     borderRadius: 0,
                     colors: {
@@ -173,69 +173,62 @@ const ArticleForm=()=>{
 
                <div className="selectDiv">
                 <Select
-                isMulti
-                placeholder="Choix de sous-catégorie(s)"
-                options={selectSousCategorie}
-                className="basic-multi-select"
-                classNamePrefix="select"
-
-                closeMenuOnSelect={true}
-                onChange={(value) => handleChangeSousCategorie(value)}
-                styles={colourStyles}
-
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary25: 'rgba(228, 144, 114, 0.659)',
-                    primary: 'rgba(228, 144, 114, 0.659)',
-                  },
-                  
+                  isMulti
+                  placeholder="Choix de sous-catégorie(s)"
+                  options={selectSousCategorie}
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  closeMenuOnSelect={true}
+                  onChange={(value) => handleChangeSousCategorie(value)}
+                  styles={colourStyles}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      primary25: 'rgba(228, 144, 114, 0.659)',
+                      primary: 'rgba(228, 144, 114, 0.659)',
+                    },
                 })}/>
                 </div>
                 <div className="selectDiv">
                   <Select
-                  isMulti
-                  placeholder="Choix de secteur(s)"
-                  options={selectSecteur}
-                  className="basic-multi-select"
-                  classNamePrefix="select"
-                  closeMenuOnSelect={true}
-                  onChange={(value)=>handleChangeSecteur(value)}
-
-                  styles={colourStyles}
-
-
-                  theme={(theme) => ({
-                    ...theme,
-                    borderRadius: 0,
-                    colors: {
-                      ...theme.colors,
-                      primary25: 'rgba(228, 144, 114, 0.659)',
-                      primary: 'rgba(228, 144, 114, 0.659)',
-                    },
-
-                  })}/>
+                    isMulti
+                    placeholder="Choix de secteur(s)"
+                    options={selectSecteur}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    closeMenuOnSelect={true}
+                    onChange={(value)=>handleChangeSecteur(value)}
+                    styles={colourStyles}
+                    theme={(theme) => ({
+                      ...theme,
+                      borderRadius: 0,
+                      colors: {
+                        ...theme.colors,
+                        primary25: 'rgba(228, 144, 114, 0.659)',
+                        primary: 'rgba(228, 144, 114, 0.659)',
+                      },
+                    })}/>
                 </div>
                 <div className="selectDiv">
                   <Select
-                  isMulti
-                  placeholder="Choix de ville(s)"
-                  options={selectVille}
-                  className="basic-multi-select"
-                  classNamePrefix="select"
-                  closeMenuOnSelect={true}
-                  onChange={(value) => handleChangeVille(value)}
-                  styles={colourStyles}
-                  theme={(theme) => ({
-                    ...theme,
-                    borderRadius: 0,
-                    colors: {
-                      ...theme.colors,
-                      primary25: 'rgba(228, 144, 114, 0.659)',
-                      primary: 'rgba(228, 144, 114, 0.659)',
-                    },
+                    isMulti
+                    placeholder="Choix de ville(s)"
+                    options={selectVille}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    closeMenuOnSelect={true}
+                    onChange={(value) => handleChangeVille(value)}
+                    styles={colourStyles}
+                    theme={(theme) => ({
+                      ...theme,
+                      borderRadius: 0,
+                      colors: {
+                        ...theme.colors,
+                        primary25: 'rgba(228, 144, 114, 0.659)',
+                        primary: 'rgba(228, 144, 114, 0.659)',
+                      },
                   })}/>
                 </div>
               </div>
