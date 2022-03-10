@@ -13,7 +13,6 @@ const colourStyles: StylesConfig = {
   //  height: "5rem" FOU LE BORDEL
    }),
 };
-
 const ArticleForm=()=>{
     const [article,setArticle]=useState({title:"",
       intro:"",
@@ -31,6 +30,11 @@ const ArticleForm=()=>{
   const [selectCategorie,setSelectCategorie]=useState()
   const [selectSousCategorie,setSelectSousCategorie]=useState()
 
+  const [articleAvantage,setArticleAvantage]=useState('Aucun')
+  const [articleLien1,setArticleLien1]=useState('')
+  const [articleLien2,setArticleLien2]=useState('')
+  const [articleLien3,setArticleLien3]=useState('')
+
   const [chooseSelectCategorie,setChooseSelectCategorie]= useState()
   const [chooseSelectSousCategorie, setChooseSelectSousCategorie] = useState([])
   const [chooseSelectSecteur, setChooseSelectSecteur] = useState([])
@@ -42,30 +46,31 @@ const ArticleForm=()=>{
   const articleUrlImg=useRef()
   const articleUrlTelechargment=useRef()
   const articleText=useRef()
-  // const articleType=useRef()
   const articleCategorie=useRef()
   const articleScat=useRef()
-  const articleSecteur=useRef('1')
+  const articleSecteur=useRef('')
   const articleVille=useRef()
-  const articleLien1=useRef('')
+  // const articleLien1=useRef('')
+  const articleSousCategorie=useRef('')
   //***************************************************************************
-  const collectDatas = () => {
+  const collectDatas = (event) => {
+      event.preventDefault()
     setArticle({
       titre:articleTitle,
       intro:articleIntro,
-      // type:articleType,
       para1:articleText,
-      image:articleUrlImg,
+      avantage:articleAvantage,
       lien1:articleLien1,
-      lien2:articleUrlTelechargment,
-      // categorie:articleCategorie,
-      
+      lien2:articleLien2,
+      lien3:articleLien3,
+      image:articleUrlImg,
+      visible:false,
       categorie:chooseSelectCategorie,
+      user_id:1,
       scat:chooseSelectSousCategorie,
       secteur:chooseSelectSecteur,
       ville:chooseSelectVille
     })
-
     console.log(" ALL DATAS ",article)
   }
   const handleChangeTitle=(e)=>{
@@ -77,40 +82,47 @@ const ArticleForm=()=>{
   const handleChangeUrlImg=(e)=>{
     articleUrlImg.current=e.target.value
   }
-  const handleChangeUrlTelechargement=(e)=>{
-    articleUrlTelechargment.current=e.target.value
+  const handleChangeLien1=(e)=>{
+    articleLien1.current=e.target.value
   }
   const handleChangeText=(e)=>{
     articleText.current=e.target.value
   }
-  const handleChangeLien1=(e)=>{
 
+  const handleChangeCategorie=(value)=>{
+
+    const {id}=value
+    console.log('VALUEEEEEEEEEEE',id)
+    setChooseSelectCategorie(id)
   }
-
+  const handleChangeSecteur=(value)=>{
+    let extractedValue=[]
+      for (let i =0; i< value.length ;i++){
+        extractedValue.push(value[i].value)
+      }
+      setChooseSelectSecteur(extractedValue)
+  }
+  const handleChangeSousCategorie=(value)=>{
+    let extractedValue=[]
+    for (let i =0; i< value.length ;i++){
+      extractedValue.push(value[i].value)
+    }
+    setChooseSelectSousCategorie(extractedValue)
+  }
+  const handleChangeVille=(value)=>{
+    let extractedValue=[]
+    for (let i =0; i< value.length ;i++){
+      extractedValue.push(value[i].value)
+    }
+    setChooseSelectVille(extractedValue)
+  }
   useEffect(()=>{
     axios.get('http://localhost:4242/secteurs').then(response=> setSelectSecteur(response.data))
     axios.get('http://localhost:4242/categories').then(response=> setSelectCategorie(response.data))
     axios.get('http://localhost:4242/sousCategories').then(response=> setSelectSousCategorie(response.data))
     axios.get('http://localhost:4242/villes').then(response=> setSelectVille(response.data))
-
-
   },[])
-
-// useEffect(() => {
-//   setChooseSelectCategorie(selectCategorie)
-//   setChooseSelectSousCategorie(selectSousCategorie)
-//   setChooseSelectSecteur(selectSecteur)
-//   setChooseSelectVille(selectVille)
-//   console.log('ETAT CATEGORIE',selectCategorie)
-//   console.log('ETAT VARIABLE SELECTCATEGORIE :',selectCategorie,'ETAT VARIABLE SELECTSOUSCATEGORIE :',selectSousCategorie, 'ETAT VARIABLE SELECTSECTEUR :',selectSecteur, 'ETAT VARIABLE SELECTVILLE :',selectVille)
-// }, [selectCategorie, selectSousCategorie,selectSecteur, selectVille])
-
-  // {selectVille?selectVille.map((ville) =><option key={ville.id_ville}>{ville.nom_ville}</option>):""}>
-// const test = 
-
-
     return(
-
 <>
 <h2 className='bjr-user'>Bonjour [userName],</h2>
   <div className="articles-and-types">
@@ -128,45 +140,35 @@ const ArticleForm=()=>{
             <TinyArticle  articleText={articleText} />
             <input className='input-article-intro' placeholder="Texte présentant les avantages de l'article" /*ref={articleAvantage} onChange={handleChangeAvantage}*/ />
 
-            <input placeholder='URL du lien à télécharger N°1' ref={articleUrlTelechargment} onChange={handleChangeUrlTelechargement}/>
+            <input placeholder='URL du lien à télécharger N°1'  onChange={handleChangeLien1}/>
             <input placeholder='URL du lien à télécharger N°2' /*ref={articleUrlTelechargment2} onChange={handleChangeUrlTelechargement2}*//>
             <input placeholder='URL du lien à télécharger N°3' /*ref={articleUrlTelechargment3} onChange={handleChangeUrlTelechargement3}/*//>
-
-
           </div>
         </div>
-
 
         <div className="types-articles">
           <h3 className="titreMenu">Type d'article</h3>
             <div className="bloc-deroulant-publier">
               <div className="drop-down-type">
-
-
-
-
                 <div className="selectDiv">
-                  <Select 
-                placeholder="Choix de la catégorie"
-                options={selectCategorie}
-                className="basic-multi-select"
-                classNamePrefix="select"
-
-                closeMenuOnSelect={true}
-                onChange={(e) => setChooseSelectCategorie(e)}
-                styles={colourStyles}
-
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary25: 'rgba(228, 144, 114, 0.659)',
-                    primary: 'rgba(228, 144, 114, 0.659)',
-                    
-                  },
-                  
-                })}/>
+                  <Select
+                    ref={articleCategorie}
+                    placeholder="Choix de la catégorie"
+                    options={selectCategorie}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    closeMenuOnSelect={true}
+                    onChange={(value)=>handleChangeCategorie(value)}
+                    styles={colourStyles}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      primary25: 'rgba(228, 144, 114, 0.659)',
+                      primary: 'rgba(228, 144, 114, 0.659)',
+                    },
+                  })}/>
                 </div>
 
                <div className="selectDiv">
@@ -178,7 +180,7 @@ const ArticleForm=()=>{
                 classNamePrefix="select"
 
                 closeMenuOnSelect={true}
-                onChange={(e) => setChooseSelectSousCategorie(e)}
+                onChange={(value) => handleChangeSousCategorie(value)}
                 styles={colourStyles}
 
                 theme={(theme) => ({
@@ -192,67 +194,57 @@ const ArticleForm=()=>{
                   
                 })}/>
                 </div>
-
                 <div className="selectDiv">
-                <Select
-                isMulti
-                placeholder="Choix de secteur(s)"
-                options={selectSecteur}
-                className="basic-multi-select"
-                classNamePrefix="select"
-                closeMenuOnSelect={true}
-                onChange={(e) => setChooseSelectSecteur(e)} 
+                  <Select
+                  isMulti
+                  placeholder="Choix de secteur(s)"
+                  options={selectSecteur}
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  closeMenuOnSelect={true}
+                  onChange={(value)=>handleChangeSecteur(value)}
 
-                styles={colourStyles}
+                  styles={colourStyles}
 
 
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary25: 'rgba(228, 144, 114, 0.659)',
-                    primary: 'rgba(228, 144, 114, 0.659)',
-                  },
-                  
-                })}/>
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      primary25: 'rgba(228, 144, 114, 0.659)',
+                      primary: 'rgba(228, 144, 114, 0.659)',
+                    },
+
+                  })}/>
                 </div>
-
-
                 <div className="selectDiv">
-                <Select
-                isMulti
-                placeholder="Choix de ville(s)"
-                options={selectVille}
-                className="basic-multi-select"
-                classNamePrefix="select"
-                closeMenuOnSelect={true}
-                onChange={(e) => setChooseSelectVille(e)}
-                styles={colourStyles}
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary25: 'rgba(228, 144, 114, 0.659)',
-                    primary: 'rgba(228, 144, 114, 0.659)',
-                  },
-                })}/>
+                  <Select
+                  isMulti
+                  placeholder="Choix de ville(s)"
+                  options={selectVille}
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  closeMenuOnSelect={true}
+                  onChange={(value) => handleChangeVille(value)}
+                  styles={colourStyles}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      primary25: 'rgba(228, 144, 114, 0.659)',
+                      primary: 'rgba(228, 144, 114, 0.659)',
+                    },
+                  })}/>
                 </div>
-
-
-
               </div>
-              { console.log('ETAT VAR' , selectCategorie,selectSecteur,selectVille,selectSousCategorie) }
             <BouttonPublier article={article} collectDatas={collectDatas}/>
           </div>
         </div>
         </form>
     </div>
 </> 
-
-
-
     )
 }
 export default ArticleForm

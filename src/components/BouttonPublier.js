@@ -9,7 +9,7 @@ const BouttonPublier = (props) => {
   }
   return (
       <div>
-        <button  onClick={collectDatas, sendDatas} className="btn-forme btnOrange">Publier l'article</button>
+        <button  onClick={collectDatas} className="btn-forme btnOrange">Publier l'article</button>
       </div>
   )
 }
