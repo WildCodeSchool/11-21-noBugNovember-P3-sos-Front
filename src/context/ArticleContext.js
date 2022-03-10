@@ -7,7 +7,7 @@ const ArticleContextProvider = (props) => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:4040/articles")
+      .get("http://localhost:4242/articles")
       .then((res) => setArticles(res.data));
   }, []);
   return (
