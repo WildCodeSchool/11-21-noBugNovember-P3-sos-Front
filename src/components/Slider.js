@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { useContext } from 'react'
+import { ArticleContext } from '../context/ArticleContext'
 import { CategoriesContext } from '../context/CategoriesContext'
 import Slide from './Slide.js'
-import SliderControl from './SliderControl.js'
 import './Styles/CarouselCat.scss'
 
 const Slider = () => {
   const [indexImg, setIndexImg] = useState(0)
 
   const { categories } = useContext(CategoriesContext)
+  const { handleCat } = useContext(ArticleContext)
+
   console.log('index', categories)
 
   console.log('length', categories.length)
@@ -16,35 +18,23 @@ const Slider = () => {
   console.log('initial', indexImg)
 
   const wrapperTransform = {
-    transform: `translateX(-${indexImg * (100 / categories.length)}%)`,
+    transform: `translateX(-${(indexImg - 1) * (100 / categories.length)}%)`,
   }
 
   const headingId = `slider-heading__${heading
     .replace(/\s+/g, '-')
     .toLowerCase()}`
 
-  const handlePreviousClick = () => {
-    console.log('handleClick', indexImg)
-    const previous = indexImg - 1
-    setIndexImg(previous < 0 ? categories.length - 1 : previous)
-  }
-
-  const handleNextClick = () => {
-    console.log('handleNextClick', indexImg)
-    const next = indexImg + 1
-    setIndexImg(next === categories.length ? 0 : next)
-  }
-
-  const handleSlideClick = (id_categorie) => {
-    console.log('handleSlideClick', id_categorie)
-    if (indexImg !== id_categorie) {
-      setIndexImg(id_categorie)
+  const handleSlideClick = (id) => {
+    console.log('handleSlideClick', id)
+    if (indexImg !== id) {
+      handleCat(id)
+      setIndexImg(id)
     }
   }
 
   return (
     <>
-      {/* <button onClick={() => console.log(indexImg)}>CLICK</button> */}
       <div className='slider' aria-labelledby={headingId}>
         <ul className='slider__wrapper' style={wrapperTransform}>
           <h3 id={headingId} className='visuallyhidden'>
@@ -54,32 +44,16 @@ const Slider = () => {
           {categories.map((slide) => {
             return (
               <Slide
-                key={slide.id_categorie}
-                idSlide={slide.id_categorie}
-                slide={categories} // bug ?
+                key={slide.id}
+                idSlide={slide.id}
+                slide={categories}
                 indexImg={indexImg}
-                // src={slide.src}
-                button={slide.nom_categorie}
-                // headline={slide.headline}
+                button={slide.value}
                 handleSlideClick={handleSlideClick}
               />
             )
           })}
         </ul>
-
-        <div className='slider__controls'>
-          <SliderControl
-            type='previous'
-            title='Go to previous slide'
-            handleClick={() => handlePreviousClick()}
-          />
-
-          <SliderControl
-            type='next'
-            title='Go to next slide'
-            handleClick={() => handleNextClick()}
-          />
-        </div>
       </div>
     </>
   )

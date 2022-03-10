@@ -1,29 +1,9 @@
-import { useRef } from 'react'
+import { useRef, useContext } from 'react'
+import { ArticleContext } from '../context/ArticleContext'
 
-const Slide = ({
-  indexImg,
-  handleSlideClick,
-  idSlide,
-  // headline,
-  // src,
-  button,
-}) => {
+const Slide = ({ indexImg, handleSlideClick, idSlide, button }) => {
   let slideContent = useRef()
   let classSlide = 'slide'
-
-  //Paralax effect
-  // const handleMouseMove = (e) => {
-  //   const el = slideContent.current
-  //   const r = el.getBoundingClientRect()
-
-  //   el.style.setProperty('--x', e.clientX - (r.left + Math.floor(r.width / 2)))
-  //   el.style.setProperty('--y', e.clientY - (r.top + Math.floor(r.height / 2)))
-  // }
-
-  // const handleMouseLeave = (e) => {
-  //   slideContent.current.style.setProperty('--x', 0)
-  //   slideContent.current.style.setProperty('--y', 0)
-  // }
 
   if (indexImg === idSlide) {
     classSlide += ' slide--current'

@@ -29,7 +29,7 @@
   background-color: var(--color-primary);
   border: none;
   border-radius: 0.125rem;
-  color: white;
+  color: var(--color-focus);
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
@@ -149,22 +149,22 @@
 }
 
 .slide--current {
-  --x: 0;
-  --y: 0;
-  --d: 0;
+  // --x: 0;
+  // --y: 0;
+  // --d: 0;
   opacity: 1;
   pointer-events: auto;
   user-select: auto;
 
-  @media (hover: hover) {
-    &:hover .slide__image-wrapper {
-      transform: scale(1.025)
-        translate(
-          calc(var(--x) / var(--d) * 1px),
-          calc(var(--y) / var(--d) * 1px)
-        );
-    }
-  }
+  // @media (hover: hover) {
+  //   &:hover .slide__image-wrapper {
+  //     transform: scale(1.025)
+  //       translate(
+  //         calc(var(--x) / var(--d) * 1px),
+  //         calc(var(--y) / var(--d) * 1px)
+  //       );
+  //   }
+  // }
 }
 
 // .slide__image-wrapper {
@@ -224,14 +224,14 @@
   // visibility: hidden;
 
   .slide--current & {
-    animation: fade-in calc(var(--base-duration) / 2) var(--base-ease) forwards;
+    // animation: fade-in calc(var(--base-duration) / 2) var(--base-ease) forwards;
     visibility: visible;
 
     @media (hover: hover) {
-      transform: translate(
-        calc(var(--x) / var(--d) * -1px),
-        calc(var(--y) / var(--d) * -1px)
-      );
+      // transform: translate(
+      //   calc(var(--x) / var(--d) * -1px),
+      //   calc(var(--y) / var(--d) * -1px)
+      // );
     }
   }
 
