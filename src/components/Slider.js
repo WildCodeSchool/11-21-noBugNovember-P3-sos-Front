@@ -11,11 +11,7 @@ const Slider = () => {
   const { categories } = useContext(CategoriesContext)
   const { handleCat } = useContext(ArticleContext)
 
-  console.log('index', categories)
-
-  console.log('length', categories.length)
   const heading = 'Exemple Slider'
-  console.log('initial', indexImg)
 
   const wrapperTransform = {
     transform: `translateX(-${(indexImg - 1) * (100 / categories.length)}%)`,
@@ -26,7 +22,6 @@ const Slider = () => {
     .toLowerCase()}`
 
   const handleSlideClick = (id) => {
-    console.log('handleSlideClick', id)
     if (indexImg !== id) {
       handleCat(id)
       setIndexImg(id)

@@ -6,6 +6,7 @@ import './Styles/ArticleDetail.css'
 
 const ArticleDetail = () => {
   const { articles } = useContext(ArticleContext)
+  console.log(articles)
   let { id } = useParams()
   return (
     <>
@@ -13,13 +14,13 @@ const ArticleDetail = () => {
       <div className='detailArticlegGreen'>
         <div className='articleDetailWrapper'>
           {articles
-            .filter((el) => el.id_article === parseInt(id))
+            .filter((el) => el.id === parseInt(id))
             .map((result) => {
               return (
                 <>
-                  <div className='returnButton'>
+                  <div className='stateCatArticlesDet'>
                     <Link to='/articlesGrid'>
-                      <button>Retour</button>
+                      <button className='buttonGreen'>Retour</button>
                     </Link>
                   </div>
                   <h2>{result.titre} </h2>

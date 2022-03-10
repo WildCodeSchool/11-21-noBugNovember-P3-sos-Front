@@ -1,5 +1,4 @@
-import { useRef, useContext } from 'react'
-import { ArticleContext } from '../context/ArticleContext'
+import { useRef } from 'react'
 
 const Slide = ({ indexImg, handleSlideClick, idSlide, button }) => {
   let slideContent = useRef()
@@ -19,16 +18,9 @@ const Slide = ({ indexImg, handleSlideClick, idSlide, button }) => {
         ref={slideContent}
         className={classSlide}
         onClick={() => handleSlideClick(idSlide)}
-        // onMouseMove={(e) => handleMouseMove(e)}
-        // onMouseLeave={(e) => handleMouseLeave(e)}
       >
-        {/* <div className='slide__image-wrapper'>
-          <img className='slide__image' alt={headline} src={src} />
-        </div> */}
-
         <article className='slide__content'>
           <button className='slide__headline borderRadius'>{button}</button>
-          {/* <button className='slide__action btn'></button> */}
         </article>
       </li>
     </>

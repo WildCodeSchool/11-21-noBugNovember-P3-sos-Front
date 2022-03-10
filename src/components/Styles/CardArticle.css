@@ -5,8 +5,6 @@
   background-color: var(--clr-green);
   margin-top: 150px;
   display: flex;
-  transition: opacity calc(var(--base-duration) / 2) var(--base-ease),
-    transform calc(var(--base-duration) / 2) var(--base-ease);
 }
 
 .leftAlignCard {
