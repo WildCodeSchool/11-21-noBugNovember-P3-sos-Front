@@ -11,6 +11,10 @@ import ArticleDetail from './screens/ArticleDetail'
 import ArticleContextProvider from './context/ArticleContext'
 import CategoriesContextProvider from './context/CategoriesContext'
 
+import Parcours from './components/Parcours'
+import ListArticles from './components/ListArticles'
+import ArticleForm from './components/ArticleForm'
+
 function App() {
   return (
     <div className='App'>

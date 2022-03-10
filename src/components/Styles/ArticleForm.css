@@ -4,26 +4,37 @@
     flex-direction: row;
     align-items: top;
     justify-content: left;
-    border: 2px solid orange
+    height: 100%;
+    /* border: 2px solid orange */
 }
 
 /* BLOC ARTICLES = GAUCHE */
 .bloc-article {
-    border : 2px solid blue;
-    height: auto;
-    width: 90rem;
+    /* border : 2px solid blue; */
+    height: 100%;
+    width: 100%;
 }
 
 /* BLOC TYPE D ARTICLES = DROITE*/
 .types-articles{
-    border: 2px solid red;
+    /* border: 2px solid rgba(228, 144, 114, 0.659); */
     margin-left : 2rem;
-    height: 100%;
+    height: auto;
+    width: fit-content;
+    display: flex;
 }
 
 /* ELEMENTS POUR LES 2 blocs : Articles et Types Articles*/
 .titres-blocs {
     margin: 0 0 2rem 0;
+}
+
+
+.titreMenu {
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+    font-family: var(--ff-body);
+    color: var(--clr-green);
 }
 
 .bloc-article, .types-articles  {
@@ -46,19 +57,23 @@
     width: 100%;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    border: 2px solid rgb(97, 142, 184);
+    /* border: 2px solid rgb(97, 142, 184); */
 }
 
 /*ElEMENTS BLOC TYPE ARTICLE*/
 
 
 .bloc-deroulant-publier{
-height: 100%;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-border: 2px solid violet;
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+/* border: 2px solid violet; */
 }
+
 
 .drop-down-type{
     display:flex;
@@ -72,4 +87,10 @@ border: 2px solid violet;
     opacity: 1;
     padding : 0.5rem;
     margin-bottom: 1.5rem;
+}
+
+
+.selectDiv{
+    margin-bottom: 1.5rem;
+    height: 100%;
 }
