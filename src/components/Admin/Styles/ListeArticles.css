@@ -23,7 +23,3 @@
   background-color: var(--clr-green3);
   color: var(--clr-white);
 }
-
-.MuiDataGrid-paper {
-  font-size: 5rem;
-}
