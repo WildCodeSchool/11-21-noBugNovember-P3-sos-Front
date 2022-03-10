@@ -2,7 +2,11 @@
     border: 5px solid var(--clr-orange);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding: 10rem ;
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+    background-color: #C8DBDA;
 }
