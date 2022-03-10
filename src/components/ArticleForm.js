@@ -262,13 +262,6 @@ const ArticleForm = () => {
                   />
                 </div>
               </div>
-              {console.log(
-                "ETAT VAR",
-                selectCategorie,
-                selectSecteur,
-                selectVille,
-                selectSousCategorie
-              )}
             </div>
           </div>
         </form>
