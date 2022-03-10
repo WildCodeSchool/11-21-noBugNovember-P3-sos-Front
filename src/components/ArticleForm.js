@@ -14,17 +14,8 @@ const colourStyles: StylesConfig = {
    }),
 };
 const ArticleForm=()=>{
-    const [article,setArticle]=useState({title:"",
-      intro:"",
-      urlImg:"",
-      textArticle:"",
-      // type:'1',
-      urlTelechargement:'',
-      secteur:'',
-      categorie:'',
-      scat:'',
-      ville:''
-    })
+  const [article,setArticle]=useState({})
+
   const [selectSecteur,setSelectSecteur]=useState()
   const [selectVille, setSelectVille]=useState()
   const [selectCategorie,setSelectCategorie]=useState()
@@ -46,7 +37,7 @@ const ArticleForm=()=>{
   const [chooseSelectVille, setChooseSelectVille] = useState([])
 
   const collectDatas = (event) => {
-      event.preventDefault()
+   git  event.preventDefault()
     setArticle({
       titre:articleTitle,
       intro:articleIntro,
@@ -56,14 +47,16 @@ const ArticleForm=()=>{
       lien2:articleLien2,
       lien3:articleLien3,
       image:articleUrlImg,
-      visible:false,
-      categorie:chooseSelectCategorie,
+      visible:0,
       user_id:1,
-      scat:chooseSelectSousCategorie,
-      secteur:chooseSelectSecteur,
-      ville:chooseSelectVille
+      secteur_id:chooseSelectSecteur,
+      sous_categorie_id:chooseSelectSousCategorie,
+      ville_id:chooseSelectVille,
+      // categorie:chooseSelectCategorie
     })
-    console.warn(" ALL DATAS ",article)
+    console.warn('COLLECT DATAS ======>',article)
+    axios.post(`http://localhost:4242/articles`,{article}).
+    then(response=>console.log(response,article)).catch(error=>console.error('---Erreur envoi article--- ',error))
   }
   const handleChangeTitle=(e)=>{
       setArticleTitle(e.target.value)
@@ -227,8 +220,8 @@ const ArticleForm=()=>{
                   })}/>
                 </div>
               </div>
-              <button onClick={collectDatas}>TEST</button>
-            <BouttonPublier article={article}  collectDatas={collectDatas}/>
+            <button onClick={collectDatas}>test </button>
+            <BouttonPublier  article={article} collectDatas={collectDatas} />
           </div>
         </div>
         </form>
