@@ -22,17 +22,8 @@ const ListeCategorie = () => {
           style={{ height: 500 }}
           columns={[
             {
-              field: "id",
-              headerName: "ID",
-              headerClassName: "headerTableau",
-              width: 110,
-              flex: 0.5,
-              align: "left",
-              headerAlign: "left",
-            },
-            {
               field: "value",
-              headerName: "Nom",
+              headerName: "Catégories",
               headerClassName: "headerTableau",
               minWidth: 110,
               flex: 0.5,

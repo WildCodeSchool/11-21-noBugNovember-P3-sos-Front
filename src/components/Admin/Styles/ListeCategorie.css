@@ -1,5 +1,6 @@
 .newCategoContent {
   margin-top: 3rem;
+  display: flex;
 }
 
 .newCategoInput {
@@ -14,6 +15,9 @@
   cursor: pointer;
   border: solid 5px transparent;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .adminButton:hover {

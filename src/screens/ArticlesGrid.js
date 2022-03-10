@@ -24,10 +24,10 @@ const ArticlesGrid = () => {
         </div>
         {articles.map((result, id) => {
           return (
-            <Link to={`articleDetail/${result.id_article}`}>
+            <Link to={`articleDetail/${result.id}`}>
               <CardArticle
-                key={result.id_article}
-                id={result.id_article}
+                key={result.id}
+                id={result.id}
                 titre={result.titre}
                 intro={result.intro}
                 image={result.image}

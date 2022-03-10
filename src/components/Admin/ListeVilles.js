@@ -20,19 +20,19 @@ const ListeVilles = () => {
           style={{ height: 500 }}
           columns={[
             {
-              field: "id",
-              headerName: "ID",
+              field: "value",
+              headerName: "Nom de Ville",
               headerClassName: "headerTableau",
-              width: 110,
+              minWidth: 110,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
             },
             {
-              field: "value",
-              headerName: "Nom de Ville",
+              field: "nom_region",
+              headerName: "Région",
               headerClassName: "headerTableau",
-              minWidth: 110,
+              width: 110,
               flex: 0.5,
               align: "left",
               headerAlign: "left",

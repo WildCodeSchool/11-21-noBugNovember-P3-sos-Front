@@ -25,7 +25,6 @@ const ListArticles = () => {
           style={{ height: 700 }}
           columns={[
             {
-              key: "id_article",
               field: "titre",
               headerName: "Titre",
               headerClassName: "headerTableau",
@@ -53,8 +52,26 @@ const ListArticles = () => {
               headerAlign: "left",
             },
             {
+              field: "nom_secteur",
+              headerName: "Secteur",
+              headerClassName: "headerTableau",
+              minWidth: 110,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
+            {
               field: "nom_ville",
-              headerName: "Sous-catégorie",
+              headerName: "Villes",
+              headerClassName: "headerTableau",
+              minWidth: 110,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
+            {
+              field: "nom_region",
+              headerName: "Région",
               headerClassName: "headerTableau",
               minWidth: 110,
               flex: 0.5,
@@ -79,10 +96,14 @@ const ListArticles = () => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <i
+                <div>
+                  <i
                   /*onClick={() => console.log(field.id)}*/
-                  class="fas fa-times-circle"
-                ></i>
+                  ></i>
+                  <i
+                  /*onClick={() => console.log(field.id)}*/
+                  ></i>
+                </div>
               ),
             },
           ]}
@@ -97,7 +118,7 @@ const ListArticles = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
-          rows={[]}
+          rows={articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />

@@ -5,6 +5,10 @@
   cursor: pointer;
   border: solid 5px transparent;
   box-sizing: border-box;
+  width: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .adminSousCatButton:hover {
