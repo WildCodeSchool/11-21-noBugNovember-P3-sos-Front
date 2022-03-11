@@ -1,11 +1,10 @@
 import './Styles/ArticleForm.css'
-import {useState, useEffect} from "react";
+import {useState, useEffect} from 'react'
 import TinyArticle from './TinyArticle'
 import axios from 'axios'
 import Select, { StylesConfig }from 'react-select'
 
-import BouttonPublier from './BouttonPublier';
-
+import BouttonPublier from './BouttonPublier'
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -114,13 +113,13 @@ const ArticleForm=()=>{
     return(
 <>
 <h2 className='bjr-user'>Bonjour [userName],</h2>
-  <div className="articles-and-types">
+  <div className='articles-and-types'>
 
 {/* BLOC DE GAUCHE = ARTICLE */}
-      <form className="bloc-content-row">
-        <div className="bloc-article">
-        
-          <h3 className="titreMenu">Nouvel article</h3>
+      <form className='bloc-content-row'>
+        <div className='bloc-article'>
+
+          <h3 className='titreMenu'>Nouvel article</h3>
 
           <div className='article-form'>
             <input className='input-article-title' placeholder="Titre de l'article"   onChange={handleChangeTitle}/>
@@ -229,7 +228,7 @@ const ArticleForm=()=>{
         </div>
         </form>
     </div>
-</> 
+</>
     )
 }
 export default ArticleForm
