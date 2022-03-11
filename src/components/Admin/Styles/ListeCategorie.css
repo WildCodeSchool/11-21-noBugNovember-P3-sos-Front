@@ -1,0 +1,25 @@
+.newCategoContent {
+  margin-top: 3rem;
+  display: flex;
+}
+
+.newCategoInput {
+  height: 4rem;
+  padding: 2rem;
+}
+
+.adminButton {
+  background-color: var(--clr-orange);
+  text-align: center;
+  color: var(--clr-white);
+  cursor: pointer;
+  border: solid 5px transparent;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminButton:hover {
+  border: solid 5px var(--clr-green);
+}
