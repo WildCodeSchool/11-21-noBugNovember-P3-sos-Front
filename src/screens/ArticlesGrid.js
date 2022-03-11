@@ -1,25 +1,26 @@
-import "./Styles/ArticlesGrid.css";
+import './Styles/ArticlesGrid.css'
 
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import CarouselCat from '../components/CarouselCat.js'
 
-import CardArticle from "../components/CardArticle.js";
-import Header from "../components/Header.js";
-import SearchBar from "../components/SearchBar.js";
+import CardArticle from '../components/CardArticle.js'
+import Header from '../components/Header.js'
+import SearchBar from '../components/SearchBar.js'
 
-import { ArticleContext } from "../context/ArticleContext";
+import { ArticleContext } from '../context/ArticleContext'
 
 const ArticlesGrid = () => {
-  const { articles } = useContext(ArticleContext);
+  const { articles } = useContext(ArticleContext)
 
   return (
     <>
       <Header />
-      <div className="articleGridBgGreen">
-        {" "}
-        <div className="articleGridHolderSearchBar">
-          <div className="articleGridSearchBar">
+      <div className='articleGridBgGreen'>
+        <div className='articleGridHolderSearchBar'>
+          <div className='articleGridSearchBar'>
             <SearchBar />
+            <CarouselCat />
           </div>
         </div>
         {articles.map((result, id) => {
@@ -39,11 +40,11 @@ const ArticlesGrid = () => {
                 nom_secteur={result.nom_secteur}
               />
             </Link>
-          );
+          )
         })}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ArticlesGrid;
+export default ArticlesGrid
