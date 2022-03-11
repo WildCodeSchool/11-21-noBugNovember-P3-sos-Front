@@ -47,14 +47,11 @@ const ArticleForm=()=>{
       lien2:articleLien2,
       lien3:articleLien3,
       image:articleUrlImg,
-      visible:true
-
-      ,
+      visible:false,
       user_id:1,
       secteur_id:chooseSelectSecteur,
       sous_categorie_id:chooseSelectSousCategorie,
       ville_id:chooseSelectVille,
-      // categorie:chooseSelectCategorie
     })
     console.warn('COLLECT DATAS ======>',article)
     axios.post(`http://localhost:4242/articles`,{...article}).
@@ -128,7 +125,7 @@ const ArticleForm=()=>{
           <div className='article-form'>
             <input className='input-article-title' placeholder="Titre de l'article"   onChange={handleChangeTitle}/>
             <input className='input-article-intro' placeholder="Intro de l'article"  onChange={handleChangeIntro}/>
-            <input placeholder="Url de l'image"  onChange={handleChangeUrlImg}/>
+            <input placeholder="Url de l'image"  type="url" onChange={handleChangeUrlImg}/>
             <TinyArticle  setArticleContent={setArticleContent} />
             <input className='input-article-intro' placeholder="Texte présentant les avantages de l'article" onChange={handleChangeAvantage}/>
             <input placeholder='URL du lien à télécharger N°1'  onChange={handleChangeLien1}/>
@@ -228,9 +225,7 @@ const ArticleForm=()=>{
                   />
                 </div>
               </div>
-              { console.log('ETAT VAR' , selectCategorie,selectSecteur,selectVille,selectSousCategorie) }
-            <BouttonPublier article={article} collectDatas={collectDatas}/>
-          </div>
+            </div>
         </div>
         </form>
     </div>
