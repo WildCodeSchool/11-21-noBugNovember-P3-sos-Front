@@ -10,27 +10,48 @@ import PanelAdmin from './screens/PanelAdmin'
 import ArticleDetail from './screens/ArticleDetail'
 import ArticleContextProvider from './context/ArticleContext'
 import CategoriesContextProvider from './context/CategoriesContext'
+import SousCategoriesContextProvider from './context/SousCategoriesContext'
+import VillesContextProvider from './context/VillesContext'
+import SecteursContextProvider from './context/SecteursContext'
+import ListeCategorie from './components/Admin/ListeCategorie'
+import ListeArticles from './components/Admin/ListeArticles'
+import ListeSousCat from './components/Admin/ListeSousCat'
+import ListeSecteurs from './components/Admin/ListeSecteurs'
 
 import Parcours from './components/Parcours'
-import ListArticles from './components/ListArticles'
+
 import ArticleForm from './components/ArticleForm'
+import ListeVilles from './components/Admin/ListeVilles'
 
 function App() {
   return (
     <div className='App'>
       <ArticleContextProvider>
         <CategoriesContextProvider>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/etapes' element={<FirstVisit />} />
-            <Route path='/articlesGrid' element={<ArticlesGrid />} />
-            <Route path='admin-controler' element={<PanelAdmin />}></Route>
-            <Route path='admin' element={<IdentificationAdmin />}></Route>
-            <Route
-              path='/articlesGrid/articleDetail/:id'
-              element={<ArticleDetail />}
-            ></Route>
-          </Routes>
+          <SousCategoriesContextProvider>
+            <VillesContextProvider>
+              <SecteursContextProvider>
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/etapes' element={<FirstVisit />} />
+                  <Route path='/articlesGrid' element={<ArticlesGrid />} />
+                  <Route
+                    path='/articlesGrid/articleDetail/:id'
+                    element={<ArticleDetail />}
+                  ></Route>
+                  <Route path='admin' element={<IdentificationAdmin />}></Route>
+                  <Route path='admin-controler' element={<PanelAdmin />}>
+                    <Route path='articles' element={<ListeArticles />} />
+                    <Route path='articleForm' element={<ArticleForm />} />
+                    <Route path='categories' element={<ListeCategorie />} />
+                    <Route path='sousCategories' element={<ListeSousCat />} />
+                    <Route path='villes' element={<ListeVilles />} />
+                    <Route path='secteurs' element={<ListeSecteurs />} />
+                  </Route>
+                </Routes>
+              </SecteursContextProvider>
+            </VillesContextProvider>
+          </SousCategoriesContextProvider>
         </CategoriesContextProvider>
       </ArticleContextProvider>
     </div>

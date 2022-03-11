@@ -99,6 +99,7 @@ select {
   font: inherit;
   border: none;
   outline: none;
+  font-size: 1.5rem !important;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -203,4 +204,38 @@ p {
 .btnWhite {
   background-color: var(--clr-white);
   /* color: var(--clr-green); */
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  font-size: 1.5rem !important;
+}
+
+.MuiTablePagination-root,
+.css-rtrcn9-MuiTablePagination-root {
+  font-size: 1.5rem !important;
+}
+
+.MuiTablePagination-root p,
+.css-rtrcn9-MuiTablePagination-root p {
+  font-size: 1.5rem !important;
+}
+
+.MuiInputLabel-root,
+.MuiInputLabel-formControl,
+.MuiInputLabel-animated,
+.MuiInputLabel-shrink,
+.MuiInputLabel-standard,
+.MuiFormLabel-root,
+.MuiFormLabel-colorPrimary,
+.MuiFormLabel-filled,
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
+  font-size: 1.8rem !important;
+}
+
+.css-ahj2mt-MuiTypography-root {
+  font-size: 1.5rem !important;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  display: none !important;
 }

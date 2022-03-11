@@ -5,13 +5,11 @@ export const CategoriesContext = createContext()
 
 const CategoriesContextProvider = (props) => {
   const [categories, setCategories] = useState([])
-
   useEffect(() => {
     axios
-      .get(`http://localhost:4242/categories/`)
+      .get('http://localhost:4242/categories')
       .then((res) => setCategories(res.data))
   }, [])
-
   return (
     <CategoriesContext.Provider value={{ categories }}>
       {props.children}

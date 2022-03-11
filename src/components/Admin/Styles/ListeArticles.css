@@ -1,0 +1,25 @@
+.firstContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.firstContent img {
+  width: 50%;
+}
+
+.publishContent {
+  display: flex;
+  justify-content: end;
+}
+
+.actionIcon {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.MuiDataGrid-columnHeader {
+  background-color: var(--clr-green3);
+  color: var(--clr-white);
+}
