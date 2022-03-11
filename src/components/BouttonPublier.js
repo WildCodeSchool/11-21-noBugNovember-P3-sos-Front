@@ -10,9 +10,14 @@ const BouttonPublier = (props) => {
       then(response=>console.log(response,article)).catch(error=>console.error('---Erreur envoi article--- ',error))
   }
   return (
-      <div>
-        <button  onClick={collectDatas} className="btn-forme btnOrange">Publier l'article</button>
-      </div>
+    <div>
+      <button
+        onClick={(collectDatas, sendDatas)}
+        className="button2 adminButton"
+      >
+        Publier l'article
+      </button>
+    </div>
   )
 }
-export default BouttonPublier;
+export default BouttonPublier

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     background : #C8DBDA;
-    /* border: 2px solid pink; */
     height: 100%;
     min-height: 100vh;
 
@@ -13,7 +12,6 @@
     min-height: 100vh;
     height: 100%;
     width: 100vw;
-    /* border: 2px solid red; */
     padding: 3rem;
 }
 
@@ -21,6 +19,6 @@
     font-size: var(--fs-h1);
     color:var(--clr-green);
     margin-bottom : 8rem;
-    }
+    } 
 
 

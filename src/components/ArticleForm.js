@@ -221,9 +221,15 @@ const ArticleForm=()=>{
                       },
                   })}/>
                 </div>
+                <div className="publishButton">
+                  <BouttonPublier
+                    article={article}
+                    collectDatas={collectDatas}
+                  />
+                </div>
               </div>
-            <button onClick={collectDatas}>test </button>
-            <BouttonPublier  article={article} collectDatas={collectDatas} />
+              { console.log('ETAT VAR' , selectCategorie,selectSecteur,selectVille,selectSousCategorie) }
+            <BouttonPublier article={article} collectDatas={collectDatas}/>
           </div>
         </div>
         </form>
