@@ -30,6 +30,7 @@
   justify-content: center;
   align-content: center;
   color: var(--clr-white);
+  cursor: pointer;
 }
 
 .orange5 {
@@ -81,13 +82,13 @@
 } */
 
 /* Bloc Snake */
-.snake-bloc{
-  width:100%;
+.snake-bloc {
+  width: 100%;
   display: flex;
   justify-content: center;
-  }
+}
 
-.snake{
+.snake {
   position: relative;
   /* border: 1px solid crimson; */
   display: grid;
@@ -97,42 +98,42 @@
   /* place-content: center; */
   place-items: center;
   width: 70%;
-  height:50vh;
+  height: 50vh;
   grid-template-columns: repeat(5, 15%);
   grid-template-rows: repeat(2, 50%);
 }
 
-.snake::after{
+.snake::after {
   z-index: 1;
   content: "";
   position: absolute;
   /* height:  calc(25% - 2px);; */
-  height:  calc(26%);
-  width:100%;
+  height: calc(26%);
+  width: 100%;
   background-color: initial;
   /* border:2px solid black; */
-  border:5px solid var(--clr-orange);
+  border: 5px solid var(--clr-orange);
   border-left-color: white;
   /* border-bottom-color: white; */
   /* aspect-ratio: 1; */
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
   left: 60%;
-  top:25%;
-  transform: translate(-50%,-1px);
+  top: 25%;
+  transform: translate(-50%, -1px);
   /* transform: translateY(-50%,calc(100% - 3px)); */
 }
 
-.snake::before{
+.snake::before {
   z-index: 5;
   content: "";
   position: absolute;
   /* height: calc(25% - 2px); */
   height: calc(25% + 3px);
-  width:100%;
+  width: 100%;
   background-color: initial;
   /* border:2px solid black; */
-  border:5px solid var(--clr-orange);
+  border: 5px solid var(--clr-orange);
   /* border-left-color: white; */
   border-right-color: white;
   /* aspect-ratio: 1; */
@@ -140,10 +141,10 @@
   border-bottom-left-radius: 100px;
   left: 40%;
   bottom: 25%;
-  transform: translate(-50%,1px);
+  transform: translate(-50%, 1px);
 }
 
-.cache{
+.cache {
   z-index: 3;
   height: 20px;
   position: absolute;
@@ -151,15 +152,13 @@
   background-color: white;
 }
 
-.snakeArrow{
+.snakeArrow {
   position: absolute;
   left: 89%;
   z-index: 20;
-  transform: rotate(180deg)
-   ;
+  transform: rotate(180deg);
   /* transform: translateX(-50%); */
   /* transform: rotate(50); */
-
 }
 /* 
 .snake::before::before{
