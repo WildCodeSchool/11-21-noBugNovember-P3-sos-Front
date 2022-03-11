@@ -37,7 +37,7 @@ const ArticleForm=()=>{
   const [chooseSelectVille, setChooseSelectVille] = useState([])
 
   const collectDatas = (event) => {
-   git  event.preventDefault()
+    event.preventDefault()
     setArticle({
       titre:articleTitle,
       intro:articleIntro,
@@ -47,7 +47,9 @@ const ArticleForm=()=>{
       lien2:articleLien2,
       lien3:articleLien3,
       image:articleUrlImg,
-      visible:0,
+      visible:true
+
+      ,
       user_id:1,
       secteur_id:chooseSelectSecteur,
       sous_categorie_id:chooseSelectSousCategorie,
@@ -55,8 +57,8 @@ const ArticleForm=()=>{
       // categorie:chooseSelectCategorie
     })
     console.warn('COLLECT DATAS ======>',article)
-    axios.post(`http://localhost:4242/articles`,{article}).
-    then(response=>console.log(response,article)).catch(error=>console.error('---Erreur envoi article--- ',error))
+    axios.post(`http://localhost:4242/articles`,{...article}).
+    then(response=>console.log('RESPONSE REQUETE',response)).catch(error=>console.error('---Erreur envoi article--- ',error.validationErrors))
   }
   const handleChangeTitle=(e)=>{
       setArticleTitle(e.target.value)
