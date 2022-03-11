@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import CardArticle from "../components/CardArticle.js";
 import Header from "../components/Header.js";
-import SearchBar from "../components/SearchBar.js";
+import ArtSearchBar from "../components/ArtSearchBar.js";
 
 import { ArticleContext } from "../context/ArticleContext";
 
@@ -19,7 +19,7 @@ const ArticlesGrid = () => {
         {" "}
         <div className="articleGridHolderSearchBar">
           <div className="articleGridSearchBar">
-            <SearchBar />
+            <ArtSearchBar />
           </div>
         </div>
         {articles.map((result, id) => {

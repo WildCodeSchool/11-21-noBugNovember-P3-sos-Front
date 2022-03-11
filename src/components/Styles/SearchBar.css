@@ -39,7 +39,7 @@
     width: auto;
     height: auto;
   }
-  .SearchBar {
+  .SearchBar .ArtSearchBar{
     display: flex;
     /* justify-content: space-around; */
     width: auto;
@@ -52,7 +52,7 @@
     flex-direction: column;
   }
 
-  .SearchBar > * {
+  .SearchBar .ArtSearchBar > * {
     margin: 0.4em;
   }
 }

@@ -1,8 +1,13 @@
+import {useContext} from 'react'
 import Parcours from "../components/Parcours";
 import "./Styles/FirstVisit.css";
 import Header from "../components/Header.js";
+import { VillesContext } from "../context/VillesContext";
+import Select from '../components/Select'
+
 
 const FirstVisit = () => {
+  const {villes } = useContext(VillesContext)
   return (
     <>
       <Header />
@@ -15,15 +20,11 @@ const FirstVisit = () => {
           </p>
           <div className="WrapSearchBar">
             <h3>Selectionner</h3>
-            <select>
-              <option value="" disabled selected hidden>
-                Ville
-              </option>
-              <option value="Grenoble">Grenoble</option>
-              <option value="Paris">Paris</option>
-            </select>
+            <Select
+          name={'Ville'}
+          result={villes}
+          />
           </div>
-          <button>Valider</button>
         </div>
         <Parcours />
       </div>
