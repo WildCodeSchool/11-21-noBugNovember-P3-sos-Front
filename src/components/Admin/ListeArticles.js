@@ -135,7 +135,7 @@ const ListArticles = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
-          rows={articles}
+          rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />
