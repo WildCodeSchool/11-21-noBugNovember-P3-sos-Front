@@ -1,11 +1,9 @@
-import "./Styles/ListeCategorie.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { useContext } from "react";
-import { CategoriesContext } from "../../context/CategoriesContext";
+import { SecteursContext } from "../../context/SecteursContext";
 
-const ListeCategorie = () => {
-  const { categories } = useContext(CategoriesContext);
-
+const ListeSecteur = () => {
+  const { secteurs } = useContext(SecteursContext);
   return (
     <>
       {" "}
@@ -16,13 +14,13 @@ const ListeCategorie = () => {
         </Link> */}
       </div>
       <div className="bloc-content-column">
-        <h3 className="titreMenu">Liste des categories</h3>
+        <h3 className="titreMenu">Liste des secteurs</h3>
         <DataGrid
           style={{ height: 500 }}
           columns={[
             {
               field: "value",
-              headerName: "Catégories",
+              headerName: "Secteur",
               headerClassName: "headerTableau",
               minWidth: 110,
               flex: 0.5,
@@ -49,14 +47,15 @@ const ListeCategorie = () => {
             fontFamily: "var(--ff-body)",
             fontSize: "var(--fs-body)",
             color: "var(--clr-green)",
-            borderColor: "var(--clr-green)",
+            borderColor: "var(--clr-orange)",
+            // backdropFilter: "blur(20px)",
             boxShadow: "5px 5px 5px var(--shadowColor)",
             width: "100%",
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
-          rows={categories}
+          rows={secteurs}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />
@@ -65,14 +64,14 @@ const ListeCategorie = () => {
             className="newCategoInput"
             type="text"
             name="myInput"
-            placeholder="Nouvelle Catégorie"
+            placeholder="Nouveau Secteur"
             size="30"
             required
           ></input>
-          <button className="button2 adminButton">Ajouter categorie</button>
+          <button className="button2 adminButton">Ajouter Secteur</button>
         </div>
       </div>
     </>
   );
 };
-export default ListeCategorie;
+export default ListeSecteur;

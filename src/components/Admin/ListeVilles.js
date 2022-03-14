@@ -47,8 +47,7 @@ const ListeVilles = () => {
               headerAlign: "center",
               renderCell: (field) => (
                 <i
-                  /*onClick={() => console.log(field.id)}*/
-                  class="fas fa-times-circle"
+                /*onClick={() => console.log(field.id)}*/
                 ></i>
               ),
             },
@@ -56,10 +55,9 @@ const ListeVilles = () => {
           sx={{
             //REGLAGE GENERAL DU TABLEAU
             fontFamily: "var(--ff-body)",
-            fontSize: "2rem",
+            fontSize: "var(--fs-body)",
             color: "var(--clr-green)",
-            borderColor: "var(--clr-orange)",
-            // backdropFilter: "blur(20px)",
+            borderColor: "var(--clr-green)",
             boxShadow: "5px 5px 5px var(--shadowColor)",
             width: "100%",
             padding: "8px",

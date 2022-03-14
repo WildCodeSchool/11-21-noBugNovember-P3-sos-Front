@@ -1,9 +1,15 @@
 import publishIcon from "../../assets/publish.svg";
+import "./Styles/ListeArticles.css";
+
+import { ArticleContext } from "../../context/ArticleContext";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { useContext } from "react";
-import { ArticleContext } from "../../context/ArticleContext";
-import "./Styles/ListeArticles.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const ListArticles = () => {
   const { articles } = useContext(ArticleContext);
@@ -28,7 +34,7 @@ const ListArticles = () => {
               field: "titre",
               headerName: "Titre",
               headerClassName: "headerTableau",
-              minWidth: 110,
+              maxWidth: 300,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -37,7 +43,7 @@ const ListArticles = () => {
               field: "nom_categorie",
               headerName: "Catégorie",
               headerClassName: "headerTableau",
-              minWidth: 110,
+              maxWidth: 230,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -46,7 +52,7 @@ const ListArticles = () => {
               field: "nom_sous_categorie",
               headerName: "Sous-catégorie",
               headerClassName: "headerTableau",
-              minWidth: 110,
+              maxWidth: 230,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -55,7 +61,7 @@ const ListArticles = () => {
               field: "nom_secteur",
               headerName: "Secteur",
               headerClassName: "headerTableau",
-              minWidth: 110,
+              maxWidth: 110,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -64,7 +70,7 @@ const ListArticles = () => {
               field: "nom_ville",
               headerName: "Villes",
               headerClassName: "headerTableau",
-              minWidth: 110,
+              maxWidth: 110,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -73,7 +79,7 @@ const ListArticles = () => {
               field: "nom_region",
               headerName: "Région",
               headerClassName: "headerTableau",
-              minWidth: 110,
+              maxWidth: 250,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -82,7 +88,7 @@ const ListArticles = () => {
               field: "download",
               headerName: "Downloads",
               headerClassName: "headerTableau",
-              minWidth: 110,
+              maxWidth: 110,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -91,28 +97,39 @@ const ListArticles = () => {
               field: "action",
               headerName: "Action",
               headerClassName: "headerTableau",
-              minWidth: 105,
+              maxWidth: 300,
               flex: 0.5,
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div>
-                  <i
-                  /*onClick={() => console.log(field.id)}*/
-                  ></i>
-                  <i
-                  /*onClick={() => console.log(field.id)}*/
-                  ></i>
+                <div className="actionIcon">
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="editIcon"
+                  />
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="deletIcon"
+                  />
+                  <FontAwesomeIcon
+                    icon={faEye}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="eyeIcon"
+                  />
                 </div>
               ),
             },
           ]}
           sx={{
             fontFamily: "var(--ff-body)",
-            fontSize: "2rem",
+            fontSize: "var(--fs-body)",
             color: "var(--clr-green)",
-            borderColor: "var(--clr-orange)",
-            // backdropFilter: "blur(20px)",
+            borderColor: "var(--clr-green)",
             boxShadow: "5px 5px 5px var(--shadowColor)",
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},

@@ -23,7 +23,7 @@ const { categories } = useContext(CategoriesContext)
       
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

@@ -11,6 +11,7 @@
 
 .articleGridBgGreen {
   background-color: var(--clr-bg-green);
+  overflow-x: hidden;
 }
 
 .holderSlider {
