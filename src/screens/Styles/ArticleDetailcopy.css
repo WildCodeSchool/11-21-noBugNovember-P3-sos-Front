@@ -2,7 +2,7 @@
   background-color: var(--clr-bg-green);
   width: 100%;
   min-height: 100vh;
-  padding: 1rem 0 10rem 0;/*Ajout*/
+  padding: 1rem 0 10rem 0;
 }
 
 .articleDetailWrapper {
@@ -28,7 +28,7 @@
   align-items: center;
 }
 
-.btnCat{/*Ajout*/
+.btnCat{
   padding: 1rem;
     border-radius: 0 2rem 0rem 0;
     width: 20rem;
@@ -52,10 +52,11 @@
   margin: 0 1rem;
 }
 
-.btnSousCat{/*Ajout*/
+.btnSousCat{
   padding: 1rem;
   border-radius: 0 2rem 0rem 0;
-  width: 20rem;
+  width: fit-content;
+  min-width: 20rem;
   height: 4rem;
   text-align: center;
   display: flex;
@@ -71,24 +72,18 @@
 
 .btn-green-form2{
   margin-left: 2rem;
-  background-color: var(--clr-green4); /*Ajout*/
-  color: white;/*Ajout*/
 }
 
-.boutonTelechargementDoc{/*Ajout*/
-margin: 4rem 0;
-}
-
-.articleTitreH2{/*Ajout*/
-  font-size: 5rem ;
+.articleTitreH2{
+  font-size: 4rem ;
   text-align: justify;
   margin-bottom: 1rem;
 }
 
 .articleDetailIntro {
   width: 100%;
-  font-style: italic;/*Ajout*/
-  text-align: justify;/*Ajout*/
+  font-style: italic;
+  text-align: justify;
 
 }
 
@@ -119,38 +114,38 @@ margin: 4rem 0;
   color: var(--clr-green);
   font-family: var(--ff-body);
   font-weight: 600;
-  margin-top: 4rem;/*Ajout*/
+  margin-top: 4rem;
 }
 
 .articleDetailImage {
-  height: 100%;
+  height: auto;
   width: 100%;
-  float: left; /* HORRIBLE FLOAT PLACE ICI !!!!!!    L O L   */ 
-  margin:  0rem 3rem 0rem -8rem;
+  margin: 4rem;
+  
 } 
 
 .articleImage{
-  /* border: 5px solid var(--clr-green); */
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;/*Ajout*/
+  /* border: 10px solid var(--clr-green); */
+  height: 400px;
+  width: 90%;
+  margin: 0 auto;
+  object-fit: cover;
 }
 
 .articleDetailFirst {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   text-align: justify;
 }
 
-.articleDetailPara {/*Ajout*/
-  width: 95%;/*Ajout*/
+.articleDetailPara {
+  width: 90%;
   display: flex;
-  margin: 0 0;
+  margin: 3rem 0;
 }
 
 #articleDetailPara {
-  text-align: justify;/*Ajout*/
 }

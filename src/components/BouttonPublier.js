@@ -9,8 +9,7 @@ const BouttonPublier = (props) => {
       <button
         onClick={collectDatas}
         className="button2 adminButton"
-      >
-        Publier l'article
+        >Publier l'article
       </button>
     </div>
   )
