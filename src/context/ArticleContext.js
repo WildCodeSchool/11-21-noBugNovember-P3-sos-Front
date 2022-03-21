@@ -4,6 +4,11 @@ import axios from 'axios'
 export const ArticleContext = createContext()
 
 const ArticleContextProvider = (props) => {
+
+  const [villeChoice, setVilleChoice]= useState('')
+  const [categorieChoice, setCategorieChoice]= useState('')
+  const [sousCategorieChoice, setSousCategorieChoice]= useState('')
+
   const [articles, setArticles] = useState([])
   const [filterCat, setFilterCat] = useState('')
   const [filters, setFilters] = useState('')
@@ -12,8 +17,7 @@ const ArticleContextProvider = (props) => {
     setFilterCat(id)
     setFilters(`?categorie=${filterCat}`)
   }
-  // if (filterCat) {
-  // }
+  
 
   useEffect(() => {
     axios
@@ -22,7 +26,7 @@ const ArticleContextProvider = (props) => {
   }, [filterCat])
 
   return (
-    <ArticleContext.Provider value={{ articles, handleCat }}>
+    <ArticleContext.Provider value={{ articles, handleCat,villeChoice, setVilleChoice, categorieChoice, setCategorieChoice, sousCategorieChoice,setSousCategorieChoice }}>
       {props.children}
     </ArticleContext.Provider>
   )

@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import {useContext,useState} from 'react'
 import { VillesContext } from "../context/VillesContext";
 import { CategoriesContext } from "../context/CategoriesContext";
 import { SousCategoriesContext } from "../context/SousCategoriesContext";
@@ -9,6 +9,8 @@ const ArtSearchBar = () => {
   const {villes } = useContext(VillesContext)
   const { categories } = useContext(CategoriesContext)
   const { sousCategories } = useContext(SousCategoriesContext)
+
+ 
  
   console.log(sousCategories, categories,"5")
     return (
