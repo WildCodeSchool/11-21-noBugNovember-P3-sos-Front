@@ -1,28 +1,42 @@
-import './Styles/SearchBar.css'
+import {useContext} from 'react'
+import { VillesContext } from "../context/VillesContext";
+import { CategoriesContext } from "../context/CategoriesContext";
+import { ArticleContext } from "../context/ArticleContext";
+import "./Styles/SearchBar.css";
+import Select from './Select'
 
 const SearchBar = () => {
-  return (
-    <div className='holderSearchBar'>
-      <div className='SearchBar'>
-        <input type='text' name='searchBar' placeholder='Rechercher'></input>
+const {villes } = useContext(VillesContext)
+const { categories } = useContext(CategoriesContext)
 
-        <select name='citySelect' id='citySelect'>
-          <option value='' disabled selected hidden>
-            Ville
-          </option>
-          <option value='Grenoble'>Grenoble</option>
-          <option value='Paris'>Paris</option>
-        </select>
-        <select name='catSelect' id='catSelect'>
-          <option value='' disabled selected hidden>
-            Catégories
-          </option>
-          <option value='Grenoble'>Jeunesse</option>
-          <option value='Pré-incubation'>Pré-incubation</option>
-          <option value='Ideation'>Ideation</option>
-          <option value='Amorçage'>Amorçage</option>
-          <option value='Outils de gestions'>Outils de gestions</option>
-        </select>
+const { villeChoice } = useContext(ArticleContext)
+const {  setVilleChoice } = useContext(ArticleContext)
+const { categorieChoice } = useContext(ArticleContext)
+const {setCategorieChoice } = useContext(ArticleContext)
+const { sousCategorieChoice } = useContext(ArticleContext)
+const {setSousCategorieChoice } = useContext(ArticleContext)
+
+const handleChange=(e,set)=>{
+  set(e.target.value)
+  console.log(villeChoice)
+}
+  return (
+    <div className="holderSearchBar">
+      <div className="SearchBar">
+        <input type="text" name="searchBar" placeholder="Rechercher"></input>
+  
+        <Select
+         name={'Ville'}
+         result={villes}
+         value={villeChoice}
+         onChange={handleChange(e, setVilleChoice)}
+        />
+        <Select
+         name={'Catégories'}
+         result={categories}
+         value={categorieChoice}
+        />
+      
       </div>
     </div>
   )
