@@ -9,7 +9,11 @@ const CardArticle = (props) => {
             props.id % 2 === 0 ? 'leftAlignCard' : 'rightAlignCard'
           }`}
         >
-          <div className='imgCard'>
+          <div
+            className={`imgCard ${
+              props.id % 2 === 0 ? 'leftAlignImg' : 'rightAlignImg'
+            }`}
+          >
             <img src={props.image} alt={props.titre} />
           </div>
           <div className='holderContent'>
