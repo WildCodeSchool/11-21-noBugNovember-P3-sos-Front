@@ -4,15 +4,17 @@ import "./Styles/ListeArticles.css";
 import { ArticleContext } from "../../context/ArticleContext";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-const ListArticles = () => {
+const ListArticles = (props) => {
+  const {setModifArticle}=props
   const { articles } = useContext(ArticleContext);
+  
 
   return (
     <>
@@ -30,6 +32,15 @@ const ListArticles = () => {
         <DataGrid
           style={{ height: 700 }}
           columns={[
+            {
+              field: "id",
+              headerName: "ID",
+              headerClassName: "headerTableau",
+              maxWidth: 50,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
             {
               field: "titre",
               headerName: "Titre",
@@ -103,12 +114,16 @@ const ListArticles = () => {
               headerAlign: "center",
               renderCell: (field) => (
                 <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                  <Link to="/admin-controler/modification-article">
+                    {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
+
                   <FontAwesomeIcon
                     icon={faTrash}
                     size="1x"
@@ -135,11 +150,14 @@ const ListArticles = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
+          onRowClick={(datas) => setModifArticle(datas.row)}
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />
+
       </div>
+      
     </>
   );
 };
