@@ -99,7 +99,7 @@ select {
   font: inherit;
   border: none;
   outline: none;
-  font-size: 1.5rem !important;
+  font-size: 1.5rem;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -205,18 +205,14 @@ p {
   background-color: var(--clr-white);
   /* color: var(--clr-green); */
 }
+/* COMPOSANT DU PANEL ADMIN MODIFIANT LA TAILLE DE LA FONT */
 
-.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
-  font-size: 1.5rem !important;
-}
-
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root,
 .MuiTablePagination-root,
-.css-rtrcn9-MuiTablePagination-root {
-  font-size: 1.5rem !important;
-}
-
+.css-rtrcn9-MuiTablePagination-root,
 .MuiTablePagination-root p,
-.css-rtrcn9-MuiTablePagination-root p {
+.css-rtrcn9-MuiTablePagination-root p,
+.css-ahj2mt-MuiTypography-root {
   font-size: 1.5rem !important;
 }
 
@@ -230,10 +226,6 @@ p {
 .MuiFormLabel-filled,
 .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
   font-size: 1.8rem !important;
-}
-
-.css-ahj2mt-MuiTypography-root {
-  font-size: 1.5rem !important;
 }
 
 .css-i4bv87-MuiSvgIcon-root {

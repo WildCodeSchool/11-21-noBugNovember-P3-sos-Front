@@ -23,7 +23,7 @@ const FirstVisit = () => {
               <option value="Paris">Paris</option>
             </select>
           </div>
-          <button>Valider</button>
+          {/* <button>Valider</button> */}
         </div>
         <Parcours />
       </div>

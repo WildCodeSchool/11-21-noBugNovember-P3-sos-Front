@@ -1,6 +1,6 @@
 .homeWrapper {
   width: 95vw;
-  height: 90vh;
+  height: 100%;
   margin: auto;
 }
 
@@ -68,6 +68,9 @@
   padding: 0 13.5rem;
   color: var(--clr-white);
 }
+.pHolder {
+  padding-left: 50px;
+}
 
 .homeSplitGreen p {
   margin: 3rem 0rem;
@@ -109,6 +112,9 @@
     padding: 0rem 0 0 2rem;
   }
 }
+
+/******* Mobile *******/
+
 @media screen and (max-width: 40em) {
   .homeSplitWrap {
     display: flex;
@@ -121,7 +127,7 @@
   .homeSplitGreen {
     width: 100%;
     margin-top: 3em;
-    min-height: 35vh;
+    min-height: 45vh;
     justify-content: flex-end;
     padding-bottom: 2em;
   }
@@ -132,6 +138,6 @@
     width: 100%;
     margin-top: 3em;
     justify-content: space-around;
-    min-height: 40vh;
+    min-height: 50vh;
   }
 }
