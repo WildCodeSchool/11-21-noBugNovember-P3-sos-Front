@@ -1,18 +1,15 @@
-// import {useEffect} from 'react'
+import {useState} from 'react'
 
 const Select = (props)=>{
 
-    
-
-console.log("6", props.result)
 return(
 <>
-    <select>
+    <select value={props.value} onChange={(e) => props.set(e.target.value)}>
     <option value="" disabled selected hidden>
     {props.name}
     </option>
     {props.result.map(el=>(
-    <option key={el.id} value={el.value}>{el.label}</option>))}
+    <option key={el.id}  value={el.label}>{el.label}</option>))}
     </select>
 </>
 );
