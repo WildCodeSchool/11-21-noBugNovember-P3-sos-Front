@@ -17,7 +17,7 @@ const Slide = ({ idArticle, handleSlideClick, idSlide, button }) => {
       <li
         ref={slideContent}
         className={classSlide}
-        onClick={() => handleSlideClick(idSlide)}
+        onClick={() => handleSlideClick(idArticle)}
       >
         <article className='slide__content'>
           <button className='slide__headline borderRadius'>{button}</button>
