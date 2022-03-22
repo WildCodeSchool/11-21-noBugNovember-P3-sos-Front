@@ -9,10 +9,12 @@
 
 .leftAlignCard {
   flex-direction: row;
+  border-radius: 0 0 0 25rem;
 }
 
 .rightAlignCard {
   flex-direction: row-reverse;
+  border-radius: 0 25rem 0 0;
 }
 
 .imgCard {
@@ -25,6 +27,12 @@
   align-items: center;
 }
 
+.rightAlignImg {
+  border-radius: 0 25rem 0 0;
+}
+.leftAlignImg {
+  border-radius: 0 0 0 25rem;
+}
 .imgCard img {
   max-width: 150%;
 }
@@ -48,7 +56,7 @@
 
 @media screen and (max-width: 40em) {
   .leftAlignCard {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .rightAlignCard {
@@ -58,13 +66,15 @@
   .cardDetails {
     height: 30em;
     align-items: center;
+    margin-top: 100px;
   }
+
   .imgCard {
     width: 100%;
   }
 
   .imgCard img {
-    max-width: 100%;
+    max-width: 150%;
   }
 
   .holderContent {

@@ -99,7 +99,7 @@ select {
   font: inherit;
   border: none;
   outline: none;
-  font-size: 1.5rem !important;
+  font-size: 1.5rem;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -136,13 +136,14 @@ h1 {
 
 h2 {
   color: var(--clr-white);
+   font-size: clamp(2rem, 1.3571rem + 2.8571vw, 3.5rem);;
 }
 
 h3 {
 }
 
 p {
-  font-size: clamp(1.2rem, 1.0597rem + 0.3896vw, 1.6rem);
+  font-size: clamp(1.4rem, 1.0597rem + 0.3896vw, 1.8rem);
 }
 
 /*Border Radius */

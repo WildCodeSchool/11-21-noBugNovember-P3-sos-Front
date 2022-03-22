@@ -6,15 +6,15 @@ import Slide from './Slide.js'
 import './Styles/CarouselCat.scss'
 
 const Slider = () => {
-  const [indexImg, setIndexImg] = useState(0)
-
   const { categories } = useContext(CategoriesContext)
   const { handleCat } = useContext(ArticleContext)
+  const { idArticle } = useContext(ArticleContext)
+  const { setIdArticle } = useContext(ArticleContext)
 
   const heading = 'Exemple Slider'
 
   const wrapperTransform = {
-    transform: `translateX(-${(indexImg - 1) * (100 / categories.length)}%)`,
+    transform: `translateX(-${(idArticle - 1) * (100 / categories.length)}%)`,
   }
 
   const headingId = `slider-heading__${heading
@@ -22,9 +22,9 @@ const Slider = () => {
     .toLowerCase()}`
 
   const handleSlideClick = (id) => {
-    if (indexImg !== id) {
+    if (idArticle !== id) {
       handleCat(id)
-      setIndexImg(id)
+      setIdArticle(id)
     }
   }
 
@@ -42,7 +42,7 @@ const Slider = () => {
                 key={slide.id}
                 idSlide={slide.id}
                 slide={categories}
-                indexImg={indexImg}
+                idArticle={idArticle}
                 button={slide.value}
                 handleSlideClick={handleSlideClick}
               />
