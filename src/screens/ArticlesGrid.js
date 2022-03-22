@@ -6,7 +6,7 @@ import CarouselCat from '../components/CarouselCat.js'
 
 import CardArticle from "../components/CardArticle.js";
 import Header from "../components/Header.js";
-import ArtSearchBar from "../components/ArtSearchBar.js";
+import SearchBar from "../components/SearchBar.js";
 
 import { ArticleContext } from '../context/ArticleContext'
 
@@ -19,7 +19,7 @@ const ArticlesGrid = () => {
       <div className="articleGridBgGreen">
         <div className="articleGridHolderSearchBar">
           <div className="articleGridSearchBar">
-            <ArtSearchBar />
+            <SearchBar isVille={true} isCat={false} isSousCat={true}/>
             <CarouselCat />
           </div>
         </div>

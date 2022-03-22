@@ -1,9 +1,20 @@
+import {useContext} from 'react';
 import SearchBar from "../components/SearchBar";
+import { ArticleContext } from "../context/ArticleContext";
 import Header from "../components/Header";
 import "./Styles/Home.css";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const {setIdArticle}=useContext(ArticleContext)
+  const {handleCat}=useContext(ArticleContext)
+  const {categorieChoice}=useContext(ArticleContext)
+  const handleSearchClick=(id) =>{
+  
+    handleCat(id)
+    setIdArticle(id)
+  }
+
   return (
     <>
       <Header />
@@ -22,9 +33,9 @@ const Home = () => {
                 </Link>
               </div>
               <h2>Tu connais la plate-forme ?</h2>
-              <SearchBar />
+              <SearchBar isVille={true} isSousCat={false} isCat={true} />
               <Link to="/articlesGrid">
-                <button className="buttonGreen"> Chercher</button>
+                <button className="buttonGreen" onClick={handleSearchClick(categorieChoice)}> Chercher</button>
               </Link>
             </div>
             <div className="homeSplitGreen">

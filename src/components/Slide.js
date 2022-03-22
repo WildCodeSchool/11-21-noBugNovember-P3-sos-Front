@@ -1,14 +1,14 @@
 import { useRef } from 'react'
 
-const Slide = ({ indexImg, handleSlideClick, idSlide, button }) => {
+const Slide = ({ idArticle, handleSlideClick, idSlide, button }) => {
   let slideContent = useRef()
   let classSlide = 'slide'
 
-  if (indexImg === idSlide) {
+  if (idArticle === idSlide) {
     classSlide += ' slide--current'
-  } else if (indexImg - 1 === idSlide) {
+  } else if (idArticle - 1 === idSlide ) {
     classSlide += ' slide--previous'
-  } else if (indexImg + 1 === idSlide) {
+  } else if (idArticle + 1 === idSlide ) {
     classSlide += ' slide--next'
   }
 
