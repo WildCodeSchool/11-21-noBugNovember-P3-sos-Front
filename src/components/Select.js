@@ -9,7 +9,7 @@ return(
     {props.name}
     </option>
     {props.result.map(el=>(
-    <option key={el.id}  value={el.label}>{el.label}</option>))}
+    <option key={el.id} value={el.id}>{el.label}</option>))}
     </select>
 </>
 );

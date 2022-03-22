@@ -1,13 +1,17 @@
-import { useContext, useEffect, useState } from "react";
-import { VillesContext } from "../context/VillesContext";
-import { CategoriesContext } from "../context/CategoriesContext";
-import { ArticleContext } from "../context/ArticleContext";
 import "./Styles/SearchBar.css";
+
+import { useContext, useEffect, useState } from "react";
+import { ArticleContext } from "../context/ArticleContext";
+import { CategoriesContext } from "../context/CategoriesContext";
+import { SousCategoriesContext } from "../context/SousCategoriesContext";
+import { VillesContext } from "../context/VillesContext";
+
 import Select from "./Select";
 
 const SearchBar = (props) => {
   const { villes } = useContext(VillesContext);
   const { categories } = useContext(CategoriesContext);
+  const { sousCategories } = useContext(SousCategoriesContext);
 
   const { villeChoice } = useContext(ArticleContext);
   const { setVilleChoice } = useContext(ArticleContext);
@@ -16,27 +20,19 @@ const SearchBar = (props) => {
   const { sousCategorieChoice } = useContext(ArticleContext);
   const { setSousCategorieChoice } = useContext(ArticleContext);
 
-  const [test, setTest] = useState("");
-
-  const handleVille = (e) => {
-    setVilleChoice(e.target.value);
-  };
   useEffect(() => {
     console.log("efefef", villeChoice);
   }, [villeChoice]);
 
   return (
     <div className="holderSearchBar">
-      <h1>{villeChoice}</h1>
 
       {villes && console.log("vikles", villes)}
       <div className="SearchBar">
         <input
           type="text"
           name="searchBar"
-          value={test}
           placeholder="Rechercher"
-          onChange={(e) => setTest(e.target.value)}
         ></input>
 
         {/* SELECT Ville  */}
