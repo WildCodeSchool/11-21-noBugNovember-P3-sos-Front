@@ -7,13 +7,12 @@ const ArticleContextProvider = (props) => {
   const [articles, setArticles] = useState([])
   const [filterCat, setFilterCat] = useState('')
   const [filters, setFilters] = useState('')
+  const [idArticle, setIdArticle] = useState()
 
   const handleCat = (id) => {
     setFilterCat(id)
     setFilters(`?categorie=${filterCat}`)
   }
-  // if (filterCat) {
-  // }
 
   useEffect(() => {
     axios
@@ -22,7 +21,9 @@ const ArticleContextProvider = (props) => {
   }, [filterCat])
 
   return (
-    <ArticleContext.Provider value={{ articles, handleCat }}>
+    <ArticleContext.Provider
+      value={{ articles, handleCat, idArticle, setIdArticle }}
+    >
       {props.children}
     </ArticleContext.Provider>
   )
