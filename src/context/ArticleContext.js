@@ -11,9 +11,12 @@ const ArticleContextProvider = (props) => {
 
   const [articles, setArticles] = useState([])
   const [filters, setFilters] = useState('')
-  const [idArticle, setIdArticle] = useState()
+  const [idCategorie, setIdCategorie] = useState()
 
-  useEffect (() => {setFilters(`?categorie=${idArticle}`) } ,[idArticle])
+
+
+  useEffect (() => {
+    setFilters(`?categorie=${idCategorie}`) } ,[idCategorie])
 
 
   useEffect(() => {
@@ -23,7 +26,7 @@ const ArticleContextProvider = (props) => {
   }, [filters])
 
   return (
-    <ArticleContext.Provider value={{ articles,villeChoice, setVilleChoice, categorieChoice, setCategorieChoice, sousCategorieChoice,setSousCategorieChoice , idArticle, setIdArticle}}>
+    <ArticleContext.Provider value={{ articles,villeChoice, setVilleChoice, categorieChoice, setCategorieChoice, sousCategorieChoice,setSousCategorieChoice , idCategorie, setIdCategorie}}>
       {props.children}
     </ArticleContext.Provider>
   )

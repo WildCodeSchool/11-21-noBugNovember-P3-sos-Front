@@ -1,7 +1,7 @@
 import './Styles/ArticlesGrid.css'
 
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CarouselCat from '../components/CarouselCat.js'
 
 import CardArticle from "../components/CardArticle.js";
@@ -13,9 +13,12 @@ import { ArticleContext } from '../context/ArticleContext'
 const ArticlesGrid = () => {
   const { articles } = useContext(ArticleContext)
 
+  // const idCat = useParams()
+
   return (
+
     <>
-      <Header />
+           <Header />
       <div className="articleGridBgGreen">
         <div className="articleGridHolderSearchBar">
           <div className="articleGridSearchBar">
@@ -23,8 +26,9 @@ const ArticlesGrid = () => {
             <CarouselCat />
           </div>
         </div>
-        {articles.map((result) => {
+        {articles && articles.map((result) => {
           return (
+
             <Link to={`articleDetail/${result.id}`}>
               <CardArticle
                 key={result.id}
