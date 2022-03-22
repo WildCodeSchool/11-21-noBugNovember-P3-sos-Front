@@ -10,33 +10,20 @@ const ArticleContextProvider = (props) => {
   const [sousCategorieChoice, setSousCategorieChoice]= useState('')
 
   const [articles, setArticles] = useState([])
-  const [filterCat, setFilterCat] = useState('')
   const [filters, setFilters] = useState('')
   const [idArticle, setIdArticle] = useState()
 
-  const handleCat = (id) => {
-    setFilterCat(id)
-    setFilters(`?categorie=${filterCat}`)
-  }
-<<<<<<< HEAD
-  
-=======
->>>>>>> dev
+  useEffect (() => {setFilters(`?categorie=${idArticle}`) } ,[idArticle])
+
 
   useEffect(() => {
     axios
       .get(`http://localhost:4242/articles${filters}`)
       .then((res) => setArticles(res.data))
-  }, [filterCat])
+  }, [filters])
 
   return (
-<<<<<<< HEAD
-    <ArticleContext.Provider value={{ articles, handleCat,villeChoice, setVilleChoice, categorieChoice, setCategorieChoice, sousCategorieChoice,setSousCategorieChoice }}>
-=======
-    <ArticleContext.Provider
-      value={{ articles, handleCat, idArticle, setIdArticle }}
-    >
->>>>>>> dev
+    <ArticleContext.Provider value={{ articles,villeChoice, setVilleChoice, categorieChoice, setCategorieChoice, sousCategorieChoice,setSousCategorieChoice , idArticle, setIdArticle}}>
       {props.children}
     </ArticleContext.Provider>
   )

@@ -7,14 +7,13 @@ import './Styles/CarouselCat.scss'
 
 const Slider = () => {
   const { categories } = useContext(CategoriesContext)
-  const { handleCat } = useContext(ArticleContext)
   const { idArticle } = useContext(ArticleContext)
   const { setIdArticle } = useContext(ArticleContext)
 
   const heading = 'Exemple Slider'
 
   const wrapperTransform = {
-    transform: `translateX(-${(idArticle - 1) * (100 / categories.length)}%)`,
+    transform: `translateX(-${(idArticle -1 ) * (100 / categories.length)}%)`,
   }
 
   const headingId = `slider-heading__${heading
@@ -23,8 +22,7 @@ const Slider = () => {
 
   const handleSlideClick = (id) => {
     if (idArticle !== id) {
-      handleCat(id)
-      setIdArticle(id)
+        setIdArticle(id)
     }
   }
 
