@@ -12,21 +12,22 @@ const ArticleContextProvider = (props) => {
   const [articles, setArticles] = useState([])
   const [filterCat, setFilterCat] = useState('')
   const [filters, setFilters] = useState('')
-
+  const [idArticle, setIdArticle]=useState()
+  
   const handleCat = (id) => {
     setFilterCat(id)
     setFilters(`?categorie=${filterCat}`)
   }
   
-
+ 
   useEffect(() => {
     axios
       .get(`http://localhost:4242/articles${filters}`)
       .then((res) => setArticles(res.data))
-  }, [filterCat])
+  }, [filterCat,filters])
 
   return (
-    <ArticleContext.Provider value={{ articles, handleCat,villeChoice, setVilleChoice, categorieChoice, setCategorieChoice, sousCategorieChoice,setSousCategorieChoice }}>
+    <ArticleContext.Provider value={{ articles, handleCat, idArticle,setIdArticle, }}>
       {props.children}
     </ArticleContext.Provider>
   )
