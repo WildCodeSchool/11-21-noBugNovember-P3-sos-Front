@@ -4,9 +4,9 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import CarouselCat from '../components/CarouselCat.js'
 
-import CardArticle from '../components/CardArticle.js'
-import Header from '../components/Header.js'
-import SearchBar from '../components/SearchBar.js'
+import CardArticle from "../components/CardArticle.js";
+import Header from "../components/Header.js";
+import ArtSearchBar from "../components/ArtSearchBar.js";
 
 import { ArticleContext } from '../context/ArticleContext'
 
@@ -16,14 +16,14 @@ const ArticlesGrid = () => {
   return (
     <>
       <Header />
-      <div className='articleGridBgGreen'>
-        <div className='articleGridHolderSearchBar'>
-          <div className='articleGridSearchBar'>
-            <SearchBar />
+      <div className="articleGridBgGreen">
+        <div className="articleGridHolderSearchBar">
+          <div className="articleGridSearchBar">
+            <ArtSearchBar />
             <CarouselCat />
           </div>
         </div>
-        {articles.map((result, id) => {
+        {articles.map((result) => {
           return (
             <Link to={`articleDetail/${result.id}`}>
               <CardArticle

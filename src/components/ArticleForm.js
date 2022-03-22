@@ -2,7 +2,7 @@ import './Styles/ArticleForm.css'
 import {useState, useEffect} from 'react'
 import TinyArticle from './TinyArticle'
 import axios from 'axios'
-import Select, { StylesConfig }from 'react-select'
+import Select, { StylesConfig } from 'react-select'
 
 import BouttonPublier from './BouttonPublier'
 

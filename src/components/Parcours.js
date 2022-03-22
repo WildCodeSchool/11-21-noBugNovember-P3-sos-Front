@@ -7,11 +7,9 @@ import arrow from '../assets/icones/play.png'
 
 const Parcours = () => {
   const { categories } = useContext(CategoriesContext)
-  const { handleCat } = useContext(ArticleContext)
   const { setIdArticle } = useContext(ArticleContext)
 
   const handleSlideClick = (id) => {
-    handleCat(id)
     setIdArticle(id)
   }
 

@@ -22,9 +22,9 @@ const Home = () => {
                 </Link>
               </div>
               <h2>Tu connais la plate-forme ?</h2>
-              <SearchBar />
-              <Link to='/articlesGrid'>
-                <button className='buttonGreen'> Chercher</button>
+              <SearchBar isVille={true} isSousCat={false} isCat={true} />
+              <Link to="/articlesGrid">
+                <button className="buttonGreen"> Chercher</button>
               </Link>
             </div>
             <div className='homeSplitGreen'>
