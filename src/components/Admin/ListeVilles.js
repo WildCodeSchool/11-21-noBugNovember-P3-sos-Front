@@ -1,24 +1,36 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { VillesContext } from "../../context/VillesContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const ListeVilles = () => {
   const { villes } = useContext(VillesContext);
+  let location = useLocation();
 
   return (
     <>
       {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-        {/* <Link to="../articleForm">
-          <img src={publishIcon} alt="publishIcon"></img>
-        </Link> */}
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des categories</h3>
         <DataGrid
           style={{ height: 500 }}
           columns={[
+            {
+              field: "id",
+              headerName: "ID",
+              headerClassName: "headerTableau",
+              maxWidth: 70,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
             {
               field: "value",
               headerName: "Nom de Ville",
@@ -46,9 +58,28 @@ const ListeVilles = () => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <i
-                /*onClick={() => console.log(field.id)}*/
-                ></i>
+                <div className="actionIcon">
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="editIcon"
+                  />
+                  <Link to="./modal" state={{ backgroundLocation: location }}>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="deletIcon"
+                    />
+                  </Link>
+                  <FontAwesomeIcon
+                    icon={faEye}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="eyeIcon"
+                  />
+                </div>
               ),
             },
           ]}

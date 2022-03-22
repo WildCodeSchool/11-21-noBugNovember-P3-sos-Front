@@ -1,10 +1,16 @@
 import "./Styles/ListeCategorie.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { CategoriesContext } from "../../context/CategoriesContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const ListeCategorie = () => {
   const { categories } = useContext(CategoriesContext);
+  let location = useLocation();
 
   return (
     <>
@@ -20,6 +26,15 @@ const ListeCategorie = () => {
         <DataGrid
           style={{ height: 500 }}
           columns={[
+            {
+              field: "id",
+              headerName: "ID",
+              headerClassName: "headerTableau",
+              maxWidth: 70,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
             {
               field: "value",
               headerName: "Catégories",
@@ -38,9 +53,28 @@ const ListeCategorie = () => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <i
-                /*onClick={() => console.log(field.id)}*/
-                ></i>
+                <div className="actionIcon">
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="editIcon"
+                  />
+                  <Link to="./modal" state={{ backgroundLocation: location }}>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="deletIcon"
+                    />
+                  </Link>
+                  <FontAwesomeIcon
+                    icon={faEye}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="eyeIcon"
+                  />
+                </div>
               ),
             },
           ]}

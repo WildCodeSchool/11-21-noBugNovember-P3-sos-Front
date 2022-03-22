@@ -1,13 +1,22 @@
 import { ArticleContext } from "../context/ArticleContext";
 import Header from "../components/Header";
 import { useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "./Styles/ArticleDetail.css";
 import fleche from "../assets/icones/flecheCercle.png";
+import ModalDL from "../components/ModalDL";
 
-const ArticleDetail1 = () => {
+const ArticleDetail = (
+  isActive,
+  setISActive,
+  toggle,
+  setIsShowing,
+  isShowing,
+  ...props
+) => {
   const { articles } = useContext(ArticleContext);
-  console.log(articles);
+  let location = useLocation();
   let { id } = useParams();
   return (
     <>
@@ -26,12 +35,14 @@ const ArticleDetail1 = () => {
                 <>
                   <div className="stateCatArticlesCat">
                     <Link to="/articlesGrid">
-                      <button className="btnCat ">[ CATEGORIE ]</button>
+                      <button className="btnCat ">
+                        {result.nom_categorie}
+                      </button>
                     </Link>
                     <img src={fleche} alt="fleche" className="gridArrow" />
                     <Link to="/articlesGrid">
                       <button className="btnSousCat ">
-                        [ SOUS-CATEGORIE ]
+                        {result.nom_sous_categorie}
                       </button>
                     </Link>
                   </div>
@@ -39,35 +50,31 @@ const ArticleDetail1 = () => {
                   <div className="articleDetailIntro">
                     <p id="articleDetailIntro">{result.intro}</p>
                   </div>
-
-                  <br />
-                  <br />
-
+                  <div className="articleDetailImage">
+                    <img
+                      src={result.image}
+                      alt={result.tire}
+                      className="articleImage"
+                    ></img>
+                  </div>
                   <div className="articleDetailFirst">
-                    <div className="articleDetailImage">
-                      <img
-                        src={result.image}
-                        alt={result.tire}
-                        className="articleImage"
-                      ></img>
+                    <div className="boutonTelechargementDoc">
+                      <button className="buttonGreen ">Télécharger</button>
                     </div>
                     <div className="articleDetailPara">
                       <p id="articleDetailPara">{result.para1}</p>
                     </div>
-                  </div>
-
-                  <div className="boutonTelechargementDoc">
-                    <Link to="/articlesGrid">
-                      <button className="buttonGreen ">Télécharger</button>
-                    </Link>
-                  </div>
-
-                  <p id="articleDetailPara">{result.para1}</p>
-
-                  <div className="boutonTelechargementDoc">
-                    <Link to="/articlesGrid">
-                      <button className="buttonGreen ">Télécharger</button>
-                    </Link>
+                    <div className="articleDetailPara">
+                      <p id="articleDetailPara">{result.avantage}</p>
+                    </div>
+                    <div className="boutonTelechargementDoc">
+                      <Link
+                        to={`/articlesGrid/articleDetail/${id}/modalDL`}
+                        state={{ backgroundLocation: location }}
+                      >
+                        <button className="buttonGreen ">Télécharger</button>
+                      </Link>
+                    </div>
                   </div>
                 </>
               );
@@ -78,4 +85,4 @@ const ArticleDetail1 = () => {
   );
 };
 
-export default ArticleDetail1;
+export default ArticleDetail;
