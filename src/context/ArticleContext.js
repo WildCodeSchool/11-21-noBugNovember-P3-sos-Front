@@ -7,7 +7,6 @@ const ArticleContextProvider = (props) => {
   //State Liste des Articles
   const [articles, setArticles] = useState([]);
 
-
   // State pour les filtres et Select
   const [filters, setFilters] = useState("");
   const [idCategorie, setIdCategorie] = useState();
@@ -15,8 +14,7 @@ const ArticleContextProvider = (props) => {
   const [idsousCategorie, setIdsousCategorie] = useState();
   const [searchFilter, setSearchFilter] = useState();
 
-
-  // Création du Filtre 
+  // Création du Filtre
   useEffect(() => {
     let filter = [];
 
@@ -37,34 +35,60 @@ const ArticleContextProvider = (props) => {
     resetSearch();
   };
 
-  const deleteSearchHome =() => {
+  //Supprimer recherche sur page HOme
+  const deleteSearchHome = () => {
     setIdville("");
     setSearchFilter("");
-    setIdCategorie("")
-  }
+    setIdCategorie("");
+  };
 
   // Récupération de la liste filtrée
   useEffect(() => {
-       axios
-      .get(`http://localhost:4242/articles${filters}`)
-      .then((res) => setArticles(res.data));
-  }, [idCategorie]);
+    if (filters.length === 0) {
+      console.log("vide", filters);
 
+      axios
+        .get(`http://localhost:4242/articles`)
+        .then((res) => setArticles(res.data));
+    } else if (
+      filters.includes("ville") ||
+      filters.includes("sousCategorie") ||
+      filters.includes("search")
+    ) {
+      console.log("recherce", filters);
+      // axios
+      //   .get(`http://localhost:4242/articles${filters}`)
+      //   .then((res) => setArticles(res.data));
+    } else {
+      console.log("catt", filters);
+      axios
+        .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
+        .then((res) => setArticles(res.data));
+    }
+  }, [filters, idCategorie]);
+
+  // Changement liste En fonciton de idCAtegorie
+
+  // useEffect(() => {
+  //      axios
+  //     .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
+  //     .then((res) => setArticles(res.data));
+  // }, [idCategorie]);
 
   //Lise Entière
   const resetSearch = () => {
     axios
-    .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
-    .then((res) => setArticles(res.data));
-  }
+      .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
+      .then((res) => setArticles(res.data));
+  };
 
   // Bouton Recherche
   const searchLaunch = () => {
     console.log(filters);
     axios
-    .get(`http://localhost:4242/articles${filters}`)
-    .then((res) => setArticles(res.data));
-  }
+      .get(`http://localhost:4242/articles${filters}`)
+      .then((res) => setArticles(res.data));
+  };
 
   return (
     <ArticleContext.Provider
@@ -80,7 +104,7 @@ const ArticleContextProvider = (props) => {
         setSearchFilter,
         searchLaunch,
         deleteFilter,
-        deleteSearchHome
+        deleteSearchHome,
       }}
     >
       {props.children}
