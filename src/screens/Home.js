@@ -28,7 +28,7 @@ const Home = () => {
                 </Link>
               </div>
               <h2>Tu connais la plate-forme ?</h2>
-              <SearchBar isVille={true} isSousCat={false} isCat={true} />
+              <SearchBar isVille={true} isSousCat={false} isCat={true} isButtonHome={true}/>
               {/* <Link to="/articlesGrid" onClick ={() => recupFilters() }> */}
               <Link to="/articlesGrid" onClick ={() => searchLaunch() }>
                 <button className="buttonGreen"> Chercher</button>

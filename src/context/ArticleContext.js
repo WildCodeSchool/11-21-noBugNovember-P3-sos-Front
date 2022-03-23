@@ -7,12 +7,7 @@ const ArticleContextProvider = (props) => {
   //State Liste des Articles
   const [articles, setArticles] = useState([]);
 
-  // States pour les SELECT
-  // const [villeChoice, setVilleChoice] = useState("");
-  // const [categorieChoice, setCategorieChoice] = useState("");
-  // const [sousCategorieChoice, setSousCategorieChoice] = useState("");
-  // const [searchChoice, setSearchChoice] = useState("")
- 
+
   // State pour les filtres et Select
   const [filters, setFilters] = useState("");
   const [idCategorie, setIdCategorie] = useState();
@@ -20,15 +15,8 @@ const ArticleContextProvider = (props) => {
   const [idsousCategorie, setIdsousCategorie] = useState();
   const [searchFilter, setSearchFilter] = useState();
 
-  // Récupérer les valeur des filtres
-  // const recupFilters = () => {
-  //   villeChoice && setIdville(villeChoice);
-  //   categorieChoice && setIdCategorie(categorieChoice);
-  //   sousCategorieChoice && setIdsousCategorie(sousCategorieChoice);
-  //   searchChoice && setSearchFilter(searchChoice)
-  // };
 
-  // Création du Filtre
+  // Création du Filtre 
   useEffect(() => {
     let filter = [];
 
@@ -40,25 +28,35 @@ const ArticleContextProvider = (props) => {
     setFilters(`?${filter.join("&")}`);
   }, [idCategorie, idVille, idsousCategorie, searchFilter]);
 
-  // Suppression des Filtres A TESTTTTTT
+  // Suppression des Filtres sans Supprimer la Catégorie
   const deleteFilter = () => {
-    // setVilleChoice("")
-    // setCategorieChoice("")
-    // setSousCategorieChoice("")
-    setIdville();
-    setIdCategorie();
-    setIdsousCategorie();
-    setSearchFilter();
-    // setSearchChoice();
+    setIdville("");
+    setIdsousCategorie("");
+    setSearchFilter("");
+    setFilters("");
+    resetSearch();
   };
+
+  const deleteSearchHome =() => {
+    setIdville("");
+    setSearchFilter("");
+    setIdCategorie("")
+  }
 
   // Récupération de la liste filtrée
   useEffect(() => {
-   
-    axios
+       axios
       .get(`http://localhost:4242/articles${filters}`)
       .then((res) => setArticles(res.data));
-  }, []);
+  }, [idCategorie]);
+
+
+  //Lise Entière
+  const resetSearch = () => {
+    axios
+    .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
+    .then((res) => setArticles(res.data));
+  }
 
   // Bouton Recherche
   const searchLaunch = () => {
@@ -72,12 +70,6 @@ const ArticleContextProvider = (props) => {
     <ArticleContext.Provider
       value={{
         articles,
-        // villeChoice,
-        // setVilleChoice,
-        // categorieChoice,
-        // setCategorieChoice,
-        // sousCategorieChoice,
-        // setSousCategorieChoice,
         idCategorie,
         setIdCategorie,
         idVille,
@@ -86,10 +78,9 @@ const ArticleContextProvider = (props) => {
         setIdsousCategorie,
         searchFilter,
         setSearchFilter,
-        // recupFilters,
-        // setSearchChoice,
-        // searchChoice,
-        searchLaunch
+        searchLaunch,
+        deleteFilter,
+        deleteSearchHome
       }}
     >
       {props.children}

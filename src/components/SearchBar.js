@@ -9,19 +9,13 @@ import { VillesContext } from "../context/VillesContext";
 import Select from "./Select";
 
 const SearchBar = (props) => {
+
+  // Listes des données
   const { villes } = useContext(VillesContext);
   const { categories } = useContext(CategoriesContext);
   const { sousCategories } = useContext(SousCategoriesContext);
 
-  const { villeChoice } = useContext(ArticleContext);
-  const { setVilleChoice } = useContext(ArticleContext);
-  const { categorieChoice } = useContext(ArticleContext);
-  const { searchChoice } = useContext(ArticleContext);
-  const { setCategorieChoice } = useContext(ArticleContext);
-  const { sousCategorieChoice } = useContext(ArticleContext);
-  const { setSousCategorieChoice } = useContext(ArticleContext);
-  const { setSearchChoice } = useContext(ArticleContext);
-
+  // State des Select
   const { idCategorie } = useContext(ArticleContext);
   const { setIdCategorie } = useContext(ArticleContext);
   const { idVille } = useContext(ArticleContext);
@@ -30,15 +24,16 @@ const SearchBar = (props) => {
   const { setIdsousCategorie } = useContext(ArticleContext);
   const { searchFilter } = useContext(ArticleContext);
   const { setSearchFilter } = useContext(ArticleContext);
+
+  // Fonction Rechercher
+  const { searchLaunch } = useContext(ArticleContext);
+  const { deleteFilter } = useContext(ArticleContext);
+  const { deleteSearchHome } = useContext(ArticleContext);
   
-
-
-
 
   return (
     <div className="holderSearchBar">
 
-      {villes && console.log("vikles", idVille)}
       <div className="SearchBar">
         <input
           type="text"
@@ -72,6 +67,16 @@ const SearchBar = (props) => {
           value={idsousCategorie}
           set={setIdsousCategorie}
           />}
+
+          {props.isButtonGrid && <div className="searchButtons">
+            <button  onClick={() => deleteFilter()}>Annuler</button>
+            <button onClick={() =>  searchLaunch()}>Valider</button>
+          </div>}
+          {props.isButtonHome && <div className="searchButtons">
+            <button  onClick={() => deleteSearchHome()}>Annuler</button>
+          </div>}
+
+
       </div>
     </div>
   );

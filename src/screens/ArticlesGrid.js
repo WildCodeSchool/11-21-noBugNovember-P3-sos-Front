@@ -23,7 +23,7 @@ const ArticlesGrid = () => {
         <div className="articleGridHolderSearchBar">
           <div className="articleGridSearchBar">
             {/* <ArtSearchBar /> */}
-            <SearchBar isVille={true} isSousCat={true} isCat={false} /> 
+            <SearchBar isVille={true} isSousCat={true} isCat={false} isButtonGrid={true}/> 
             <CarouselCat />
           </div>
         </div>
