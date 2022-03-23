@@ -48,10 +48,10 @@ const ArticleContextProvider = (props) => {
        axios
       .get(`http://localhost:4242/articles${filters}`)
       .then((res) => setArticles(res.data));
-  }, [idCategorie]);
+  }, [idCategorie,filters]);
 
 
-  //Lise Entière
+  //Liste Entière
   const resetSearch = () => {
     axios
     .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)

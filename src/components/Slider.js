@@ -1,14 +1,16 @@
-import { useState } from "react";
+
 import { useContext } from "react";
 import { ArticleContext } from "../context/ArticleContext";
 import { CategoriesContext } from "../context/CategoriesContext";
 import Slide from "./Slide.js";
 import "./Styles/CarouselCat.scss";
+import { SousCategoriesContext } from "../context/SousCategoriesContext";
 
 const Slider = () => {
   const { categories } = useContext(CategoriesContext);
   const { idCategorie } = useContext(ArticleContext);
   const { setIdCategorie } = useContext(ArticleContext);
+  const {sousCatSet}=useContext(SousCategoriesContext)
 
   const heading = "Exemple Slider";
 
@@ -43,6 +45,7 @@ const Slider = () => {
                 idCategorie={idCategorie}
                 setIdCategorie={setIdCategorie}
                 button={slide.value}
+                sousCatSet={sousCatSet}
                 // handleSlideClick={handleSlideClick}s
               />
             );
