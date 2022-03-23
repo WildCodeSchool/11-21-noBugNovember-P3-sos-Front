@@ -4,12 +4,16 @@ import './Styles/Home.css'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { ArticleContext } from '../context/ArticleContext'
+import { SousCategoriesContext } from '../context/SousCategoriesContext'
 
 const Home = () => {
-
-
-  const {recupFilters} = useContext(ArticleContext)
+  const {idCategorie}=useContext(ArticleContext)
+  
   const {searchLaunch} = useContext(ArticleContext)
+  const {sousCatSet}=useContext(SousCategoriesContext)
+  
+  
+ 
   return (
     <>
       <Header />
@@ -30,7 +34,7 @@ const Home = () => {
               <h2>Tu connais la plate-forme ?</h2>
               <SearchBar isVille={true} isSousCat={false} isCat={true} isButtonHome={true}/>
               {/* <Link to="/articlesGrid" onClick ={() => recupFilters() }> */}
-              <Link to="/articlesGrid" onClick ={() => searchLaunch() }>
+              <Link to="/articlesGrid" onClick ={() => {searchLaunch(); sousCatSet(idCategorie) }}>
                 <button className="buttonGreen"> Chercher</button>
               </Link>
             </div>

@@ -1,6 +1,6 @@
 import "./Styles/SearchBar.css";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ArticleContext } from "../context/ArticleContext";
 import { CategoriesContext } from "../context/CategoriesContext";
 import { SousCategoriesContext } from "../context/SousCategoriesContext";
@@ -14,6 +14,7 @@ const SearchBar = (props) => {
   const { villes } = useContext(VillesContext);
   const { categories } = useContext(CategoriesContext);
   const { sousCategories } = useContext(SousCategoriesContext);
+  
 
   // State des Select
   const { idCategorie } = useContext(ArticleContext);
@@ -70,7 +71,7 @@ const SearchBar = (props) => {
 
           {props.isButtonGrid && <div className="searchButtons">
             <button  onClick={() => deleteFilter()}>Annuler</button>
-            <button onClick={() =>  searchLaunch()}>Valider</button>
+            <button onClick={() => searchLaunch()}>Valider</button>
           </div>}
           {props.isButtonHome && <div className="searchButtons">
             <button  onClick={() => deleteSearchHome()}>Annuler</button>
