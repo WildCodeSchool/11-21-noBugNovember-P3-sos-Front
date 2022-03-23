@@ -2,8 +2,14 @@ import SearchBar from '../components/SearchBar'
 import Header from '../components/Header'
 import './Styles/Home.css'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { ArticleContext } from '../context/ArticleContext'
 
 const Home = () => {
+
+
+  const {recupFilters} = useContext(ArticleContext)
+  const {searchLaunch} = useContext(ArticleContext)
   return (
     <>
       <Header />
@@ -22,8 +28,9 @@ const Home = () => {
                 </Link>
               </div>
               <h2>Tu connais la plate-forme ?</h2>
-              <SearchBar isVille={true} isSousCat={false} isCat={true} />
-              <Link to="/articlesGrid">
+              <SearchBar isVille={true} isSousCat={false} isCat={true} isButtonHome={true}/>
+              {/* <Link to="/articlesGrid" onClick ={() => recupFilters() }> */}
+              <Link to="/articlesGrid" onClick ={() => searchLaunch() }>
                 <button className="buttonGreen"> Chercher</button>
               </Link>
             </div>
