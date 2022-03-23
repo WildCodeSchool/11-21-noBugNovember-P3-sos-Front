@@ -1,55 +1,59 @@
-import { useState } from 'react'
-import { useContext } from 'react'
-import { ArticleContext } from '../context/ArticleContext'
-import { CategoriesContext } from '../context/CategoriesContext'
-import Slide from './Slide.js'
-import './Styles/CarouselCat.scss'
+
+import { useContext } from "react";
+import { ArticleContext } from "../context/ArticleContext";
+import { CategoriesContext } from "../context/CategoriesContext";
+import Slide from "./Slide.js";
+import "./Styles/CarouselCat.scss";
+import { SousCategoriesContext } from "../context/SousCategoriesContext";
 
 const Slider = () => {
-  const { categories } = useContext(CategoriesContext)
-  const { idArticle } = useContext(ArticleContext)
-  const { setIdArticle } = useContext(ArticleContext)
+  const { categories } = useContext(CategoriesContext);
+  const { idCategorie } = useContext(ArticleContext);
+  const { setIdCategorie } = useContext(ArticleContext);
+  const {sousCatSet}=useContext(SousCategoriesContext)
 
-  const heading = 'Exemple Slider'
+  const heading = "Exemple Slider";
 
   const wrapperTransform = {
-    transform: `translateX(-${(idArticle -1 ) * (100 / categories.length)}%)`,
-  }
+    transform: `translateX(-${(idCategorie - 1) * (100 / categories.length)}%)`,
+  };
 
   const headingId = `slider-heading__${heading
-    .replace(/\s+/g, '-')
-    .toLowerCase()}`
+    .replace(/\s+/g, "-")
+    .toLowerCase()}`;
 
-  const handleSlideClick = (id) => {
-    if (idArticle !== id) {
-        setIdArticle(id)
-    }
-  }
+  // const handleSlideClick = (id) => {
+  //   if (idArticle !== id) {
+  //       setIdArticle(id)
+  //   }
+  // }
 
   return (
     <>
-      <div className='slider' aria-labelledby={headingId}>
-        <ul className='slider__wrapper' style={wrapperTransform}>
-          <h3 id={headingId} className='visuallyhidden'>
+      <div className="slider" aria-labelledby={headingId}>
+        <ul className="slider__wrapper" style={wrapperTransform}>
+          <h3 id={headingId} className="visuallyhidden">
             {heading}
           </h3>
 
-          {categories.map((slide) => {
+          {categories && categories.map((slide) => {
             return (
               <Slide
                 key={slide.id}
                 idSlide={slide.id}
                 slide={categories}
-                idArticle={idArticle}
+                idCategorie={idCategorie}
+                setIdCategorie={setIdCategorie}
                 button={slide.value}
-                handleSlideClick={handleSlideClick}
+                sousCatSet={sousCatSet}
+                // handleSlideClick={handleSlideClick}s
               />
-            )
+            );
           })}
         </ul>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;

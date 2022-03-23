@@ -4,37 +4,108 @@ import axios from "axios";
 export const ArticleContext = createContext();
 
 const ArticleContextProvider = (props) => {
-  const [villeChoice, setVilleChoice] = useState("");
-  const [categorieChoice, setCategorieChoice] = useState("");
-  const [sousCategorieChoice, setSousCategorieChoice] = useState("");
-
+  //State Liste des Articles
   const [articles, setArticles] = useState([]);
+
+  // State pour les filtres et Select
   const [filters, setFilters] = useState("");
-  const [idArticle, setIdArticle] = useState();
+  const [idCategorie, setIdCategorie] = useState();
+  const [idVille, setIdville] = useState();
+  const [idsousCategorie, setIdsousCategorie] = useState();
+  const [searchFilter, setSearchFilter] = useState();
   const [reloadArticle, setReloadArticle] = useState(true);
 
+  // Création du Filtre
   useEffect(() => {
-    setFilters(`?categorie=${idArticle}`);
-  }, [idArticle]);
+    let filter = [];
 
+    idCategorie && filter.push(`categorie=${idCategorie}`);
+    idVille && filter.push(`ville=${idVille}`);
+    idsousCategorie && filter.push(`sousCategorie=${idsousCategorie}`);
+    searchFilter && filter.push(`search=${searchFilter}`);
+
+    setFilters(`?${filter.join("&")}`);
+  }, [idCategorie, idVille, idsousCategorie, searchFilter]);
+
+  // Suppression des Filtres sans Supprimer la Catégorie
+  const deleteFilter = () => {
+    setIdville("");
+    setIdsousCategorie("");
+    setSearchFilter("");
+    setFilters("");
+    resetSearch();
+  };
+
+  //Supprimer recherche sur page HOme
+  const deleteSearchHome = () => {
+    setIdville("");
+    setSearchFilter("");
+    setIdCategorie("");
+  };
+
+  // Récupération de la liste filtrée
   useEffect(() => {
+    if (filters.length === 0) {
+      console.log("vide", filters);
+
+      axios
+        .get(`http://localhost:4242/articles`)
+        .then((res) => setArticles(res.data));
+    } else if (
+      filters.includes("ville") ||
+      filters.includes("sousCategorie") ||
+      filters.includes("search")
+    ) {
+      console.log("recherce", filters);
+      // axios
+      //   .get(`http://localhost:4242/articles${filters}`)
+      //   .then((res) => setArticles(res.data));
+    } else {
+      console.log("catt", filters);
+      axios
+        .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
+        .then((res) => setArticles(res.data));
+    }
+  }, [filters, idCategorie, reloadArticle]);
+
+  // Changement liste En fonciton de idCAtegorie
+
+  // useEffect(() => {
+  //      axios
+  //     .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
+  //     .then((res) => setArticles(res.data));
+  // }, [idCategorie]);
+
+  //Liste Entière
+  const resetSearch = () => {
+    axios
+      .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
+      .then((res) => setArticles(res.data));
+  };
+
+  // Bouton Recherche
+  const searchLaunch = () => {
+    console.log(filters);
     axios
       .get(`http://localhost:4242/articles${filters}`)
       .then((res) => setArticles(res.data));
-  }, [filters, reloadArticle]);
+  };
 
   return (
     <ArticleContext.Provider
       value={{
         articles,
-        villeChoice,
-        setVilleChoice,
-        categorieChoice,
-        setCategorieChoice,
-        sousCategorieChoice,
-        setSousCategorieChoice,
-        idArticle,
-        setIdArticle,
+        idCategorie,
+        setIdCategorie,
+        idVille,
+        setIdville,
+        idsousCategorie,
+        setIdsousCategorie,
+        searchFilter,
+        setSearchFilter,
+        searchLaunch,
+        deleteFilter,
+        deleteSearchHome,
         reloadArticle,
         setReloadArticle,
       }}

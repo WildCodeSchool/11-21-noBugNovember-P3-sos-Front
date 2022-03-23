@@ -1,14 +1,17 @@
-import { useEffect, useRef } from "react";
+import {  useRef } from "react";
 
-const Slide = ({ idArticle, handleSlideClick, idSlide, button }) => {
+
+
+const Slide = ({ idCategorie, idSlide, button, setIdCategorie,sousCatSet }) => {
+ 
   let slideContent = useRef();
   let classSlide = "slide";
 
-    if (idArticle === idSlide) {
+    if (idCategorie === idSlide) {
       classSlide += " slide--current";
-    } else if (idArticle - 1 === idSlide) {
+    } else if (idCategorie - 1 === idSlide) {
       classSlide += " slide--previous";
-    } else if (idArticle + 1 === idSlide) {
+    } else if (idCategorie + 1 === idSlide) {
       classSlide += " slide--next";
     }
 
@@ -18,7 +21,7 @@ const Slide = ({ idArticle, handleSlideClick, idSlide, button }) => {
       <li
         ref={slideContent}
         className={classSlide}
-        onClick={() => handleSlideClick(idSlide)}
+        onClick={() => {setIdCategorie(idSlide); sousCatSet(idSlide)}}
       >
         <article className="slide__content">
           <button className="slide__headline borderRadius">{button}</button>

@@ -3,25 +3,23 @@ import { ArticleContext } from '../context/ArticleContext'
 import { CategoriesContext } from '../context/CategoriesContext'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-import arrow from '../assets/icones/play.png'
+
+import { SousCategoriesContext } from '../context/SousCategoriesContext'
 
 const Parcours = () => {
   const { categories } = useContext(CategoriesContext)
-  const { setIdArticle } = useContext(ArticleContext)
-
-  const handleSlideClick = (id) => {
-    setIdArticle(id)
-  }
-
+  const { setIdCategorie } = useContext(ArticleContext)
+  
+  const { sousCatSet}=useContext(SousCategoriesContext)
   return (
     <div className='snake-bloc'>
       <div className='snake'>
         {categories.map((btnSnake) => {
           return (
-            <Link to={`/articlesGrid`} className='parcourBtn borderRadius'>
-              <div onClick={() => handleSlideClick(btnSnake.id)} className=' '>
-                {console.log(btnSnake.id)}
-
+            <Link to={`/articlesGrid`}  
+            onClick={() => {setIdCategorie(btnSnake.id);sousCatSet(btnSnake.id)} }
+            className='parcourBtn borderRadius'>    
+              <div className=' '>
                 {btnSnake.value}
               </div>
             </Link>
@@ -33,8 +31,8 @@ const Parcours = () => {
         {categories.map((btnSnake) => {
           return (
             <Link to={`/articlesGrid`} className='parcourBtn borderRadius'>
-              <div onClick={() => handleSlideClick(btnSnake.id)} className=' '>
-                {console.log(btnSnake.id)}
+              <div onClick={() => setIdCategorie(btnSnake.id)} className=' '>
+                {/* {console.log('btn snake',btnSnake.id)} */}
 
                 {btnSnake.value}
               </div>
