@@ -4,12 +4,15 @@ import { CategoriesContext } from "../context/CategoriesContext";
 import {SousCategoriesContext} from "../context/SousCategoriesContext"
 import { ArticleContext } from "../context/ArticleContext";
 import "./Styles/SearchBar.css";
+
+
+
 import Select from "./Select";
 
 const SearchBar = (props) => {
   const { villes } = useContext(VillesContext);
   const { categories } = useContext(CategoriesContext);
-  const {sousCategories}= useContext(SousCategoriesContext)
+  const { sousCategories } = useContext(SousCategoriesContext);
 
   const { villeChoice } = useContext(ArticleContext);
   const { setVilleChoice } = useContext(ArticleContext);
@@ -17,8 +20,6 @@ const SearchBar = (props) => {
   const { setCategorieChoice } = useContext(ArticleContext);
   const { sousCategorieChoice } = useContext(ArticleContext);
   const { setSousCategorieChoice } = useContext(ArticleContext);
-
-
 
   useEffect(() => {
     console.log("efefef", categorieChoice);
@@ -40,6 +41,7 @@ const SearchBar = (props) => {
          name={'Ville'}
          result={villes}
          value={villeChoice}
+         
          set={setVilleChoice}
          />
         } 
@@ -54,7 +56,6 @@ const SearchBar = (props) => {
           result={sousCategories}
           value={sousCategorieChoice}
           set={setSousCategorieChoice}
-          onChange={handleSearchChange(sousCategorieChoice)}
           />}
       </div>
     </div>

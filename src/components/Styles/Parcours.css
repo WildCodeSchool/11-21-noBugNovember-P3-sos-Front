@@ -23,45 +23,48 @@
 
 .parcourBtn {
   z-index: 10;
-  width: 17.2rem;
+  width: clamp(6rem, 100%, 17.5rem);
   height: 5.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   align-content: center;
   color: var(--clr-white);
-  cursor: pointer;
+  font-size: clamp(1rem, 1rem + 0.3vw, 1.6rem);
+  position: relative;
+  text-align: center;
+  /* cursor: pointer; */
 }
 
-.orange5 {
+.parcourBtn:nth-child(n + 1) {
   background-color: var(--clr-orange5);
 }
-.orange4 {
+.parcourBtn:nth-child(n + 2) {
   background-color: var(--clr-orange4);
 }
-.orange3 {
+.parcourBtn:nth-child(n + 3) {
   background-color: var(--clr-orange3);
 }
-.orange2 {
+.parcourBtn:nth-child(n + 4) {
   background-color: var(--clr-orange2);
 }
-.orange1 {
+.parcourBtn:nth-child(n + 5) {
   background-color: var(--clr-orange);
 }
 
-.green5 {
+.parcourBtn:nth-child(n + 6) {
   background-color: var(--clr-green5);
 }
-.green4 {
+.parcourBtn:nth-child(n + 7) {
   background-color: var(--clr-green4);
 }
-.green3 {
+a .parcourBtn:nth-child(n + 8) {
   background-color: var(--clr-green3);
 }
-.green2 {
+.parcourBtn:nth-child(n + 9) {
   background-color: var(--clr-green2);
 }
-.green {
+.parcourBtn:nth-child(n + 10) {
   background-color: var(--clr-green);
 }
 /*
@@ -105,7 +108,7 @@
 
 .snake::after {
   z-index: 1;
-  content: "";
+  content: '';
   position: absolute;
   /* height:  calc(25% - 2px);; */
   height: calc(26%);
@@ -126,7 +129,7 @@
 
 .snake::before {
   z-index: 5;
-  content: "";
+  content: '';
   position: absolute;
   /* height: calc(25% - 2px); */
   height: calc(25% + 3px);
@@ -153,19 +156,48 @@
 }
 
 .snakeArrow {
-  position: absolute;
   left: 89%;
   z-index: 20;
   transform: rotate(180deg);
   /* transform: translateX(-50%); */
   /* transform: rotate(50); */
 }
-/*
-.snake::before::before{
-  z-index: 20;
-  content: "";
-  position: absolute;
-  height: 25%;
-  width:120%;
-  background-color: black;
-} */
+
+.snakeMob {
+  display: none;
+}
+
+@media screen and (max-width: 50em) {
+  .snake {
+    display: none;
+  }
+  .snakeMob {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 80%;
+  }
+
+  .parcourBtn {
+    width: 17.5rem;
+    margin: 20px;
+  }
+
+  .parcourBtn::after {
+    content: '';
+    width: 5px;
+    height: 50px;
+    background-color: var(--clr-orange);
+    position: absolute;
+    top: 5.2rem;
+  }
+
+  .parcourBtn:last-child::after {
+    display: none;
+  }
+
+  .snakeArrow {
+    display: none;
+  }
+}
