@@ -15,6 +15,7 @@ const ListArticles = (props) => {
   const { setModifArticle, setDeleteData } = props;
   const { articles } = useContext(ArticleContext);
   let location = useLocation();
+  const toggleVisibility = () => {};
 
   return (
     <>
@@ -137,6 +138,9 @@ const ListArticles = (props) => {
                     size="1x"
                     color="var(--clr-orange)"
                     className="eyeIcon"
+                    onClick={() => {
+                      toggleVisibility();
+                    }}
                   />
                 </div>
               ),

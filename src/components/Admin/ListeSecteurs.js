@@ -5,7 +5,6 @@ import { SecteursContext } from "../../context/SecteursContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const ListeSecteur = (props) => {
   const { secteurs } = useContext(SecteursContext);
@@ -13,7 +12,6 @@ const ListeSecteur = (props) => {
   let location = useLocation();
   return (
     <>
-      {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
       </div>
@@ -64,12 +62,6 @@ const ListeSecteur = (props) => {
                       className="deletIcon"
                     />
                   </Link>
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="eyeIcon"
-                  />
                 </div>
               ),
             },

@@ -6,7 +6,6 @@ import { SousCategoriesContext } from "../../context/SousCategoriesContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const ListeSousCategories = (props) => {
   const { sousCategories } = useContext(SousCategoriesContext);
@@ -95,12 +94,6 @@ const ListeSousCategories = (props) => {
                       className="deletIcon"
                     />
                   </Link>
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="eyeIcon"
-                  />
                 </div>
               ),
             },

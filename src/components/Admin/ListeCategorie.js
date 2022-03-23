@@ -1,7 +1,6 @@
 import "./Styles/ListeCategorie.css";
-import axios from "axios";
 import { DataGrid } from "@mui/x-data-grid";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -66,12 +65,6 @@ const ListeCategorie = (props) => {
                       className="deletIcon"
                     />
                   </Link>
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="eyeIcon"
-                  />
                 </div>
               ),
             },

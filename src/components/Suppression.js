@@ -5,18 +5,34 @@ import { useNavigate } from "react-router-dom";
 import "@reach/dialog/styles.css";
 import "./Styles/Suppression.css";
 import { ArticleContext } from "../context/ArticleContext";
+import { CategoriesContext } from "../context/CategoriesContext";
+import { SecteursContext } from "../context/SecteursContext";
+import { SousCategoriesContext } from "../context/SousCategoriesContext";
+import { VillesContext } from "../context/VillesContext";
 
 function Suppression({ deleteData, page }) {
   let navigate = useNavigate();
-  const { setReloadArticle } = useContext(ArticleContext);
-  const { reloadArticle } = useContext(ArticleContext);
+  const { reloadArticle, setReloadArticle } = useContext(ArticleContext);
+
+  const { reloadCategories, setReloadCategories } =
+    useContext(CategoriesContext);
+
+  const { reloadSecteurs, setReloadSecteurs } = useContext(SecteursContext);
+
+  const { reloadSousCat, setReloadSousCat } = useContext(SousCategoriesContext);
+
+  const { reloadVilles, setReloadVilles } = useContext(VillesContext);
   const handleDeletData = () => {
     axios
       .delete(`http://localhost:4242/${page}/${deleteData.id}`)
       .then((response) => console.log("RESPONSE REQUETE", response));
     setReloadArticle(!reloadArticle);
+    setReloadCategories(!reloadCategories);
+    setReloadSecteurs(!reloadSecteurs);
+    setReloadSousCat(!reloadSousCat);
+    setReloadVilles(!reloadVilles);
+    navigate(-1);
   };
-  console.log(reloadArticle);
   return (
     <Dialog>
       {" "}

@@ -1,13 +1,15 @@
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState, createContext } from "react";
 
 import axios from "axios";
-import { ArticleContext } from "./ArticleContext";
+// import { ArticleContext } from "./ArticleContext";
 
 export const SousCategoriesContext = createContext();
 const SousCategoriesContextProvider = (props) => {
   const [filters, setFilters] = useState("");
   const [idCatSousCat, setIdCatSousCat] = useState();
   const [sousCategories, setSousCategories] = useState([]);
+  const [reloadSousCat, setReloadSousCat] = useState(true);
+
   useEffect(() => {
     let filter = [];
     idCatSousCat && filter.push(`categorie=${idCatSousCat}`);
@@ -21,18 +23,22 @@ const SousCategoriesContextProvider = (props) => {
       .get(`http://localhost:4242/souscategories/?categorie=${idCatSousCat}`)
       .then((res) => setSousCategories(res.data));
   };
-  useEffect(
-    () => {
-      axios
-        .get(`http://localhost:4242/souscategories${filters}`)
-        .then((res) => setSousCategories(res.data));
-    },
-    [filters],
-    console.log("amonde", filters)
-  );
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4242/souscategories${filters}`)
+      .then((res) => setSousCategories(res.data));
+  }, [filters]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4242/souscategories")
+      .then((res) => setSousCategories(res.data));
+  }, [reloadSousCat]);
 
   return (
-    <SousCategoriesContext.Provider value={{ sousCategories, sousCatSet }}>
+    <SousCategoriesContext.Provider
+      value={{ sousCategories, sousCatSet, reloadSousCat, setReloadSousCat }}
+    >
       {props.children}
     </SousCategoriesContext.Provider>
   );
