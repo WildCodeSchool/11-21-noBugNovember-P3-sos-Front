@@ -7,7 +7,12 @@ import fleche from "../assets/icones/flecheCercle.png";
 
 const ArticleDetail = () => {
   const { articles } = useContext(ArticleContext);
-  console.log(articles);
+
+
+  function createMarkup(result) {
+    return {__html: `${result}`};
+  }
+
   let { id } = useParams();
   return (
     <>
@@ -53,10 +58,11 @@ const ArticleDetail = () => {
                       </Link>
                     </div>
                     <div className="articleDetailPara">
-                      <p id="articleDetailPara">{result.para1}</p>
+                      <p id="articleDetailPara" dangerouslySetInnerHTML={createMarkup(result.para1)}></p>
+
                     </div>
                     <div className="articleDetailPara">
-                      <p id="articleDetailPara">{result.avantage}</p>
+                      <p id="articleDetailPara" >{result.avantage}</p>
                     </div>
                     <div className="boutonTelechargementDoc">
                       <Link to="/articlesGrid">

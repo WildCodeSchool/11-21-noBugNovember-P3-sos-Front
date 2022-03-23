@@ -17,7 +17,7 @@ const colourStyles: StylesConfig = {
   }),
 };
 const ModificationArticle = (props) => {
-  const { modifArticle } = props;
+  const { modifArticle,setModifArticle } = props;
   const [article, setArticle] = useState({});
 
   const [selectSecteur, setSelectSecteur] = useState();
@@ -45,7 +45,7 @@ const ModificationArticle = (props) => {
   const collectDatas = (event) => {
     event.preventDefault();
     setArticle({
-      titre: articleTitle,
+      titre: articleTitle || modifArticle.titre,
       intro: articleIntro,
       para1: articleContent,
       avantage: articleAvantage,
@@ -59,39 +59,40 @@ const ModificationArticle = (props) => {
       sous_categorie_id: chooseSelectSousCategorie,
       ville_id: chooseSelectVille,
     });
-    console.warn("COLLECT DATAS ======>", article);
-    axios
-      .post(`http://localhost:4242/articles`, { ...article })
+    console.log("ARTICLE DE MERDE A LA CON",article)
+      axios
+      .put(`http://localhost:4242/articles/${modifArticle.id}`, { ...article})
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
         console.error("---Erreur envoi article--- ", error.validationErrors)
       );
   };
   const handleChangeTitle = (e) => {
-    setArticleTitle(e.target.value);
+    setModifArticle({...modifArticle,titre:e.target.value});
+    setArticleTitle(e.target.value)
   };
   const handleChangeIntro = (e) => {
-    setArticleIntro(e.target.value);
+    setModifArticle({...modifArticle,intro:e.target.value});
+    setArticleIntro(e.target.value)
   };
   const handleChangeUrlImg = (e) => {
-    setArticleUrlImg(e.target.value);
+    setModifArticle({...modifArticle,image:e.target.value});
   };
   const handleChangeAvantage = (e) => {
-    setArticleAvantage(e.target.value);
+    setModifArticle({...modifArticle,avantage:e.target.value});
   };
   const handleChangeLien1 = (e) => {
-    setArticleLien1(e.target.value);
+    setModifArticle({...modifArticle,lien1:e.target.value});
   };
   const handleChangeLien2 = (e) => {
-    setArticleLien2(e.target.value);
+    setModifArticle({...modifArticle,lien2:e.target.value});
   };
   const handleChangeLien3 = (e) => {
-    setArticleLien3(e.target.value);
+    setModifArticle({...modifArticle,lien2:e.target.value});
   };
 
   const handleChangeCategorie = (value) => {
     const { id } = value;
-    console.log("VALUEEEEEEEEEEE", id);
     setChooseSelectCategorie(id);
   };
   const handleChangeSecteur = (value) => {
@@ -137,7 +138,6 @@ const ModificationArticle = (props) => {
   return (
     <>
       <h2 className="bjr-user">Bonjour [userName],</h2>
-      {console.log(modifArticle)}
 
       <div className="articles-and-types">
         {/* BLOC DE GAUCHE = ARTICLE */}
@@ -301,6 +301,7 @@ const ModificationArticle = (props) => {
         </form>
       </div>
       {console.log("RECUP ARTICLE", modifArticle)}
+
     </>
   );
 };

@@ -53,7 +53,7 @@ function App() {
                     <Route path="secteurs" element={<ListeSecteurs />} />
                     <Route
                       path="modification-article"
-                      element={<ModificationArticle modifArticle={modifArticle}/>}
+                      element={<ModificationArticle modifArticle={modifArticle} setModifArticle={setModifArticle}/>}
                     />
                   </Route>
                 </Routes>
