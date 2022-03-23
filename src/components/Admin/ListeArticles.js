@@ -4,13 +4,15 @@ import "./Styles/ListeArticles.css";
 import { ArticleContext } from "../../context/ArticleContext";
 import { Link, useLocation } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-const ListArticles = () => {
+const ListArticles = (props) => {
+  const {setModifArticle,setDeletefArticle}=props
   const { articles } = useContext(ArticleContext);
   let location = useLocation();
 
@@ -112,12 +114,15 @@ const ListArticles = () => {
               headerAlign: "center",
               renderCell: (field) => (
                 <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                  <Link to="/admin-controler/modification-article">
+                    {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
                   <Link to="./modal" state={{ backgroundLocation: location }}>
                     <FontAwesomeIcon
                       icon={faTrash}
@@ -126,6 +131,7 @@ const ListArticles = () => {
                       className="deletIcon"
                     />
                   </Link>
+
                   <FontAwesomeIcon
                     icon={faEye}
                     size="1x"
@@ -146,11 +152,14 @@ const ListArticles = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
+          onRowClick={(datas) => setDeletefArticle(datas.row)|| setModifArticle(datas.row)}
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />
+
       </div>
+      
     </>
   );
 };

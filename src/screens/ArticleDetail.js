@@ -34,15 +34,13 @@ const ArticleDetail = (
               return (
                 <>
                   <div className="stateCatArticlesCat">
-                    <Link to="/articlesGrid">
-                      <button className="btnCat ">
-                        {result.nom_categorie}
-                      </button>
+                    <Link to="/articlesGrid"> 
+                      <button className="btnCat ">{result.nom_categorie}</button>
                     </Link>
                     <img src={fleche} alt="fleche" className="gridArrow" />
                     <Link to="/articlesGrid">
                       <button className="btnSousCat ">
-                        {result.nom_sous_categorie}
+                      {result.nom_sous_categorie}
                       </button>
                     </Link>
                   </div>
@@ -59,7 +57,9 @@ const ArticleDetail = (
                   </div>
                   <div className="articleDetailFirst">
                     <div className="boutonTelechargementDoc">
-                      <button className="buttonGreen ">Télécharger</button>
+                      <Link to="/articlesGrid">
+                        <button className="buttonGreen ">Télécharger</button>
+                      </Link>
                     </div>
                     <div className="articleDetailPara">
                       <p id="articleDetailPara">{result.para1}</p>

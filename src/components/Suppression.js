@@ -4,10 +4,10 @@ import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
 import "./Styles/Suppression.css";
 
-function Suppression() {
+function Suppression(props) {
   let navigate = useNavigate();
   return (
-    <Dialog>
+    <Dialog> {console.log(props)}
       <div className="fragmentContainer">
         <div className="backContainerAdmin" onClick={() => navigate(-1)}></div>
         <div className="popUpModalDelet">
@@ -17,7 +17,7 @@ function Suppression() {
               <button className="buttonGreen" onClick={() => navigate(-1)}>
                 Retour
               </button>
-              <button className="buttonGreen">Supprimer</button>
+              <button className="buttonGreen" onClick={() => navigate(-1)}>Supprimer</button>
             </div>
           </div>
         </div>

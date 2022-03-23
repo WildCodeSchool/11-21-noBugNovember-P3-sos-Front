@@ -90,6 +90,7 @@ const ArticleForm = () => {
 
   const handleChangeCategorie = (value) => {
     const { id } = value;
+    console.log("VALUEEEEEEEEEEE", id);
     setChooseSelectCategorie(id);
   };
   const handleChangeSecteur = (value) => {

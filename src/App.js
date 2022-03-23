@@ -2,6 +2,11 @@ import "./App.css";
 
 import { Routes, Route, useLocation, useParams } from "react-router-dom";
 
+import ArticleForm from "./components/ArticleForm";
+import ListeVilles from "./components/Admin/ListeVilles";
+import ModalDL from "./components/ModalDL";
+import Suppression from "./components/Suppression";
+
 import ArticlesGrid from "./screens/ArticlesGrid";
 import FirstVisit from "./screens/FirstVisit";
 import IdentificationAdmin from "./screens/IdentificationAdmin";
@@ -17,11 +22,11 @@ import ListeCategorie from "./components/Admin/ListeCategorie";
 import ListeArticles from "./components/Admin/ListeArticles";
 import ListeSousCat from "./components/Admin/ListeSousCat";
 import ListeSecteurs from "./components/Admin/ListeSecteurs";
+import ModificationArticle from "./components/ModificationArticle";
+import { useState } from "react";
+import Parcours from "./components/Parcours";
 
-import ArticleForm from "./components/ArticleForm";
-import ListeVilles from "./components/Admin/ListeVilles";
-import ModalDL from "./components/ModalDL";
-import Suppression from "./components/Suppression";
+
 
 function App() {
   // const [isActive, setIsActive] = useState(false);
@@ -36,6 +41,8 @@ function App() {
   //   navigate(-1);
   //   setIsActive(!isActive);
   // };
+  const [modifArticle,setModifArticle]=useState("")
+  const [deleteArticle,setDeletefArticle]=useState("")
 
   return (
     <div className="App">
@@ -44,6 +51,7 @@ function App() {
           <SousCategoriesContextProvider>
             <VillesContextProvider>
               <SecteursContextProvider>
+                {console.log(deleteArticle)}
                 <Routes location={backgroundLocation || location}>
                   <Route path="/" element={<Home />} />
                   <Route path="/etapes" element={<FirstVisit />} />
@@ -58,12 +66,16 @@ function App() {
                   ></Route>
                   <Route path="admin" element={<IdentificationAdmin />}></Route>
                   <Route path="admin-controler" element={<PanelAdmin />}>
-                    <Route path="articles" element={<ListeArticles />} />
+                    <Route path="articles" element={<ListeArticles  setModifArticle={setModifArticle}/>} />
                     <Route path="articleForm" element={<ArticleForm />} />
                     <Route path="categories" element={<ListeCategorie />} />
                     <Route path="sousCategories" element={<ListeSousCat />} />
                     <Route path="villes" element={<ListeVilles />} />
                     <Route path="secteurs" element={<ListeSecteurs />} />
+                    <Route
+                      path="modification-article"
+                      element={<ModificationArticle modifArticle={modifArticle}/>}
+                    />
                   </Route>
                 </Routes>
                 {backgroundLocation && (
@@ -74,7 +86,7 @@ function App() {
                     />
                     <Route
                       path="admin-controler/articles/modal"
-                      element={<Suppression />}
+                      element={<Suppression deleteArticle={deleteArticle} />}
                     />
                     <Route
                       path="admin-controler/categories/modal"
