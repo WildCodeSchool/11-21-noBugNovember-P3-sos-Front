@@ -1,6 +1,7 @@
 import "./Styles/ListeCategorie.css";
+import axios from "axios";
 import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,16 +12,12 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 const ListeCategorie = (props) => {
   const { categories } = useContext(CategoriesContext);
   const { setDeleteData } = props;
-
   let location = useLocation();
 
   return (
     <>
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-        {/* <Link to="../articleForm">
-          <img src={publishIcon} alt="publishIcon"></img>
-        </Link> */}
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des categories</h3>
@@ -98,7 +95,6 @@ const ListeCategorie = (props) => {
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />
-
         <div className="newCategoContent">
           <input
             className="newCategoInput"

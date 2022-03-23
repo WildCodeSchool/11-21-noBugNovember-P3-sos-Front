@@ -23,13 +23,11 @@ import ListeArticles from "./components/Admin/ListeArticles";
 import ListeSousCat from "./components/Admin/ListeSousCat";
 import ListeSecteurs from "./components/Admin/ListeSecteurs";
 import ModificationArticle from "./components/ModificationArticle";
-import { useState } from "react";
-import Parcours from "./components/Parcours";
+import { useState, useContext } from "react";
 
 function App() {
   // const [isActive, setIsActive] = useState(false);
   // const { isShowing, toggle } = useModal();
-
   let location = useLocation();
   // let navigate = useNavigate();
   let backgroundLocation = location.state && location.state.backgroundLocation;

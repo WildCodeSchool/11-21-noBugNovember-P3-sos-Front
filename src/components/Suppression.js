@@ -1,19 +1,22 @@
 import axios from "axios";
 import { Dialog } from "@reach/dialog";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "@reach/dialog/styles.css";
 import "./Styles/Suppression.css";
+import { ArticleContext } from "../context/ArticleContext";
 
 function Suppression({ deleteData, page }) {
   let navigate = useNavigate();
-
+  const { setReloadArticle } = useContext(ArticleContext);
+  const { reloadArticle } = useContext(ArticleContext);
   const handleDeletData = () => {
-    axios
-      .delete(`http://localhost:4242/${page}/${deleteData.id}`)
-      .then((response) => console.log("RESPONSE REQUETE", response));
+    // axios
+    //   .delete(`http://localhost:4242/${page}/${deleteData.id}`)
+    //   .then((response) => console.log("RESPONSE REQUETE", response));
+    setReloadArticle(!reloadArticle);
   };
-  console.log(deleteData.id);
+  console.log(reloadArticle);
   return (
     <Dialog>
       {" "}
