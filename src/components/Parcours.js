@@ -7,24 +7,15 @@ import arrow from '../assets/icones/play.png'
 
 const Parcours = () => {
   const { categories } = useContext(CategoriesContext)
-  const { setCategorieChoice } = useContext(ArticleContext)
-  const { setCatSousCatChoice } = useContext(ArticleContext)
-  const{ filters } = useContext(ArticleContext)
-
-  const handleSlideClick = (id) => {
-    setCategorieChoice(id)
-    setCat
-  }
+  const { setIdCategorie } = useContext(ArticleContext)
 
   return (
     <div className='snake-bloc'>
       <div className='snake'>
         {categories.map((btnSnake) => {
           return (
-            <Link to={`/articlesGrid/`} onClick={() => handleSlideClick(btnSnake.id)}className='parcourBtn borderRadius'>
-              <div  className=' '>
-                {console.log(btnSnake.id)}
-
+            <Link to={`/articlesGrid`}  onClick={() => setIdCategorie(btnSnake.id)} className='parcourBtn borderRadius'>    
+              <div className=' '>
                 {btnSnake.value}
               </div>
             </Link>
@@ -35,9 +26,9 @@ const Parcours = () => {
       <div className='snakeMob'>
         {categories.map((btnSnake) => {
           return (
-            <Link to={`/articlesGrid/${filters}`} onClick={() => handleSlideClick(btnSnake.id)} className='parcourBtn borderRadius'>
-              <div  className=' '>
-                {console.log(btnSnake.id)}
+            <Link to={`/articlesGrid`} className='parcourBtn borderRadius'>
+              <div onClick={() => setIdCategorie(btnSnake.id)} className=' '>
+                {/* {console.log('btn snake',btnSnake.id)} */}
 
                 {btnSnake.value}
               </div>

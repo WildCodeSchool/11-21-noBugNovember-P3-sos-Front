@@ -1,62 +1,82 @@
-import { useContext, useEffect } from "react";
-import { VillesContext } from "../context/VillesContext";
-import { CategoriesContext } from "../context/CategoriesContext";
-import {SousCategoriesContext} from "../context/SousCategoriesContext"
-import { ArticleContext } from "../context/ArticleContext";
 import "./Styles/SearchBar.css";
 
-
+import { useContext, useEffect, useState } from "react";
+import { ArticleContext } from "../context/ArticleContext";
+import { CategoriesContext } from "../context/CategoriesContext";
+import { SousCategoriesContext } from "../context/SousCategoriesContext";
+import { VillesContext } from "../context/VillesContext";
 
 import Select from "./Select";
 
 const SearchBar = (props) => {
+
+  // Listes des données
   const { villes } = useContext(VillesContext);
   const { categories } = useContext(CategoriesContext);
   const { sousCategories } = useContext(SousCategoriesContext);
 
-  const { villeChoice } = useContext(ArticleContext);
-  const { setVilleChoice } = useContext(ArticleContext);
-  const { categorieChoice } = useContext(ArticleContext);
-  const { setCategorieChoice } = useContext(ArticleContext);
-  const { sousCategorieChoice } = useContext(ArticleContext);
-  const { setSousCategorieChoice } = useContext(ArticleContext);
+  // State des Select
+  const { idCategorie } = useContext(ArticleContext);
+  const { setIdCategorie } = useContext(ArticleContext);
+  const { idVille } = useContext(ArticleContext);
+  const { setIdville } = useContext(ArticleContext);
+  const { idsousCategorie } = useContext(ArticleContext);
+  const { setIdsousCategorie } = useContext(ArticleContext);
+  const { searchFilter } = useContext(ArticleContext);
+  const { setSearchFilter } = useContext(ArticleContext);
 
-  useEffect(() => {
-    console.log("efefef", categorieChoice);
-  }, [categorieChoice]);
+  // Fonction Rechercher
+  const { searchLaunch } = useContext(ArticleContext);
+  const { deleteFilter } = useContext(ArticleContext);
+  const { deleteSearchHome } = useContext(ArticleContext);
+  
 
   return (
     <div className="holderSearchBar">
+
       <div className="SearchBar">
         <input
           type="text"
           name="searchBar"
-          value=""
           placeholder="Rechercher"
-          
+          value={searchFilter}
+          onChange={e => setSearchFilter(e.target.value)}
         ></input>
 
         {/* SELECT Ville  */}
         { props.isVille && <Select
          name={'Ville'}
          result={villes}
-         value={villeChoice}
-         
-         set={setVilleChoice}
+         value={idVille}
+         set={setIdville}
          />
         } 
+
+        {/* SELECT CATEGORIE */}
         {props.isCat && <Select
           name={"Catégories"}
           result={categories}
-          value={categorieChoice}
-          set={setCategorieChoice}
+          value={idCategorie}
+          set={setIdCategorie}
         />}
+
+        {/* SELECT SOUS CAT */}
         {props.isSousCat &&  <Select
           name={'Sous-catégorie'}
           result={sousCategories}
-          value={sousCategorieChoice}
-          set={setSousCategorieChoice}
+          value={idsousCategorie}
+          set={setIdsousCategorie}
           />}
+
+          {props.isButtonGrid && <div className="searchButtons">
+            <button  onClick={() => deleteFilter()}>Annuler</button>
+            <button onClick={() =>  searchLaunch()}>Valider</button>
+          </div>}
+          {props.isButtonHome && <div className="searchButtons">
+            <button  onClick={() => deleteSearchHome()}>Annuler</button>
+          </div>}
+
+
       </div>
     </div>
   );

@@ -1,14 +1,14 @@
 import {  useRef } from "react";
 
-const Slide = ({ categorieChoice, setCategorieChoice, idSlide, button, }) => {
+const Slide = ({ idCategorie, idSlide, button, setIdCategorie }) => {
   let slideContent = useRef();
   let classSlide = "slide";
 
-    if (categorieChoice === idSlide) {
+    if (idCategorie === idSlide) {
       classSlide += " slide--current";
-    } else if (categorieChoice - 1 === idSlide) {
+    } else if (idCategorie - 1 === idSlide) {
       classSlide += " slide--previous";
-    } else if (categorieChoice + 1 === idSlide) {
+    } else if (idCategorie + 1 === idSlide) {
       classSlide += " slide--next";
     }
 
@@ -18,7 +18,7 @@ const Slide = ({ categorieChoice, setCategorieChoice, idSlide, button, }) => {
       <li
         ref={slideContent}
         className={classSlide}
-        onClick={() => setCategorieChoice(idSlide)}
+        onClick={() => setIdCategorie(idSlide)}
       >
         <article className="slide__content">
           <button className="slide__headline borderRadius">{button}</button>

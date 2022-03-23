@@ -1,23 +1,15 @@
-import {useContext} from 'react';
-import SearchBar from "../components/SearchBar";
-import { ArticleContext } from "../context/ArticleContext";
-import { SousCategoriesContext } from '../context/SousCategoriesContext';
-import Header from "../components/Header";
-import "./Styles/Home.css";
-import { Link } from "react-router-dom";
+import SearchBar from '../components/SearchBar'
+import Header from '../components/Header'
+import './Styles/Home.css'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { ArticleContext } from '../context/ArticleContext'
 
 const Home = () => {
-  
-  const {categorieChoice}=useContext(ArticleContext)
-  const {setCategorieChoice}=useContext(ArticleContext) 
-  // const{catSousCatChoice}=useContext(SousCategoriesContext)
- 
-  const{setCatSousCatChoice}=useContext(SousCategoriesContext)
-  const handleSearchClick=(id) =>{
-    setCatSousCatChoice(id)
-    setCategorieChoice(id)
-  }
 
+
+  const {recupFilters} = useContext(ArticleContext)
+  const {searchLaunch} = useContext(ArticleContext)
   return (
     <>
       <Header />
@@ -36,9 +28,10 @@ const Home = () => {
                 </Link>
               </div>
               <h2>Tu connais la plate-forme ?</h2>
-              <SearchBar isVille={true} isSousCat={false} isCat={true} />
-              <Link to="/articlesGrid">
-                <button className="buttonGreen" onClick={handleSearchClick(categorieChoice)}> Chercher</button>
+              <SearchBar isVille={true} isSousCat={false} isCat={true} isButtonHome={true}/>
+              {/* <Link to="/articlesGrid" onClick ={() => recupFilters() }> */}
+              <Link to="/articlesGrid" onClick ={() => searchLaunch() }>
+                <button className="buttonGreen"> Chercher</button>
               </Link>
             </div>
             <div className='homeSplitGreen'>
