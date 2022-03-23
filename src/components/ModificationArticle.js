@@ -166,7 +166,7 @@ const ModificationArticle = (props) => {
               />
               <TinyArticle
                 setArticleContent={setArticleContent}
-                initialValue={modifArticle.para1}
+                modifArticle={modifArticle.para1}
               />
               <input
                 className="input-article-intro"

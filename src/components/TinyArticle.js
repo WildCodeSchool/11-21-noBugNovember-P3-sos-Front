@@ -3,7 +3,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import './Styles/TinyArticle.css'
 
 export default function TinyArticle(props) {
-  const {setArticleContent}=props
+  const {setArticleContent,modifArticle}=props
   const [value,setValue]=useState('');
   const editorRef = useRef(null);
 
@@ -12,7 +12,7 @@ export default function TinyArticle(props) {
       <Editor apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
               onEditorChange={(newValue, editor) => setArticleContent(newValue)}
         onInit={(evt, editor) => editorRef.current = editor}
-        initialValue=""
+        initialValue={modifArticle}
         init={{
           height: 300,
           menubar: true,
