@@ -1,6 +1,9 @@
-import { useEffect, useRef } from "react";
+import {  useRef } from "react";
 
-const Slide = ({ idCategorie, handleSlideClick, idSlide, button, setIdCategorie }) => {
+
+
+const Slide = ({ idCategorie, idSlide, button, setIdCategorie,sousCatSet }) => {
+ 
   let slideContent = useRef();
   let classSlide = "slide";
 
@@ -18,7 +21,7 @@ const Slide = ({ idCategorie, handleSlideClick, idSlide, button, setIdCategorie 
       <li
         ref={slideContent}
         className={classSlide}
-        onClick={() => setIdCategorie(idSlide)}
+        onClick={() => {setIdCategorie(idSlide); sousCatSet(idSlide)}}
       >
         <article className="slide__content">
           <button className="slide__headline borderRadius">{button}</button>

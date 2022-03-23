@@ -1,7 +1,7 @@
 import "./Styles/ArticlesGrid.css";
 
 import { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 import CarouselCat from "../components/CarouselCat.js";
 
 import CardArticle from "../components/CardArticle.js";

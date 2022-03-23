@@ -1,4 +1,4 @@
-import {useState} from 'react'
+// import {useState} from 'react'
 
 const Select = (props)=>{
 
@@ -12,7 +12,7 @@ return(
     <option key={el.id} value={el.id}>{el.label}</option>))}
     </select>
 </>
-);
+)
 };
 
 export default Select

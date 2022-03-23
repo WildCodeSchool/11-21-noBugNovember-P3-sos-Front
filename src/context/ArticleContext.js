@@ -76,7 +76,7 @@ useEffect(() => {
       .then((res) => setArticles(res.data));
   }, [filters]);
 
-  //Lise Entière
+  //Liste Entière
   const resetSearch = () => {
     axios
       .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
