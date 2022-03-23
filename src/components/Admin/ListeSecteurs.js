@@ -7,8 +7,9 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-const ListeSecteur = () => {
+const ListeSecteur = (props) => {
   const { secteurs } = useContext(SecteursContext);
+  const { setDeleteData } = props;
   let location = useLocation();
   return (
     <>
@@ -86,6 +87,9 @@ const ListeSecteur = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
+          onRowClick={(datas) => {
+            setDeleteData(datas.row);
+          }}
           rows={secteurs}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination

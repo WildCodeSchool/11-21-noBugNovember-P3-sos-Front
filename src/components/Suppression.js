@@ -5,17 +5,15 @@ import { useNavigate } from "react-router-dom";
 import "@reach/dialog/styles.css";
 import "./Styles/Suppression.css";
 
-function Suppression(deleteData) {
+function Suppression({ deleteData, page }) {
   let navigate = useNavigate();
-  const newId = Object.values(deleteData);
-  const newId2 = newId[0];
 
   const handleDeletData = () => {
     axios
-      .delete(`http://localhost:4242/categories/${newId2}`)
+      .delete(`http://localhost:4242/${page}/${deleteData.id}`)
       .then((response) => console.log("RESPONSE REQUETE", response));
   };
-  console.log(deleteData);
+  console.log(deleteData.id);
   return (
     <Dialog>
       {" "}
@@ -23,7 +21,7 @@ function Suppression(deleteData) {
         <div className="backContainerAdmin" onClick={() => navigate(-1)}></div>
         <div className="popUpModalDelet">
           <div className="modalContainer">
-            <h2>Êtes-vous sûr de vouloir supprimer cet élément ?</h2>
+            <h2>Êtes-vous sûr de vouloir supprimer {deleteData.value} ?</h2>
             <div className="buttonModalDelet">
               <button className="buttonGreen" onClick={() => navigate(-1)}>
                 Retour

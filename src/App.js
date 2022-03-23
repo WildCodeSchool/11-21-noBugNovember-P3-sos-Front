@@ -83,9 +83,18 @@ function App() {
                       }
                     />
                     e
-                    <Route path="sousCategories" element={<ListeSousCat />} />
-                    <Route path="villes" element={<ListeVilles />} />
-                    <Route path="secteurs" element={<ListeSecteurs />} />
+                    <Route
+                      path="sousCategories"
+                      element={<ListeSousCat setDeleteData={setDeleteData} />}
+                    />
+                    <Route
+                      path="villes"
+                      element={<ListeVilles setDeleteData={setDeleteData} />}
+                    />
+                    <Route
+                      path="secteurs"
+                      element={<ListeSecteurs setDeleteData={setDeleteData} />}
+                    />
                     <Route
                       path="modification-article"
                       element={
@@ -102,23 +111,45 @@ function App() {
                     />
                     <Route
                       path="admin-controler/articles/modal"
-                      element={<Suppression deleteData={deleteData} />}
+                      element={
+                        <Suppression
+                          deleteData={deleteData}
+                          page={"articles"}
+                        />
+                      }
                     />
                     <Route
                       path="admin-controler/categories/modal"
-                      element={<Suppression />}
+                      element={
+                        <Suppression
+                          deleteData={deleteData}
+                          page={"categories"}
+                        />
+                      }
                     />
                     <Route
                       path="admin-controler/sousCategories/modal"
-                      element={<Suppression />}
-                    />
-                    <Route
-                      path="admin-controler/villes/modal"
-                      element={<Suppression />}
+                      element={
+                        <Suppression
+                          deleteData={deleteData}
+                          page={"souscategories"}
+                        />
+                      }
                     />
                     <Route
                       path="admin-controler/secteurs/modal"
-                      element={<Suppression />}
+                      element={
+                        <Suppression
+                          deleteData={deleteData}
+                          page={"secteurs"}
+                        />
+                      }
+                    />
+                    <Route
+                      path="admin-controler/villes/modal"
+                      element={
+                        <Suppression deleteData={deleteData} page={"villes"} />
+                      }
                     />
                   </Routes>
                 )}

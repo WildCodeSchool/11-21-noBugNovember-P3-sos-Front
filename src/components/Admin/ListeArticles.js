@@ -153,7 +153,7 @@ const ListArticles = (props) => {
           }}
           // rows={categories.name}
           onRowClick={(datas) => {
-            setDeleteData(datas.row.id) || setModifArticle(datas.row);
+            setDeleteData(datas.row) || setModifArticle(datas.row);
           }}
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
