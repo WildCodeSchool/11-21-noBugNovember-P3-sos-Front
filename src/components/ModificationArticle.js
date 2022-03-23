@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import TinyArticle from "./TinyArticle";
 import axios from "axios";
 import Select, { StylesConfig } from "react-select";
-
+import { Editor,html } from '@tinymce/tinymce-react'
 import BouttonPublier from "./BouttonPublier";
 import tinymce from 'tinymce/tinymce';
 // STYLES CONFIG SELECT
