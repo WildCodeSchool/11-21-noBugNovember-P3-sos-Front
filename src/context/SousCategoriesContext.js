@@ -1,9 +1,12 @@
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 
 import axios from "axios";
+import { ArticleContext } from "./ArticleContext";
 
 export const SousCategoriesContext = createContext();
 const SousCategoriesContextProvider = (props) => {
+
+ 
 
 const [filters,setFilters]=useState('')
 const [idCatSousCat,setIdCatSousCat]=useState()  
@@ -25,7 +28,10 @@ const sousCatSet =(id)=>{
     axios
       .get(`http://localhost:4242/souscategories${filters}`)
       .then((res) => setSousCategories(res.data));
-  }, [filters,],console.log('amonde',filters));
+  }, [filters],console.log('amonde',filters));
+
+
+
   return (
     <SousCategoriesContext.Provider value={{ sousCategories, sousCatSet }}>
       {props.children}
