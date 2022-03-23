@@ -11,9 +11,9 @@ function Suppression({ deleteData, page }) {
   const { setReloadArticle } = useContext(ArticleContext);
   const { reloadArticle } = useContext(ArticleContext);
   const handleDeletData = () => {
-    // axios
-    //   .delete(`http://localhost:4242/${page}/${deleteData.id}`)
-    //   .then((response) => console.log("RESPONSE REQUETE", response));
+    axios
+      .delete(`http://localhost:4242/${page}/${deleteData.id}`)
+      .then((response) => console.log("RESPONSE REQUETE", response));
     setReloadArticle(!reloadArticle);
   };
   console.log(reloadArticle);
