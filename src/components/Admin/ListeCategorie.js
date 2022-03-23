@@ -1,10 +1,28 @@
 import "./Styles/ListeCategorie.css";
 import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CategoriesContext } from "../../context/CategoriesContext";
+import axios from "axios";
 
 const ListeCategorie = () => {
   const { categories } = useContext(CategoriesContext);
+
+  const [newCategorie, setNewCategorie] = useState("");
+
+  const nouvelleCategorie = () => {
+    axios
+      .post(`http://localhost:4242/categories`, { ...newCategorie })
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error("---Erreur envoi categorie--- ", error.validationErrors)
+      );
+  };
+
+  const handleChangeNewCategorie = (e) => {
+    setNewCategorie({ nom_categorie: e.target.value });
+
+    console.log(newCategorie);
+  };
 
   return (
     <>
@@ -37,11 +55,7 @@ const ListeCategorie = () => {
               flex: 0.5,
               align: "center",
               headerAlign: "center",
-              renderCell: (field) => (
-                <i
-                /*onClick={() => console.log(field.id)}*/
-                ></i>
-              ),
+              renderCell: (field) => <div className="actionIcon"></div>,
             },
           ]}
           sx={{
@@ -65,11 +79,14 @@ const ListeCategorie = () => {
             className="newCategoInput"
             type="text"
             name="myInput"
-            placeholder="Nouvelle Catégorie"
+            placeholder="Nouvelle catégorie"
             size="30"
             required
+            onChange={handleChangeNewCategorie}
           ></input>
-          <button className="button2 adminButton">Ajouter categorie</button>
+          <button className="button2 adminButton" onClick={nouvelleCategorie}>
+            Ajouter catégorie
+          </button>
         </div>
       </div>
     </>

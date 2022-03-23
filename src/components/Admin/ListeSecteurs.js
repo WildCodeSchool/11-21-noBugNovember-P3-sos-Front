@@ -1,9 +1,28 @@
 import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { SecteursContext } from "../../context/SecteursContext";
+import axios from "axios";
 
 const ListeSecteur = () => {
   const { secteurs } = useContext(SecteursContext);
+
+  const [newSecteur, setNewSecteur] = useState("");
+
+  const nouveauSecteur = () => {
+    axios
+      .post(`http://localhost:4242/secteurs`, { ...newSecteur })
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error("---Erreur envoi secteur--- ", error.validationErrors)
+      );
+  };
+
+  const handleChangeNewSecteur = (e) => {
+    setNewSecteur({ nom_secteur: e.target.value });
+
+    console.log(newSecteur);
+  };
+
   return (
     <>
       {" "}
@@ -67,8 +86,11 @@ const ListeSecteur = () => {
             placeholder="Nouveau Secteur"
             size="30"
             required
+            onChange={handleChangeNewSecteur}
           ></input>
-          <button className="button2 adminButton">Ajouter Secteur</button>
+          <button className="button2 adminButton" onClick={nouveauSecteur}>
+            Ajouter Secteur
+          </button>
         </div>
       </div>
     </>

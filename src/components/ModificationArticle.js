@@ -17,7 +17,7 @@ const colourStyles: StylesConfig = {
   }),
 };
 const ModificationArticle = (props) => {
-  const { modifArticle } = props;
+  const { modifArticle, setModifArticle } = props;
   const [article, setArticle] = useState({});
 
   const [selectSecteur, setSelectSecteur] = useState();
@@ -44,49 +44,49 @@ const ModificationArticle = (props) => {
 
   const collectDatas = (event) => {
     event.preventDefault();
-    setArticle({
-      titre: articleTitle,
-      intro: articleIntro,
-      para1: articleContent,
-      avantage: articleAvantage,
-      lien1: articleLien1,
-      lien2: articleLien2,
-      lien3: articleLien3,
-      image: articleUrlImg,
-      visible: false,
-      user_id: 1,
-      secteur_id: chooseSelectSecteur,
-      sous_categorie_id: chooseSelectSousCategorie,
-      ville_id: chooseSelectVille,
-    });
-    console.warn("COLLECT DATAS ======>", article);
+    // setArticle({
+    //   titre: articleTitle,
+    //   intro: articleIntro,
+    //   para1: articleContent,
+    //   avantage: articleAvantage,
+    //   lien1: articleLien1,
+    //   lien2: articleLien2,
+    //   lien3: articleLien3,
+    //   image: articleUrlImg,
+    //   visible: false,
+    //   user_id: 1,
+    //   secteur_id: chooseSelectSecteur,
+    //   sous_categorie_id: chooseSelectSousCategorie,
+    //   ville_id: chooseSelectVille,
+    // });
+    console.warn("COLLECT DATAS ======>", modifArticle);
     axios
-      .post(`http://localhost:4242/articles`, { ...article })
+      .put(`http://localhost:4242/articles`, { ...modifArticle })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
-        console.error("---Erreur envoi article--- ", error.validationErrors)
+        console.error("---Erreur modification article--- ", error.validationErrors)
       );
   };
   const handleChangeTitle = (e) => {
-    setArticleTitle(e.target.value);
+    setModifArticle({titre : e.target.value});
   };
   const handleChangeIntro = (e) => {
-    setArticleIntro(e.target.value);
+    setModifArticle({intro : e.target.value});
   };
   const handleChangeUrlImg = (e) => {
-    setArticleUrlImg(e.target.value);
+    setModifArticle({image: e.target.value});
   };
   const handleChangeAvantage = (e) => {
-    setArticleAvantage(e.target.value);
+    setModifArticle({avantage : e.target.value});
   };
   const handleChangeLien1 = (e) => {
-    setArticleLien1(e.target.value);
+    setModifArticle({lien1 : e.target.value});
   };
   const handleChangeLien2 = (e) => {
-    setArticleLien2(e.target.value);
+    setModifArticle({lien2 : e.target.value});
   };
   const handleChangeLien3 = (e) => {
-    setArticleLien3(e.target.value);
+    setModifArticle({lien3 : e.target.value});
   };
 
   const handleChangeCategorie = (value) => {

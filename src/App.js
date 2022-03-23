@@ -45,7 +45,9 @@ function App() {
                   ></Route>
                   <Route path="admin" element={<IdentificationAdmin />}></Route>
                   <Route path="admin-controler" element={<PanelAdmin />}>
-                    <Route path="articles" element={<ListeArticles  setModifArticle={setModifArticle}/>} />
+                    <Route path="articles" element={<ListeArticles  
+                      setModifArticle={setModifArticle}
+                    />} />
                     <Route path="articleForm" element={<ArticleForm />} />
                     <Route path="categories" element={<ListeCategorie />} />
                     <Route path="sousCategories" element={<ListeSousCat />} />
@@ -53,7 +55,9 @@ function App() {
                     <Route path="secteurs" element={<ListeSecteurs />} />
                     <Route
                       path="modification-article"
-                      element={<ModificationArticle modifArticle={modifArticle}/>}
+                      element={<ModificationArticle 
+                        modifArticle={modifArticle} 
+                        setModifArticle={setModifArticle}/>}
                     />
                   </Route>
                 </Routes>
