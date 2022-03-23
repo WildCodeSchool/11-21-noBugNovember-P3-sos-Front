@@ -5,7 +5,7 @@ import axios from "axios";
 import Select, { StylesConfig } from "react-select";
 
 import BouttonPublier from "./BouttonPublier";
-
+import tinymce from 'tinymce/tinymce';
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
   control: (styles) => ({
@@ -17,6 +17,10 @@ const colourStyles: StylesConfig = {
   }),
 };
 const ModificationArticle = (props) => {
+  useEffect(()=>{
+    modifArticle.para1=tinymce.html.Entities.encodeAllRaw(modifArticle.para1)
+    console.log('convertion',modifArticle.para1)
+  },[])
   const { modifArticle } = props;
   const [article, setArticle] = useState({});
 
@@ -166,8 +170,7 @@ const ModificationArticle = (props) => {
               />
               <TinyArticle
                 setArticleContent={setArticleContent}
-                initialValue={modifArticle.para1}
-              />
+                initialValue={tinymce.html.Entities.encodeAllRaw(modifArticle.para1)} />
               <input
                 className="input-article-intro"
                 placeholder="Texte présentant les avantages de l'article"
@@ -201,7 +204,7 @@ const ModificationArticle = (props) => {
 
                   <Select
                     placeholder="Choix de la catégorie"
-                    value={modifArticle.nom_categorie}
+                    value={modifArticle.nom_sous_categorie}
                     // CHANGEMENT A FAIRE ICI VIA LA DOC
                     options={selectCategorie}
                     className="basic-multi-select"
@@ -226,7 +229,7 @@ const ModificationArticle = (props) => {
                 <div className="selectDiv">
                   <Select
                     isMulti
-                    setValue={modifArticle.nom_sous_categorie}
+                    defaultOptions={modifArticle.nom_sous_categorie}
                     placeholder="Choix de sous-catégorie(s)"
                     options={selectSousCategorie}
                     className="basic-multi-select"
@@ -301,6 +304,7 @@ const ModificationArticle = (props) => {
         </form>
       </div>
       {console.log("RECUP ARTICLE", modifArticle)}
+      {console.log('test tiny',tinymce.html.Entities.encodeAllRaw(modifArticle.para1))}
     </>
   );
 };
