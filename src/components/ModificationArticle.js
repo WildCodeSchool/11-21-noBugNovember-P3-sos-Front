@@ -17,7 +17,7 @@ const colourStyles: StylesConfig = {
   }),
 };
 const ModificationArticle = (props) => {
-  const { modifArticle, setModifArticle } = props;
+  const { modifArticle,setModifArticle } = props;
   const [article, setArticle] = useState({});
 
   const [selectSecteur, setSelectSecteur] = useState();
@@ -44,54 +44,55 @@ const ModificationArticle = (props) => {
 
   const collectDatas = (event) => {
     event.preventDefault();
-    // setArticle({
-    //   titre: articleTitle,
-    //   intro: articleIntro,
-    //   para1: articleContent,
-    //   avantage: articleAvantage,
-    //   lien1: articleLien1,
-    //   lien2: articleLien2,
-    //   lien3: articleLien3,
-    //   image: articleUrlImg,
-    //   visible: false,
-    //   user_id: 1,
-    //   secteur_id: chooseSelectSecteur,
-    //   sous_categorie_id: chooseSelectSousCategorie,
-    //   ville_id: chooseSelectVille,
-    // });
-    console.warn("COLLECT DATAS ======>", modifArticle);
-    axios
-      .put(`http://localhost:4242/articles`, { ...modifArticle })
+    setArticle({
+      titre: articleTitle || modifArticle.titre,
+      intro: articleIntro,
+      para1: articleContent,
+      avantage: articleAvantage,
+      lien1: articleLien1,
+      lien2: articleLien2,
+      lien3: articleLien3,
+      image: articleUrlImg,
+      visible: false,
+      user_id: 1,
+      secteur_id: chooseSelectSecteur,
+      sous_categorie_id: chooseSelectSousCategorie,
+      ville_id: chooseSelectVille,
+    });
+    console.log("ARTICLE DE MERDE A LA CON",article)
+      axios
+      .put(`http://localhost:4242/articles/${modifArticle.id}`, { ...article})
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
         console.error("---Erreur modification article--- ", error.validationErrors)
       );
   };
   const handleChangeTitle = (e) => {
-    setModifArticle({titre : e.target.value});
+    setModifArticle({...modifArticle,titre:e.target.value});
+    setArticleTitle(e.target.value)
   };
   const handleChangeIntro = (e) => {
-    setModifArticle({intro : e.target.value});
+    setModifArticle({...modifArticle,intro:e.target.value});
+    setArticleIntro(e.target.value)
   };
   const handleChangeUrlImg = (e) => {
-    setModifArticle({image: e.target.value});
+    setModifArticle({...modifArticle,image:e.target.value});
   };
   const handleChangeAvantage = (e) => {
-    setModifArticle({avantage : e.target.value});
+    setModifArticle({...modifArticle,avantage:e.target.value});
   };
   const handleChangeLien1 = (e) => {
-    setModifArticle({lien1 : e.target.value});
+    setModifArticle({...modifArticle,lien1:e.target.value});
   };
   const handleChangeLien2 = (e) => {
-    setModifArticle({lien2 : e.target.value});
+    setModifArticle({...modifArticle,lien2:e.target.value});
   };
   const handleChangeLien3 = (e) => {
-    setModifArticle({lien3 : e.target.value});
+    setModifArticle({...modifArticle,lien2:e.target.value});
   };
 
   const handleChangeCategorie = (value) => {
     const { id } = value;
-    console.log("VALUEEEEEEEEEEE", id);
     setChooseSelectCategorie(id);
   };
   const handleChangeSecteur = (value) => {
@@ -137,7 +138,6 @@ const ModificationArticle = (props) => {
   return (
     <>
       <h2 className="bjr-user">Bonjour [userName],</h2>
-      {console.log(modifArticle)}
 
       <div className="articles-and-types">
         {/* BLOC DE GAUCHE = ARTICLE */}
@@ -301,6 +301,7 @@ const ModificationArticle = (props) => {
         </form>
       </div>
       {console.log("RECUP ARTICLE", modifArticle)}
+
     </>
   );
 };

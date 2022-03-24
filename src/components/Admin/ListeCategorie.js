@@ -84,6 +84,7 @@ const ListeCategorie = () => {
             required
             onChange={handleChangeNewCategorie}
           ></input>
+
           <button className="button2 adminButton" onClick={nouvelleCategorie}>
             Ajouter catégorie
           </button>
