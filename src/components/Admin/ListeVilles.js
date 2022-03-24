@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { VillesContext } from "../../context/VillesContext";
 import { RegionsContext } from "../../context/RegionsContext";
 
-
 // RAJOUT DES IMPORTS POUR FAIRE LE LIEN AVEC VILLES
 import Select, { StylesConfig } from "react-select";
 import { useState, useEffect } from "react";
@@ -91,6 +90,7 @@ const ListeVilles = () => {
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des villes</h3>
+        {console.log("console log de ville : ", villes)}
         <DataGrid
           style={{ height: 500 }}
           columns={[
@@ -144,8 +144,8 @@ const ListeVilles = () => {
           pagination
         />
 
+        {/* RAJOUT LISTE SELECT : Region */}
         <div className="newCategoContent">
-          {/* RAJOUT LISTE SELECT : Region */}
           <div className="selectDiv">
             {console.log(regions)}
             <Select
@@ -166,7 +166,6 @@ const ListeVilles = () => {
                 },
               })}
             />
-
           </div>
           {/* FIN AJOUT LIST SELECT : Region */}
           {chooseSelectRegion ? (
