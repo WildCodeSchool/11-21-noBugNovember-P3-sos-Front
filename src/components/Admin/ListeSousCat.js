@@ -39,9 +39,8 @@ const ListeSousCategories = () => {
   };
 
   const handleChangeNewSousCategorie = (e) => {
-    setNewSousCategorie({ nom_sous_categorie: e.target.value });
-
-    console.log(newSousCategorie);
+    setNewSousCategorie({ nom_sous_categorie: e.target.value,categorie_id: chooseSelectCategorie });
+    console.log("Nouvelle sous categorie à inscrire",newSousCategorie);
   };
 
   // PARTIE CATEGORIE
@@ -54,8 +53,8 @@ const ListeSousCategories = () => {
 
   const handleChangeCategorie = (value) => {
     const { id } = value;
-    console.log("VALUEEEEEEEEEEE", id);
     setChooseSelectCategorie(id);
+    console.log("Choix de sous categorie => l'Id correspondant :", id)
   };
 
   useEffect(() => {
@@ -64,20 +63,22 @@ const ListeSousCategories = () => {
       .then((response) => setSelectCategorie(response.data));
   }, []);
 
+  
+
   // COLLECT ET ENVOI DES DONNEES
   const collectDatas = (event) => {
     event.preventDefault();
     setCategorie({
       categorie_id: chooseSelectCategorie,
       nom_sous_categorie: newSousCategorie,
-      // Comment faire la connection categorie_id de sous cat
+      // Comment faire la connection categorie_id de sous cat ???
     });
     console.warn("COLLECT DATAS ======>", newSousCategorie);
     axios
       .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
-        console.error("---Erreur envoi article--- ", error.validationErrors)
+        console.error("---Erreur envoi nouvelle catégorie--- ", error.validationErrors)
       );
   };
   // FIN DE LA COLLECTE
@@ -170,7 +171,7 @@ const ListeSousCategories = () => {
             <Select
               placeholder="Catégorie de rattachement"
               options={selectCategorie}
-              className="basic-multi-select"
+              className="basic-multi-select decalage-droit-input-1rem"
               classNamePrefix="select"
               closeMenuOnSelect={true}
               onChange={(value) => handleChangeCategorie(value)}
@@ -187,8 +188,7 @@ const ListeSousCategories = () => {
             />
           </div>
           {/* FIN AJOUT LIST SELECT : CATEGORIE */}
-
-          <input
+          {chooseSelectCategorie?<><input
             className="newCategoInput"
             type="text"
             name="myInput"
@@ -205,7 +205,8 @@ const ListeSousCategories = () => {
             newSousCategorie={newSousCategorie}
           >
             Ajouter sous-categorie
-          </button>
+          </button></>:""}
+          
         </div>
       </div>
     </>
