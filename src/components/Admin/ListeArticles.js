@@ -1,21 +1,50 @@
+//*IMPORT CSS ET ASSETS//*
 import publishIcon from "../../assets/publish.svg";
 import "./Styles/ListeArticles.css";
-
-import { ArticleContext } from "../../context/ArticleContext";
-import { Link, useLocation } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
-import { useContext, useState } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-const ListArticles = (props) => {
-  const { setModifArticle, setDeleteData } = props;
-  const { articles } = useContext(ArticleContext);
+//*IMPORT REACT//*
+import axios from "axios";
+import { DataGrid } from "@mui/x-data-grid";
+import { Link, useLocation } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+
+//*IMPORT CONTEXT//*
+import { ArticleContext } from "../../context/ArticleContext";
+
+const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
+  const { articles, setStateVisible, stateVisible } =
+    useContext(ArticleContext);
+
   let location = useLocation();
-  const toggleVisibility = () => {};
+
+  const putData = (bol) => {
+    axios
+      .put(`http://localhost:4242/articles/${deleteData.id}`, {
+        visible: bol,
+      })
+      .then(
+        (response) =>
+          console.log("RESPONSE REQUETE", response) ||
+          setStateVisible(!stateVisible)
+      );
+  };
+
+  const toggleVisibility = () => {
+    console.log("test visible", deleteData.visible);
+    deleteData && parseInt(deleteData.visible) === 1
+      ? putData(false)
+      : putData(true);
+  };
+  // useEffect(() => {
+  //   console.log(stateVisible);
+  //   stateVisible &&
+
+  // }, [stateVisible]);
 
   return (
     <>
@@ -124,7 +153,10 @@ const ListArticles = (props) => {
                       className="editIcon"
                     />
                   </Link>
-                  <Link to="./modal" state={{ backgroundLocation: location }}>
+                  <Link
+                    to="./modal/supprimer"
+                    state={{ backgroundLocation: location }}
+                  >
                     <FontAwesomeIcon
                       icon={faTrash}
                       size="1x"
@@ -132,16 +164,17 @@ const ListArticles = (props) => {
                       className="deletIcon"
                     />
                   </Link>
-
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="eyeIcon"
-                    onClick={() => {
-                      toggleVisibility();
-                    }}
-                  />
+                  <Link
+                    to="./modal/visible"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faEye}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="eyeIcon"
+                    />
+                  </Link>
                 </div>
               ),
             },

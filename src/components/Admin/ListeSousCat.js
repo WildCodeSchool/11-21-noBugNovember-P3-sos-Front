@@ -86,7 +86,10 @@ const ListeSousCategories = (props) => {
                     color="var(--clr-orange)"
                     className="editIcon"
                   />
-                  <Link to="./modal" state={{ backgroundLocation: location }}>
+                  <Link
+                    to="./modal/supprimer"
+                    state={{ backgroundLocation: location }}
+                  >
                     <FontAwesomeIcon
                       icon={faTrash}
                       size="1x"

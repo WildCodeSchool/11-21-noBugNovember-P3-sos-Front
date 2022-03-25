@@ -14,6 +14,7 @@ const ArticleContextProvider = (props) => {
   const [idsousCategorie, setIdsousCategorie] = useState();
   const [searchFilter, setSearchFilter] = useState();
   const [reloadArticle, setReloadArticle] = useState(true);
+  const [stateVisible, setStateVisible] = useState(true);
 
   // Création du Filtre
   useEffect(() => {
@@ -75,7 +76,7 @@ const ArticleContextProvider = (props) => {
     axios
       .get(`http://localhost:4242/articles${filters}`)
       .then((res) => setArticles(res.data));
-  }, [filters, reloadArticle]);
+  }, [filters, reloadArticle, stateVisible]);
 
   //Liste Entière
   const resetSearch = () => {
@@ -109,6 +110,8 @@ const ArticleContextProvider = (props) => {
         deleteSearchHome,
         reloadArticle,
         setReloadArticle,
+        setStateVisible,
+        stateVisible,
       }}
     >
       {props.children}

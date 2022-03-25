@@ -1,42 +1,42 @@
+//*IMPORT CSS//*
 import "./App.css";
 
-import { Routes, Route, useLocation, useParams } from "react-router-dom";
+//*IMPORT REACT//*
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useState } from "react";
 
+//*IMPORT COMPONENTS //*
 import ArticleForm from "./components/ArticleForm";
-import ListeVilles from "./components/Admin/ListeVilles";
 import ModalDL from "./components/ModalDL";
+import ModificationArticle from "./components/ModificationArticle";
+import ListeArticles from "./components/Admin/ListeArticles";
+import ListeCategorie from "./components/Admin/ListeCategorie";
+import ListeSecteurs from "./components/Admin/ListeSecteurs";
+import ListeSousCat from "./components/Admin/ListeSousCat";
+import ListeVilles from "./components/Admin/ListeVilles";
 import Suppression from "./components/Suppression";
 
+//*IMPORT SCREENS //*
+
+import ArticleDetail from "./screens/ArticleDetail";
 import ArticlesGrid from "./screens/ArticlesGrid";
 import FirstVisit from "./screens/FirstVisit";
-import IdentificationAdmin from "./screens/IdentificationAdmin";
 import Home from "./screens/Home";
+import IdentificationAdmin from "./screens/IdentificationAdmin";
 import PanelAdmin from "./screens/PanelAdmin";
-import ArticleDetail from "./screens/ArticleDetail";
+
+//*IMPORT CONTEXT //*
 import ArticleContextProvider from "./context/ArticleContext";
 import CategoriesContextProvider from "./context/CategoriesContext";
+import SecteursContextProvider from "./context/SecteursContext";
 import SousCategoriesContextProvider from "./context/SousCategoriesContext";
 import VillesContextProvider from "./context/VillesContext";
-import SecteursContextProvider from "./context/SecteursContext";
-import ListeCategorie from "./components/Admin/ListeCategorie";
-import ListeArticles from "./components/Admin/ListeArticles";
-import ListeSousCat from "./components/Admin/ListeSousCat";
-import ListeSecteurs from "./components/Admin/ListeSecteurs";
-import ModificationArticle from "./components/ModificationArticle";
-import { useState, useContext } from "react";
 
 function App() {
-  // const [isActive, setIsActive] = useState(false);
-  // const { isShowing, toggle } = useModal();
   let location = useLocation();
-  // let navigate = useNavigate();
+
   let backgroundLocation = location.state && location.state.backgroundLocation;
 
-  // const retourFunc = () => {
-  //   toggle();
-  //   navigate(-1);
-  //   setIsActive(!isActive);
-  // };
   const [modifArticle, setModifArticle] = useState("");
   const [deleteData, setDeleteData] = useState("");
 
@@ -67,6 +67,7 @@ function App() {
                         <ListeArticles
                           setModifArticle={setModifArticle}
                           setDeleteData={setDeleteData}
+                          deleteData={deleteData}
                         />
                       }
                     />
@@ -108,45 +109,63 @@ function App() {
                       element={<ModalDL />}
                     />
                     <Route
-                      path="admin-controler/articles/modal"
+                      path="admin-controler/articles/modal/supprimer"
                       element={
                         <Suppression
                           deleteData={deleteData}
                           page={"articles"}
+                          action={"supprimer"}
                         />
                       }
                     />
                     <Route
-                      path="admin-controler/categories/modal"
+                      path="admin-controler/articles/modal/visible"
+                      element={
+                        <Suppression
+                          deleteData={deleteData}
+                          page={"articles"}
+                          action={"visible"}
+                        />
+                      }
+                    />
+                    <Route
+                      path="admin-controler/categories/modal/supprimer"
                       element={
                         <Suppression
                           deleteData={deleteData}
                           page={"categories"}
+                          action={"supprimer"}
                         />
                       }
                     />
                     <Route
-                      path="admin-controler/sousCategories/modal"
+                      path="admin-controler/sousCategories/modal/supprimer"
                       element={
                         <Suppression
                           deleteData={deleteData}
                           page={"souscategories"}
+                          action={"supprimer"}
                         />
                       }
                     />
                     <Route
-                      path="admin-controler/secteurs/modal"
+                      path="admin-controler/secteurs/modal/supprimer"
                       element={
                         <Suppression
                           deleteData={deleteData}
                           page={"secteurs"}
+                          action={"supprimer"}
                         />
                       }
                     />
                     <Route
-                      path="admin-controler/villes/modal"
+                      path="admin-controler/villes/modal/supprimer"
                       element={
-                        <Suppression deleteData={deleteData} page={"villes"} />
+                        <Suppression
+                          deleteData={deleteData}
+                          page={"villes"}
+                          action={"supprimer"}
+                        />
                       }
                     />
                   </Routes>
