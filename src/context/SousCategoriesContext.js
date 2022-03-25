@@ -1,7 +1,7 @@
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState, createContext } from "react";
 
 import axios from "axios";
-import { ArticleContext } from "./ArticleContext";
+// import { ArticleContext } from "./ArticleContext";
 
 export const SousCategoriesContext = createContext();
 const SousCategoriesContextProvider = (props) => {

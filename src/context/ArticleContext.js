@@ -14,6 +14,8 @@ const ArticleContextProvider = (props) => {
   const [idVille, setIdville] = useState();
   const [idsousCategorie, setIdsousCategorie] = useState();
   const [searchFilter, setSearchFilter] = useState();
+  const [reloadArticle, setReloadArticle] = useState(true);
+  const [stateVisible, setStateVisible] = useState(true);
 
   // Création du Filtre
   useEffect(() => {
@@ -47,7 +49,7 @@ const ArticleContextProvider = (props) => {
   // useEffect(() => {
   //   if (filters.length === 0) {
   //     console.log("vide", filters);
- 
+
   //     axios
   //       .get(`http://localhost:4242/articles`)
   //       .then((res) => setArticles(res.data));
@@ -70,12 +72,11 @@ const ArticleContextProvider = (props) => {
 
   // Changement liste En fonciton de idCAtegorie
 
-useEffect(() => {
-    console.log(filters);
-       axios
+  useEffect(() => {
+    axios
       .get(`http://localhost:4242/articles${filters}`)
       .then((res) => setArticles(res.data));
-  }, [filters]);
+  }, [filters, reloadArticle, stateVisible]);
 
   //Liste Entière
   const resetSearch = () => {
@@ -107,6 +108,10 @@ useEffect(() => {
         searchLaunch,
         deleteFilter,
         deleteSearchHome,
+        reloadArticle,
+        setReloadArticle,
+        setStateVisible,
+        stateVisible,
       }}
     >
       {props.children}

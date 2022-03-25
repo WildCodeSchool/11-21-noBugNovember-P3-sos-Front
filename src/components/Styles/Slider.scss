@@ -130,7 +130,7 @@
   }
 
   &--previous {
-    cursor: w-resize;
+    // cursor: w-resize;
     opacity: 0.5;
 
     &:hover {
@@ -162,6 +162,7 @@
 .slide__headline {
   width: 18rem;
   height: 5rem;
+  cursor: pointer;
 }
 
 .slide__content {

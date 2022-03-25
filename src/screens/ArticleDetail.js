@@ -1,13 +1,22 @@
 import { ArticleContext } from '../context/ArticleContext'
 import Header from '../components/Header'
 import { useContext } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import './Styles/ArticleDetail.css'
 import fleche from '../assets/icones/flecheCercle.png'
+import ModalDL from '../components/ModalDL'
 
-const ArticleDetail = () => {
+const ArticleDetail = (
+  isActive,
+  setISActive,
+  toggle,
+  setIsShowing,
+  isShowing,
+  ...props
+) => {
   const { articles } = useContext(ArticleContext)
-  console.log(articles)
+  let location = useLocation()
   let { id } = useParams()
   return (
     <>
@@ -46,7 +55,10 @@ const ArticleDetail = () => {
                   </div>
                   <div className='articleDetailFirst'>
                     <div className='boutonTelechargementDoc'>
-                      <Link to='/articlesGrid'>
+                      <Link
+                        to={`/articlesGrid/articleDetail/${id}/modalDL`}
+                        state={{ backgroundLocation: location }}
+                      >
                         <button className='buttonGreen '>Télécharger</button>
                       </Link>
                     </div>
@@ -57,7 +69,10 @@ const ArticleDetail = () => {
                       <p id='articleDetailPara'>{result.avantage}</p>
                     </div>
                     <div className='boutonTelechargementDoc'>
-                      <Link to='/articlesGrid'>
+                      <Link
+                        to={`/articlesGrid/articleDetail/${id}/modalDL`}
+                        state={{ backgroundLocation: location }}
+                      >
                         <button className='buttonGreen '>Télécharger</button>
                       </Link>
                     </div>
