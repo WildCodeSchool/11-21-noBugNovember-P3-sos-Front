@@ -17,7 +17,8 @@ const Parcours = () => {
         {categories.map((btnSnake) => {
           return (
             <Link to={`/articlesGrid`}  
-            onClick={() => {setIdCategorie(btnSnake.id);sousCatSet(btnSnake.id)} }
+            onClick={() => {setIdCategorie(btnSnake.id)} }
+            // onClick={() => {setIdCategorie(btnSnake.id);sousCatSet(btnSnake.id)} }
             className='parcourBtn borderRadius'>    
               <div className=' '>
                 {btnSnake.value}
