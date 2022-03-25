@@ -55,7 +55,10 @@ const ArticleDetail = (
                   </div>
                   <div className='articleDetailFirst'>
                     <div className='boutonTelechargementDoc'>
-                      <Link to='/articlesGrid'>
+                      <Link
+                        to={`/articlesGrid/articleDetail/${id}/modalDL`}
+                        state={{ backgroundLocation: location }}
+                      >
                         <button className='buttonGreen '>Télécharger</button>
                       </Link>
                     </div>
