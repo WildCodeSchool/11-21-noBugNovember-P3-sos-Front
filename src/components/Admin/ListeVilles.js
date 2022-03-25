@@ -25,12 +25,14 @@ const ListeVilles = () => {
   const [newCity, setNewCity] = useState("");
 
   const nouvelleVille = () => {
+    console.log("Hello new city", newCity);
     axios
       .post(`http://localhost:4242/villes`, { ...newCity })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
         console.error("---Erreur envoi villes--- ", error.validationErrors)
       );
+    setNewCity("");
   };
 
   const handleChangeNewCity = (e) => {
@@ -64,8 +66,8 @@ const ListeVilles = () => {
     setRegion({
       categorie_id: chooseSelectRegion,
       nom_sous_categorie: newCity,
-      // Comment faire la connection categorie_id de sous cat ???
     });
+
     console.warn("COLLECT DATAS ======>", newCity);
     axios
       .post(`http://localhost:4242/souscategories`, { ...newCity })
@@ -156,10 +158,10 @@ const ListeVilles = () => {
         {/* RAJOUT LISTE SELECT : Region */}
         <div className="newCategoContent">
           <div className="selectDiv">
-            {console.log(regions)}
+            {console.log("voiccci mes regions ", regions)}
             <Select
               placeholder="Région de rattachement"
-              options={regions}
+              options={selectRegion}
               className="basic-multi-select decalage-droit-input-1rem"
               classNamePrefix="select"
               closeMenuOnSelect={true}
@@ -183,7 +185,7 @@ const ListeVilles = () => {
                 className="newCategoInput"
                 type="text"
                 name="myInput"
-                placeholder="Nouvelle Sous-catégorie"
+                placeholder="Nouvelle Ville"
                 size="30"
                 required
                 onChange={handleChangeNewCity}
@@ -192,7 +194,6 @@ const ListeVilles = () => {
               <button
                 className="button2 adminSousCatButton"
                 onClick={nouvelleVille}
-                collectDatas={collectDatas}
                 newCity={newCity}
               >
                 Ajouter sous-categorie

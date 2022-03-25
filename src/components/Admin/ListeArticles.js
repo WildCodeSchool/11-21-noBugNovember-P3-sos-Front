@@ -11,26 +11,22 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import {CategoriesContext} from "../../context/CategoriesContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
 
 const ListArticles = (props) => {
-  const {setModifArticle}=props
+  const { setModifArticle } = props;
   const { articles } = useContext(ArticleContext);
-  const {categorie}=useContext(CategoriesContext)
-  const deleteArticle = (modifArticle)=>{
-       axios
+  const { categorie } = useContext(CategoriesContext);
+  const deleteArticle = (modifArticle) => {
+    axios
       .delete(`http://localhost:4242/articles/${modifArticle.id}`)
       .then((response) => console.log("RESPONSE REQUETE", response))
-      .catch((error) =>
-        console.error(error.validationErrors)
-      );
-  }
-  const collectData=(datas,setModifArticle)=>{
-    console.log("LISTE ARTICLES",categorie)
-    setModifArticle(datas.row)
-
-
-  }
+      .catch((error) => console.error(error.validationErrors));
+  };
+  const collectData = (datas, setModifArticle) => {
+    console.log("LISTE ARTICLES", categorie);
+    setModifArticle(datas.row);
+  };
   return (
     <>
       {" "}
@@ -128,7 +124,6 @@ const ListArticles = (props) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-
                 <div className="actionIcon">
                   <Link to="/admin-controler/modification-article">
                     {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
@@ -154,7 +149,6 @@ const ListArticles = (props) => {
                     className="eyeIcon"
                   />
                 </div>
-
               ),
             },
           ]}
@@ -173,9 +167,7 @@ const ListArticles = (props) => {
           pagination
           onRowClick={(datas) => collectData(datas.row)}
         />
-
       </div>
-      
     </>
   );
 };

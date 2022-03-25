@@ -39,8 +39,11 @@ const ListeSousCategories = () => {
   };
 
   const handleChangeNewSousCategorie = (e) => {
-    setNewSousCategorie({ nom_sous_categorie: e.target.value,categorie_id: chooseSelectCategorie });
-    console.log("Nouvelle sous categorie à inscrire",newSousCategorie);
+    setNewSousCategorie({
+      nom_sous_categorie: e.target.value,
+      categorie_id: chooseSelectCategorie,
+    });
+    console.log("Nouvelle sous categorie à inscrire", newSousCategorie);
   };
 
   // PARTIE CATEGORIE
@@ -54,7 +57,7 @@ const ListeSousCategories = () => {
   const handleChangeCategorie = (value) => {
     const { id } = value;
     setChooseSelectCategorie(id);
-    console.log("Choix de sous categorie => l'Id correspondant :", id)
+    console.log("Choix de sous categorie => l'Id correspondant :", id);
   };
 
   useEffect(() => {
@@ -62,8 +65,6 @@ const ListeSousCategories = () => {
       .get("http://localhost:4242/categories")
       .then((response) => setSelectCategorie(response.data));
   }, []);
-
-  
 
   // COLLECT ET ENVOI DES DONNEES
   const collectDatas = (event) => {
@@ -78,7 +79,10 @@ const ListeSousCategories = () => {
       .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
-        console.error("---Erreur envoi nouvelle catégorie--- ", error.validationErrors)
+        console.error(
+          "---Erreur envoi nouvelle catégorie--- ",
+          error.validationErrors
+        )
       );
   };
   // FIN DE LA COLLECTE
@@ -197,25 +201,28 @@ const ListeSousCategories = () => {
             />
           </div>
           {/* FIN AJOUT LIST SELECT : CATEGORIE */}
-          {chooseSelectCategorie?<><input
-            className="newCategoInput"
-            type="text"
-            name="myInput"
-            placeholder="Nouvelle Sous-catégorie"
-            size="30"
-            required
-            onChange={handleChangeNewSousCategorie}
-          ></input>
+          {chooseSelectCategorie ? (
+            <>
+              <input
+                className="newCategoInput"
+                type="text"
+                name="myInput"
+                placeholder="Nouvelle Sous-catégorie"
+                size="30"
+                required
+                onChange={handleChangeNewSousCategorie}
+              ></input>
 
-          <button
-            className="button2 adminSousCatButton"
-            onClick={nouvelleSousCategorie}
-            collectDatas={collectDatas}
-            newSousCategorie={newSousCategorie}
-          >
-            Ajouter sous-categorie
-          </button></>:""}
-          
+              <button
+                className="button2 adminSousCatButton"
+                onClick={nouvelleSousCategorie}
+              >
+                Ajouter sous-categorie
+              </button>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>
