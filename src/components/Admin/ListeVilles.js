@@ -95,6 +95,15 @@ const ListeVilles = () => {
           style={{ height: 500 }}
           columns={[
             {
+              field: "id",
+              headerName: "ID",
+              headerClassName: "headerTableau",
+              maxWidth: 50,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
+            {
               field: "value",
               headerName: "Nom de Ville",
               headerClassName: "headerTableau",

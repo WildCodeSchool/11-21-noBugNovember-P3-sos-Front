@@ -9,6 +9,9 @@ const ListeCategorie = () => {
 
   const [newCategorie, setNewCategorie] = useState("");
 
+  const [oldCategoryName, setOldCategoryName] = useState("")
+
+
   const nouvelleCategorie = () => {
     axios
       .post(`http://localhost:4242/categories`, { ...newCategorie })
@@ -17,6 +20,7 @@ const ListeCategorie = () => {
         console.error("---Erreur envoi categorie--- ", error.validationErrors)
       );
   };
+
 
   const handleChangeNewCategorie = (e) => {
     setNewCategorie({ nom_categorie: e.target.value });
@@ -38,6 +42,15 @@ const ListeCategorie = () => {
         <DataGrid
           style={{ height: 500 }}
           columns={[
+            {
+              field: "id",
+              headerName: "ID",
+              headerClassName: "headerTableau",
+              maxWidth: 50,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
             {
               field: "value",
               headerName: "Catégories",
@@ -88,6 +101,22 @@ const ListeCategorie = () => {
           <button className="button2 adminButton" onClick={nouvelleCategorie}>
             Ajouter catégorie
           </button>
+
+
+          <input
+            className="newCategoInput"
+            type="text"
+            name="myInput"
+            placeholder="Nouveau nom de catégorie"
+            size="30"
+            required
+            onChange={""}
+          ></input>
+
+          <button className="button2 adminButton" onClick={""}>
+            Modifier la catégorie
+          </button>
+
         </div>
       </div>
     </>
