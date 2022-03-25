@@ -22,7 +22,7 @@ const ModificationArticle = (props) => {
 
   const [selectSecteur, setSelectSecteur] = useState();
   const [selectVille, setSelectVille] = useState();
-  const [selectCategorie, setSelectCategorie] = useState();
+  const [selectCategorie, setSelectCategorie] = useState([]);
   const [selectSousCategorie, setSelectSousCategorie] = useState();
 
   const [articleAvantage, setArticleAvantage] = useState("");
@@ -42,22 +42,23 @@ const ModificationArticle = (props) => {
   const [chooseSelectSecteur, setChooseSelectSecteur] = useState([]);
   const [chooseSelectVille, setChooseSelectVille] = useState([]);
 
+
   const collectDatas = (event) => {
     event.preventDefault();
     setArticle({
-      titre: articleTitle || modifArticle.titre,
-      intro: articleIntro,
-      para1: articleContent,
-      avantage: articleAvantage,
-      lien1: articleLien1,
-      lien2: articleLien2,
-      lien3: articleLien3,
-      image: articleUrlImg,
+      titre: modifArticle.titre,
+      intro: modifArticle.intro,
+      para1: modifArticle.para1,
+      avantage: modifArticle.avantage,
+      lien1: modifArticle.lien1,
+      lien2: modifArticle.lien2,
+      lien3: modifArticle.lien3,
+      image: modifArticle.image,
       visible: false,
       user_id: 1,
-      secteur_id: chooseSelectSecteur,
-      sous_categorie_id: chooseSelectSousCategorie,
-      ville_id: chooseSelectVille,
+      secteur_id: modifArticle.nom_secteur,
+      sous_categorie_id: modifArticle.nom_sous_categorie,
+      ville_id: modifArticle.nom_ville,
     });
     console.log("ARTICLE DE MERDE A LA CON",article)
       axios
@@ -67,6 +68,7 @@ const ModificationArticle = (props) => {
         console.error("---Erreur envoi article--- ", error.validationErrors)
       );
   };
+
   const handleChangeTitle = (e) => {
     setModifArticle({...modifArticle,titre:e.target.value});
     setArticleTitle(e.target.value)
@@ -93,28 +95,28 @@ const ModificationArticle = (props) => {
 
   const handleChangeCategorie = (value) => {
     const { id } = value;
-    setChooseSelectCategorie(id);
+    setModifArticle({...modifArticle,nom_categorie:id});
   };
   const handleChangeSecteur = (value) => {
     let extractedValue = [];
     for (let i = 0; i < value.length; i++) {
       extractedValue.push(value[i].id);
     }
-    setChooseSelectSecteur(extractedValue);
+    setModifArticle({...modifArticle,nom_secteur:extractedValue});
   };
   const handleChangeSousCategorie = (value) => {
     let extractedValue = [];
     for (let i = 0; i < value.length; i++) {
       extractedValue.push(value[i].id);
     }
-    setChooseSelectSousCategorie(extractedValue);
+    setModifArticle({...modifArticle,nom_sous_categorie:extractedValue});
   };
   const handleChangeVille = (value) => {
     let extractedValue = [];
     for (let i = 0; i < value.length; i++) {
       extractedValue.push(value[i].id);
     }
-    setChooseSelectVille(extractedValue);
+    setModifArticle({...modifArticle,nom_ville:extractedValue});
   };
   const recup = () => {
     axios
@@ -122,19 +124,32 @@ const ModificationArticle = (props) => {
       .then((response) => setSelectCategorie(response.data));
   };
   useEffect(() => {
-    axios
-      .get("http://localhost:4242/secteurs")
-      .then((response) => setSelectSecteur(response.data));
-    axios
-      .get("http://localhost:4242/categories")
-      .then((response) => setSelectCategorie(response.data));
-    axios
-      .get("http://localhost:4242/sousCategories")
-      .then((response) => setSelectSousCategorie(response.data));
-    axios
-      .get("http://localhost:4242/villes")
-      .then((response) => setSelectVille(response.data));
+      axios
+        .get("http://localhost:4242/secteurs")
+        .then((response) => setSelectSecteur(response.data));
+      axios
+        .get("http://localhost:4242/categories")
+        .then((response) => setSelectCategorie(response.data));
+      axios
+        .get("http://localhost:4242/sousCategories")
+        .then((response) => setSelectSousCategorie(response.data));
+      axios
+        .get("http://localhost:4242/villes")
+        .then((response) => setSelectVille(response.data));
+
+    // else {
+    //   selectCategorie.foreach((categorie) => {
+    //     console.log('CAT', categorie)
+    //     if (categorie.nom_categorie == modifArticle.nom_categorie) {
+    //       modifArticle.nom_categorie.push(categorie.id_categorie)
+    //     }
+    //   })
+    //   console.log('CATEGORIETAB',modifArticle.nom_categorie)
+    // }
+
+
   }, []);
+
   return (
     <>
       <h2 className="bjr-user">Bonjour [userName],</h2>
@@ -226,7 +241,8 @@ const ModificationArticle = (props) => {
                 <div className="selectDiv">
                   <Select
                     isMulti
-                    setValue={modifArticle.nom_sous_categorie}
+                    selectOption={modifArticle.nom_sous_categorie}
+                    value={[{label:modifArticle.nom_sous_categorie,value:1},{label:modifArticle.nom_sous_categorie,value:2},{label:modifArticle.nom_sous_categorie,value:3}]}
                     placeholder="Choix de sous-catégorie(s)"
                     options={selectSousCategorie}
                     className="basic-multi-select"
@@ -248,7 +264,7 @@ const ModificationArticle = (props) => {
                 <div className="selectDiv">
                   <Select
                     isMulti
-                    defaultOptions={modifArticle.nom_secteur}
+                    defaultInputValue={modifArticle.nom_secteur}
                     placeholder="Choix de secteur(s)"
                     options={selectSecteur}
                     className="basic-multi-select"
@@ -300,7 +316,7 @@ const ModificationArticle = (props) => {
           </div>
         </form>
       </div>
-      {console.log("RECUP ARTICLE", modifArticle)}
+      {console.log("RECUP ARTICLE", modifArticle,)}
 
     </>
   );

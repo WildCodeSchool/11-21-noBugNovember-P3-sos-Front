@@ -10,12 +10,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import {CategoriesContext} from "../../context/CategoriesContext";
 
 const ListArticles = (props) => {
   const {setModifArticle}=props
   const { articles } = useContext(ArticleContext);
-  
+  const {categorie}=useContext(CategoriesContext)
+  const deleteArticle = (modifArticle)=>{
+       axios
+      .delete(`http://localhost:4242/articles/${modifArticle.id}`)
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error(error.validationErrors)
+      );
+  }
+  const collectData=(datas,setModifArticle)=>{
+    console.log("LISTE ARTICLES",categorie)
+    setModifArticle(datas.row)
 
+
+  }
   return (
     <>
       {" "}
@@ -78,7 +93,7 @@ const ListArticles = (props) => {
               headerAlign: "left",
             },
             {
-              field: "nom_ville",
+              field: "nom_vilMentorat , Networking , Ole",
               headerName: "Villes",
               headerClassName: "headerTableau",
               maxWidth: 110,
@@ -129,6 +144,7 @@ const ListArticles = (props) => {
                     size="1x"
                     color="var(--clr-orange)"
                     className="deletIcon"
+                    onClick={deleteArticle}
                   />
                   <FontAwesomeIcon
                     icon={faEye}
@@ -150,10 +166,10 @@ const ListArticles = (props) => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
-          onRowClick={(datas) => setModifArticle(datas.row)}
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
+          onRowClick={(datas) => collectData(datas.row)}
         />
 
       </div>
