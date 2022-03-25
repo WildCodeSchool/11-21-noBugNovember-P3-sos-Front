@@ -1,11 +1,16 @@
+import "./Styles/ListeSousCat.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { SousCategoriesContext } from "../../context/SousCategoriesContext";
-import "./Styles/ListeSousCat.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const ListeSousCategories = () => {
+const ListeSousCategories = (props) => {
   const { sousCategories } = useContext(SousCategoriesContext);
-
+  const { setDeleteData } = props;
+  let location = useLocation();
   return (
     <>
       {" "}
@@ -20,6 +25,15 @@ const ListeSousCategories = () => {
         <DataGrid
           style={{ height: 500 }}
           columns={[
+            {
+              field: "id",
+              headerName: "ID",
+              headerClassName: "headerTableau",
+              maxWidth: 70,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
             {
               field: "value",
               headerName: "Sous-catégories",
@@ -65,9 +79,25 @@ const ListeSousCategories = () => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <i
-                /*onClick={() => console.log(field.id)}*/
-                ></i>
+                <div className="actionIcon">
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="editIcon"
+                  />
+                  <Link
+                    to="./modal/supprimer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="deletIcon"
+                    />
+                  </Link>
+                </div>
               ),
             },
           ]}
@@ -83,6 +113,9 @@ const ListeSousCategories = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
+          onRowClick={(datas) => {
+            setDeleteData(datas.row);
+          }}
           rows={sousCategories}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination

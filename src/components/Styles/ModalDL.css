@@ -1,0 +1,67 @@
+.backContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--clr-green);
+  opacity: 94%;
+}
+
+.popUpModal {
+  z-index: 1060;
+  position: absolute;
+  top: 50%;
+  width: 65.1rem;
+  height: 46rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: var(--clr-orange);
+  border-radius: 177px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coordoneDl {
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.nameDl {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  width: 75%;
+}
+
+.inputDl {
+  height: 4rem;
+  padding-left: 2rem;
+  border-radius: 0px 25px 25px 25px;
+}
+
+.citySelectDl,
+.mailDl {
+  width: 75%;
+  appearance: none;
+}
+
+.citySelectDl {
+  cursor: pointer;
+}
+
+[data-reach-dialog-content] {
+  background: none;
+}
+
+[data-reach-dialog-overlay] {
+  background: none;
+}
