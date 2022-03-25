@@ -72,7 +72,6 @@ const ArticleContextProvider = (props) => {
   // Changement liste En fonciton de idCAtegorie
 
   useEffect(() => {
-    console.log(filters);
     axios
       .get(`http://localhost:4242/articles${filters}`)
       .then((res) => setArticles(res.data));

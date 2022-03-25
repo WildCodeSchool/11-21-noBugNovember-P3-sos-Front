@@ -8,43 +8,29 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 //*IMPORT REACT//*
-import axios from "axios";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 //*IMPORT CONTEXT//*
 import { ArticleContext } from "../../context/ArticleContext";
 
 const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
-  const { articles, setStateVisible, stateVisible } =
-    useContext(ArticleContext);
+  const { articles } = useContext(ArticleContext);
 
   let location = useLocation();
 
-  const putData = (bol) => {
-    axios
-      .put(`http://localhost:4242/articles/${deleteData.id}`, {
-        visible: bol,
-      })
-      .then(
-        (response) =>
-          console.log("RESPONSE REQUETE", response) ||
-          setStateVisible(!stateVisible)
-      );
-  };
-
-  const toggleVisibility = () => {
-    console.log("test visible", deleteData.visible);
-    deleteData && parseInt(deleteData.visible) === 1
-      ? putData(false)
-      : putData(true);
-  };
-  // useEffect(() => {
-  //   console.log(stateVisible);
-  //   stateVisible &&
-
-  // }, [stateVisible]);
+  // const putData = (bol) => {
+  //   axios
+  //     .put(`http://localhost:4242/articles/${deleteData.id}`, {
+  //       visible: bol,
+  //     })
+  //     .then(
+  //       (response) =>
+  //         console.log("RESPONSE REQUETE", response) ||
+  //         setStateVisible(!stateVisible)
+  //     );
+  // };
 
   return (
     <>
