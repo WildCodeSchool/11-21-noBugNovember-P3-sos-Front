@@ -1,6 +1,6 @@
 //*IMPORT CSS ET ASSETS//*
-import publishIcon from "../../assets/publish.svg";
 import "./Styles/ListeArticles.css";
+import publishIcon from "../../assets/publish.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +8,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 //*IMPORT REACT//*
+
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
@@ -20,21 +21,8 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
 
   let location = useLocation();
 
-  // const putData = (bol) => {
-  //   axios
-  //     .put(`http://localhost:4242/articles/${deleteData.id}`, {
-  //       visible: bol,
-  //     })
-  //     .then(
-  //       (response) =>
-  //         console.log("RESPONSE REQUETE", response) ||
-  //         setStateVisible(!stateVisible)
-  //     );
-  // };
-
   return (
     <>
-      {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
         <Link to="../articleForm">
@@ -150,12 +138,15 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
                       className="deletIcon"
                     />
                   </Link>
+                  {console.log(field.row)}
                   <Link
                     to="./modal/visible"
                     state={{ backgroundLocation: location }}
                   >
                     <FontAwesomeIcon
-                      icon={faEye}
+                      icon={
+                        parseInt(field.row.visible) === 1 ? faEye : faEyeSlash
+                      }
                       size="1x"
                       color="var(--clr-orange)"
                       className="eyeIcon"
@@ -174,7 +165,6 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}
-          // rows={categories.name}
           onRowClick={(datas) => {
             setDeleteData(datas.row) || setModifArticle(datas.row);
           }}
