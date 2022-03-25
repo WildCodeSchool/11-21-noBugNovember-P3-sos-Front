@@ -2,7 +2,7 @@ import "./Styles/ArticlesGrid.css";
 
 import { useContext } from "react";
 import { Link} from "react-router-dom";
-import CarouselCat from "../components/CarouselCat.js";
+// import CarouselCat from "../components/CarouselCat.js";
 
 import CardArticle from "../components/CardArticle.js";
 import Header from "../components/Header.js";
@@ -10,6 +10,8 @@ import Header from "../components/Header.js";
 import SearchBar from "../components/SearchBar.js";
 
 import { ArticleContext } from "../context/ArticleContext";
+// import { Slider } from "@mui/material";
+import Slider from "../components/Slider";
 
 const ArticlesGrid = () => {
   const { articles } = useContext(ArticleContext);
@@ -24,7 +26,7 @@ const ArticlesGrid = () => {
           <div className="articleGridSearchBar">
             {/* <ArtSearchBar /> */}
             <SearchBar isVille={true} isSousCat={true} isCat={false} isButtonGrid={true}/> 
-            <CarouselCat />
+            <Slider />
           </div>
         </div>
         {articles &&
