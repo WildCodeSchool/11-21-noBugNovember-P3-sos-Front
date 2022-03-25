@@ -102,6 +102,17 @@ const ListeCategorie = () => {
             Ajouter catégorie
           </button>
 
+<div className="elementToEdit">
+<label for="myInput" className="titleElementToEdit">Catégorie à modifier</label>
+          <input
+            className="newCategoInput newCategoInputDecal"
+            type="text"
+            name="myInput"
+            size="30"
+            required
+            value={"Catégorie selectionnée au click"}>
+            </input>
+</div>
 
           <input
             className="newCategoInput"
