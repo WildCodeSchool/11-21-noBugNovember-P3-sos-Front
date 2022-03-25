@@ -3,7 +3,8 @@
   display: flex;
 }
 
-.newCategoInput { /*Input nouvel item*/
+.newCategoInput {
+  /*Input nouvel item*/
   height: 5rem;
   padding: 2rem;
   margin: 0 1rem 0 0;
@@ -25,25 +26,25 @@
   border: solid 5px var(--clr-green);
 }
 
-.elementToEdit{
+.elementToEdit {
   display: flex;
   flex-direction: column;
   justify-content: center;
-margin: 0 1rem 0 1rem;
-    border: 2px solid red;
+  margin: 0 1rem 0 1rem;
+  border: 2px solid red;
 }
 
-
-.titleElementToEdit{
-height: 5rem;
-padding: 2rem;
-margin-bottom: 2rem;
-background-color: var(--clr-green3);
-color: white;
-display: flex;
-align-items: center;
+.titleElementToEdit {
+  height: 5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background-color: var(--clr-green3);
+  color: white;
+  display: flex;
+  align-items: center;
 }
 
-.newCategoInputDecal{ /* correction du margin*/
+.newCategoInputDecal {
+  /* correction du margin*/
   margin: 0;
 }

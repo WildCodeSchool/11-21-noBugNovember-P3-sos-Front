@@ -3,13 +3,15 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useContext, useEffect, useState } from "react";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import axios from "axios";
+import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const ListeCategorie = () => {
   const { categories } = useContext(CategoriesContext);
-
   const [newCategorie, setNewCategorie] = useState("");
 
-  const [oldCategoryName, setOldCategoryName] = useState("")
 
 
   const nouvelleCategorie = () => {
@@ -68,7 +70,28 @@ const ListeCategorie = () => {
               flex: 0.5,
               align: "center",
               headerAlign: "center",
-              renderCell: (field) => <div className="actionIcon"></div>,
+              renderCell: (field) => (<div className="actionIcon">
+              <Link to="" >
+              {console.log(field.row)}
+                {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
+                <FontAwesomeIcon
+                  icon={faPencil}
+                  size="1x"
+                  color="var(--clr-orange)"
+                  className="editIcon"
+                  onClick={""}
+                />
+              </Link>
+
+              <FontAwesomeIcon
+                icon={faTrash}
+                size="1x"
+                color="var(--clr-orange)"
+                className="deletIcon"
+                // onClick={deleteArticle}
+              />
+
+            </div>),
             },
           ]}
           sx={{
