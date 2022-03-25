@@ -1,10 +1,32 @@
 import "./Styles/ListeCategorie.css";
 import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CategoriesContext } from "../../context/CategoriesContext";
+import axios from "axios";
 
 const ListeCategorie = () => {
   const { categories } = useContext(CategoriesContext);
+
+  const [newCategorie, setNewCategorie] = useState("");
+
+  const [oldCategoryName, setOldCategoryName] = useState("")
+
+
+  const nouvelleCategorie = () => {
+    axios
+      .post(`http://localhost:4242/categories`, { ...newCategorie })
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error("---Erreur envoi categorie--- ", error.validationErrors)
+      );
+  };
+
+
+  const handleChangeNewCategorie = (e) => {
+    setNewCategorie({ nom_categorie: e.target.value });
+
+    console.log(newCategorie);
+  };
 
   return (
     <>
@@ -20,6 +42,15 @@ const ListeCategorie = () => {
         <DataGrid
           style={{ height: 500 }}
           columns={[
+            {
+              field: "id",
+              headerName: "ID",
+              headerClassName: "headerTableau",
+              maxWidth: 50,
+              flex: 0.5,
+              align: "left",
+              headerAlign: "left",
+            },
             {
               field: "value",
               headerName: "Catégories",
@@ -37,11 +68,7 @@ const ListeCategorie = () => {
               flex: 0.5,
               align: "center",
               headerAlign: "center",
-              renderCell: (field) => (
-                <i
-                /*onClick={() => console.log(field.id)}*/
-                ></i>
-              ),
+              renderCell: (field) => <div className="actionIcon"></div>,
             },
           ]}
           sx={{
@@ -65,11 +92,42 @@ const ListeCategorie = () => {
             className="newCategoInput"
             type="text"
             name="myInput"
-            placeholder="Nouvelle Catégorie"
+            placeholder="Nouvelle catégorie"
             size="30"
             required
+            onChange={handleChangeNewCategorie}
           ></input>
-          <button className="button2 adminButton">Ajouter categorie</button>
+
+          <button className="button2 adminButton" onClick={nouvelleCategorie}>
+            Ajouter catégorie
+          </button>
+
+<div className="elementToEdit">
+<label for="myInput" className="titleElementToEdit">Catégorie à modifier</label>
+          <input
+            className="newCategoInput newCategoInputDecal"
+            type="text"
+            name="myInput"
+            size="30"
+            required
+            value={"Catégorie selectionnée au click"}>
+            </input>
+</div>
+
+          <input
+            className="newCategoInput"
+            type="text"
+            name="myInput"
+            placeholder="Nouveau nom de catégorie"
+            size="30"
+            required
+            onChange={""}
+          ></input>
+
+          <button className="button2 adminButton" onClick={""}>
+            Modifier la catégorie
+          </button>
+
         </div>
       </div>
     </>

@@ -65,7 +65,7 @@ const ModificationArticle = (props) => {
       .put(`http://localhost:4242/articles/${modifArticle.id}`, { ...article})
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
-        console.error("---Erreur envoi article--- ", error.validationErrors)
+        console.error("---Erreur modification article--- ", error.validationErrors)
       );
   };
 

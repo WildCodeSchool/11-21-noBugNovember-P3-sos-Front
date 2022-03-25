@@ -128,6 +128,7 @@ const ListArticles = (props) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
+
                 <div className="actionIcon">
                   <Link to="/admin-controler/modification-article">
                     {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
@@ -153,6 +154,7 @@ const ListArticles = (props) => {
                     className="eyeIcon"
                   />
                 </div>
+
               ),
             },
           ]}
