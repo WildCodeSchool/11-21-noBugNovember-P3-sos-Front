@@ -8,11 +8,9 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 
-const ListeCategorie = ({setDeleteData}) => {
+const ListeCategorie = ({ setDeleteData }) => {
   const { categories } = useContext(CategoriesContext);
   const [newCategorie, setNewCategorie] = useState("");
-
-
 
   const nouvelleCategorie = () => {
     axios
@@ -22,7 +20,6 @@ const ListeCategorie = ({setDeleteData}) => {
         console.error("---Erreur envoi categorie--- ", error.validationErrors)
       );
   };
-
 
   const handleChangeNewCategorie = (e) => {
     setNewCategorie({ nom_categorie: e.target.value });
@@ -69,12 +66,17 @@ const ListeCategorie = ({setDeleteData}) => {
               headerAlign: "center",
               renderCell: (field) => (
                 <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                  <Link
+                    to="./modal/editer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
                   <Link
                     to="./modal/supprimer"
                     state={{ backgroundLocation: location }}
@@ -124,32 +126,7 @@ const ListeCategorie = ({setDeleteData}) => {
             Ajouter catégorie
           </button>
 
-<div className="elementToEdit">
-<label for="myInput" className="titleElementToEdit">Catégorie à modifier</label>
-          <input
-            className="newCategoInput newCategoInputDecal"
-            type="text"
-            name="myInput"
-            size="30"
-            required
-            value={"Catégorie selectionnée au click"}>
-            </input>
-</div>
-
-          <input
-            className="newCategoInput"
-            type="text"
-            name="myInput"
-            placeholder="Nouveau nom de catégorie"
-            size="30"
-            required
-            onChange={""}
-          ></input>
-
-          <button className="button2 adminButton" onClick={""}>
-            Modifier la catégorie
-          </button>
-
+          
         </div>
       </div>
     </>

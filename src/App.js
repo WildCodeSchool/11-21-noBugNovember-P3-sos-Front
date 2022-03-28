@@ -3,7 +3,7 @@ import "./App.css";
 
 //*IMPORT REACT//*
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 //*IMPORT COMPONENTS //*
 import ArticleForm from "./components/ArticleForm";
@@ -14,7 +14,9 @@ import ListeCategorie from "./components/Admin/ListeCategorie";
 import ListeSecteurs from "./components/Admin/ListeSecteurs";
 import ListeSousCat from "./components/Admin/ListeSousCat";
 import ListeVilles from "./components/Admin/ListeVilles";
+import ListeDonnees from "./components/Admin/ListeDonnees";
 import Suppression from "./components/Suppression";
+import EditName from "./components/EditName";
 
 //*IMPORT SCREENS //*
 
@@ -25,13 +27,17 @@ import Home from "./screens/Home";
 import IdentificationAdmin from "./screens/IdentificationAdmin";
 import PanelAdmin from "./screens/PanelAdmin";
 
-//*IMPORT CONTEXT //*
+//*IMPORT CONTEXT PROVIDER //*
 import ArticleContextProvider from "./context/ArticleContext";
 import CategoriesContextProvider from "./context/CategoriesContext";
 import SecteursContextProvider from "./context/SecteursContext";
 import SousCategoriesContextProvider from "./context/SousCategoriesContext";
-import RegionsContextProvider from "./context/RegionsContext";
 import VillesContextProvider from "./context/VillesContext";
+import TelechargementsContextProvider from "./context/TelechargementsContext"
+
+//*IMPORT CONTEXT //* ajout rom
+import { RegionsContext } from "./context/RegionsContext";
+
 
 function App() {
   let location = useLocation();
@@ -41,14 +47,22 @@ function App() {
   const [modifArticle, setModifArticle] = useState("");
   const [deleteData, setDeleteData] = useState("");
 
+  
+  //Ajout rom REGIONS
+  const { regions } = useContext(RegionsContext);
+  const { idRegion } = useContext(RegionsContext);
+  const { setIdRegion } = useContext(RegionsContext);
+
+
+
   return (
     <div className="App">
       <ArticleContextProvider>
         <CategoriesContextProvider>
           <SousCategoriesContextProvider>
-            <RegionsContextProvider>
               <VillesContextProvider>
                 <SecteursContextProvider>
+                  <TelechargementsContextProvider>
                   <Routes location={backgroundLocation || location}>
                     <Route path="/" element={<Home />} />
                     <Route path="/etapes" element={<FirstVisit />} />
@@ -100,6 +114,10 @@ function App() {
                         element={
                           <ListeSecteurs setDeleteData={setDeleteData} />
                         }
+                      />
+                      <Route
+                        path="donnes"
+                        element={<ListeDonnees />}
                       />
                       <Route
                         path="modification-article"
@@ -178,11 +196,57 @@ function App() {
                           />
                         }
                       />
+                      <Route
+                        path="admin-controler/categories/modal/editer"
+                        element={
+                          <EditName
+                            deleteData={deleteData}
+                            page={"categories"}
+                            edit={"nom_categorie"}
+                          />
+                        }
+                      />
+                      <Route
+                        path="admin-controler/sousCategories/modal/editer"
+                        element={
+                          <EditName
+                            deleteData={deleteData}
+                            page={"sousCategories"}
+                            edit={"nom_sous_categorie"}
+                          />
+                        }
+                      />
+                      <Route
+                        path="admin-controler/secteurs/modal/editer"
+                        element={
+                          <EditName
+                            deleteData={deleteData}
+                            page={"secteurs"}
+                            edit={"nom_secteur"}
+                          />
+                        }
+                      />
+                      <Route
+                        path="admin-controler/villes/modal/editer"
+                        element={
+                          <EditName
+                            deleteData={deleteData}
+                            page={"villes"}
+                            edit={"nom_ville"}
+                            edit2={"region_id"}
+                            select={true}
+                            name={"la région"}
+                            result={regions}
+                            value2={idRegion}
+                            set={setIdRegion}
+                          />
+                        }
+                      />
                     </Routes>
                   )}
+                  </TelechargementsContextProvider>
                 </SecteursContextProvider>
               </VillesContextProvider>
-            </RegionsContextProvider>
           </SousCategoriesContextProvider>
         </CategoriesContextProvider>
       </ArticleContextProvider>
