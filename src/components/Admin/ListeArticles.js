@@ -89,7 +89,7 @@ const ListArticles = (props) => {
               headerAlign: "left",
             },
             {
-              field: "nom_vilMentorat , Networking , Ole",
+              field: "nom_ville",
               headerName: "Villes",
               headerClassName: "headerTableau",
               maxWidth: 110,
