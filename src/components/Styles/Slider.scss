@@ -130,7 +130,7 @@
   }
 
   &--previous {
-    cursor: w-resize;
+    // cursor: w-resize;
     opacity: 0.5;
 
     &:hover {
@@ -149,90 +149,29 @@
 }
 
 .slide--current {
-  // --x: 0;
-  // --y: 0;
-  // --d: 0;
   opacity: 1;
   pointer-events: auto;
   user-select: auto;
-
-  // @media (hover: hover) {
-  //   &:hover .slide__image-wrapper {
-  //     transform: scale(1.025)
-  //       translate(
-  //         calc(var(--x) / var(--d) * 1px),
-  //         calc(var(--y) / var(--d) * 1px)
-  //       );
-  //   }
-  // }
 }
-
-// .slide__image-wrapper {
-//   background-color: var(--color-accent);
-
-//   border-radius: 1%;
-//   height: 100%;
-//   left: 0%;
-//   overflow: hidden;
-//   position: absolute;
-//   top: 0%;
-//   transition: transform calc(var(--base-duration) / 4) var(--base-ease);
-//   width: 100%;
-// }
-
-// .slide__image {
-//   // --d: 20;
-//   height: 110%;
-//   // left: -5%;
-//   object-fit: cover;
-//   // opacity: 0;
-//   pointer-events: none;
-//   position: absolute;
-//   top: -5%;
-//   transition: opacity var(--base-duration) var(--base-ease),
-//     transform var(--base-duration) var(--base-ease);
-//   user-select: none;
-//   width: 110%;
-
-//   @media (hover: hover) {
-//     .slide--current & {
-//       transform: translate(
-//         calc(var(--x) / var(--d) * 1px),
-//         calc(var(--y) / var(--d) * 1px)
-//       );
-//     }
-//   }
-// }
 
 .slide__headline {
   font-size: --ff-body;
-  // font-weight: 600;
   position: relative;
 }
 
 .slide__headline {
   width: 18rem;
   height: 5rem;
-  // background-color: orange;
+  cursor: pointer;
 }
 
 .slide__content {
   --d: 60;
   padding: 4vmin;
   position: relative;
-  // transition: transform var(--base-duration) var(--base-ease);
-  // visibility: hidden;
 
   .slide--current & {
-    // animation: fade-in calc(var(--base-duration) / 2) var(--base-ease) forwards;
     visibility: visible;
-
-    @media (hover: hover) {
-      // transform: translate(
-      //   calc(var(--x) / var(--d) * -1px),
-      //   calc(var(--y) / var(--d) * -1px)
-      // );
-    }
   }
 
   > * + * {
@@ -250,5 +189,12 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .slider {
+    --slide-size: 10em;
+    --slide-margin: 1.5em;
   }
 }

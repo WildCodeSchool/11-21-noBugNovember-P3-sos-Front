@@ -1,57 +1,45 @@
-import { useState } from 'react'
-import { useContext } from 'react'
-import { ArticleContext } from '../context/ArticleContext'
-import { CategoriesContext } from '../context/CategoriesContext'
-import Slide from './Slide.js'
-import './Styles/CarouselCat.scss'
+import { useContext } from "react";
+import { ArticleContext } from "../context/ArticleContext";
+import { CategoriesContext } from "../context/CategoriesContext";
+import Slide from "./Slide.js";
+import "./Styles/Slider.scss";
+import { SousCategoriesContext } from "../context/SousCategoriesContext";
 
 const Slider = () => {
-  const [indexImg, setIndexImg] = useState(0)
+  const { categories } = useContext(CategoriesContext);
+  const { idCategorie } = useContext(ArticleContext);
+  const { setIdCategorie } = useContext(ArticleContext);
+  // const {sousCatSet}=useContext(SousCategoriesContext)
 
-  const { categories } = useContext(CategoriesContext)
-  const { handleCat } = useContext(ArticleContext)
-
-  const heading = 'Exemple Slider'
+  const heading = "Exemple Slider";
 
   const wrapperTransform = {
-    transform: `translateX(-${(indexImg - 1) * (100 / categories.length)}%)`,
-  }
+    transform: `translateX(-${(idCategorie - 1) * (100 / categories.length)}%)`,
+  };
 
-  const headingId = `slider-heading__${heading
-    .replace(/\s+/g, '-')
-    .toLowerCase()}`
-
-  const handleSlideClick = (id) => {
-    if (indexImg !== id) {
-      handleCat(id)
-      setIndexImg(id)
-    }
-  }
 
   return (
     <>
-      <div className='slider' aria-labelledby={headingId}>
-        <ul className='slider__wrapper' style={wrapperTransform}>
-          <h3 id={headingId} className='visuallyhidden'>
-            {heading}
-          </h3>
-
-          {categories.map((slide) => {
-            return (
-              <Slide
-                key={slide.id}
-                idSlide={slide.id}
-                slide={categories}
-                indexImg={indexImg}
-                button={slide.value}
-                handleSlideClick={handleSlideClick}
-              />
-            )
-          })}
+      <div className="slider">
+        {console.log("abdou", categories)}
+        <ul className="slider__wrapper" style={wrapperTransform}>
+          {categories &&
+            categories.map((slide) => {
+              return (
+                <Slide
+                  key={slide.id}
+                  idSlide={slide.id}
+                  slide={categories}
+                  idCategorie={idCategorie}
+                  setIdCategorie={setIdCategorie}
+                  button={slide.value}
+                />
+              );
+            })}
         </ul>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;

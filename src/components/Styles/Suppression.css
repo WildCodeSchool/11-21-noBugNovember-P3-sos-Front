@@ -1,0 +1,48 @@
+.fragmentContainer {
+  transition: opacity 0.3s ease-out;
+  visibility: visible;
+  transition: visibility 0.4s;
+}
+.popUpModalDelet {
+  z-index: 1060;
+  position: absolute;
+  top: 50%;
+  width: 55rem;
+  height: 32rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--clr-orange);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: appear 0.3s ease-in;
+}
+
+.backContainerAdmin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--clr-green);
+  opacity: 50%;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.buttonModalDelet {
+  display: flex;
+  align-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}

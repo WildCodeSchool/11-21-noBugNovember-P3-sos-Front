@@ -1,9 +1,13 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { useContext, useState } from "react";
-import { SecteursContext } from "../../context/SecteursContext";
 import axios from "axios";
+import { Link, useLocation } from "react-router-dom";
+import { SecteursContext } from "../../context/SecteursContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const ListeSecteur = () => {
+const ListeSecteur = ({setDeleteData} ) => {
   const { secteurs } = useContext(SecteursContext);
 
   const [newSecteur, setNewSecteur] = useState("");
@@ -23,14 +27,12 @@ const ListeSecteur = () => {
     console.log(newSecteur);
   };
 
+  let location = useLocation();
+  
   return (
     <>
-      {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-        {/* <Link to="../articleForm">
-          <img src={publishIcon} alt="publishIcon"></img>
-        </Link> */}
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des secteurs</h3>
@@ -41,7 +43,7 @@ const ListeSecteur = () => {
               field: "id",
               headerName: "ID",
               headerClassName: "headerTableau",
-              maxWidth: 50,
+              maxWidth: 70,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -64,9 +66,25 @@ const ListeSecteur = () => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <i
-                /*onClick={() => console.log(field.id)}*/
-                ></i>
+                <div className="actionIcon">
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="editIcon"
+                  />
+                  <Link
+                    to="./modal/supprimer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="deletIcon"
+                    />
+                  </Link>
+                </div>
               ),
             },
           ]}
@@ -83,6 +101,9 @@ const ListeSecteur = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
+          onRowClick={(datas) => {
+            setDeleteData(datas.row);
+          }}
           rows={secteurs}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination

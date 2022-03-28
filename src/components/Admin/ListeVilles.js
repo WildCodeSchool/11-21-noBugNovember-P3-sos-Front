@@ -1,12 +1,14 @@
-import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
-import { VillesContext } from "../../context/VillesContext";
-import { RegionsContext } from "../../context/RegionsContext";
-
-// RAJOUT DES IMPORTS POUR FAIRE LE LIEN AVEC VILLES
-import Select, { StylesConfig } from "react-select";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { DataGrid } from "@mui/x-data-grid";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, useLocation } from "react-router-dom";
+import { RegionsContext } from "../../context/RegionsContext";
+import Select, { StylesConfig } from "react-select";
+import { useContext, useState, useEffect } from "react";
+import { VillesContext } from "../../context/VillesContext";
+
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -19,18 +21,22 @@ const colourStyles: StylesConfig = {
   }),
 };
 
-const ListeVilles = () => {
+const ListeVilles = (props) => {
   const { villes } = useContext(VillesContext);
+  const { setDeleteData } = props;
+  let location = useLocation();
 
   const [newCity, setNewCity] = useState("");
 
   const nouvelleVille = () => {
+    console.log("Hello new city", newCity);
     axios
       .post(`http://localhost:4242/villes`, { ...newCity })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
         console.error("---Erreur envoi villes--- ", error.validationErrors)
       );
+    setNewCity("");
   };
 
   const handleChangeNewCity = (e) => {
@@ -64,8 +70,8 @@ const ListeVilles = () => {
     setRegion({
       categorie_id: chooseSelectRegion,
       nom_sous_categorie: newCity,
-      // Comment faire la connection categorie_id de sous cat ???
     });
+
     console.warn("COLLECT DATAS ======>", newCity);
     axios
       .post(`http://localhost:4242/souscategories`, { ...newCity })
@@ -84,9 +90,6 @@ const ListeVilles = () => {
       {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-        {/* <Link to="../articleForm">
-          <img src={publishIcon} alt="publishIcon"></img>
-        </Link> */}
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des villes</h3>
@@ -98,7 +101,7 @@ const ListeVilles = () => {
               field: "id",
               headerName: "ID",
               headerClassName: "headerTableau",
-              maxWidth: 50,
+              maxWidth: 70,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -130,9 +133,25 @@ const ListeVilles = () => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <i
-                /*onClick={() => console.log(field.id)}*/
-                ></i>
+                <div className="actionIcon">
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="editIcon"
+                  />
+                  <Link
+                    to="./modal/supprimer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="deletIcon"
+                    />
+                  </Link>
+                </div>
               ),
             },
           ]}
@@ -148,6 +167,9 @@ const ListeVilles = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
+          onRowClick={(datas) => {
+            setDeleteData(datas.row);
+          }}
           rows={villes}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
@@ -156,10 +178,10 @@ const ListeVilles = () => {
         {/* RAJOUT LISTE SELECT : Region */}
         <div className="newCategoContent">
           <div className="selectDiv">
-            {console.log(regions)}
+            {console.log("voiccci mes regions ", regions)}
             <Select
               placeholder="Région de rattachement"
-              options={regions}
+              options={selectRegion}
               className="basic-multi-select decalage-droit-input-1rem"
               classNamePrefix="select"
               closeMenuOnSelect={true}
@@ -183,7 +205,7 @@ const ListeVilles = () => {
                 className="newCategoInput"
                 type="text"
                 name="myInput"
-                placeholder="Nouvelle Sous-catégorie"
+                placeholder="Nouvelle Ville"
                 size="30"
                 required
                 onChange={handleChangeNewCity}
@@ -192,7 +214,6 @@ const ListeVilles = () => {
               <button
                 className="button2 adminSousCatButton"
                 onClick={nouvelleVille}
-                collectDatas={collectDatas}
                 newCity={newCity}
               >
                 Ajouter sous-categorie
