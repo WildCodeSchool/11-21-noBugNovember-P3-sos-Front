@@ -5,15 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import RegionsContextProvider from "./context/RegionsContext";
-
+import CategoriesContextProvider from "./context/CategoriesContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <RegionsContextProvider>
-      <App />
-      </RegionsContextProvider>
-
+      <CategoriesContextProvider>
+        <RegionsContextProvider>
+          <App />
+        </RegionsContextProvider>
+      </CategoriesContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
