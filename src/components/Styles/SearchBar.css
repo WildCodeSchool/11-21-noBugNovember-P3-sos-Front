@@ -24,7 +24,7 @@
   border-radius: 0 2rem;
   padding: 0 1rem 0 2rem;
   appearance: none;
-  /* width: 16rem; */
+  width: 16rem;
 }
 
 /******* Large Tablet *******/
@@ -39,9 +39,9 @@
     width: auto;
     height: auto;
   }
-  .SearchBar {
+  .SearchBar .ArtSearchBar{
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: space-around;
     width: auto;
     background: var(--clr-green3);
     height: auto;
@@ -52,7 +52,7 @@
     flex-direction: column;
   }
 
-  .SearchBar > * {
+  .SearchBar >* {
     margin: 0.4em;
   }
 }

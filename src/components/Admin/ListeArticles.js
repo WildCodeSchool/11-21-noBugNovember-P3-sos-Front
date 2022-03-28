@@ -1,35 +1,37 @@
-import publishIcon from "../../assets/publish.svg";
+//*IMPORT CSS ET ASSETS//*
 import "./Styles/ListeArticles.css";
-
-import { ArticleContext } from "../../context/ArticleContext";
-import { Link } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
-import { useContext, useState } from "react";
-
+import publishIcon from "../../assets/publish.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { CategoriesContext } from "../../context/CategoriesContext";
+//*IMPORT REACT//*
 
-const ListArticles = (props) => {
-  const { setModifArticle } = props;
+import { DataGrid } from "@mui/x-data-grid";
+import { Link, useLocation } from "react-router-dom";
+import { useContext } from "react";
+
+//*IMPORT CONTEXT//*
+import { ArticleContext } from "../../context/ArticleContext";
+
+const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
   const { articles } = useContext(ArticleContext);
   const { categorie } = useContext(CategoriesContext);
-  const deleteArticle = (modifArticle) => {
-    axios
-      .delete(`http://localhost:4242/articles/${modifArticle.id}`)
-      .then((response) => console.log("RESPONSE REQUETE", response))
-      .catch((error) => console.error(error.validationErrors));
-  };
-  const collectData = (datas, setModifArticle) => {
-    console.log("LISTE ARTICLES", categorie);
-    setModifArticle(datas.row);
-  };
+  let location = useLocation();
+
+  // const deleteArticle = (modifArticle) => {
+  //   axios
+  //     .delete(`http://localhost:4242/articles/${modifArticle.id}`)
+  //     .then((response) => console.log("RESPONSE REQUETE", response))
+  //     .catch((error) => console.error(error.validationErrors));
+  // };
+
+
   return (
     <>
-      {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
         <Link to="../articleForm">
@@ -47,7 +49,7 @@ const ListArticles = (props) => {
               field: "id",
               headerName: "ID",
               headerClassName: "headerTableau",
-              maxWidth: 50,
+              maxWidth: 70,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -134,20 +136,31 @@ const ListArticles = (props) => {
                       className="editIcon"
                     />
                   </Link>
-
-                  <FontAwesomeIcon
-                    icon={faTrash}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="deletIcon"
-                    onClick={deleteArticle}
-                  />
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="eyeIcon"
-                  />
+                  <Link
+                    to="./modal/supprimer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="deletIcon"
+                    />
+                  </Link>
+                  {console.log(field.row)}
+                  <Link
+                    to="./modal/visible"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={
+                        parseInt(field.row.visible) === 1 ? faEye : faEyeSlash
+                      }
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="eyeIcon"
+                    />
+                  </Link>
                 </div>
               ),
             },
@@ -161,11 +174,12 @@ const ListArticles = (props) => {
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}
-          // rows={categories.name}
+          onRowClick={(datas) => {
+            setDeleteData(datas.row) || setModifArticle(datas.row);
+          }}
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
-          onRowClick={(datas) => collectData(datas.row)}
         />
       </div>
     </>

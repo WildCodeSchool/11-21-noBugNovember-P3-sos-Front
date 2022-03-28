@@ -1,30 +1,40 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from "react";
 
-const Slide = ({ indexImg, handleSlideClick, idSlide, button }) => {
-  let slideContent = useRef()
-  let classSlide = 'slide'
+const Slide = ({
+  idCategorie,
+  idSlide,
+  button,
+  setIdCategorie,
+  sousCatSet,
+}) => {
+  let slideContent = useRef(null);
+  let classSlide = "slide";
 
-  if (indexImg === idSlide) {
-    classSlide += ' slide--current'
-  } else if (indexImg - 1 === idSlide) {
-    classSlide += ' slide--previous'
-  } else if (indexImg + 1 === idSlide) {
-    classSlide += ' slide--next'
+  if (parseInt(idCategorie) === parseInt(idSlide)) {
+    classSlide += " slide--current";
+  } else if (parseInt(idCategorie) + 1 === parseInt(idSlide)) {
+    classSlide += " slide--next";
+  } else if (parseInt(idCategorie) - 1 === parseInt(idSlide)) {
+    classSlide += " slide--previous";
   }
 
   return (
     <>
-      <li
-        ref={slideContent}
-        className={classSlide}
-        onClick={() => handleSlideClick(idSlide)}
-      >
-        <article className='slide__content'>
-          <button className='slide__headline borderRadius'>{button}</button>
-        </article>
-      </li>
+      {idSlide && (
+        <li
+          ref={slideContent}
+          className={classSlide}
+          onClick={() => {
+            setIdCategorie(idSlide);
+          }}
+        >
+          <article className="slide__content">
+            <button className="slide__headline borderRadius">{button}</button>
+          </article>
+        </li>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Slide
+export default Slide;

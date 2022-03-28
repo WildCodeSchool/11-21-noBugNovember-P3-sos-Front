@@ -20,39 +20,35 @@
   padding-top: 2rem;
 }
 
-.stateCatArticlesCat{
-  /* border: 2px solid red; */
+.stateCatArticlesCat {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.btnCat{
+.btnDetail {
   padding: 1rem;
-    border-radius: 0 2rem 0rem 0;
-    width: 20rem;
-    height: 4rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    background: var(--clr-orange2);
-    color: var(--clr-white);
-    cursor: pointer;
-    border: solid 5px transparent;
-    box-sizing: border-box;
+  border-radius: 0 2rem 0rem 0;
+  min-width: 15rem;
+  height: 4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: var(--clr-white);
+  cursor: pointer;
+  border: solid 5px transparent;
+  box-sizing: border-box;
+  background: var(--clr-orange);
 }
 
-.gridArrow{
-  width: 30px;
-  height: 30px;
-  transform: rotate(180deg);
-  margin: 0 1rem;
+.btnDetail:last-child {
+  background: var(--clr-orange2);
 }
 
-.btnSousCat{
+/* .btnSousCat {
   padding: 1rem;
   border-radius: 0 2rem 0rem 0;
   width: fit-content;
@@ -63,32 +59,30 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  background: var(--clr-orange);
   color: var(--clr-white);
   cursor: pointer;
   border: solid 5px transparent;
   box-sizing: border-box;
+} */
+
+.gridArrow {
+  width: 30px;
+  height: 30px;
+  transform: rotate(180deg);
+  margin: 0 1rem;
 }
 
-.btn-green-form2{
+.btn-green-form2 {
   margin-left: 2rem;
 }
 
-.articleTitreH2{
-  font-size: 4rem ;
-  text-align: justify;
+.articleTitreH2 {
   margin-bottom: 1rem;
 }
 
 .articleDetailIntro {
   width: 100%;
   font-style: italic;
-  text-align: justify;
-
-}
-
-
-#articleDetailIntro {
 }
 
 .returnButton {
@@ -121,11 +115,9 @@
   height: auto;
   width: 100%;
   margin: 4rem;
-  
-} 
+}
 
-.articleImage{
-  /* border: 10px solid var(--clr-green); */
+.articleImage {
   height: 400px;
   width: 90%;
   margin: 0 auto;
@@ -138,14 +130,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  text-align: justify;
 }
 
 .articleDetailPara {
   width: 90%;
   display: flex;
   margin: 3rem 0;
-}
-
-#articleDetailPara {
 }

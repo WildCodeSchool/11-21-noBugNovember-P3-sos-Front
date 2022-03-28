@@ -3,12 +3,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useContext, useEffect, useState } from "react";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import axios from "axios";
-import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link, useLocation } from "react-router-dom";
 
-const ListeCategorie = () => {
+const ListeCategorie = ({setDeleteData}) => {
   const { categories } = useContext(CategoriesContext);
   const [newCategorie, setNewCategorie] = useState("");
 
@@ -29,15 +29,12 @@ const ListeCategorie = () => {
 
     console.log(newCategorie);
   };
+  let location = useLocation();
 
   return (
     <>
-      {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-        {/* <Link to="../articleForm">
-          <img src={publishIcon} alt="publishIcon"></img>
-        </Link> */}
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des categories</h3>
@@ -48,7 +45,7 @@ const ListeCategorie = () => {
               field: "id",
               headerName: "ID",
               headerClassName: "headerTableau",
-              maxWidth: 50,
+              maxWidth: 70,
               flex: 0.5,
               align: "left",
               headerAlign: "left",
@@ -70,28 +67,27 @@ const ListeCategorie = () => {
               flex: 0.5,
               align: "center",
               headerAlign: "center",
-              renderCell: (field) => (<div className="actionIcon">
-              <Link to="" >
-              {console.log(field.row)}
-                {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
-                <FontAwesomeIcon
-                  icon={faPencil}
-                  size="1x"
-                  color="var(--clr-orange)"
-                  className="editIcon"
-                  onClick={""}
-                />
-              </Link>
-
-              <FontAwesomeIcon
-                icon={faTrash}
-                size="1x"
-                color="var(--clr-orange)"
-                className="deletIcon"
-                // onClick={deleteArticle}
-              />
-
-            </div>),
+              renderCell: (field) => (
+                <div className="actionIcon">
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    size="1x"
+                    color="var(--clr-orange)"
+                    className="editIcon"
+                  />
+                  <Link
+                    to="./modal/supprimer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="deletIcon"
+                    />
+                  </Link>
+                </div>
+              ),
             },
           ]}
           sx={{
@@ -106,6 +102,9 @@ const ListeCategorie = () => {
             "& .MuiDataGrid-cell:hover": {},
           }}
           // rows={categories.name}
+          onRowClick={(datas) => {
+            setDeleteData(datas.row);
+          }}
           rows={categories}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
