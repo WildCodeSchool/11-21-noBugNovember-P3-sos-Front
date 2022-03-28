@@ -1,15 +1,93 @@
-import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { VillesContext } from "../../context/VillesContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//*IMPORT CSS//*
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+//*IMPORT REACT//*
+import axios from "axios";
+import { DataGrid } from "@mui/x-data-grid";
+import { Link, useLocation } from "react-router-dom";
+import Select, { StylesConfig } from "react-select";
+import { useContext, useState, useEffect } from "react";
+
+//*IMPORT CONTEXTS //*
+import { RegionsContext } from "../../context/RegionsContext";
+import { VillesContext } from "../../context/VillesContext";
+
+// STYLES CONFIG SELECT
+const colourStyles: StylesConfig = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "white",
+    width: "20vw",
+    padding: ".5rem",
+    //  height: "5rem" FOU LE BORDEL
+  }),
+};
 
 const ListeVilles = (props) => {
   const { villes } = useContext(VillesContext);
   const { setDeleteData } = props;
   let location = useLocation();
+
+  const [newCity, setNewCity] = useState("");
+
+  const nouvelleVille = () => {
+    console.log("Hello new city", newCity);
+    axios
+      .post(`http://localhost:4242/villes`, { ...newCity })
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error("---Erreur envoi villes--- ", error.validationErrors)
+      );
+    setNewCity("");
+  };
+
+  const handleChangeNewCity = (e) => {
+    setNewCity({ nom_ville: e.target.value, region_id: chooseSelectRegion });
+    console.log("Nouvelle ville à inscrire", newCity);
+  };
+
+  // PARTIE REGION
+  const { regions } = useContext(RegionsContext);
+
+  const [region, setRegion] = useState({});
+
+  const [selectRegion, setSelectRegion] = useState();
+  const [chooseSelectRegion, setChooseSelectRegion] = useState();
+
+  const handleChangeRegion = (value) => {
+    const { id } = value;
+    setChooseSelectRegion(id);
+    console.log("Choix de sous categorie => l'Id correspondant :", id);
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4242/regions")
+      .then((response) => setSelectRegion(response.data));
+  }, []);
+
+  // COLLECT ET ENVOI DES DONNEES
+  const collectDatas = (event) => {
+    event.preventDefault();
+    setRegion({
+      categorie_id: chooseSelectRegion,
+      nom_sous_categorie: newCity,
+    });
+
+    console.warn("COLLECT DATAS ======>", newCity);
+    axios
+      .post(`http://localhost:4242/souscategories`, { ...newCity })
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error(
+          "---Erreur envoi nouvelle ville--- ",
+          error.validationErrors
+        )
+      );
+  };
+  // FIN DE LA COLLECTE
 
   return (
     <>
@@ -18,7 +96,8 @@ const ListeVilles = (props) => {
         <h2 className="bjr-user">Bonjour [userName],</h2>
       </div>
       <div className="bloc-content-column">
-        <h3 className="titreMenu">Liste des categories</h3>
+        <h3 className="titreMenu">Liste des villes</h3>
+        {console.log("console log de ville : ", villes)}
         <DataGrid
           style={{ height: 500 }}
           columns={[
@@ -99,7 +178,57 @@ const ListeVilles = (props) => {
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />
+
+        {/* RAJOUT LISTE SELECT : Region */}
         <div className="newCategoContent">
+          <div className="selectDiv">
+            {console.log("voiccci mes regions ", regions)}
+            <Select
+              placeholder="Région de rattachement"
+              options={selectRegion}
+              className="basic-multi-select decalage-droit-input-1rem"
+              classNamePrefix="select"
+              closeMenuOnSelect={true}
+              onChange={(value) => handleChangeRegion(value)}
+              styles={colourStyles}
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 0,
+                colors: {
+                  ...theme.colors,
+                  primary25: "rgba(228, 144, 114, 0.659)",
+                  primary: "rgba(228, 144, 114, 0.659)",
+                },
+              })}
+            />
+          </div>
+          {/* FIN AJOUT LIST SELECT : Region */}
+          {chooseSelectRegion ? (
+            <>
+              <input
+                className="newCategoInput"
+                type="text"
+                name="myInput"
+                placeholder="Nouvelle Ville"
+                size="30"
+                required
+                onChange={handleChangeNewCity}
+              ></input>
+
+              <button
+                className="button2 adminSousCatButton"
+                onClick={nouvelleVille}
+                newCity={newCity}
+              >
+                Ajouter sous-categorie
+              </button>
+            </>
+          ) : (
+            ""
+          )}
+        </div>
+
+        {/* <div className="newCategoContent">
           <input
             className="newCategoInput"
             type="text"
@@ -109,7 +238,7 @@ const ListeVilles = (props) => {
             required
           ></input>
           <button className="button2 adminButton">Ajouter Ville</button>
-        </div>
+        </div> */}
       </div>
     </>
   );

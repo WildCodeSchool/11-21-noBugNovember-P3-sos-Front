@@ -11,6 +11,10 @@
   justify-content: center;
 }
 
+.decalage-droit-input-1rem { /* Quand une liste deroulante est a gauche d'un input */
+  margin-right: 2rem;
+}
+
 .adminSousCatButton:hover {
   border: solid 5px var(--clr-green);
 }

@@ -1,9 +1,9 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Dialog } from "@reach/dialog";
-import { useContext } from "react";
 import "@reach/dialog/styles.css";
 import "./Styles/ModalDL.css";
+import { Dialog } from "@reach/dialog";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { VillesContext } from "../context/VillesContext";
 
 function ModalDL() {

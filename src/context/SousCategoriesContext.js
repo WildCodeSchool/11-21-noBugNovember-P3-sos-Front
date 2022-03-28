@@ -1,5 +1,4 @@
 import { useEffect, useState, createContext, useContext } from "react";
-
 import axios from "axios";
 import { ArticleContext } from "./ArticleContext";
 
@@ -9,7 +8,6 @@ const SousCategoriesContextProvider = (props) => {
   const [idCatSousCat, setIdCatSousCat] = useState();
   const [sousCategories, setSousCategories] = useState([]);
   const [reloadSousCat, setReloadSousCat] = useState(true);
-
   const { idCategorie } = useContext(ArticleContext);
 
   // useEffect(() => {

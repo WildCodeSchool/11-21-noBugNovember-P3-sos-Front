@@ -18,6 +18,10 @@ const ArticleDetail = (
   const { articles } = useContext(ArticleContext)
   let location = useLocation()
   let { id } = useParams()
+  
+  function createMarkup(result) {
+    return {__html: `${result}`};
+  }
   return (
     <>
       <Header />
@@ -63,7 +67,7 @@ const ArticleDetail = (
                       </Link>
                     </div>
                     <div className='articleDetailPara'>
-                      <p id='articleDetailPara'>{result.para1}</p>
+                    <p id="articleDetailPara" dangerouslySetInnerHTML={createMarkup(result.para1)}></p>
                     </div>
                     <div className='articleDetailPara'>
                       <p id='articleDetailPara'>{result.avantage}</p>
