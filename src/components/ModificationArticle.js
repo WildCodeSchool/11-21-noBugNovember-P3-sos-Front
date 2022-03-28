@@ -17,12 +17,12 @@ const colourStyles: StylesConfig = {
   }),
 };
 const ModificationArticle = (props) => {
-  const { modifArticle } = props;
+  const { modifArticle,setModifArticle } = props;
   const [article, setArticle] = useState({});
 
   const [selectSecteur, setSelectSecteur] = useState();
   const [selectVille, setSelectVille] = useState();
-  const [selectCategorie, setSelectCategorie] = useState();
+  const [selectCategorie, setSelectCategorie] = useState([]);
   const [selectSousCategorie, setSelectSousCategorie] = useState();
 
   const [articleAvantage, setArticleAvantage] = useState("");
@@ -42,78 +42,81 @@ const ModificationArticle = (props) => {
   const [chooseSelectSecteur, setChooseSelectSecteur] = useState([]);
   const [chooseSelectVille, setChooseSelectVille] = useState([]);
 
+
   const collectDatas = (event) => {
     event.preventDefault();
     setArticle({
-      titre: articleTitle,
-      intro: articleIntro,
-      para1: articleContent,
-      avantage: articleAvantage,
-      lien1: articleLien1,
-      lien2: articleLien2,
-      lien3: articleLien3,
-      image: articleUrlImg,
+      titre: modifArticle.titre,
+      intro: modifArticle.intro,
+      para1: modifArticle.para1,
+      avantage: modifArticle.avantage,
+      lien1: modifArticle.lien1,
+      lien2: modifArticle.lien2,
+      lien3: modifArticle.lien3,
+      image: modifArticle.image,
       visible: false,
       user_id: 1,
-      secteur_id: chooseSelectSecteur,
-      sous_categorie_id: chooseSelectSousCategorie,
-      ville_id: chooseSelectVille,
+      secteur_id: modifArticle.nom_secteur,
+      sous_categorie_id: modifArticle.nom_sous_categorie,
+      ville_id: modifArticle.nom_ville,
     });
-    console.warn("COLLECT DATAS ======>", article);
-    axios
-      .post(`http://localhost:4242/articles`, { ...article })
+    console.log("ARTICLE DE MERDE A LA CON",article)
+      axios
+      .put(`http://localhost:4242/articles/${modifArticle.id}`, { ...article})
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
-        console.error("---Erreur envoi article--- ", error.validationErrors)
+        console.error("---Erreur modification article--- ", error.validationErrors)
       );
   };
+
   const handleChangeTitle = (e) => {
-    setArticleTitle(e.target.value);
+    setModifArticle({...modifArticle,titre:e.target.value});
+    setArticleTitle(e.target.value)
   };
   const handleChangeIntro = (e) => {
-    setArticleIntro(e.target.value);
+    setModifArticle({...modifArticle,intro:e.target.value});
+    setArticleIntro(e.target.value)
   };
   const handleChangeUrlImg = (e) => {
-    setArticleUrlImg(e.target.value);
+    setModifArticle({...modifArticle,image:e.target.value});
   };
   const handleChangeAvantage = (e) => {
-    setArticleAvantage(e.target.value);
+    setModifArticle({...modifArticle,avantage:e.target.value});
   };
   const handleChangeLien1 = (e) => {
-    setArticleLien1(e.target.value);
+    setModifArticle({...modifArticle,lien1:e.target.value});
   };
   const handleChangeLien2 = (e) => {
-    setArticleLien2(e.target.value);
+    setModifArticle({...modifArticle,lien2:e.target.value});
   };
   const handleChangeLien3 = (e) => {
-    setArticleLien3(e.target.value);
+    setModifArticle({...modifArticle,lien2:e.target.value});
   };
 
   const handleChangeCategorie = (value) => {
     const { id } = value;
-    console.log("VALUEEEEEEEEEEE", id);
-    setChooseSelectCategorie(id);
+    setModifArticle({...modifArticle,nom_categorie:id});
   };
   const handleChangeSecteur = (value) => {
     let extractedValue = [];
     for (let i = 0; i < value.length; i++) {
       extractedValue.push(value[i].id);
     }
-    setChooseSelectSecteur(extractedValue);
+    setModifArticle({...modifArticle,nom_secteur:extractedValue});
   };
   const handleChangeSousCategorie = (value) => {
     let extractedValue = [];
     for (let i = 0; i < value.length; i++) {
       extractedValue.push(value[i].id);
     }
-    setChooseSelectSousCategorie(extractedValue);
+    setModifArticle({...modifArticle,nom_sous_categorie:extractedValue});
   };
   const handleChangeVille = (value) => {
     let extractedValue = [];
     for (let i = 0; i < value.length; i++) {
       extractedValue.push(value[i].id);
     }
-    setChooseSelectVille(extractedValue);
+    setModifArticle({...modifArticle,nom_ville:extractedValue});
   };
   const recup = () => {
     axios
@@ -121,23 +124,35 @@ const ModificationArticle = (props) => {
       .then((response) => setSelectCategorie(response.data));
   };
   useEffect(() => {
-    axios
-      .get("http://localhost:4242/secteurs")
-      .then((response) => setSelectSecteur(response.data));
-    axios
-      .get("http://localhost:4242/categories")
-      .then((response) => setSelectCategorie(response.data));
-    axios
-      .get("http://localhost:4242/sousCategories")
-      .then((response) => setSelectSousCategorie(response.data));
-    axios
-      .get("http://localhost:4242/villes")
-      .then((response) => setSelectVille(response.data));
+      axios
+        .get("http://localhost:4242/secteurs")
+        .then((response) => setSelectSecteur(response.data));
+      axios
+        .get("http://localhost:4242/categories")
+        .then((response) => setSelectCategorie(response.data));
+      axios
+        .get("http://localhost:4242/sousCategories")
+        .then((response) => setSelectSousCategorie(response.data));
+      axios
+        .get("http://localhost:4242/villes")
+        .then((response) => setSelectVille(response.data));
+
+    // else {
+    //   selectCategorie.foreach((categorie) => {
+    //     console.log('CAT', categorie)
+    //     if (categorie.nom_categorie == modifArticle.nom_categorie) {
+    //       modifArticle.nom_categorie.push(categorie.id_categorie)
+    //     }
+    //   })
+    //   console.log('CATEGORIETAB',modifArticle.nom_categorie)
+    // }
+
+
   }, []);
+
   return (
     <>
       <h2 className="bjr-user">Bonjour [userName],</h2>
-      {console.log(modifArticle)}
 
       <div className="articles-and-types">
         {/* BLOC DE GAUCHE = ARTICLE */}
@@ -166,7 +181,7 @@ const ModificationArticle = (props) => {
               />
               <TinyArticle
                 setArticleContent={setArticleContent}
-                initialValue={modifArticle.para1}
+                modifArticle={modifArticle.para1}
               />
               <input
                 className="input-article-intro"
@@ -220,13 +235,14 @@ const ModificationArticle = (props) => {
                       },
                     })}
                   />
-                  
+
                 </div>
 
                 <div className="selectDiv">
                   <Select
                     isMulti
-                    setValue={modifArticle.nom_sous_categorie}
+                    selectOption={modifArticle.nom_sous_categorie}
+                    value={[{label:modifArticle.nom_sous_categorie,value:1},{label:modifArticle.nom_sous_categorie,value:2},{label:modifArticle.nom_sous_categorie,value:3}]}
                     placeholder="Choix de sous-catégorie(s)"
                     options={selectSousCategorie}
                     className="basic-multi-select"
@@ -248,7 +264,7 @@ const ModificationArticle = (props) => {
                 <div className="selectDiv">
                   <Select
                     isMulti
-                    defaultOptions={modifArticle.nom_secteur}
+                    defaultInputValue={modifArticle.nom_secteur}
                     placeholder="Choix de secteur(s)"
                     options={selectSecteur}
                     className="basic-multi-select"
@@ -300,7 +316,8 @@ const ModificationArticle = (props) => {
           </div>
         </form>
       </div>
-      {console.log("RECUP ARTICLE", modifArticle)}
+      {console.log("RECUP ARTICLE", modifArticle,)}
+
     </>
   );
 };

@@ -3,14 +3,97 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { SousCategoriesContext } from "../../context/SousCategoriesContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const ListeSousCategories = (props) => {
+import "./Styles/ListeSousCat.css";
+// RAJOUT DES IMPORTS POUR FAIRE LE LIEN AVEC CATG
+import Select, { StylesConfig } from "react-select";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+// STYLES CONFIG SELECT
+const colourStyles: StylesConfig = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "white",
+    width: "20vw",
+    padding: ".5rem",
+    //  height: "5rem" FOU LE BORDEL
+  }),
+};
+
+const ListeSousCategories = ({setDeleteData}) => {
+  // PARTIE SOUS CATEGORIE
+
   const { sousCategories } = useContext(SousCategoriesContext);
-  const { setDeleteData } = props;
+  const [newSousCategorie, setNewSousCategorie] = useState("");
+
   let location = useLocation();
+
+  const nouvelleSousCategorie = () => {
+    axios
+      .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error(
+          "---Erreur envoi sous-categorie--- ",
+          error.validationErrors
+        )
+      );
+  };
+
+  const handleChangeNewSousCategorie = (e) => {
+    setNewSousCategorie({
+      nom_sous_categorie: e.target.value,
+      categorie_id: chooseSelectCategorie,
+    });
+    console.log("Nouvelle sous categorie à inscrire", newSousCategorie);
+  };
+
+  // PARTIE CATEGORIE
+  const { categories } = useContext(CategoriesContext);
+
+  const [categorie, setCategorie] = useState({});
+
+  const [selectCategorie, setSelectCategorie] = useState();
+  const [chooseSelectCategorie, setChooseSelectCategorie] = useState();
+
+  const handleChangeCategorie = (value) => {
+    const { id } = value;
+    setChooseSelectCategorie(id);
+    console.log("Choix de sous categorie => l'Id correspondant :", id);
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4242/categories")
+      .then((response) => setSelectCategorie(response.data));
+  }, []);
+
+  // COLLECT ET ENVOI DES DONNEES
+  const collectDatas = (event) => {
+    event.preventDefault();
+    setCategorie({
+      categorie_id: chooseSelectCategorie,
+      nom_sous_categorie: newSousCategorie,
+      // Comment faire la connection categorie_id de sous cat ???
+    });
+    console.warn("COLLECT DATAS ======>", newSousCategorie);
+    axios
+      .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error(
+          "---Erreur envoi nouvelle catégorie--- ",
+          error.validationErrors
+        )
+      );
+  };
+  // FIN DE LA COLLECTE
+
   return (
     <>
       {" "}
@@ -21,7 +104,7 @@ const ListeSousCategories = (props) => {
         </Link> */}
       </div>
       <div className="bloc-content-column">
-        <h3 className="titreMenu">Liste des categories</h3>
+        <h3 className="titreMenu">Liste des sous-categories</h3>
         <DataGrid
           style={{ height: 500 }}
           columns={[
@@ -121,17 +204,51 @@ const ListeSousCategories = (props) => {
           pagination
         />
         <div className="newCategoContent">
-          <input
-            className="newCategoInput"
-            type="text"
-            name="myInput"
-            placeholder="Nouvelle Sous-catégorie"
-            size="30"
-            required
-          ></input>
-          <button className="button2 adminSousCatButton">
-            Ajouter sous-categorie
-          </button>
+          {/* RAJOUT LISTE SELECT : CATEGORIE */}
+          {/* COMPLIQUE AVEC CE SELECT REACT voir avec SELECT DE LEO ET LYNDIA  */}
+          <div className="selectDiv">
+            <Select
+              placeholder="Catégorie de rattachement"
+              options={selectCategorie}
+              className="basic-multi-select decalage-droit-input-1rem"
+              classNamePrefix="select"
+              closeMenuOnSelect={true}
+              onChange={(value) => handleChangeCategorie(value)}
+              styles={colourStyles}
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 0,
+                colors: {
+                  ...theme.colors,
+                  primary25: "rgba(228, 144, 114, 0.659)",
+                  primary: "rgba(228, 144, 114, 0.659)",
+                },
+              })}
+            />
+          </div>
+          {/* FIN AJOUT LIST SELECT : CATEGORIE */}
+          {chooseSelectCategorie ? (
+            <>
+              <input
+                className="newCategoInput"
+                type="text"
+                name="myInput"
+                placeholder="Nouvelle Sous-catégorie"
+                size="30"
+                required
+                onChange={handleChangeNewSousCategorie}
+              ></input>
+
+              <button
+                className="button2 adminSousCatButton"
+                onClick={nouvelleSousCategorie}
+              >
+                Ajouter sous-categorie
+              </button>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

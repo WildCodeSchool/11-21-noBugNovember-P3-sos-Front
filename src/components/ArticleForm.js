@@ -58,6 +58,7 @@ const ArticleForm = () => {
       sous_categorie_id: chooseSelectSousCategorie,
       ville_id: chooseSelectVille,
     });
+    
     console.warn("COLLECT DATAS ======>", article);
     axios
       .post(`http://localhost:4242/articles`, { ...article })
