@@ -55,8 +55,8 @@ const ListeVilles = () => {
   useEffect(() => {
     axios
       .get("http://localhost:4242/regions")
-      .then((response) => setSelectRegion(response.data));
-  }, []);
+      .then((response) => console.log(response.data)||setSelectRegion(response.data));
+      }, []);
 
   // COLLECT ET ENVOI DES DONNEES
   const collectDatas = (event) => {
@@ -187,7 +187,7 @@ const ListeVilles = () => {
                 size="30"
                 required
                 onChange={handleChangeNewCity}
-              ></input>
+              />
 
               <button
                 className="button2 adminSousCatButton"
