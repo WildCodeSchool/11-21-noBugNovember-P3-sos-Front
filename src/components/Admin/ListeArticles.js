@@ -6,10 +6,9 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import { CategoriesContext } from "../../context/CategoriesContext";
-//*IMPORT REACT//*
 
+//*IMPORT REACT//*
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
@@ -21,13 +20,6 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
   const { articles } = useContext(ArticleContext);
   const { categorie } = useContext(CategoriesContext);
   let location = useLocation();
-
-  // const deleteArticle = (modifArticle) => {
-  //   axios
-  //     .delete(`http://localhost:4242/articles/${modifArticle.id}`)
-  //     .then((response) => console.log("RESPONSE REQUETE", response))
-  //     .catch((error) => console.error(error.validationErrors));
-  // };
 
   return (
     <>

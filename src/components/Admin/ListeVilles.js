@@ -1,12 +1,17 @@
-import axios from "axios";
-import { DataGrid } from "@mui/x-data-grid";
+//*IMPORT CSS//*
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+//*IMPORT REACT//*
+import axios from "axios";
+import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
-import { RegionsContext } from "../../context/RegionsContext";
 import Select, { StylesConfig } from "react-select";
 import { useContext, useState, useEffect } from "react";
+
+//*IMPORT CONTEXTS //*
+import { RegionsContext } from "../../context/RegionsContext";
 import { VillesContext } from "../../context/VillesContext";
 
 // STYLES CONFIG SELECT
@@ -16,12 +21,11 @@ const colourStyles: StylesConfig = {
     backgroundColor: "white",
     width: "20vw",
     padding: ".5rem",
-    //  height: "5rem" FOU LE BORDEL
   }),
 };
 
 const ListeVilles = (props) => {
-  const { villes } = useContext(VillesContext);
+  const { villes, reloadVilles, setReloadVilles } = useContext(VillesContext);
   const { setDeleteData } = props;
   let location = useLocation();
 
@@ -31,6 +35,7 @@ const ListeVilles = (props) => {
     axios
       .post(`http://localhost:4242/villes`, { ...newCity })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(setReloadVilles(!reloadVilles))
       .catch((error) =>
         console.error("---Erreur envoi villes--- ", error.validationErrors)
       );
@@ -130,7 +135,7 @@ const ListeVilles = (props) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
+                <div className="actionIcon2">
                   <Link
                     to="./modal/editer"
                     state={{ backgroundLocation: location }}

@@ -1,18 +1,21 @@
+//*IMPORT CSS ET ASSETS//*
 import "./Styles/ListeSousCat.css";
-import { DataGrid } from "@mui/x-data-grid";
-import { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { SousCategoriesContext } from "../../context/SousCategoriesContext";
-import { CategoriesContext } from "../../context/CategoriesContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-import "./Styles/ListeSousCat.css";
-// RAJOUT DES IMPORTS POUR FAIRE LE LIEN AVEC CATG
-import Select, { StylesConfig } from "react-select";
-import { useState, useEffect } from "react";
+//*IMPORT REACT//*
 import axios from "axios";
+import { DataGrid } from "@mui/x-data-grid";
+import { Link, useLocation } from "react-router-dom";
+import Select, { StylesConfig } from "react-select";
+import { useState, useEffect, useContext } from "react";
+
+//*IMPORT CONTEXT//*
+import { SousCategoriesContext } from "../../context/SousCategoriesContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
+
+// RAJOUT DES IMPORTS POUR FAIRE LE LIEN AVEC CATG
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -21,14 +24,15 @@ const colourStyles: StylesConfig = {
     backgroundColor: "white",
     width: "20vw",
     padding: ".5rem",
-    //  height: "5rem" FOU LE BORDEL
   }),
 };
 
 const ListeSousCategories = ({ setDeleteData }) => {
   // PARTIE SOUS CATEGORIE
 
-  const { sousCategories } = useContext(SousCategoriesContext);
+  const { sousCategories, reloadSousCat, setReloadSousCat } = useContext(
+    SousCategoriesContext
+  );
   const [newSousCategorie, setNewSousCategorie] = useState("");
 
   let location = useLocation();
@@ -37,6 +41,7 @@ const ListeSousCategories = ({ setDeleteData }) => {
     axios
       .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(setReloadSousCat(!reloadSousCat))
       .catch((error) =>
         console.error(
           "---Erreur envoi sous-categorie--- ",
@@ -99,9 +104,6 @@ const ListeSousCategories = ({ setDeleteData }) => {
       {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-        {/* <Link to="../articleForm">
-          <img src={publishIcon} alt="publishIcon"></img>
-        </Link> */}
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des sous-categories</h3>
@@ -162,7 +164,7 @@ const ListeSousCategories = ({ setDeleteData }) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
+                <div className="actionIcon2">
                   <Link
                     to="./modal/editer"
                     state={{ backgroundLocation: location }}
@@ -200,7 +202,6 @@ const ListeSousCategories = ({ setDeleteData }) => {
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}
-          // rows={categories.name}
           onRowClick={(datas) => {
             setDeleteData(datas.row);
           }}
