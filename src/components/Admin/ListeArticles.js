@@ -138,7 +138,7 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
                       className="deletIcon"
                     />
                   </Link>
-                  {console.log(field.row)}
+                  {/* {console.log(field.row)} */}
                   <Link
                     to="./modal/visible"
                     state={{ backgroundLocation: location }}
@@ -162,6 +162,7 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
             color: "var(--clr-green)",
             borderColor: "var(--clr-green)",
             boxShadow: "5px 5px 5px var(--shadowColor)",
+            width: "100%",
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}

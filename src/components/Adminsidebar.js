@@ -17,6 +17,7 @@ function Adminsidebar() {
           <Link to="sousCategories">Les sous-catégories</Link>
           <Link to="secteurs">Les secteurs</Link>
           <Link to="villes">Les villes</Link>
+          <Link to="donnes">Les données</Link>
         </div>
       </div>
     </div>

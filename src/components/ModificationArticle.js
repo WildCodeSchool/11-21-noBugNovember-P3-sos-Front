@@ -13,7 +13,6 @@ const colourStyles: StylesConfig = {
     backgroundColor: "white",
     width: "20vw",
     padding: ".5rem",
-    //  height: "5rem" FOU LE BORDEL
   }),
 };
 const ModificationArticle = (props) => {

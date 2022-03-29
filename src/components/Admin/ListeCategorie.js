@@ -71,12 +71,17 @@ const ListeCategorie = ({ setDeleteData }) => {
               headerAlign: "center",
               renderCell: (field) => (
                 <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                  <Link
+                    to="./modal/editer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
                   <Link
                     to="./modal/supprimer"
                     state={{ backgroundLocation: location }}
@@ -124,34 +129,6 @@ const ListeCategorie = ({ setDeleteData }) => {
 
           <button className="button2 adminButton" onClick={nouvelleCategorie}>
             Ajouter catégorie
-          </button>
-
-          <div className="elementToEdit">
-            <label for="myInput" className="titleElementToEdit">
-              Catégorie à modifier
-            </label>
-            <input
-              className="newCategoInput newCategoInputDecal"
-              type="text"
-              name="myInput"
-              size="30"
-              required
-              value={"Catégorie selectionnée au click"}
-            ></input>
-          </div>
-
-          <input
-            className="newCategoInput"
-            type="text"
-            name="myInput"
-            placeholder="Nouveau nom de catégorie"
-            size="30"
-            required
-            onChange={""}
-          ></input>
-
-          <button className="button2 adminButton" onClick={""}>
-            Modifier la catégorie
           </button>
         </div>
       </div>

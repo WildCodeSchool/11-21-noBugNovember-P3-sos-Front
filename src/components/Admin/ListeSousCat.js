@@ -162,12 +162,17 @@ const ListeSousCategories = ({ setDeleteData }) => {
               headerAlign: "center",
               renderCell: (field) => (
                 <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                  <Link
+                    to="./modal/editer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
                   <Link
                     to="./modal/supprimer"
                     state={{ backgroundLocation: location }}
@@ -204,6 +209,7 @@ const ListeSousCategories = ({ setDeleteData }) => {
         <div className="newCategoContent">
           <div className="selectDiv">
             <Select
+              menuPlacement="top"
               placeholder="Catégorie de rattachement"
               options={selectCategorie}
               className="basic-multi-select decalage-droit-input-1rem"
