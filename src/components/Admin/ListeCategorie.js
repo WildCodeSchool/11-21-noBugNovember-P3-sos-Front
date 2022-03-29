@@ -14,13 +14,15 @@ import { useContext, useState } from "react";
 import { CategoriesContext } from "../../context/CategoriesContext";
 
 const ListeCategorie = ({ setDeleteData }) => {
-  const { categories } = useContext(CategoriesContext);
+  const { categories, reloadCategories, setReloadCategories } =
+    useContext(CategoriesContext);
   const [newCategorie, setNewCategorie] = useState("");
 
   const nouvelleCategorie = () => {
     axios
       .post(`http://localhost:4242/categories`, { ...newCategorie })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(setReloadCategories(!reloadCategories))
       .catch((error) =>
         console.error("---Erreur envoi categorie--- ", error.validationErrors)
       );
@@ -41,7 +43,7 @@ const ListeCategorie = ({ setDeleteData }) => {
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des categories</h3>
         <DataGrid
-          style={{ height: 500 }}
+          style={{ height: 500 }} //, width: 800
           columns={[
             {
               field: "id",
@@ -70,7 +72,7 @@ const ListeCategorie = ({ setDeleteData }) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
+                <div className="actionIcon2 ">
                   <Link
                     to="./modal/editer"
                     state={{ backgroundLocation: location }}

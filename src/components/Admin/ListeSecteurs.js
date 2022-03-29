@@ -13,7 +13,8 @@ import { Link, useLocation } from "react-router-dom";
 import { SecteursContext } from "../../context/SecteursContext";
 
 const ListeSecteur = ({ setDeleteData }) => {
-  const { secteurs } = useContext(SecteursContext);
+  const { secteurs, reloadSecteurs, setReloadSecteurs } =
+    useContext(SecteursContext);
 
   const [newSecteur, setNewSecteur] = useState("");
 
@@ -21,6 +22,7 @@ const ListeSecteur = ({ setDeleteData }) => {
     axios
       .post(`http://localhost:4242/secteurs`, { ...newSecteur })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(setReloadSecteurs(!reloadSecteurs))
       .catch((error) =>
         console.error("---Erreur envoi secteur--- ", error.validationErrors)
       );
@@ -28,8 +30,6 @@ const ListeSecteur = ({ setDeleteData }) => {
 
   const handleChangeNewSecteur = (e) => {
     setNewSecteur({ nom_secteur: e.target.value });
-
-    console.log(newSecteur);
   };
 
   let location = useLocation();
@@ -38,8 +38,8 @@ const ListeSecteur = ({ setDeleteData }) => {
     <>
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-        </div>
-        <div className="bloc-content-column">
+      </div>
+      <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des secteurs</h3>
         <DataGrid
           style={{ height: 500 }}
@@ -71,17 +71,17 @@ const ListeSecteur = ({ setDeleteData }) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
+                <div className="actionIcon2">
                   <Link
-                  to="./modal/editer"
-                  state={{ backgroundLocation: location }
-                  }>
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                    to="./modal/editer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
                   </Link>
                   <Link
                     to="./modal/supprimer"
@@ -103,7 +103,7 @@ const ListeSecteur = ({ setDeleteData }) => {
             fontFamily: "var(--ff-body)",
             fontSize: "var(--fs-body)",
             color: "var(--clr-green)",
-            borderColor: "var(--clr-orange)",
+            borderColor: "var(--clr-green)",
             // backdropFilter: "blur(20px)",
             boxShadow: "5px 5px 5px var(--shadowColor)",
             width: "100%",

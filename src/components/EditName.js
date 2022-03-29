@@ -28,11 +28,6 @@ function EditName({
 }) {
   let navigate = useNavigate();
 
-  //Ajout rom REGIONS
-  // const { regions } = useContext(RegionsContext);
-  // const { idRegion } = useContext(RegionsContext);
-  // const { setIdRegion } = useContext(RegionsContext);
-
   // Reload
   const { reloadCategories, setReloadCategories } =
     useContext(CategoriesContext);
@@ -41,7 +36,6 @@ function EditName({
   const { reloadVilles, setReloadVilles } = useContext(VillesContext);
 
   const handleEditName = () => {
-    console.log(value2)
     axios
       .put(`http://localhost:4242/${page}/${deleteData.id}`, {
         [edit]: nouvelleAppelation,
@@ -55,7 +49,6 @@ function EditName({
     navigate(-1);
   };
 
-  
   /* MODIF DE L INPUT A LA SAISIE*/
   const [nouvelleAppelation, setNouvelleAppelation] = useState(
     deleteData.value
@@ -75,20 +68,18 @@ function EditName({
         <div className="backContainerAdmin" onClick={() => navigate(-1)}></div>
         <div className="popUpModalEdit">
           <div className="modalContainer">
-            {/* <h2>Êtes-vous sûr de vouloir éditer {deleteData.value} ?</h2> */}
             <h2>Changer d'appelation</h2>
             <div className="holderChangeValue">
               <input
                 type="text"
                 name="changement"
                 id="changeValue"
-                onChange={handleChangeEdit} // Modif à la saisie
+                onChange={handleChangeEdit}
                 placeholder={deleteData.value}
               />
             </div>
 
-            {/* SELECT REGIONS  */}{console.log(value2)}
-            {select &&  ( 
+            {select && (
               <Select
                 name={`Séléctionner ${name}`}
                 result={result}

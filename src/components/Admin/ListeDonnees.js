@@ -25,7 +25,7 @@ function ListeDonnees() {
               headerAlign: "left",
             },
             {
-              field: "fils de pute",
+              field: "nom_telechargement",
               headerName: "Nom",
               headerClassName: "headerTableau",
               maxWidth: 300,
@@ -34,7 +34,7 @@ function ListeDonnees() {
               headerAlign: "left",
             },
             {
-              field: "ta mere",
+              field: "prenom_telechargement",
               headerName: "Prénom",
               headerClassName: "headerTableau",
               maxWidth: 300,
@@ -43,7 +43,7 @@ function ListeDonnees() {
               headerAlign: "center",
             },
             {
-              field: "enculé",
+              field: "mail_telechargement",
               headerName: "eMail",
               headerClassName: "headerTableau",
               maxWidth: 300,
@@ -52,7 +52,7 @@ function ListeDonnees() {
               headerAlign: "left",
             },
             {
-              field: "gdfgfdg",
+              field: "ville_telechargement",
               headerName: "ville de téléchargement",
               headerClassName: "headerTableau",
               maxWidth: 300,
@@ -61,7 +61,7 @@ function ListeDonnees() {
               headerAlign: "left",
             },
             {
-              field: "fdsfsfsf",
+              field: "titre",
               headerName: "article téléchargé",
               headerClassName: "headerTableau",
               maxWidth: 400,
@@ -85,14 +85,14 @@ function ListeDonnees() {
             fontFamily: "var(--ff-body)",
             fontSize: "var(--fs-body)",
             color: "var(--clr-green)",
-            borderColor: "var(--clr-orange)",
+            borderColor: "var(--clr-green)",
             // backdropFilter: "blur(20px)",
             boxShadow: "5px 5px 5px var(--shadowColor)",
             width: "100%",
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}
-          
+          rows={telechargements}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
         />

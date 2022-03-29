@@ -24,22 +24,22 @@ const ModificationArticle = (props) => {
   const [selectCategorie, setSelectCategorie] = useState([]);
   const [selectSousCategorie, setSelectSousCategorie] = useState();
 
-  const [articleAvantage, setArticleAvantage] = useState("");
+  // const [articleAvantage, setArticleAvantage] = useState("");
   const [articleTitle, setArticleTitle] = useState("");
   const [articleIntro, setArticleIntro] = useState("");
-  const [articleUrlImg, setArticleUrlImg] = useState("");
+  // const [articleUrlImg, setArticleUrlImg] = useState("");
   const [articleContent, setArticleContent] = useState("");
-  const [articleUrlTelechargement, setUrlTelechargement] = useState("");
-  const [articleLien1, setArticleLien1] = useState("");
-  const [articleLien2, setArticleLien2] = useState("");
-  const [articleLien3, setArticleLien3] = useState("");
+  // const [articleUrlTelechargement, setUrlTelechargement] = useState("");
+  // const [articleLien1, setArticleLien1] = useState("");
+  // const [articleLien2, setArticleLien2] = useState("");
+  // const [articleLien3, setArticleLien3] = useState("");
 
-  const [chooseSelectCategorie, setChooseSelectCategorie] = useState();
-  const [chooseSelectSousCategorie, setChooseSelectSousCategorie] = useState(
-    []
-  );
-  const [chooseSelectSecteur, setChooseSelectSecteur] = useState([]);
-  const [chooseSelectVille, setChooseSelectVille] = useState([]);
+  // const [chooseSelectCategorie, setChooseSelectCategorie] = useState();
+  // const [chooseSelectSousCategorie, setChooseSelectSousCategorie] = useState(
+  //   []
+  // );
+  // const [chooseSelectSecteur, setChooseSelectSecteur] = useState([]);
+  // const [chooseSelectVille, setChooseSelectVille] = useState([]);
 
   const collectDatas = (event) => {
     event.preventDefault();
@@ -72,11 +72,11 @@ const ModificationArticle = (props) => {
 
   const handleChangeTitle = (e) => {
     setModifArticle({ ...modifArticle, titre: e.target.value });
-    setArticleTitle(e.target.value);
+    // setArticleTitle(e.target.value);
   };
   const handleChangeIntro = (e) => {
     setModifArticle({ ...modifArticle, intro: e.target.value });
-    setArticleIntro(e.target.value);
+    // setArticleIntro(e.target.value);
   };
   const handleChangeUrlImg = (e) => {
     setModifArticle({ ...modifArticle, image: e.target.value });
@@ -179,7 +179,7 @@ const ModificationArticle = (props) => {
                 onChange={handleChangeUrlImg}
               />
               <TinyArticle
-                setArticleContent={setArticleContent}
+                // setArticleContent={setArticleContent}
                 modifArticle={modifArticle.para1}
               />
               <input

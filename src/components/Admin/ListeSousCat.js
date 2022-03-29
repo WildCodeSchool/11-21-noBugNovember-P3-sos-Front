@@ -30,7 +30,9 @@ const colourStyles: StylesConfig = {
 const ListeSousCategories = ({ setDeleteData }) => {
   // PARTIE SOUS CATEGORIE
 
-  const { sousCategories } = useContext(SousCategoriesContext);
+  const { sousCategories, reloadSousCat, setReloadSousCat } = useContext(
+    SousCategoriesContext
+  );
   const [newSousCategorie, setNewSousCategorie] = useState("");
 
   let location = useLocation();
@@ -39,6 +41,7 @@ const ListeSousCategories = ({ setDeleteData }) => {
     axios
       .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(setReloadSousCat(!reloadSousCat))
       .catch((error) =>
         console.error(
           "---Erreur envoi sous-categorie--- ",
@@ -161,7 +164,7 @@ const ListeSousCategories = ({ setDeleteData }) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
+                <div className="actionIcon2">
                   <Link
                     to="./modal/editer"
                     state={{ backgroundLocation: location }}

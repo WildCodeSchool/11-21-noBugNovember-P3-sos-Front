@@ -25,7 +25,7 @@ const colourStyles: StylesConfig = {
 };
 
 const ListeVilles = (props) => {
-  const { villes } = useContext(VillesContext);
+  const { villes, reloadVilles, setReloadVilles } = useContext(VillesContext);
   const { setDeleteData } = props;
   let location = useLocation();
 
@@ -35,6 +35,7 @@ const ListeVilles = (props) => {
     axios
       .post(`http://localhost:4242/villes`, { ...newCity })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(setReloadVilles(!reloadVilles))
       .catch((error) =>
         console.error("---Erreur envoi villes--- ", error.validationErrors)
       );
@@ -134,7 +135,7 @@ const ListeVilles = (props) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
+                <div className="actionIcon2">
                   <Link
                     to="./modal/editer"
                     state={{ backgroundLocation: location }}
