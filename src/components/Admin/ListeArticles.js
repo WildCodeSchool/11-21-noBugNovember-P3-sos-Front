@@ -21,13 +21,6 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
   const { categorie } = useContext(CategoriesContext);
   let location = useLocation();
 
-  // const deleteArticle = (modifArticle) => {
-  //   axios
-  //     .delete(`http://localhost:4242/articles/${modifArticle.id}`)
-  //     .then((response) => console.log("RESPONSE REQUETE", response))
-  //     .catch((error) => console.error(error.validationErrors));
-  // };
-
   return (
     <>
       <div className="firstContent">

@@ -24,7 +24,6 @@ const colourStyles: StylesConfig = {
     backgroundColor: "white",
     width: "20vw",
     padding: ".5rem",
-    //  height: "5rem" FOU LE BORDEL
   }),
 };
 
@@ -102,9 +101,6 @@ const ListeSousCategories = ({ setDeleteData }) => {
       {" "}
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-        {/* <Link to="../articleForm">
-          <img src={publishIcon} alt="publishIcon"></img>
-        </Link> */}
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des sous-categories</h3>
@@ -198,7 +194,6 @@ const ListeSousCategories = ({ setDeleteData }) => {
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}
-          // rows={categories.name}
           onRowClick={(datas) => {
             setDeleteData(datas.row);
           }}
@@ -207,8 +202,6 @@ const ListeSousCategories = ({ setDeleteData }) => {
           pagination
         />
         <div className="newCategoContent">
-          {/* RAJOUT LISTE SELECT : CATEGORIE */}
-          {/* COMPLIQUE AVEC CE SELECT REACT voir avec SELECT DE LEO ET LYNDIA  */}
           <div className="selectDiv">
             <Select
               placeholder="Catégorie de rattachement"

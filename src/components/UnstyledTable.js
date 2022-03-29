@@ -3,7 +3,6 @@ import Delete from "../assets/icones/Delete.png";
 import Edit from "../assets/icones/Edit.png";
 
 import * as React from "react";
-import TablePaginationUnstyled from "@mui/base/TablePaginationUnstyled";
 import Visible from "../assets/icones/VisibleEye.png";
 
 function createData(titre, catégorie, sousCategorie, telechargement, actions) {

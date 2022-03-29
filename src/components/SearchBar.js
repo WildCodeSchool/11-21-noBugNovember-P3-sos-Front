@@ -1,11 +1,14 @@
+//*IMPORT CSS ET ASSETS//*
 import "./Styles/SearchBar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons";
 
+//*IMPORT REACT//*
 import { useContext } from "react";
 import { ArticleContext } from "../context/ArticleContext";
 import { CategoriesContext } from "../context/CategoriesContext";
 import { SousCategoriesContext } from "../context/SousCategoriesContext";
 import { VillesContext } from "../context/VillesContext";
-
 import Select from "./Select";
 
 const SearchBar = (props) => {
@@ -72,13 +75,32 @@ const SearchBar = (props) => {
 
         {props.isButtonGrid && (
           <div className="searchButtons">
-            <button onClick={() => deleteFilter()}>Annuler</button>
-            <button onClick={() => searchLaunch()}>Valider</button>
+            <button
+              className="gridSearchButtons"
+              onClick={() => deleteFilter()}
+            >
+              <FontAwesomeIcon
+                icon={faArrowRotateRight}
+                size="2x"
+                color="var(--clr-white)"
+                className="reloadIcon"
+              />
+            </button>
           </div>
         )}
         {props.isButtonHome && (
           <div className="searchButtons">
-            <button onClick={() => deleteSearchHome()}>Annuler</button>
+            <button
+              className="HolderReloadIcon"
+              onClick={() => deleteSearchHome()}
+            >
+              <FontAwesomeIcon
+                icon={faArrowRotateRight}
+                size="2x"
+                color="var(--clr-white)"
+                className="reloadIcon"
+              />
+            </button>
           </div>
         )}
       </div>
