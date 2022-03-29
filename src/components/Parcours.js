@@ -9,20 +9,20 @@ import { SousCategoriesContext } from '../context/SousCategoriesContext'
 const Parcours = () => {
   const { categories } = useContext(CategoriesContext)
   const { setIdCategorie } = useContext(ArticleContext)
-  
-  const { sousCatSet}=useContext(SousCategoriesContext)
+
   return (
     <div className='snake-bloc'>
       <div className='snake'>
         {categories.map((btnSnake) => {
           return (
-            <Link to={`/articlesGrid`}  
-            onClick={() => {setIdCategorie(btnSnake.id)} }
-            // onClick={() => {setIdCategorie(btnSnake.id);sousCatSet(btnSnake.id)} }
-            className='parcourBtn borderRadius'>    
-              <div className=' '>
-                {btnSnake.value}
-              </div>
+            <Link
+              to={`/articlesGrid`}
+              onClick={() => {
+                setIdCategorie(btnSnake.id)
+              }}
+              className='parcourBtn borderRadius'
+            >
+              <div className=' '>{btnSnake.value}</div>
             </Link>
           )
         })}
@@ -33,8 +33,6 @@ const Parcours = () => {
           return (
             <Link to={`/articlesGrid`} className='parcourBtn borderRadius'>
               <div onClick={() => setIdCategorie(btnSnake.id)} className=' '>
-                {/* {console.log('btn snake',btnSnake.id)} */}
-
                 {btnSnake.value}
               </div>
             </Link>
