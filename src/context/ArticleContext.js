@@ -7,7 +7,7 @@ const ArticleContextProvider = (props) => {
   //State Liste des Articles
   const [articles, setArticles] = useState([]);
 
-  console.log(articles)
+  // console.log(articles)
   // State pour les filtres et Select
   const [filters, setFilters] = useState("");
   const [idCategorie, setIdCategorie] = useState();

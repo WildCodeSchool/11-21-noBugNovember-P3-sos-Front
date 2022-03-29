@@ -1,14 +1,18 @@
-import axios from "axios";
-import { DataGrid } from "@mui/x-data-grid";
+//*IMPORT CSS//*
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+//*IMPORT REACT//*
+import axios from "axios";
+import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
-import { RegionsContext } from "../../context/RegionsContext";
 import Select, { StylesConfig } from "react-select";
 import { useContext, useState, useEffect } from "react";
-import { VillesContext } from "../../context/VillesContext";
 
+//*IMPORT CONTEXTS //*
+import { RegionsContext } from "../../context/RegionsContext";
+import { VillesContext } from "../../context/VillesContext";
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -17,22 +21,21 @@ const colourStyles: StylesConfig = {
     backgroundColor: "white",
     width: "20vw",
     padding: ".5rem",
-    //  height: "5rem" FOU LE BORDEL
   }),
 };
 
 const ListeVilles = (props) => {
-  const { villes } = useContext(VillesContext);
+  const { villes, reloadVilles, setReloadVilles } = useContext(VillesContext);
   const { setDeleteData } = props;
   let location = useLocation();
 
   const [newCity, setNewCity] = useState("");
 
   const nouvelleVille = () => {
-    console.log("Hello new city", newCity);
     axios
       .post(`http://localhost:4242/villes`, { ...newCity })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(setReloadVilles(!reloadVilles))
       .catch((error) =>
         console.error("---Erreur envoi villes--- ", error.validationErrors)
       );
@@ -41,7 +44,6 @@ const ListeVilles = (props) => {
 
   const handleChangeNewCity = (e) => {
     setNewCity({ nom_ville: e.target.value, region_id: chooseSelectRegion });
-    console.log("Nouvelle ville à inscrire", newCity);
   };
 
   // PARTIE REGION
@@ -93,7 +95,7 @@ const ListeVilles = (props) => {
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des villes</h3>
-        {console.log("console log de ville : ", villes)}
+        {/* {console.log("console log de ville : ", villes)} */}
         <DataGrid
           style={{ height: 500 }}
           columns={[
@@ -133,13 +135,19 @@ const ListeVilles = (props) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                <div className="actionIcon2">
+                  <Link
+                    to="./modal/editer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
+
                   <Link
                     to="./modal/supprimer"
                     state={{ backgroundLocation: location }}
@@ -178,8 +186,9 @@ const ListeVilles = (props) => {
         {/* RAJOUT LISTE SELECT : Region */}
         <div className="newCategoContent">
           <div className="selectDiv">
-            {console.log("voiccci mes regions ", regions)}
+            {/* {console.log("voiccci mes regions ", regions)} */}
             <Select
+              menuPlacement="top" // ouverture de liste vers le haut
               placeholder="Région de rattachement"
               options={selectRegion}
               className="basic-multi-select decalage-droit-input-1rem"
@@ -223,18 +232,6 @@ const ListeVilles = (props) => {
             ""
           )}
         </div>
-
-        {/* <div className="newCategoContent">
-          <input
-            className="newCategoInput"
-            type="text"
-            name="myInput"
-            placeholder="Nouvelle Ville"
-            size="30"
-            required
-          ></input>
-          <button className="button2 adminButton">Ajouter Ville</button>
-        </div> */}
       </div>
     </>
   );

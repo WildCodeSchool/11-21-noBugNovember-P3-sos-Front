@@ -9,8 +9,6 @@ const PanelAdmin = () => {
 
       <div className="content-container">
         <Outlet />
-        {/*<ArticleForm />*/}
-        {/* <ModificationArticle/> */}
       </div>
     </div>
   );
