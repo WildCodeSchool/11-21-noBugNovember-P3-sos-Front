@@ -60,6 +60,7 @@ const ArticleDetail = (
                   <div className='articleDetailFirst'>
                     {result.lien1 && (
                       <div className='boutonTelechargementDoc'>
+                        {console.log('RESULT', result.lien1)}
                         <Link
                           to={`/articlesGrid/articleDetail/${id}/modalDL`}
                           state={{

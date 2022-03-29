@@ -153,12 +153,22 @@ a .parcourBtn:nth-child(n + 8) {
   position: absolute;
   width: 80%;
   background-color: white;
+  display: flex;
+}
+
+.holderArrow {
+  z-index: 20;
+  height: 30px;
+  position: absolute;
+  width: 82%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .snakeArrow {
-  left: 89%;
-  z-index: 20;
   transform: rotate(180deg);
+  width: 3rem;
   /* transform: translateX(-50%); */
   /* transform: rotate(50); */
 }

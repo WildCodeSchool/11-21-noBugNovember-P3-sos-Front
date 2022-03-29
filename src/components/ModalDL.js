@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ArticleContext } from '../context/ArticleContext'
 import { Dialog } from '@reach/dialog'
-import { useNavigate, useParams, useLocation } from 'react-router-dom'
+import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react'
 import { VillesContext } from '../context/VillesContext'
 
@@ -36,12 +36,6 @@ function ModalDL(props) {
   //   })
   // }
 
-  const actionsClick = (event) => {
-    sendDatas(event)
-    navigate(-1)
-    download()
-  }
-
   const sendDatas = (e) => {
     e.preventDefault()
     // Object.keys(telechargement).length > 1 &&
@@ -53,10 +47,10 @@ function ModalDL(props) {
         ville_telechargement: villeTelechargement,
         article_id: id,
       })
-      .then((response) => console.log('RESPONSE REQUETE', response))
-      // .then(() => {
-      //   setTelechargement('')
-      // })
+      .then((response) => {
+        return navigate(-1)(window.open([linkUpload], '_blank'))
+      })
+
       .catch((error) =>
         console.error(
           '---Erreur envoi telechargement--- ',
@@ -65,21 +59,23 @@ function ModalDL(props) {
       )
   }
 
-  const download = () => {
-    axios({
-      url: { linkUpload },
-      method: 'GET',
-      responseType: 'blob',
-    }).then((response) => {
-      const url = window.URL.createObjectURL(new Blob([response.data]))
-      const link = document.createElement('a')
-      link.href = url
-      link.setAttribute('download', 'image.jpg')
-      document.body.appendChild(link)
-      link.click()
-    })
-  }
+  // const download = () => {
+  //   console.log(linkUpload)
+  //   window.open({ linkUpload })
 
+  // axios({
+  //   url: { linkUpload },
+  //   method: 'GET',
+  //   responseType: 'blob',
+  // }).then((response) => {
+  //   const url = window.URL.createObjectURL(new Blob([response.data]))
+  //   const link = document.createElement('a')
+  //   link.href = url
+  //   link.setAttribute('download', 'image.jpg')
+  //   document.body.appendChild(link)
+  //   link.click()
+  // })
+  // }
   const handleChangePrenom = (e) => {
     setPrenomTelechargement(e.target.value)
   }
@@ -90,9 +86,18 @@ function ModalDL(props) {
     setMailTelechargement(e.target.value)
   }
 
-  console.log('testLIEN', linkUpload)
+  // console.log('testLIEN', linkUpload)
+
+  // const checkFile = () => {
+  //   if (linkUpload.includes('.pdf')) {
+  //     console.log('IS A PDF')
+  //   } else {
+  //     console.log('IS A LINK')
+  //   }
+  // }
   return (
     <Dialog>
+      {console.log('testLIEN222222s', linkUpload.split(' '))}
       <div className='backContainer' onClick={() => navigate(-1)}></div>
       <div className='popUpModal'>
         <form className='coordoneDl'>
@@ -139,9 +144,9 @@ function ModalDL(props) {
           <button
             type='submit'
             className='buttonGreen'
-            onClick={(e) => actionsClick(e)}
+            onClick={(e) => sendDatas(e)}
           >
-            Télécharger
+            Telecharger
           </button>
         </form>
       </div>

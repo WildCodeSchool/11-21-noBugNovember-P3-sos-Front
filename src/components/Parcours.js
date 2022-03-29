@@ -3,6 +3,7 @@ import { ArticleContext } from '../context/ArticleContext'
 import { CategoriesContext } from '../context/CategoriesContext'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
+// import { arrow } from '../assets/icones/arrow.png'
 
 import { SousCategoriesContext } from '../context/SousCategoriesContext'
 
@@ -13,6 +14,24 @@ const Parcours = () => {
   return (
     <div className='snake-bloc'>
       <div className='snake'>
+        <div className='cache'></div>
+        <div className='holderArrow'>
+          <img
+            className='snakeArrow'
+            src={require('../assets/icones/arrow.png')}
+            alt='arrow'
+          />
+          <img
+            className='snakeArrow'
+            src={require('../assets/icones/arrow.png')}
+            alt='arrow'
+          />
+          <img
+            className='snakeArrow'
+            src={require('../assets/icones/arrow.png')}
+            alt='arrow'
+          />
+        </div>
         {categories.map((btnSnake) => {
           return (
             <Link
