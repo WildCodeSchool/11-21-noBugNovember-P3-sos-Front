@@ -25,7 +25,7 @@ const colourStyles: StylesConfig = {
   }),
 };
 
-const ListeSousCategories = ({setDeleteData}) => {
+const ListeSousCategories = ({ setDeleteData }) => {
   // PARTIE SOUS CATEGORIE
 
   const { sousCategories } = useContext(SousCategoriesContext);
@@ -163,12 +163,17 @@ const ListeSousCategories = ({setDeleteData}) => {
               headerAlign: "center",
               renderCell: (field) => (
                 <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                  <Link
+                    to="./modal/editer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
                   <Link
                     to="./modal/supprimer"
                     state={{ backgroundLocation: location }}
@@ -204,10 +209,9 @@ const ListeSousCategories = ({setDeleteData}) => {
           pagination
         />
         <div className="newCategoContent">
-          {/* RAJOUT LISTE SELECT : CATEGORIE */}
-          {/* COMPLIQUE AVEC CE SELECT REACT voir avec SELECT DE LEO ET LYNDIA  */}
           <div className="selectDiv">
             <Select
+              menuPlacement="top"
               placeholder="Catégorie de rattachement"
               options={selectCategorie}
               className="basic-multi-select decalage-droit-input-1rem"

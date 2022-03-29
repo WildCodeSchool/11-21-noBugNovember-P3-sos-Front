@@ -9,7 +9,6 @@ import Select, { StylesConfig } from "react-select";
 import { useContext, useState, useEffect } from "react";
 import { VillesContext } from "../../context/VillesContext";
 
-
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
   control: (styles) => ({
@@ -29,7 +28,6 @@ const ListeVilles = (props) => {
   const [newCity, setNewCity] = useState("");
 
   const nouvelleVille = () => {
-    console.log("Hello new city", newCity);
     axios
       .post(`http://localhost:4242/villes`, { ...newCity })
       .then((response) => console.log("RESPONSE REQUETE", response))
@@ -41,7 +39,6 @@ const ListeVilles = (props) => {
 
   const handleChangeNewCity = (e) => {
     setNewCity({ nom_ville: e.target.value, region_id: chooseSelectRegion });
-    console.log("Nouvelle ville à inscrire", newCity);
   };
 
   // PARTIE REGION
@@ -93,7 +90,7 @@ const ListeVilles = (props) => {
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des villes</h3>
-        {console.log("console log de ville : ", villes)}
+        {/* {console.log("console log de ville : ", villes)} */}
         <DataGrid
           style={{ height: 500 }}
           columns={[
@@ -134,12 +131,18 @@ const ListeVilles = (props) => {
               headerAlign: "center",
               renderCell: (field) => (
                 <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                  <Link
+                    to="./modal/editer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
+
                   <Link
                     to="./modal/supprimer"
                     state={{ backgroundLocation: location }}
@@ -178,8 +181,9 @@ const ListeVilles = (props) => {
         {/* RAJOUT LISTE SELECT : Region */}
         <div className="newCategoContent">
           <div className="selectDiv">
-            {console.log("voiccci mes regions ", regions)}
+            {/* {console.log("voiccci mes regions ", regions)} */}
             <Select
+              menuPlacement="top" // ouverture de liste vers le haut
               placeholder="Région de rattachement"
               options={selectRegion}
               className="basic-multi-select decalage-droit-input-1rem"
@@ -223,18 +227,6 @@ const ListeVilles = (props) => {
             ""
           )}
         </div>
-
-        {/* <div className="newCategoContent">
-          <input
-            className="newCategoInput"
-            type="text"
-            name="myInput"
-            placeholder="Nouvelle Ville"
-            size="30"
-            required
-          ></input>
-          <button className="button2 adminButton">Ajouter Ville</button>
-        </div> */}
       </div>
     </>
   );

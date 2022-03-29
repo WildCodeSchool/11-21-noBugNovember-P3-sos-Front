@@ -33,8 +33,8 @@ const ListeSecteur = ({setDeleteData} ) => {
     <>
       <div className="firstContent">
         <h2 className="bjr-user">Bonjour [userName],</h2>
-      </div>
-      <div className="bloc-content-column">
+        </div>
+        <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des secteurs</h3>
         <DataGrid
           style={{ height: 500 }}
@@ -67,12 +67,17 @@ const ListeSecteur = ({setDeleteData} ) => {
               headerAlign: "center",
               renderCell: (field) => (
                 <div className="actionIcon">
+                  <Link
+                  to="./modal/editer"
+                  state={{ backgroundLocation: location }
+                  }>
                   <FontAwesomeIcon
                     icon={faPencil}
                     size="1x"
                     color="var(--clr-orange)"
                     className="editIcon"
                   />
+                  </Link>
                   <Link
                     to="./modal/supprimer"
                     state={{ backgroundLocation: location }}
