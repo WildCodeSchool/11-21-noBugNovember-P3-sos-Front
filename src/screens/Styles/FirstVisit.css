@@ -48,3 +48,14 @@
   appearance: none;
   width: 16rem;
 }
+
+@media screen and (max-width: 40em) {
+  .WrapSearchBar {
+    width: 65%;
+    margin: 8rem 0;
+  }
+
+  .wrapChild {
+    text-align: center;
+  }
+}

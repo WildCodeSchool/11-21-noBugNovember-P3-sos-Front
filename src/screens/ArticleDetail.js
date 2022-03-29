@@ -2,10 +2,8 @@ import { ArticleContext } from '../context/ArticleContext'
 import Header from '../components/Header'
 import { useContext } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
-// import React, { useEffect, useState } from 'react'
 import './Styles/ArticleDetail.css'
 import fleche from '../assets/icones/flecheCercle.png'
-// import ModalDL from '../components/ModalDL'
 
 const ArticleDetail = (
   isActive,
@@ -16,8 +14,8 @@ const ArticleDetail = (
   ...props
 ) => {
   const { articles } = useContext(ArticleContext)
-  let location = useLocation()
   let { id } = useParams()
+  let location = useLocation()
 
   function createMarkup(result) {
     return { __html: `${result}` }

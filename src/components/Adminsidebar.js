@@ -1,6 +1,5 @@
-import React from 'react'
-import logo from '../assets/logoW.png'
 import './Styles/Adminsidebar.css'
+import logo from '../assets/logoW.png'
 import { Link } from 'react-router-dom'
 
 function Adminsidebar() {
@@ -17,6 +16,7 @@ function Adminsidebar() {
           <Link to='sousCategories'>Les sous-catégories</Link>
           <Link to='secteurs'>Les secteurs</Link>
           <Link to='villes'>Les villes</Link>
+          <Link to='donnes'>Les données</Link>
         </div>
       </div>
     </div>

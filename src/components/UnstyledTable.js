@@ -1,34 +1,105 @@
-import * as React from 'react';
-// import { height, styled } from '@mui/system';
-import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
-import './Styles/actions.css'
-import Visible from '../assets/icones/VisibleEye.png'
-import Edit from '../assets/icones/Edit.png'
-import Delete from '../assets/icones/Delete.png'
+import "./Styles/actions.css";
+import Delete from "../assets/icones/Delete.png";
+import Edit from "../assets/icones/Edit.png";
 
-
+import * as React from "react";
+import Visible from "../assets/icones/VisibleEye.png";
 
 function createData(titre, catégorie, sousCategorie, telechargement, actions) {
   return { titre, catégorie, sousCategorie, telechargement, actions };
 }
 
 const rows = [
-
-    createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79,),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79, ),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79, ),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79, ),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79, ),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79, ),
-  createData('Commencer a ne pas se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79),
-  createData('Commencer se lancer à Grenoble', 'Jeunesse & Numérique', 'Mentorat', 79), 
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer a ne pas se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
+  createData(
+    "Commencer se lancer à Grenoble",
+    "Jeunesse & Numérique",
+    "Mentorat",
+    79
+  ),
 
   // createData('Donut', 452, 25.0),
   // createData('Eclair', 262, 16.0),
@@ -42,9 +113,8 @@ const rows = [
   // createData('Marshmallow', 318, 0),
   // createData('Nougat', 360, 19.0),
   // createData('Oreo', 437, 18.0),
-]
+];
 // .sort((a, b) => (a.calories < b.calories ? -1 : 1));
-
 
 export default function UnstyledTable() {
   const [page, setPage] = React.useState(0);
@@ -64,52 +134,44 @@ export default function UnstyledTable() {
   };
 
   return (
-    
-      <table className="list-table">
-        <thead className='table-header'>
-          <tr className="titre1-tableau">
-            <th >Titre</th>
-            <th>Catégorie</th>
-            <th>Sous-catégorie</th>
-            <th>Téléchargements</th>
-            <th>Actions</th>
-
+    <table className="list-table">
+      <thead className="table-header">
+        <tr className="titre1-tableau">
+          <th>Titre</th>
+          <th>Catégorie</th>
+          <th>Sous-catégorie</th>
+          <th>Téléchargements</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {(rowsPerPage > 0
+          ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          : rows
+        ).map((row) => (
+          <tr className="cellules-tableau" key={row.titre}>
+            <td className="contour-cellule">{row.titre}</td>
+            <td className="contour-cellule">{row.catégorie}</td>
+            <td className="contour-cellule">{row.sousCategorie}</td>
+            <td className="contour-cellule">{row.telechargement}</td>
+            <td className="contour-cellule">
+              <div className="action-btn">
+                {row.actions}
+                <img className="action-icon" src={Edit} alt="edition" />
+                <img className="action-icon" src={Delete} alt="supprimer" />
+                <img className="action-icon" src={Visible} alt="visibilité" />
+              </div>
+            </td>
           </tr>
-          
-        </thead>
-        <tbody>
-          {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <tr className="cellules-tableau" key={row.titre} >
-              <td className="contour-cellule">{row.titre}</td>
-              <td className="contour-cellule">
-                {row.catégorie}
-              </td>
-              <td className="contour-cellule">
-                {row.sousCategorie}
-              </td>
-              <td className="contour-cellule">
-                {row.telechargement}
-              </td>
-              <td className="contour-cellule" >
-                <div className='action-btn'>{row.actions}
-                  <img className='action-icon' src={Edit} alt='edition' />
-                  <img className='action-icon' src={Delete} alt='supprimer' />
-                  <img className='action-icon' src={Visible} alt='visibilité' />
-                </div>
-              </td>
-            </tr>
-          ))}
+        ))}
 
-          {emptyRows > 0 && (
-            <tr style={{ height: 41 * emptyRows }}>
-              <td colSpan={3} />
-            </tr>
-          )}
-        </tbody>
-        {/* <tfoot>
+        {emptyRows > 0 && (
+          <tr style={{ height: 41 * emptyRows }}>
+            <td colSpan={3} />
+          </tr>
+        )}
+      </tbody>
+      {/* <tfoot>
           <tr>
             <CustomTablePagination
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
@@ -131,8 +193,6 @@ export default function UnstyledTable() {
             />
           </tr>
         </tfoot> */}
-      </table>
-      
-    
+    </table>
   );
 }

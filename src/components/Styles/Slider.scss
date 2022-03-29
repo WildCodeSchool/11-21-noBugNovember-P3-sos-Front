@@ -50,33 +50,24 @@
 // Slider controls
 // ========================= */
 
-.slider__controls {
+.btn {
+  --size: 3rem;
+  align-items: center;
+  background-color: transparent;
+  border: 3px solid transparent;
+  border-radius: 100%;
   display: flex;
-  justify-content: center;
-  position: absolute;
-  top: calc(100% + 1rem);
-  width: 100%;
-  display: none;
+  height: var(--size);
+  padding: 0;
+  width: var(--size);
 
-  .btn {
-    --size: 3rem;
-    align-items: center;
-    background-color: transparent;
-    border: 3px solid transparent;
-    border-radius: 100%;
-    display: flex;
-    height: var(--size);
-    padding: 0;
-    width: var(--size);
+  &:focus {
+    border-color: var(--color-focus);
+    outline: none;
+  }
 
-    &:focus {
-      border-color: var(--color-focus);
-      outline: none;
-    }
-
-    &--previous > * {
-      transform: rotate(180deg);
-    }
+  &--previous > * {
+    transform: rotate(180deg);
   }
 }
 
@@ -152,6 +143,11 @@
   opacity: 1;
   pointer-events: auto;
   user-select: auto;
+}
+
+.slide button {
+  color: var(--clr-white);
+  background-color: var(--clr-green);
 }
 
 .slide__headline {

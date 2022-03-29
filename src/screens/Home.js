@@ -2,17 +2,8 @@ import SearchBar from '../components/SearchBar'
 import Header from '../components/Header'
 import './Styles/Home.css'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { ArticleContext } from '../context/ArticleContext'
-import { SousCategoriesContext } from '../context/SousCategoriesContext'
 
 const Home = () => {
-  const { idCategorie } = useContext(ArticleContext)
-  const { setIdCategorie } = useContext(ArticleContext)
-
-  const { searchLaunch } = useContext(ArticleContext)
-  const { sousCatSet } = useContext(SousCategoriesContext)
-
   return (
     <>
       <Header />

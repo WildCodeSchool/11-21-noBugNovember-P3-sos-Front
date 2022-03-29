@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { ArticleContext } from '../context/ArticleContext'
 import { Dialog } from '@reach/dialog'
-import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
-import { useContext, useState, useEffect } from 'react'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
+import { useContext, useState } from 'react'
 import { VillesContext } from '../context/VillesContext'
 
 import '@reach/dialog/styles.css'
@@ -10,35 +10,21 @@ import './Styles/ModalDL.css'
 
 function ModalDL(props) {
   let navigate = useNavigate()
-  // let { idArti } = useParams()
   let { id } = useParams()
 
-  const [prenomTelechargement, setPrenomTelechargement] = useState('')
   const [nomTelechargement, setNomTelechargement] = useState('')
   const [mailTelechargement, setMailTelechargement] = useState('')
+  const [prenomTelechargement, setPrenomTelechargement] = useState('')
   const [villeTelechargement, setVilleTelechargement] = useState('')
 
   const { villes } = useContext(VillesContext)
   const { idVille } = useContext(ArticleContext)
-
   const location = useLocation()
-  const { linkUpload } = location.state
 
-  // const collectDatas = (event) => {
-  //   console.log('COLLECT DATAS ======>', telechargement)
-  //   // event.preventDefault()
-  //   setTelechargement({
-  //     prenom_telechargement: prenomTelechargement,
-  //     nom_telechargement: nomTelechargement,
-  //     mail_telechargement: mailTelechargement,
-  //     ville_telechargement: villeTelechargement,
-  //     article_id: id,
-  //   })
-  // }
+  const { linkUpload } = location.state
 
   const sendDatas = (e) => {
     e.preventDefault()
-    // Object.keys(telechargement).length > 1 &&
     axios
       .post(`http://localhost:4242/telechargements`, {
         prenom_telechargement: prenomTelechargement,
@@ -59,23 +45,6 @@ function ModalDL(props) {
       )
   }
 
-  // const download = () => {
-  //   console.log(linkUpload)
-  //   window.open({ linkUpload })
-
-  // axios({
-  //   url: { linkUpload },
-  //   method: 'GET',
-  //   responseType: 'blob',
-  // }).then((response) => {
-  //   const url = window.URL.createObjectURL(new Blob([response.data]))
-  //   const link = document.createElement('a')
-  //   link.href = url
-  //   link.setAttribute('download', 'image.jpg')
-  //   document.body.appendChild(link)
-  //   link.click()
-  // })
-  // }
   const handleChangePrenom = (e) => {
     setPrenomTelechargement(e.target.value)
   }
@@ -86,18 +55,8 @@ function ModalDL(props) {
     setMailTelechargement(e.target.value)
   }
 
-  // console.log('testLIEN', linkUpload)
-
-  // const checkFile = () => {
-  //   if (linkUpload.includes('.pdf')) {
-  //     console.log('IS A PDF')
-  //   } else {
-  //     console.log('IS A LINK')
-  //   }
-  // }
   return (
     <Dialog>
-      {console.log('testLIEN222222s', linkUpload.split(' '))}
       <div className='backContainer' onClick={() => navigate(-1)}></div>
       <div className='popUpModal'>
         <form className='coordoneDl'>
@@ -146,7 +105,7 @@ function ModalDL(props) {
             className='buttonGreen'
             onClick={(e) => sendDatas(e)}
           >
-            Telecharger
+            Télécharger
           </button>
         </form>
       </div>

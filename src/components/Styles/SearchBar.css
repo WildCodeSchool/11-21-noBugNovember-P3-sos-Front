@@ -1,12 +1,12 @@
 .holderSearchBar {
-  width: 90%;
+  width: 100%;
 }
 
 .SearchBar {
   display: flex;
-  justify-content: space-around;
-  /* width: 90%; */
-  background: var(--clr-green3);
+  justify-content: space-evenly;
+  width: 100%;
+  background: var(--clr-orange2);
   height: 5.5rem;
   align-items: center;
   margin: 1rem 0 1rem 0;
@@ -16,7 +16,8 @@
 .SearchBar input {
   height: 4rem;
   border-radius: 0 2rem;
-  padding: 0 1rem 0 2rem;
+  padding: 0 1rem 0 1rem;
+  width: 20%;
 }
 
 .SearchBar select {
@@ -27,19 +28,41 @@
   width: 16rem;
 }
 
+.SearchButtons {
+  height: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.HolderReloadIcon {
+  background: none;
+}
+
+.gridSearchButtons {
+  background: none;
+}
+
 /******* Large Tablet *******/
 @media screen and (max-width: 60em) {
   .SearchBar {
-    width: 90%;
+    width: 80%;
+    margin: auto;
   }
 }
 
 @media screen and (max-width: 40em) {
-  .holderSearchBar {
+  .homeSplitOrange > .holderSearchBar {
     width: auto;
     height: auto;
+    margin: 0;
   }
-  .SearchBar .ArtSearchBar{
+  .holderSearchBar {
+    width: 80%;
+    margin: auto;
+  }
+
+  .SearchBar .ArtSearchBar {
     display: flex;
     justify-content: space-around;
     width: auto;
@@ -52,7 +75,23 @@
     flex-direction: column;
   }
 
-  .SearchBar >* {
+  .SearchBar {
+    height: auto;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .SearchBar select {
+    width: 25rem;
+  }
+  .SearchBar input {
+    height: 4rem;
+    border-radius: 0 2rem;
+    padding: 0 1rem 0 1rem;
+    width: 25rem;
+  }
+
+  .SearchBar > * {
     margin: 0.4em;
   }
 }

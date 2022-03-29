@@ -77,3 +77,14 @@ input:invalid {
 [data-reach-dialog-overlay] {
   background: none;
 }
+
+@media screen and (max-width: 40em) {
+  .popUpModal {
+    width: 85%;
+  }
+
+  .nameDl {
+    flex-direction: column;
+    height: 10rem;
+  }
+}

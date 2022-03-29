@@ -1,11 +1,8 @@
-import './Styles/Parcours.css'
 import { ArticleContext } from '../context/ArticleContext'
 import { CategoriesContext } from '../context/CategoriesContext'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-// import { arrow } from '../assets/icones/arrow.png'
-
-import { SousCategoriesContext } from '../context/SousCategoriesContext'
+import './Styles/Parcours.css'
 
 const Parcours = () => {
   const { categories } = useContext(CategoriesContext)

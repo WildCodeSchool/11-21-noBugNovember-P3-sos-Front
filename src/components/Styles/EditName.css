@@ -1,0 +1,22 @@
+.popUpModalEdit {
+  z-index: 1060;
+  position: absolute;
+  top: 50%;
+  width: 60rem;
+  height: 30rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--clr-orange);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: appear 0.3s ease-in;
+}
+
+.modalSelect,
+#changeValue {
+  width: 27rem;
+  height: 3rem;
+  padding-left: 2rem;
+}

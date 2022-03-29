@@ -1,28 +1,24 @@
-import { useContext } from "react";
-import { ArticleContext } from "../context/ArticleContext";
-import { CategoriesContext } from "../context/CategoriesContext";
-import Slide from "./Slide.js";
-import "./Styles/Slider.scss";
-import { SousCategoriesContext } from "../context/SousCategoriesContext";
+import { ArticleContext } from '../context/ArticleContext'
+import { CategoriesContext } from '../context/CategoriesContext'
+
+import { useContext } from 'react'
+import Slide from './Slide.js'
+
+import './Styles/Slider.scss'
 
 const Slider = () => {
-  const { categories } = useContext(CategoriesContext);
-  const { idCategorie } = useContext(ArticleContext);
-  const { setIdCategorie } = useContext(ArticleContext);
-  // const {sousCatSet}=useContext(SousCategoriesContext)
-
-  const heading = "Exemple Slider";
+  const { categories } = useContext(CategoriesContext)
+  const { idCategorie } = useContext(ArticleContext)
+  const { setIdCategorie } = useContext(ArticleContext)
 
   const wrapperTransform = {
     transform: `translateX(-${(idCategorie - 1) * (100 / categories.length)}%)`,
-  };
-
+  }
 
   return (
     <>
-      <div className="slider">
-        {console.log("abdou", categories)}
-        <ul className="slider__wrapper" style={wrapperTransform}>
+      <div className='slider'>
+        <ul className='slider__wrapper' style={wrapperTransform}>
           {categories &&
             categories.map((slide) => {
               return (
@@ -34,12 +30,12 @@ const Slider = () => {
                   setIdCategorie={setIdCategorie}
                   button={slide.value}
                 />
-              );
+              )
             })}
         </ul>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Slider;
+export default Slider

@@ -1,49 +1,48 @@
-import { useEffect, useState, createContext } from "react";
-import axios from "axios";
+import { useEffect, useState, createContext } from 'react'
+import axios from 'axios'
 
-export const ArticleContext = createContext();
+export const ArticleContext = createContext()
 
 const ArticleContextProvider = (props) => {
   //State Liste des Articles
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([])
 
-  console.log(articles)
   // State pour les filtres et Select
-  const [filters, setFilters] = useState("");
-  const [idCategorie, setIdCategorie] = useState();
-  const [idVille, setIdville] = useState();
-  const [idsousCategorie, setIdsousCategorie] = useState();
-  const [searchFilter, setSearchFilter] = useState();
-  const [reloadArticle, setReloadArticle] = useState(true);
-  const [stateVisible, setStateVisible] = useState(true);
+  const [filters, setFilters] = useState('')
+  const [idCategorie, setIdCategorie] = useState()
+  const [idVille, setIdville] = useState()
+  const [idsousCategorie, setIdsousCategorie] = useState()
+  const [searchFilter, setSearchFilter] = useState()
+  const [reloadArticle, setReloadArticle] = useState(true)
+  const [stateVisible, setStateVisible] = useState(true)
 
   // Création du Filtre
   useEffect(() => {
-    let filter = [];
+    let filter = []
 
-    idCategorie && filter.push(`categorie=${idCategorie}`);
-    idVille && filter.push(`ville=${idVille}`);
-    idsousCategorie && filter.push(`sousCategorie=${idsousCategorie}`);
-    searchFilter && filter.push(`search=${searchFilter}`);
+    idCategorie && filter.push(`categorie=${idCategorie}`)
+    idVille && filter.push(`ville=${idVille}`)
+    idsousCategorie && filter.push(`sousCategorie=${idsousCategorie}`)
+    searchFilter && filter.push(`search=${searchFilter}`)
 
-    setFilters(`?${filter.join("&")}`);
-  }, [idCategorie, idVille, idsousCategorie, searchFilter]);
+    setFilters(`?${filter.join('&')}`)
+  }, [idCategorie, idVille, idsousCategorie, searchFilter])
 
   // Suppression des Filtres sans Supprimer la Catégorie
   const deleteFilter = () => {
-    setIdville("");
-    setIdsousCategorie("");
-    setSearchFilter("");
-    setFilters("");
-    resetSearch();
-  };
+    setIdville('')
+    setIdsousCategorie('')
+    setSearchFilter('')
+    // setFilters('')
+    resetSearch()
+  }
 
   //Supprimer recherche sur page HOme
   const deleteSearchHome = () => {
-    setIdville("");
-    setSearchFilter("");
-    setIdCategorie("");
-  };
+    setIdville('')
+    setSearchFilter('')
+    setIdCategorie('')
+  }
 
   // Récupération de la liste filtrée
   // useEffect(() => {
@@ -75,23 +74,23 @@ const ArticleContextProvider = (props) => {
   useEffect(() => {
     axios
       .get(`http://localhost:4242/articles${filters}`)
-      .then((res) => setArticles(res.data));
-  }, [filters, reloadArticle, stateVisible]);
+      .then((res) => setArticles(res.data))
+  }, [filters, reloadArticle, stateVisible])
 
   //Liste Entière
   const resetSearch = () => {
     axios
       .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
-      .then((res) => setArticles(res.data));
-  };
+      .then((res) => setArticles(res.data))
+  }
 
   // Bouton Recherche
   const searchLaunch = () => {
-    console.log(filters);
+    console.log(filters)
     axios
       .get(`http://localhost:4242/articles${filters}`)
-      .then((res) => setArticles(res.data));
-  };
+      .then((res) => setArticles(res.data))
+  }
 
   return (
     <ArticleContext.Provider
@@ -116,7 +115,7 @@ const ArticleContextProvider = (props) => {
     >
       {props.children}
     </ArticleContext.Provider>
-  );
-};
+  )
+}
 
-export default ArticleContextProvider;
+export default ArticleContextProvider

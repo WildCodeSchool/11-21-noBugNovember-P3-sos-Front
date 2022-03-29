@@ -1,10 +1,9 @@
 import "./Styles/ArticleForm.css";
+import axios from "axios";
+import BouttonPublier from "./BouttonPublier";
 import { useState, useEffect } from "react";
 import TinyArticle from "./TinyArticle";
-import axios from "axios";
 import Select, { StylesConfig } from "react-select";
-
-import BouttonPublier from "./BouttonPublier";
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -58,7 +57,7 @@ const ArticleForm = () => {
       sous_categorie_id: chooseSelectSousCategorie,
       ville_id: chooseSelectVille,
     });
-    
+
     console.warn("COLLECT DATAS ======>", article);
     axios
       .post(`http://localhost:4242/articles`, { ...article })

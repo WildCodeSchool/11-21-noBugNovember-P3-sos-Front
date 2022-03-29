@@ -1,4 +1,5 @@
-import { useRef, useEffect } from "react";
+import { useRef } from 'react'
+// import './Styles/Parcours.css'
 
 const Slide = ({
   idCategorie,
@@ -7,15 +8,15 @@ const Slide = ({
   setIdCategorie,
   sousCatSet,
 }) => {
-  let slideContent = useRef(null);
-  let classSlide = "slide";
+  let slideContent = useRef(null)
+  let classSlide = 'slide'
 
   if (parseInt(idCategorie) === parseInt(idSlide)) {
-    classSlide += " slide--current";
+    classSlide += ' slide--current'
   } else if (parseInt(idCategorie) + 1 === parseInt(idSlide)) {
-    classSlide += " slide--next";
+    classSlide += ' slide--next'
   } else if (parseInt(idCategorie) - 1 === parseInt(idSlide)) {
-    classSlide += " slide--previous";
+    classSlide += ' slide--previous'
   }
 
   return (
@@ -25,16 +26,16 @@ const Slide = ({
           ref={slideContent}
           className={classSlide}
           onClick={() => {
-            setIdCategorie(idSlide);
+            setIdCategorie(idSlide)
           }}
         >
-          <article className="slide__content">
-            <button className="slide__headline borderRadius">{button}</button>
+          <article className='slide__content'>
+            <button className='slide__headline borderRadius'>{button}</button>
           </article>
         </li>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Slide;
+export default Slide
