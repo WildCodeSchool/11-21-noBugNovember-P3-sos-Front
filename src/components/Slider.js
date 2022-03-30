@@ -1,8 +1,10 @@
+import "./Styles/Slider.scss";
+
+import Slide from "./Slide.js";
 import { useContext } from "react";
+
 import { ArticleContext } from "../context/ArticleContext";
 import { CategoriesContext } from "../context/CategoriesContext";
-import Slide from "./Slide.js";
-import "./Styles/Slider.scss";
 import { SousCategoriesContext } from "../context/SousCategoriesContext";
 
 const Slider = () => {
@@ -16,7 +18,6 @@ const Slider = () => {
   const wrapperTransform = {
     transform: `translateX(-${(idCategorie - 1) * (100 / categories.length)}%)`,
   };
-
 
   return (
     <>

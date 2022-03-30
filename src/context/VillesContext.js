@@ -5,7 +5,7 @@ export const VillesContext = createContext();
 
 const VillesContextProvider = (props) => {
   const [villes, setVilles] = useState([]);
-  const [reloadVilles, setReloadVilles] = useState([]);
+  const [reloadVilles, setReloadVilles] = useState(true);
 
   useEffect(() => {
     axios

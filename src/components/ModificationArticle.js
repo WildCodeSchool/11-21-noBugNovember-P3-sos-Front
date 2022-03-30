@@ -1,7 +1,7 @@
 import "./Styles/ArticleForm.css";
-import {useState, useEffect} from "react";
-import TinyArticle from "./TinyArticle";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import TinyArticle from "./TinyArticle";
 import Select, { StylesConfig } from "react-select";
 
 import BouttonPublier from "./BouttonPublier";
@@ -13,60 +13,71 @@ const colourStyles: StylesConfig = {
     backgroundColor: "white",
     width: "20vw",
     padding: ".5rem",
-    //  height: "5rem" FOU LE BORDEL
   }),
 };
-const ModificationArticle = (props) => {
-
-  const { modifArticle,setModifArticle } = props;
+const ModificationArticle = ({ modifArticle, setModifArticle }) => {
   const [article, setArticle] = useState({});
   const [art,setArt]=useState()
   const [selectSecteur, setSelectSecteur] = useState();
   const [selectVille, setSelectVille] = useState();
   const [selectCategorie, setSelectCategorie] = useState([]);
   const [selectSousCategorie, setSelectSousCategorie] = useState();
-
-  const [articleAvantage, setArticleAvantage] = useState("");
   const [articleTitle, setArticleTitle] = useState("");
   const [articleIntro, setArticleIntro] = useState("");
-  const [articleUrlImg, setArticleUrlImg] = useState("");
   const [articleContent, setArticleContent] = useState("");
-  const [articleUrlTelechargement, setUrlTelechargement] = useState("");
-  const [articleLien1, setArticleLien1] = useState("");
-  const [articleLien2, setArticleLien2] = useState("");
-  const [articleLien3, setArticleLien3] = useState("");
-
-  const [chooseSelectCategorie, setChooseSelectCategorie] = useState();
-  const [chooseSelectSousCategorie, setChooseSelectSousCategorie] = useState(
-    []
-  );
-  const [chooseSelectSecteur, setChooseSelectSecteur] = useState([]);
-  const [chooseSelectVille, setChooseSelectVille] = useState([]);
-
   const [defaultSousCategorie,setDefaultSousCategorie]=useState([])
   const [defaultSecteur,setDefaultSecteur]=useState([])
   const [defaultVille,setDefaultVille]=useState([])
 
 
+  const collectDatas = (event) => {
+    event.preventDefault();
+    setArticle({
+      titre: modifArticle.titre,
+      intro: modifArticle.intro,
+      para1: modifArticle.para1,
+      avantage: modifArticle.avantage,
+      lien1: modifArticle.lien1,
+      lien2: modifArticle.lien2,
+      lien3: modifArticle.lien3,
+      image: modifArticle.image,
+      visible: false,
+      user_id: 1,
+      secteur_id: modifArticle.nom_secteur,
+      sous_categorie_id: modifArticle.nom_sous_categorie,
+      ville_id: modifArticle.nom_ville,
+    });
+    console.log("ARTICLE DE MERDE A LA CON", article);
+    axios
+      .put(`http://localhost:4242/articles/${modifArticle.id}`, { ...article })
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .catch((error) =>
+        console.error(
+          "---Erreur modification article--- ",
+          error.validationErrors
+        )
+      );
+  };
+
   const handleChangeTitle = (e) => {
-    setModifArticle({...modifArticle,titre:e.target.value});
-    setArticleTitle(e.target.value)
+    setModifArticle({ ...modifArticle, titre: e.target.value });
+    // setArticleTitle(e.target.value);
   };
   const handleChangeIntro = (e) => {
-    setModifArticle({...modifArticle,intro:e.target.value});
-    setArticleIntro(e.target.value)
+    setModifArticle({ ...modifArticle, intro: e.target.value });
+    // setArticleIntro(e.target.value);
   };
   const handleChangeUrlImg = (e) => {
-    setModifArticle({...modifArticle,image:e.target.value});
+    setModifArticle({ ...modifArticle, image: e.target.value });
   };
   const handleChangeAvantage = (e) => {
-    setModifArticle({...modifArticle,avantage:e.target.value});
+    setModifArticle({ ...modifArticle, avantage: e.target.value });
   };
   const handleChangeLien1 = (e) => {
-    setModifArticle({...modifArticle,lien1:e.target.value});
+    setModifArticle({ ...modifArticle, lien1: e.target.value });
   };
   const handleChangeLien2 = (e) => {
-    setModifArticle({...modifArticle,lien2:e.target.value});
+    setModifArticle({ ...modifArticle, lien2: e.target.value });
   };
   const handleChangeLien3 = (e) => {
     setModifArticle({...modifArticle,lien3:e.target.value});
@@ -74,15 +85,14 @@ const ModificationArticle = (props) => {
 
   const handleChangeCategorie = (value) => {
     const { id } = value;
-    setModifArticle({...modifArticle,nom_categorie:id});
-
+    setModifArticle({ ...modifArticle, nom_categorie: id });
   };
   const handleChangeSecteur = (value) => {
     let extractedValue = [];
     for (let i = 0; i < value.length; i++) {
       extractedValue.push(value[i].id);
     }
-    setModifArticle({...modifArticle,nom_secteur:extractedValue});
+    setModifArticle({ ...modifArticle, nom_secteur: extractedValue });
   };
   const handleChangeSousCategorie = (val) => {
     let extractedValue = [];
@@ -104,7 +114,7 @@ const ModificationArticle = (props) => {
     for (let i = 0; i < value.length; i++) {
       extractedValue.push(value[i].id);
     }
-    setModifArticle({...modifArticle,nom_ville:extractedValue});
+    setModifArticle({ ...modifArticle, nom_ville: extractedValue });
   };
   const recup = () => {
     axios
@@ -128,76 +138,8 @@ const ModificationArticle = (props) => {
       then((res)=>setArt(res.data))
 
       console.log("LA CORDE C EST TROP GENIAL",modifArticle)
-
-
-      // if(art){
-      // art.forEach((article)=>{
-      //   if(modifArticle.id===article.id){
-      //     article.id_secteur=article.id_secteur.split(',')
-      //     article.id_sous_categorie=article.id_sous_categorie.split(',')
-      //     article.id_ville=article.id_ville.split(',')
-      //     article.id_sous_categorie=article.id_sous_categorie.map((id)=>parseInt(id,10))
-      //     article.id_ville=art.id_ville.map((id)=>id=parseInt(id,10))
-      //     article.id_secteur=art.id_secteur.map((id)=>id=parseInt(id,10))
-
-      //     setModifArticle({...modifArticle,
-      //       nom_categorie:[art.nom_categorie],
-      //       id_secteur:art.id_secteur,
-      //       nom_secteur:art.nom_secteur.split(','),
-      //       id_sous_categorie:art.id_sous_categorie,
-      //       nom_sous_categorie:art.nom_sous_categorie.split(','),
-      //       id_ville:art.id_ville,
-      //       nom_ville:art.nom_ville.split(',')})
-      //   }
-      // })}
-      // if(modifArticle) {
-      //   let tempoTabSousCat=[]
-      //   let tempoTabSecteur=[]
-      //   let tempoTabVille=[]
-      //   if(modifArticle.id_sous_categorie.length>0) {
-      //     for (let i = 0; i < modifArticle.id_sous_categorie.length; i++) {
-      //       tempoTabSousCat.push({label: modifArticle.nom_sous_categorie[i], value: modifArticle.id_sous_categorie[i]})
-      //     }
-      //   }else{
-      //     tempoTabSousCat.push({label: modifArticle.nom_sous_categorie, value: modifArticle.id_sous_categorie})
-      //   }
-      //   for(let i=0;i < modifArticle.id_secteur.length;i++){
-      //     tempoTabSecteur.push({label:modifArticle.nom_secteur[i],value:modifArticle.id_secteur[i]})
-      //   }
-      //   for(let i=0;i < modifArticle.id_ville.length;i++){
-      //     tempoTabVille.push({label:modifArticle.nom_ville[i],value:modifArticle.id_ville[i]})
-      //   }
-      //   console.log('TEMPOTAB',tempoTabSousCat)
-      //   setDefaultVille(tempoTabVille)
-      //   setDefaultSecteur(tempoTabSecteur)
-      //   setDefaultSousCategorie(tempoTabSousCat)
-      // }
-
   })
-  const collectDatas = (event) => {
-    event.preventDefault();
-    setArticle({
-      titre: modifArticle.titre,
-      intro: modifArticle.intro,
-      para1: modifArticle.para1,
-      avantage: modifArticle.avantage,
-      lien1: modifArticle.lien1,
-      lien2: modifArticle.lien2,
-      lien3: modifArticle.lien3,
-      image: modifArticle.image,
-      visible: false,
-      user_id: 1,
-      secteur_id: modifArticle.id_secteur,
-      sous_categorie_id: modifArticle.id_sous_categorie,
-      ville_id: modifArticle.id_ville,
-    });
-    axios
-      .put(`http://localhost:4242/articles/${modifArticle.id}`, { ...article})
-      .then((response) => console.log("RESPONSE REQUETE", response))
-      .catch((error) =>
-        console.error("---Erreur modification article--- ", error.validationErrors)
-      );
-  };
+  
   const addID = ()=>{
     art.forEach((article)=>{
       if(modifArticle.id===article.id){
@@ -219,12 +161,14 @@ const ModificationArticle = (props) => {
       }
     })
   }
+  
 
   return (
     <>
-      {console.log('poulet 01', modifArticle.id)}
+    
+      
       <h2 className="bjr-user">Bonjour [userName],</h2>
-      {modifArticle?
+      
       <div className="articles-and-types">
         {/* BLOC DE GAUCHE = ARTICLE */}
         <form className="bloc-content-row">
@@ -251,7 +195,7 @@ const ModificationArticle = (props) => {
                 onChange={handleChangeUrlImg}
               />
               <TinyArticle
-                setArticleContent={setArticleContent}
+                // setArticleContent={setArticleContent}
                 modifArticle={modifArticle.para1}
               />
               <input
@@ -305,7 +249,6 @@ const ModificationArticle = (props) => {
                       },
                     })}
                   />
-
                 </div>
 
                 <div className="selectDiv">
@@ -384,9 +327,11 @@ const ModificationArticle = (props) => {
             </div>
           </div>
         </form>
-      </div>:""}
+      </div>
       {console.log("RECUP ARTICLE", modifArticle)}
       {console.log('Art',art)}
+      
+      {console.log("RECUP ARTICLE", modifArticle)}
     </>
   );
 };

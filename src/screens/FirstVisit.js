@@ -18,13 +18,13 @@ const FirstVisit = () => {
             Clic sur une étape pour connaître les sous-catégories et les
             articles
           </p>
-          <div className="WrapSearchBar">
+          {/* <div className="WrapSearchBar">
             <h3>Selectionner</h3>
             <Select
           name={'Ville'}
           result={villes}
           />
-          </div>
+          </div> */}
         </div>
         <Parcours />
       </div>

@@ -1,6 +1,6 @@
-import React, { useRef, useState} from "react";
-import { Editor } from "@tinymce/tinymce-react";
 import "./Styles/TinyArticle.css";
+import React, { useRef } from "react";
+import { Editor } from "@tinymce/tinymce-react";
 
 export default function TinyArticle(props) {
   const { setArticleContent, modifArticle } = props;

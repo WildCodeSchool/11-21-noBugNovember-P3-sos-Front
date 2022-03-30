@@ -1,28 +1,32 @@
-import "./Styles/ListeCategorie.css";
-import { DataGrid } from "@mui/x-data-grid";
-import { useContext, useEffect, useState } from "react";
-import { CategoriesContext } from "../../context/CategoriesContext";
-import axios from "axios";
+//*IMPORT CSS ET ASSETS//*
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import "./Styles/ListeCategorie.css";
+
+//*IMPORT REACT//*
+import axios from "axios";
+import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
+import { useContext, useState } from "react";
 
-const ListeCategorie = ({setDeleteData}) => {
-  const { categories } = useContext(CategoriesContext);
+//*IMPORT CONTEXT//*
+import { CategoriesContext } from "../../context/CategoriesContext";
+
+const ListeCategorie = ({ setDeleteData }) => {
+  const { categories, reloadCategories, setReloadCategories } =
+    useContext(CategoriesContext);
   const [newCategorie, setNewCategorie] = useState("");
-
-
 
   const nouvelleCategorie = () => {
     axios
       .post(`http://localhost:4242/categories`, { ...newCategorie })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(setReloadCategories(!reloadCategories))
       .catch((error) =>
         console.error("---Erreur envoi categorie--- ", error.validationErrors)
       );
   };
-
 
   const handleChangeNewCategorie = (e) => {
     setNewCategorie({ nom_categorie: e.target.value });
@@ -39,7 +43,7 @@ const ListeCategorie = ({setDeleteData}) => {
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des categories</h3>
         <DataGrid
-          style={{ height: 500 }}
+          style={{ height: 500 }} //, width: 800
           columns={[
             {
               field: "id",
@@ -68,13 +72,18 @@ const ListeCategorie = ({setDeleteData}) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
-                  <FontAwesomeIcon
-                    icon={faPencil}
-                    size="1x"
-                    color="var(--clr-orange)"
-                    className="editIcon"
-                  />
+                <div className="actionIcon2 ">
+                  <Link
+                    to="./modal/editer"
+                    state={{ backgroundLocation: location }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      size="1x"
+                      color="var(--clr-orange)"
+                      className="editIcon"
+                    />
+                  </Link>
                   <Link
                     to="./modal/supprimer"
                     state={{ backgroundLocation: location }}
@@ -123,33 +132,6 @@ const ListeCategorie = ({setDeleteData}) => {
           <button className="button2 adminButton" onClick={nouvelleCategorie}>
             Ajouter catégorie
           </button>
-
-<div className="elementToEdit">
-<label for="myInput" className="titleElementToEdit">Catégorie à modifier</label>
-          <input
-            className="newCategoInput newCategoInputDecal"
-            type="text"
-            name="myInput"
-            size="30"
-            required
-            value={"Catégorie selectionnée au click"}>
-            </input>
-</div>
-
-          <input
-            className="newCategoInput"
-            type="text"
-            name="myInput"
-            placeholder="Nouveau nom de catégorie"
-            size="30"
-            required
-            onChange={""}
-          ></input>
-
-          <button className="button2 adminButton" onClick={""}>
-            Modifier la catégorie
-          </button>
-
         </div>
       </div>
     </>
