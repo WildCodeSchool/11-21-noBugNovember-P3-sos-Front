@@ -1,9 +1,11 @@
 import "./Styles/ArticleForm.css";
 import axios from "axios";
 import BouttonPublier from "./BouttonPublier";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import TinyArticle from "./TinyArticle";
 import Select, { StylesConfig } from "react-select";
+import { ArticleContext } from "../context/ArticleContext";
+import { SousCategoriesContext } from "../context/SousCategoriesContext";
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -16,7 +18,7 @@ const colourStyles: StylesConfig = {
   }),
 };
 const ArticleForm = () => {
-  const [article, setArticle] = useState({});
+  const [article, setArticle] = useState({visible:false, user_id:1});
 
   const [selectSecteur, setSelectSecteur] = useState();
   const [selectVille, setSelectVille] = useState();
@@ -40,80 +42,148 @@ const ArticleForm = () => {
   const [chooseSelectSecteur, setChooseSelectSecteur] = useState([]);
   const [chooseSelectVille, setChooseSelectVille] = useState([]);
 
+  const { sousCategories } = useContext(SousCategoriesContext);
+  const { idCategorie, setIdCategorie } = useContext(ArticleContext);
+
   const collectDatas = (event) => {
     event.preventDefault();
-    setArticle({
-      titre: articleTitle,
-      intro: articleIntro,
-      para1: articleContent,
-      avantage: articleAvantage,
-      lien1: articleLien1,
-      lien2: articleLien2,
-      lien3: articleLien3,
-      image: articleUrlImg,
-      visible: false,
-      user_id: 1,
-      secteur_id: chooseSelectSecteur,
-      sous_categorie_id: chooseSelectSousCategorie,
-      ville_id: chooseSelectVille,
-    });
+    // setArticle({
+    //   titre: articleTitle,
+    //   intro: articleIntro,
+    //   para1: articleContent,
+    //   avantage: articleAvantage,
+    //   lien1: articleLien1,
+    //   lien2: articleLien2,
+    //   lien3: articleLien3,
+    //   image: articleUrlImg,
+    //   visible: false,
+    //   user_id: 1,
+    //   secteur_id: chooseSelectSecteur,
+    //   sous_categorie_id: chooseSelectSousCategorie,
+    //   ville_id: chooseSelectVille,
+    // });
 
     console.warn("COLLECT DATAS ======>", article);
     axios
-      .post(`http://localhost:4242/articles`, { ...article })
+      .post(`http://localhost:4242/articles`,{...article})
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
-        console.error("---Erreur envoi article--- ", error.validationErrors)
+        console.error("---Erreur envoi article--- ", error)
       );
   };
-  const handleChangeTitle = (e) => {
-    setArticleTitle(e.target.value);
+
+  // useEffect(() => {
+  //   setArticle({
+  //     titre: articleTitle,
+  //     intro: articleIntro,
+  //     para1: articleContent,
+  //     avantage: articleAvantage,
+  //     lien1: articleLien1,
+  //     lien2: articleLien2,
+  //     lien3: articleLien3,
+  //     image: articleUrlImg,
+  //     visible: false,
+  //     user_id: 1,
+  //     secteur_id: chooseSelectSecteur,
+  //     sous_categorie_id: chooseSelectSousCategorie,
+  //     ville_id: chooseSelectVille,
+
+  //   });
+  // }, [
+  //   articleTitle,
+  //   articleIntro,
+  //   articleContent,
+  //   articleAvantage,
+  //   articleLien1,
+  //   articleLien2,
+  //   articleLien3,
+  //   articleUrlImg,
+  //   chooseSelectSecteur,
+  //   chooseSelectSousCategorie,
+  //   chooseSelectVille,
+  // ]);
+
+  const handleChange = (e, name, select) => {
+    //  setArticleTitle(`titre: ${e.target.value}`);
+    // setArticleTitle(e.target.value);
+    if (select) {
+      let extractedValue = [];
+      for (let i = 0; i < e.length; i++) {
+        extractedValue.push(e[i].id);
+      }
+      setArticle({
+        ...article,
+        [name]: extractedValue,
+      });
+    } else if (name) {
+      setArticle({
+        ...article,
+        [name]: e,
+      });
+    } else {
+      setArticle({
+        ...article,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
-  const handleChangeIntro = (e) => {
-    setArticleIntro(e.target.value);
-  };
-  const handleChangeUrlImg = (e) => {
-    setArticleUrlImg(e.target.value);
-  };
-  const handleChangeAvantage = (e) => {
-    setArticleAvantage(e.target.value);
-  };
-  const handleChangeLien1 = (e) => {
-    setArticleLien1(e.target.value);
-  };
-  const handleChangeLien2 = (e) => {
-    setArticleLien2(e.target.value);
-  };
-  const handleChangeLien3 = (e) => {
-    setArticleLien3(e.target.value);
-  };
+  // const handleChangeIntro = (e) => {
+  //   setArticleIntro(e.target.value);
+  // };
+  // const handleChangeUrlImg = (e) => {
+  //   setArticleUrlImg(e.target.value);
+  // };
+  // const handleChangeAvantage = (e) => {
+  //   setArticleAvantage(e.target.value);
+  // };
+  // const handleChangeLien1 = (e) => {
+  //   setArticleLien1(e.target.value);
+  // };
+  // const handleChangeLien2 = (e) => {
+  //   setArticleLien2(e.target.value);
+  // };
+  // const handleChangeLien3 = (e) => {
+  //   setArticleLien3(e.target.value);
+  // };
 
   const handleChangeCategorie = (value) => {
     const { id } = value;
-    console.log("VALUEEEEEEEEEEE", id);
+    setIdCategorie(id);
+    // console.log("VALUEEEEEEEEEEE", id);
     setChooseSelectCategorie(id);
   };
-  const handleChangeSecteur = (value) => {
-    let extractedValue = [];
-    for (let i = 0; i < value.length; i++) {
-      extractedValue.push(value[i].id);
-    }
-    setChooseSelectSecteur(extractedValue);
-  };
-  const handleChangeSousCategorie = (value) => {
-    let extractedValue = [];
-    for (let i = 0; i < value.length; i++) {
-      extractedValue.push(value[i].id);
-    }
-    setChooseSelectSousCategorie(extractedValue);
-  };
-  const handleChangeVille = (value) => {
-    let extractedValue = [];
-    for (let i = 0; i < value.length; i++) {
-      extractedValue.push(value[i].id);
-    }
-    setChooseSelectVille(extractedValue);
-  };
+
+  // const handleChangeTableau = (value) => {
+  //   let extractedValue = [];
+  //   for (let i = 0; i < value.length; i++) {
+  //     extractedValue.push(value[i].id);
+  //   }
+  //   setChooseSelectSecteur(extractedValue);
+  // };
+
+  // const handleChangeSecteur = (value) => {
+  //   let extractedValue = [];
+  //   for (let i = 0; i < value.length; i++) {
+  //     extractedValue.push(value[i].id);
+  //   }
+  //   setChooseSelectSecteur(extractedValue);
+  // };
+
+  // const handleChangeSousCategorie = (value) => {
+  //   let extractedValue = [];
+  //   for (let i = 0; i < value.length; i++) {
+  //     extractedValue.push(value[i].id);
+  //   }
+  //   setChooseSelectSousCategorie(extractedValue);
+  // };
+
+  // const handleChangeVille = (value) => {
+  //   let extractedValue = [];
+  //   for (let i = 0; i < value.length; i++) {
+  //     extractedValue.push(value[i].id);
+  //   }
+  //   setChooseSelectVille(extractedValue);
+  // };
   useEffect(() => {
     axios
       .get("http://localhost:4242/secteurs")
@@ -128,8 +198,21 @@ const ArticleForm = () => {
       .get("http://localhost:4242/villes")
       .then((response) => setSelectVille(response.data));
   }, []);
+
+  //   articleTitle,
+  //   articleIntro,
+  //   articleContent,
+  //   articleAvantage,
+  //   articleLien1,
+  //   articleLien2,
+  //   articleLien3,
+  //   articleUrlImg,
+  //   chooseSelectSecteur,
+  //   chooseSelectSousCategorie,
+  //   chooseSelectVille,
   return (
     <>
+      {console.log("wesh alors", article)};
       <h2 className="bjr-user">Bonjour [userName],</h2>
       <div className="articles-and-types">
         {/* BLOC DE GAUCHE = ARTICLE */}
@@ -141,35 +224,44 @@ const ArticleForm = () => {
               <input
                 className="input-article-title"
                 placeholder="Titre de l'article"
-                onChange={handleChangeTitle}
+                name="titre"
+                onChange={(e) => handleChange(e)}
               />
               <input
                 className="input-article-intro"
                 placeholder="Intro de l'article"
-                onChange={handleChangeIntro}
+                name="intro"
+                onChange={(e) => handleChange(e)}
               />
               <input
                 placeholder="Url de l'image"
                 type="url"
-                onChange={handleChangeUrlImg}
+                name="image"
+                onChange={(e) => handleChange(e)}
               />
-              <TinyArticle setArticleContent={setArticleContent} />
+
+              <TinyArticle setArticleContent={handleChange} />
+              {/* setArticleContent={setArticleContent} /> */}
               <input
                 className="input-article-intro"
                 placeholder="Texte présentant les avantages de l'article"
-                onChange={handleChangeAvantage}
+                name="avantage"
+                onChange={(e) => handleChange(e)}
               />
               <input
                 placeholder="URL du lien à télécharger N°1"
-                onChange={handleChangeLien1}
+                onChange={(e) => handleChange(e)}
+                name="lien1"
               />
               <input
                 placeholder="URL du lien à télécharger N°2"
-                onChange={handleChangeLien2}
+                onChange={(e) => handleChange(e)}
+                name="lien2"
               />
               <input
                 placeholder="URL du lien à télécharger N°3"
-                onChange={handleChangeLien3}
+                onChange={(e) => handleChange(e)}
+                name="lien3"
               />
             </div>
           </div>
@@ -203,11 +295,11 @@ const ArticleForm = () => {
                   <Select
                     isMulti
                     placeholder="Choix de sous-catégorie(s)"
-                    options={selectSousCategorie}
+                    options={sousCategories}
                     className="basic-multi-select"
                     classNamePrefix="select"
                     closeMenuOnSelect={true}
-                    onChange={(value) => handleChangeSousCategorie(value)}
+                    onChange={(value) => handleChange(value, "sous_categorie_id", true)}
                     styles={colourStyles}
                     theme={(theme) => ({
                       ...theme,
@@ -228,7 +320,7 @@ const ArticleForm = () => {
                     className="basic-multi-select"
                     classNamePrefix="select"
                     closeMenuOnSelect={true}
-                    onChange={(value) => handleChangeSecteur(value)}
+                    onChange={(value) => handleChange(value, "secteur_id", true)}
                     styles={colourStyles}
                     theme={(theme) => ({
                       ...theme,
@@ -249,7 +341,7 @@ const ArticleForm = () => {
                     className="basic-multi-select"
                     classNamePrefix="select"
                     closeMenuOnSelect={true}
-                    onChange={(value) => handleChangeVille(value)}
+                    onChange={(value) => handleChange(value, "ville_id", true)}
                     styles={colourStyles}
                     theme={(theme) => ({
                       ...theme,

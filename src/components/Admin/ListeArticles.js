@@ -11,16 +11,22 @@ import { CategoriesContext } from "../../context/CategoriesContext";
 //*IMPORT REACT//*
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
-import {useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 
 //*IMPORT CONTEXT//*
 import { ArticleContext } from "../../context/ArticleContext";
 
-const ListArticles = ({ setModifArticle, setDeleteData, deleteData, modifArticle }) => {
+const ListArticles = ({
+  setModifArticle,
+  setDeleteData,
+  deleteData,
+  modifArticle,
+  setModifyId
+}) => {
   const { articles } = useContext(ArticleContext);
   const { categorie } = useContext(CategoriesContext);
   let location = useLocation();
-  const [test,setTest]=useState('')
+  const [test, setTest] = useState("");
 
   return (
     <>
@@ -120,13 +126,14 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData, modifArticle
               renderCell: (field) => (
                 <div className="actionIcon">
                   <Link to="/admin-controler/modification-article">
-                  {/*<Link key={articles.id} to="/admin-controler/modification-article" onClick={setDeleteData(field.row) || setModifArticle(field.row)}>*/}
+                    {/*<Link key={articles.id} to="/admin-controler/modification-article" onClick={setDeleteData(field.row) || setModifArticle(field.row)}>*/}
                     {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
                     <FontAwesomeIcon
                       icon={faPencil}
                       size="1x"
                       color="var(--clr-orange)"
                       className="editIcon"
+                  
                     />
                   </Link>
                   <Link
@@ -168,12 +175,16 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData, modifArticle
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}
+          onRowClick={(datas) => {
+            setDeleteData(datas.row) || setModifArticle(datas.row) || setModifyId(datas.row.id);
+          }}
+      
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
-               />
+        />
+           
       </div>
-
     </>
   );
 };

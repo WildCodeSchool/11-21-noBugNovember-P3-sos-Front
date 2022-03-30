@@ -9,8 +9,9 @@ export default function TinyArticle(props) {
   return (
     <>
       <Editor
+        // name="articleContent"
         apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
-        onEditorChange={(newValue, editor) => setArticleContent(newValue)}
+        onEditorChange={(newValue, editor) => setArticleContent(newValue,"para1")}
         onInit={(evt, editor) => (editorRef.current = editor)}
         initialValue={modifArticle}
         init={{

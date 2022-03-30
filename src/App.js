@@ -60,6 +60,8 @@ function App() {
   const { idCategorie } = useContext(CategoriesContext);
   const { setIdCategorie } = useContext(CategoriesContext);
 
+  const [modifyId, setModifyId] = useState("");
+
   return (
     <div className="App">
       <ArticleContextProvider>
@@ -96,6 +98,8 @@ function App() {
                         path="articles"
                         element={
                           <ListeArticles
+                            modifyId={modifyId} 
+                            setModifyId={setModifyId}
                             setModifArticle={setModifArticle}
                             modifArticle={modifArticle}
                             setDeleteData={setDeleteData}
@@ -133,6 +137,8 @@ function App() {
                         path="modification-article"
                         element={
                           <ModificationArticle
+                           modifyId={modifyId} 
+                           setModifyId={setModifyId}
                             modifArticle={modifArticle}
                             setModifArticle={setModifArticle}
                           />
