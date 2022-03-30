@@ -46,7 +46,7 @@ function App() {
 
   const [modifArticle, setModifArticle] = useState("");
   const [deleteData, setDeleteData] = useState("");
-
+  
   //Ajout rom REGIONS
   const { regions } = useContext(RegionsContext);
   const { idRegion } = useContext(RegionsContext);
@@ -65,7 +65,7 @@ function App() {
             <SecteursContextProvider>
               <TelechargementsContextProvider>
                 <Routes location={backgroundLocation || location}>
-                  <Route path="/" element={<Home />} />
+                  <Route path="/" element={<Home />}  />
                   <Route path="/etapes" element={<FirstVisit />} />
                   <Route path="/articlesGrid" element={<ArticlesGrid />} />
                   <Route

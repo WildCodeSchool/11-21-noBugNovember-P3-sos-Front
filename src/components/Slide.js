@@ -1,11 +1,12 @@
-import { useRef, useEffect } from "react";
+import { useRef} from "react";
+
 
 const Slide = ({
   idCategorie,
   idSlide,
   button,
   setIdCategorie,
-  sousCatSet,
+  
 }) => {
   let slideContent = useRef(null);
   let classSlide = "slide";
@@ -16,7 +17,8 @@ const Slide = ({
     classSlide += " slide--next";
   } else if (parseInt(idCategorie) - 1 === parseInt(idSlide)) {
     classSlide += " slide--previous";
-  }
+  } else {return null}
+  
 
   return (
     <>
@@ -37,4 +39,5 @@ const Slide = ({
   );
 };
 
-export default Slide;
+
+export default Slide

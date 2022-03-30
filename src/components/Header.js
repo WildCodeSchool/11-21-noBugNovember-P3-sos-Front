@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { ArticleContext } from "../context/ArticleContext";
 
 function Header() {
-
+  const {resetSearch} = useContext(ArticleContext)
   const {setFilters} = useContext(ArticleContext)
   return (
     <>
       <div className="headerWrapperLogo">
         <div className="headerLogoHolder">
-          <Link to="/" >
+          <Link to="/" onClick={() => resetSearch("")} >
             <img
               src={require("../assets/logo.png")}
               alt="logo Sos jeunes pousses"

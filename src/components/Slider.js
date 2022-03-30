@@ -22,7 +22,7 @@ const Slider = () => {
     <>
       <div className="slider">
         {console.log("abdou", categories)}
-        <ul className="slider__wrapper" style={wrapperTransform}>
+        <ul className="slider__wrapper" >
           {categories &&
             categories.map((slide) => {
               return (
