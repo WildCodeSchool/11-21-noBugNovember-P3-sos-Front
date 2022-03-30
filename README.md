@@ -55,10 +55,10 @@ Il est possible de créer, modifier voir de supprimer les appelations des diffé
 
 ## 📸 ScreenShots :
 ## 👨‍👨‍👦‍👦 Equipe :
-[Clara](https://github.com/Liax)<br>
-[Déo](https://github.com/Summercoder4)<br>
-[Julien](https://github.com/jartacho)<br>
-[Léo](https://github.com/leoPinchon)<br>
-[Lyndia](https://github.com/DataLyla)<br>
-[Romain](https://github.com/MSX-R)<br>
-[Milhan](https://github.com/Pimpuss)<br>
+[Clara](https://github.com/Liax)&emsp; 
+[Déo](https://github.com/Summercoder4)&emsp; 
+[Julien](https://github.com/jartacho)&emsp; 
+[Léo](https://github.com/leoPinchon)&emsp; 
+[Lyndia](https://github.com/DataLyla)&emsp; 
+[Romain](https://github.com/MSX-R)&emsp; 
+[Milhan](https://github.com/Pimpuss)&emsp; 
