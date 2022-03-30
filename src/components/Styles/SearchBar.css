@@ -1,11 +1,11 @@
 .holderSearchBar {
-  width: 90%;
+  width: 100%;
 }
 
 .SearchBar {
   display: flex;
-  justify-content: space-around;
-  /* width: 90%; */
+  justify-content: space-evenly;
+  width: 100%;
   background: var(--clr-green3);
   height: 5.5rem;
   align-items: center;
@@ -27,6 +27,21 @@
   width: 16rem;
 }
 
+.SearchButtons {
+  height: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.HolderReloadIcon {
+  background: none;
+}
+
+.gridSearchButtons {
+  background: none;
+}
+
 /******* Large Tablet *******/
 @media screen and (max-width: 60em) {
   .SearchBar {
@@ -39,7 +54,7 @@
     width: auto;
     height: auto;
   }
-  .SearchBar .ArtSearchBar{
+  .SearchBar .ArtSearchBar {
     display: flex;
     justify-content: space-around;
     width: auto;
@@ -52,7 +67,7 @@
     flex-direction: column;
   }
 
-  .SearchBar >* {
+  .SearchBar > * {
     margin: 0.4em;
   }
 }

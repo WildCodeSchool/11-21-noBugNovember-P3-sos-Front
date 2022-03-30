@@ -27,16 +27,19 @@ function Suppression({ deleteData, page, action }) {
   const { reloadSousCat, setReloadSousCat } = useContext(SousCategoriesContext);
 
   const { reloadVilles, setReloadVilles } = useContext(VillesContext);
+
   const handleDeletData = () => {
     axios
       .delete(`http://localhost:4242/${page}/${deleteData.id}`)
-      .then((response) => console.log("RESPONSE REQUETE", response));
-    setReloadArticle(!reloadArticle);
-    setReloadCategories(!reloadCategories);
-    setReloadSecteurs(!reloadSecteurs);
-    setReloadSousCat(!reloadSousCat);
-    setReloadVilles(!reloadVilles);
-    navigate(-1);
+      .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(
+        setReloadArticle(!reloadArticle),
+        setReloadCategories(!reloadCategories),
+        setReloadSecteurs(!reloadSecteurs),
+        setReloadSousCat(!reloadSousCat),
+        setReloadVilles(!reloadVilles),
+        navigate(-1)
+      );
   };
 
   const putData = (bol) => {

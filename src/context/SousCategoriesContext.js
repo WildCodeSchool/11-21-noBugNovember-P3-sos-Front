@@ -1,5 +1,4 @@
 import { useEffect, useState, createContext, useContext } from "react";
-
 import axios from "axios";
 import { ArticleContext } from "./ArticleContext";
 
@@ -47,7 +46,9 @@ const SousCategoriesContextProvider = (props) => {
   }, [idCategorie, reloadSousCat]);
 
   return (
-    <SousCategoriesContext.Provider value={{ sousCategories, reloadSousCat, setReloadSousCat }}>
+    <SousCategoriesContext.Provider
+      value={{ sousCategories, reloadSousCat, setReloadSousCat }}
+    >
       {props.children}
     </SousCategoriesContext.Provider>
   );

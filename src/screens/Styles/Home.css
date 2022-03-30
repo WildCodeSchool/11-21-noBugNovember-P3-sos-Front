@@ -40,7 +40,7 @@
   background-color: var(--clr-orange);
   height: 70%;
   border-radius: 0 25rem 0 0;
-  padding: 6rem 0 0 3rem;
+  padding: 6rem 2rem 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

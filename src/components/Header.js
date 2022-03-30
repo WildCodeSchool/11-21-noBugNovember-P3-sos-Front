@@ -1,11 +1,16 @@
 import "./Styles/Header.css";
+import { ArticleContext } from "../context/ArticleContext";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { ArticleContext } from "../context/ArticleContext";
 
 function Header() {
+<<<<<<< HEAD
   const {resetSearch} = useContext(ArticleContext)
   const {setFilters} = useContext(ArticleContext)
+=======
+
+  // const {setFilters} = useContext(ArticleContext)
+>>>>>>> 2d7a6ce3c23e3bfe91165513c6008cd5e132557a
   return (
     <>
       <div className="headerWrapperLogo">
@@ -17,9 +22,9 @@ function Header() {
             />
           </Link>
         </div>
-        <Link to="/admin" onClick={() => setFilters("")}>
+        {/* <Link to="/admin" onClick={() => setFilters("")}>
           <h5>Admin</h5>
-        </Link>
+        </Link> */}
       </div>
     </>
   );

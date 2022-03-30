@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+💻 "SOS JEUNES POUSSES" 3ème projet en groupe à la wild code school.
+This project was bootstrapped with Create React App.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+📝 Description :
+Création d'un site internet proposant un accompagnement à la création de projet professionnel.
 
-## Available Scripts
+L'association SOS JEUNES POUSSES à pour but de délivrer des informations et d'accompagner tout individu désirant créer un projet entreprenarial.
 
-In the project directory, you can run:
+Avec le site SOS JEUNES POUSSES, chaque utilisateur aura la possibilité de consulter des articles lui permettant de s'informer selon son niveau d'avancé dans la création de projet.
 
-### `npm start`
+🌐 Navigation Utilisateur :
+Premier pas sur le site
+Lors de sa premiere visite sur le site, l'utilisateur aura la possibilité de découvrir ce qu'est " Le parcours type de l'utilisateur " et ainsi accéder à tous les articles rattachés à chaque étape (catégorie) du parcours de création de projet. Cela lui permettra d'être guidé, étape par étape, dans son parcours entrepreunarial.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Une recherche ciblée
+Egalement, si l'utilisateur a déjà utiliser le site, il pourra dès la page d'accueil procéder à une recherche d'article ciblant une étape bien précise du projet de création. Pour se faire, il devra remplir des critères de recherche dans la barre prévue à cet effet. Cela lui permettra d'accéder à des articles en liens avec les critères de recherche saisis.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Accéder à la totalité des articles
+Si aucune information n'est remplie dans la barre de recherche, l'utilisateur sera redirigé vers la liste intégrale des articles. Cela lui permettra de naviguer entre les différents articles et de choisir d'acceder à l'article de son choix.
 
-### `npm test`
+Un accès à l'information
+En selectionnant une des cartes de la liste, l'utilisateur sera renvoyé sur la page de l'article en question ce qui lui permettra d'obtenir des informations claires et détaillées au sujet d'un thème bien précis.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Obtenir des informations complémentaires
+Lors de la consultation d'article, l'utilisateur aura , selon les articles, l'occasion d'obtenir des informations plus poussées en cliquant sur un bouton le redirigeant vers un site proposant un complément d'informations.
 
-### `npm run build`
+Téléchargement de fichiers
+Lors de la consultation d'article, l'utilisateur aura , selon les articles, l'occasion de télécharger des fichiers lui permettant d'avoir en sa possession des documents traitant du thème exploité par l'article. A partir de là, l'information sera rendu possible en tout lieu, tout moment.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🔰 Administration :
+Une connexion sécurisée
+Une interface admin a été mis en place afin de permettre aux gestionnaires du site d'éffectuer diverses manoeuvres sur le site. Pour accéder à l'interface admin, l'utilisateur devra avoir en sa possession les informations - login & password - lui permettant de s'authentifier auprès du système de sécurité Auth0 mis en place.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Une interface admin fonctionnelle
+Depuis l'interface admin, il sera possible de :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Créer des articles
+Titre, Introduction, Illustration, Contenu principal formatable, Avantage de l'article, Lien de téléchargement, Lien de redirection, Choix des catégories/sous-catégories/secteurs d'activités/villes.
 
-### `npm run eject`
+- Gérer les articles
+Modifier, supprimer ou rendre non visible un article spécifique.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Agir sur les composants indispensables des articles
+Il est possible de créer, modifier voir de supprimer les appelations des différentes catégories, sous-catégories, secteurs et villes par l'intermédiaire de boutons d'actions prévu à cet effet.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+📸 ScreenShots :
+👨‍👨‍👦‍👦 Equipe :
+Clara
+Déo
+Julien
+Léo
+Lyndia
+Milhan
+Romain
