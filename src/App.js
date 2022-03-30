@@ -7,16 +7,16 @@ import { useState, useContext } from 'react'
 
 //*IMPORT COMPONENTS //*
 import ArticleForm from './components/ArticleForm'
-import ModalDL from './components/ModalDL'
-import ModificationArticle from './components/ModificationArticle'
+import EditName from './components/EditName'
 import ListeArticles from './components/Admin/ListeArticles'
 import ListeCategorie from './components/Admin/ListeCategorie'
 import ListeSecteurs from './components/Admin/ListeSecteurs'
 import ListeSousCat from './components/Admin/ListeSousCat'
 import ListeVilles from './components/Admin/ListeVilles'
 import ListeDonnees from './components/Admin/ListeDonnees'
+import ModalDL from './components/ModalDL'
+import ModificationArticle from './components/ModificationArticle'
 import Suppression from './components/Suppression'
-import EditName from './components/EditName'
 
 //*IMPORT SCREENS //*
 

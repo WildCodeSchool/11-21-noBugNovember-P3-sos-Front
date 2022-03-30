@@ -28,7 +28,7 @@
   height: 70vh;
   width: 100%;
   bottom: 0;
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
