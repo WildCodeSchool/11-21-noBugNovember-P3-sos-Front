@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 function Header() {
-  const { setFilters } = useContext(ArticleContext);
+
+  // const {setFilters} = useContext(ArticleContext)
   return (
     <>
       <div className="headerWrapperLogo">
@@ -16,9 +17,9 @@ function Header() {
             />
           </Link>
         </div>
-        <Link to="/admin" onClick={() => setFilters("")}>
+        {/* <Link to="/admin" onClick={() => setFilters("")}>
           <h5>Admin</h5>
-        </Link>
+        </Link> */}
       </div>
     </>
   );
