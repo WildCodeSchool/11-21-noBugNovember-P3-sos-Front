@@ -14,6 +14,7 @@ const Parcours = () => {
   return (
     <div className='snake-bloc'>
       <div className='snake'>
+      <div className="cache"></div>
         {categories.map((btnSnake) => {
           return (
             <Link to={`/articlesGrid`}  

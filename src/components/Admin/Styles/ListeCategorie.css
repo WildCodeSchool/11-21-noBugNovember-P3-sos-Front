@@ -4,7 +4,6 @@
 }
 
 .newCategoInput {
-  /*Input nouvel item*/
   height: 5rem;
   padding: 2rem;
   margin: 0 1rem 0 0;
@@ -45,6 +44,13 @@
 }
 
 .newCategoInputDecal {
-  /* correction du margin*/
   margin: 0;
+}
+
+.actionIcon2 {
+  width: 12rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
 }

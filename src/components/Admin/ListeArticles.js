@@ -6,29 +6,21 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import { CategoriesContext } from "../../context/CategoriesContext";
-//*IMPORT REACT//*
 
+//*IMPORT REACT//*
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
-import { useContext } from "react";
+import {useContext, useEffect, useState} from "react";
 
 //*IMPORT CONTEXT//*
 import { ArticleContext } from "../../context/ArticleContext";
 
-const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
+const ListArticles = ({ setModifArticle, setDeleteData, deleteData, modifArticle }) => {
   const { articles } = useContext(ArticleContext);
   const { categorie } = useContext(CategoriesContext);
   let location = useLocation();
-
-  // const deleteArticle = (modifArticle) => {
-  //   axios
-  //     .delete(`http://localhost:4242/articles/${modifArticle.id}`)
-  //     .then((response) => console.log("RESPONSE REQUETE", response))
-  //     .catch((error) => console.error(error.validationErrors));
-  // };
-
+  const [test,setTest]=useState('')
 
   return (
     <>
@@ -128,6 +120,7 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
               renderCell: (field) => (
                 <div className="actionIcon">
                   <Link to="/admin-controler/modification-article">
+                  {/*<Link key={articles.id} to="/admin-controler/modification-article" onClick={setDeleteData(field.row) || setModifArticle(field.row)}>*/}
                     {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
                     <FontAwesomeIcon
                       icon={faPencil}
@@ -147,7 +140,7 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
                       className="deletIcon"
                     />
                   </Link>
-                  {console.log(field.row)}
+                  {/* {console.log(field.row)} */}
                   <Link
                     to="./modal/visible"
                     state={{ backgroundLocation: location }}
@@ -171,17 +164,16 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
             color: "var(--clr-green)",
             borderColor: "var(--clr-green)",
             boxShadow: "5px 5px 5px var(--shadowColor)",
+            width: "100%",
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
-          }}
-          onRowClick={(datas) => {
-            setDeleteData(datas.row) || setModifArticle(datas.row);
           }}
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
-        />
+               />
       </div>
+
     </>
   );
 };

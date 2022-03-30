@@ -7,7 +7,7 @@ const ArticleContextProvider = (props) => {
   //State Liste des Articles
   const [articles, setArticles] = useState([]);
 
-  console.log(articles)
+  // console.log(articles)
   // State pour les filtres et Select
   const [filters, setFilters] = useState("");
   const [idCategorie, setIdCategorie] = useState();
@@ -34,9 +34,10 @@ const ArticleContextProvider = (props) => {
     setIdville("");
     setIdsousCategorie("");
     setSearchFilter("");
-    setFilters("");
+    // setFilters("");
     resetSearch();
   };
+
 
   //Supprimer recherche sur page HOme
   const deleteSearchHome = () => {
@@ -45,6 +46,12 @@ const ArticleContextProvider = (props) => {
     setIdCategorie("");
   };
 
+
+  //Supprimer sousCat en modifiant les catégorie du slider
+
+  const deleteSousCat = () => {
+    setIdsousCategorie("");
+  }
   // Récupération de la liste filtrée
   // useEffect(() => {
   //   if (filters.length === 0) {
@@ -112,6 +119,7 @@ const ArticleContextProvider = (props) => {
         setReloadArticle,
         setStateVisible,
         stateVisible,
+        deleteSousCat
       }}
     >
       {props.children}
