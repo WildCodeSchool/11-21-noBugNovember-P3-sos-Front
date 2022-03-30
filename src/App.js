@@ -38,7 +38,7 @@ function App() {
 
   let backgroundLocation = location.state && location.state.backgroundLocation;
 
-  const [modifArticle, setModifArticle] = useState("");
+  const [modifArticle, setModifArticle] = useState({});
   const [deleteData, setDeleteData] = useState("");
 
   return (
@@ -71,6 +71,7 @@ function App() {
                         element={
                           <ListeArticles
                             setModifArticle={setModifArticle}
+                            modifArticle={modifArticle}
                             setDeleteData={setDeleteData}
                             deleteData={deleteData}
                           />

@@ -12,23 +12,21 @@ import { CategoriesContext } from "../../context/CategoriesContext";
 
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
-import { useContext } from "react";
+import {useContext, useEffect, useState} from "react";
 
 //*IMPORT CONTEXT//*
 import { ArticleContext } from "../../context/ArticleContext";
 
-const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
+const ListArticles = ({ setModifArticle, setDeleteData, deleteData, modifArticle }) => {
   const { articles } = useContext(ArticleContext);
   const { categorie } = useContext(CategoriesContext);
   let location = useLocation();
+  const [test,setTest]=useState('')
 
-  // const deleteArticle = (modifArticle) => {
-  //   axios
-  //     .delete(`http://localhost:4242/articles/${modifArticle.id}`)
-  //     .then((response) => console.log("RESPONSE REQUETE", response))
-  //     .catch((error) => console.error(error.validationErrors));
-  // };
-
+  useEffect(()=>{
+    axios.get('http://localhost:4242/articles',(res)=>{setTest(res.data)})
+    console.log('axios',test)
+    },[])
 
   return (
     <>
@@ -126,42 +124,42 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
               align: "center",
               headerAlign: "center",
               renderCell: (field) => (
-                <div className="actionIcon">
-                  <Link to="/admin-controler/modification-article">
-                    {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
-                    <FontAwesomeIcon
-                      icon={faPencil}
-                      size="1x"
-                      color="var(--clr-orange)"
-                      className="editIcon"
-                    />
-                  </Link>
-                  <Link
-                    to="./modal/supprimer"
-                    state={{ backgroundLocation: location }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      size="1x"
-                      color="var(--clr-orange)"
-                      className="deletIcon"
-                    />
-                  </Link>
-                  {console.log(field.row)}
-                  <Link
-                    to="./modal/visible"
-                    state={{ backgroundLocation: location }}
-                  >
-                    <FontAwesomeIcon
-                      icon={
-                        parseInt(field.row.visible) === 1 ? faEye : faEyeSlash
-                      }
-                      size="1x"
-                      color="var(--clr-orange)"
-                      className="eyeIcon"
-                    />
-                  </Link>
-                </div>
+                   <div className="actionIcon">
+                    <Link key={articles.id} to="/admin-controler/modification-article" onClick={setDeleteData(field.row) || setModifArticle(field.row)}>
+                      {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
+                      <FontAwesomeIcon
+                        icon={faPencil}
+                        size="1x"
+                        color="var(--clr-orange)"
+                        className="editIcon"
+                      />
+
+                    </Link>
+                    <Link
+                      to="./modal/supprimer"
+                      state={{ backgroundLocation: location }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        size="1x"
+                        color="var(--clr-orange)"
+                        className="deletIcon"
+                      />
+                    </Link>
+                    <Link
+                      to="./modal/visible"
+                      state={{ backgroundLocation: location }}
+                    >
+                      <FontAwesomeIcon
+                        icon={
+                          parseInt(field.row.visible) === 1 ? faEye : faEyeSlash
+                        }
+                        size="1x"
+                        color="var(--clr-orange)"
+                        className="eyeIcon"
+                      />
+                    </Link>
+                  </div>
               ),
             },
           ]}
@@ -174,14 +172,12 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
             padding: "8px",
             "& .MuiDataGrid-cell:hover": {},
           }}
-          onRowClick={(datas) => {
-            setDeleteData(datas.row) || setModifArticle(datas.row);
-          }}
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}
           pagination
-        />
+               />
       </div>
+
     </>
   );
 };
