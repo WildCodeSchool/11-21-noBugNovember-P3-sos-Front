@@ -1,7 +1,7 @@
 # 💻 "SOS JEUNES POUSSES" 3ème projet en groupe à la wild code school.
 
 ## 📂 Installation :
-Ce projet a était créé avec [Create React App](https://github.com/facebook/create-react-app).<br>
+Ce projet a été créé avec [Create React App](https://github.com/facebook/create-react-app).<br>
 
 ▶ Pour cloner le projet sur votre machine dans votre terminal utilisez la commande ```Git clone``` suivit du lien ```git@github.com:WildCodeSchool/11-21-noBugNovember-P3-sos-Front.git```
 
@@ -29,7 +29,7 @@ Premier pas sur le site
 Lors de sa premiere visite sur le site, l'utilisateur aura la possibilité de découvrir ce qu'est " Le parcours type de l'utilisateur " et ainsi accéder à tous les articles rattachés à chaque étape (catégorie) du parcours de création de projet. Cela lui permettra d'être guidé, étape par étape, dans son parcours entrepreunarial.
 
 Une recherche ciblée
-Egalement, si l'utilisateur a déjà utiliser le site, il pourra dès la page d'accueil procéder à une recherche d'article ciblant une étape bien précise du projet de création. Pour se faire, il devra remplir des critères de recherche dans la barre prévue à cet effet. Cela lui permettra d'accéder à des articles en liens avec les critères de recherche saisis.
+Egalement, si l'utilisateur a déjà utilié le site, il pourra dès la page d'accueil procéder à une recherche d'article ciblant une étape bien précise du projet de création. Pour se faire, il devra remplir des critères de recherche dans la barre prévue à cet effet. Cela lui permettra d'accéder à des articles en lien avec les critères de recherche saisis.
 
 Accéder à la totalité des articles
 Si aucune information n'est remplie dans la barre de recherche, l'utilisateur sera redirigé vers la liste intégrale des articles. Cela lui permettra de naviguer entre les différents articles et de choisir d'acceder à l'article de son choix.
@@ -45,7 +45,7 @@ Lors de la consultation d'article, l'utilisateur aura , selon les articles, l'oc
 
 ## 🔰 Administration :
 Une connexion sécurisée
-Une interface admin a été mis en place afin de permettre aux gestionnaires du site d'éffectuer diverses manoeuvres sur le site. Pour accéder à l'interface admin, l'utilisateur devra avoir en sa possession les informations - login & password - lui permettant de s'authentifier auprès du système de sécurité Auth0 mis en place.
+Une interface admin a été mise en place afin de permettre aux gestionnaires du site d'effectuer diverses manoeuvres sur le site. Pour accéder à l'interface admin, l'utilisateur devra avoir en sa possession les informations - login & password - lui permettant de s'authentifier auprès du système de sécurité Auth0 mis en place.
 
 Une interface admin fonctionnelle
 Depuis l'interface admin, il sera possible de :
@@ -57,7 +57,7 @@ Titre, Introduction, Illustration, Contenu principal formatable, Avantage de l'a
 Modifier, supprimer ou rendre non visible un article spécifique.
 
 - Agir sur les composants indispensables des articles
-Il est possible de créer, modifier voir de supprimer les appelations des différentes catégories, sous-catégories, secteurs et villes par l'intermédiaire de boutons d'actions prévu à cet effet.
+Il est possible de créer, modifier voir de supprimer les appelations des différentes catégories, sous-catégories, secteurs et villes par l'intermédiaire de boutons d'appelations prévu à cet effet.
 
 ## 📸 ScreenShots :
 ## 👨‍👨‍👦‍👦 Equipe :
