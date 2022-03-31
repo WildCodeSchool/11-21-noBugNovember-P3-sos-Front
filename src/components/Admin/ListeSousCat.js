@@ -38,7 +38,9 @@ const ListeSousCategories = ({ setDeleteData }) => {
 
   const nouvelleSousCategorie = () => {
     axios
-      .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
+      .post(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`, {
+        ...newSousCategorie,
+      })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .then(setReloadSousCat(!reloadSousCat))
       .catch((error) =>

@@ -1,14 +1,20 @@
+//*IMPORT CSS ET ASSETS//*
 import "./Styles/ArticleForm.css";
 import axios from "axios";
+
+//*IMPORT REACT//*
+import TinyArticle from "./TinyArticle";
 import BouttonPublier from "./BouttonPublier";
 import { useState, useContext } from "react";
-import TinyArticle from "./TinyArticle";
 import Select, { StylesConfig } from "react-select";
+import { useNavigate } from "react-router-dom";
+
+//*IMPORT COMPONENTS//*
 import { ArticleContext } from "../../context/ArticleContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
 import { SecteursContext } from "../../context/SecteursContext";
 import { SousCategoriesContext } from "../../context/SousCategoriesContext";
 import { VillesContext } from "../../context/VillesContext";
-import { CategoriesContext } from "../../context/CategoriesContext";
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -26,6 +32,7 @@ const ArticleForm = () => {
   const { sousCategories } = useContext(SousCategoriesContext);
   const { categories } = useContext(CategoriesContext);
   const { villes } = useContext(VillesContext);
+  let navigate = useNavigate();
 
   //Création state ajour article avec valeurs pas défault
   const [article, setArticle] = useState({ visible: false, user_id: 1 });
@@ -33,10 +40,14 @@ const ArticleForm = () => {
   const ajoutDatas = (event) => {
     event.preventDefault();
     axios
-      .post(`http://localhost:4242/articles`, { ...article })
+      .post(`http://localhost:${process.env.REACT_APP_PORT}/articles`, {
+        ...article,
+      })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .then(() => setReloadArticle(!reloadArticle))
       .catch((error) => console.error("---Erreur envoi article--- ", error));
+    navigate(-1);
+    setIdCategorie("");
   };
 
   //Ajout des infos dans la state

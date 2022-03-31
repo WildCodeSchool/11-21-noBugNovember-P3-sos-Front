@@ -66,19 +66,25 @@ const ModificationArticle = ({ modifyId }) => {
   // Récuperer les données
   useEffect(() => {
     axios
-      .get(`http://localhost:4242/articles/villes/${modifyId}`)
+      .get(
+        `http://localhost:${process.env.REACT_APP_PORT}/articles/villes/${modifyId}`
+      )
       .then((response) => setVillesPara(response.data));
   }, []);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4242/articles/sousCat/${modifyId}`)
+      .get(
+        `http://localhost:${process.env.REACT_APP_PORT}/articles/sousCat/${modifyId}`
+      )
       .then((response) => setSousCatPara(response.data));
   }, []);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4242/articles/secteurs/${modifyId}`)
+      .get(
+        `http://localhost:${process.env.REACT_APP_PORT}/articles/secteurs/${modifyId}`
+      )
       .then((response) => setSecteursPara(response.data));
   }, []);
 
@@ -87,7 +93,9 @@ const ModificationArticle = ({ modifyId }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4242/articles/details/${modifyId}`)
+      .get(
+        `http://localhost:${process.env.REACT_APP_PORT}/articles/details/${modifyId}`
+      )
       .then((res) => setArticle(res.data));
   }, []);
 
