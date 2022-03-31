@@ -4,11 +4,13 @@ import { faArrowRotateRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 //*IMPORT REACT//*
+import Select from './Select'
+import { useContext } from 'react'
+
+//*IMPORT CONTEXT//*
 import { ArticleContext } from '../context/ArticleContext'
 import { CategoriesContext } from '../context/CategoriesContext'
-import Select from './Select'
 import { SousCategoriesContext } from '../context/SousCategoriesContext'
-import { useContext } from 'react'
 import { VillesContext } from '../context/VillesContext'
 
 const SearchBar = (props) => {

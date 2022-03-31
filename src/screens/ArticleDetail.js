@@ -1,9 +1,14 @@
-import { ArticleContext } from '../context/ArticleContext'
+//*IMPORT CSS ET ASSETS//*
+import './Styles/ArticleDetail.css'
+import fleche from '../assets/icones/flecheCercle.png'
+
+//*IMPORT REACT//*
 import Header from '../components/Header'
 import { useContext } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
-import './Styles/ArticleDetail.css'
-import fleche from '../assets/icones/flecheCercle.png'
+
+//*IMPORT CONTEXT//*
+import { ArticleContext } from '../context/ArticleContext'
 
 const ArticleDetail = (
   isActive,
@@ -58,7 +63,6 @@ const ArticleDetail = (
                   <div className='articleDetailFirst'>
                     {result.lien1 && (
                       <div className='boutonTelechargementDoc'>
-                        {console.log('RESULT', result.lien1)}
                         <Link
                           to={`/articlesGrid/articleDetail/${id}/modalDL`}
                           state={{

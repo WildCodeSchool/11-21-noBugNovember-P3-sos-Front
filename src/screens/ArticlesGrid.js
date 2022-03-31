@@ -1,9 +1,12 @@
+//*IMPORT CSS//*
 import './Styles/ArticlesGrid.css'
 
+//*IMPORT REACT & CONTEXT//*
 import { ArticleContext } from '../context/ArticleContext'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 
+//*IMPORT COMPOSANTS //*
 import CardArticle from '../components/CardArticle.js'
 import Header from '../components/Header.js'
 import SearchBar from '../components/SearchBar.js'

@@ -1,5 +1,5 @@
-import { useEffect, useState, createContext } from 'react'
 import axios from 'axios'
+import { useEffect, useState, createContext } from 'react'
 
 export const ArticleContext = createContext()
 
@@ -33,7 +33,7 @@ const ArticleContextProvider = (props) => {
     setIdville('')
     setIdsousCategorie('')
     setSearchFilter('')
-    // setFilters('')
+    // setFilters("");
     resetSearch()
   }
 
@@ -44,6 +44,11 @@ const ArticleContextProvider = (props) => {
     setIdCategorie('')
   }
 
+  //Supprimer sousCat en modifiant les catégorie du slider
+
+  const deleteSousCat = () => {
+    setIdsousCategorie('')
+  }
   // Récupération de la liste filtrée
   // useEffect(() => {
   //   if (filters.length === 0) {
@@ -111,6 +116,7 @@ const ArticleContextProvider = (props) => {
         setReloadArticle,
         setStateVisible,
         stateVisible,
+        deleteSousCat,
       }}
     >
       {props.children}

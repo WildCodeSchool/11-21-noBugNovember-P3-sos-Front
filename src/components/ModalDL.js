@@ -1,12 +1,16 @@
+//*IMPORT CSS ET ASSETS//*
+import '@reach/dialog/styles.css'
+import './Styles/ModalDL.css'
+
+//*IMPORT REACT//*
 import axios from 'axios'
 import { ArticleContext } from '../context/ArticleContext'
 import { Dialog } from '@reach/dialog'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { useContext, useState } from 'react'
-import { VillesContext } from '../context/VillesContext'
 
-import '@reach/dialog/styles.css'
-import './Styles/ModalDL.css'
+//*IMPORT CONTEXT//*
+import { VillesContext } from '../context/VillesContext'
 
 function ModalDL(props) {
   let navigate = useNavigate()

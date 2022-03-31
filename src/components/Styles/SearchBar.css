@@ -26,6 +26,7 @@
   padding: 0 1rem 0 2rem;
   appearance: none;
   width: 16rem;
+  cursor: pointer;
 }
 
 .SearchButtons {
@@ -37,10 +38,12 @@
 
 .HolderReloadIcon {
   background: none;
+  cursor: pointer;
 }
 
 .gridSearchButtons {
   background: none;
+  cursor: pointer;
 }
 
 /******* Large Tablet *******/
@@ -93,5 +96,15 @@
 
   .SearchBar > * {
     margin: 0.4em;
+  }
+}
+
+@media screen and (max-width: 35em) {
+  .SearchBar input {
+    width: 15rem;
+  }
+
+  .SearchBar select {
+    width: 15rem;
   }
 }

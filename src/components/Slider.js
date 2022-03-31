@@ -11,14 +11,10 @@ const Slider = () => {
   const { idCategorie } = useContext(ArticleContext)
   const { setIdCategorie } = useContext(ArticleContext)
 
-  const wrapperTransform = {
-    transform: `translateX(-${(idCategorie - 1) * (100 / categories.length)}%)`,
-  }
-
   return (
     <>
       <div className='slider'>
-        <ul className='slider__wrapper' style={wrapperTransform}>
+        <ul className='slider__wrapper'>
           {categories &&
             categories.map((slide) => {
               return (

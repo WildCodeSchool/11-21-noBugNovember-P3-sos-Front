@@ -19,9 +19,9 @@ import ModificationArticle from './components/ModificationArticle'
 import Suppression from './components/Suppression'
 
 //*IMPORT SCREENS //*
-
 import ArticleDetail from './screens/ArticleDetail'
 import ArticlesGrid from './screens/ArticlesGrid'
+import Cgu from './screens/Cgu'
 import FirstVisit from './screens/FirstVisit'
 import Home from './screens/Home'
 import IdentificationAdmin from './screens/IdentificationAdmin'
@@ -29,14 +29,15 @@ import PanelAdmin from './screens/PanelAdmin'
 
 //*IMPORT CONTEXT PROVIDER //*
 import ArticleContextProvider from './context/ArticleContext'
+import AuthContextProvider from './context/AuthContext'
 import SecteursContextProvider from './context/SecteursContext'
 import SousCategoriesContextProvider from './context/SousCategoriesContext'
 import VillesContextProvider from './context/VillesContext'
+import RequireAuth from './components/RequireAuth'
 import TelechargementsContextProvider from './context/TelechargementsContext'
 
-//*IMPORT CONTEXT //* ajout rom
+//*IMPORT CONTEXT DEPUIS INDEX //*
 import { RegionsContext } from './context/RegionsContext'
-//*IMPORT CONTEXT //* ajout rom 23h
 import { CategoriesContext } from './context/CategoriesContext'
 
 function App() {
@@ -44,209 +45,217 @@ function App() {
 
   let backgroundLocation = location.state && location.state.backgroundLocation
 
+  const { regions, idRegion, setIdRegion } = useContext(RegionsContext)
+  const { categories, idCategorie, setIdCategorie } =
+    useContext(CategoriesContext)
+
   const [modifArticle, setModifArticle] = useState('')
   const [deleteData, setDeleteData] = useState('')
-
-  //Ajout rom REGIONS
-  const { regions } = useContext(RegionsContext)
-  const { idRegion } = useContext(RegionsContext)
-  const { setIdRegion } = useContext(RegionsContext)
-
-  //Ajout rom CATEGORIES 23h
-  const { categories } = useContext(CategoriesContext)
-  const { idCategorie } = useContext(CategoriesContext)
-  const { setIdCategorie } = useContext(CategoriesContext)
-
   return (
     <div className='App'>
       <ArticleContextProvider>
-        <SousCategoriesContextProvider>
-          <VillesContextProvider>
-            <SecteursContextProvider>
-              <TelechargementsContextProvider>
-                <Routes location={backgroundLocation || location}>
-                  <Route path='/' element={<Home />} />
-                  <Route path='/etapes' element={<FirstVisit />} />
-                  <Route path='/articlesGrid' element={<ArticlesGrid />} />
-                  <Route
-                    path='/articlesGrid/articleDetail/:id'
-                    element={<ArticleDetail />}
-                  ></Route>
-                  <Route
-                    path='/articlesGrid/articleDetail/:id/modalDL'
-                    element={<ModalDL />}
-                  ></Route>
-                  <Route path='admin' element={<IdentificationAdmin />}></Route>
-                  <Route path='admin-controler' element={<PanelAdmin />}>
+        <AuthContextProvider>
+          <SousCategoriesContextProvider>
+            <VillesContextProvider>
+              <SecteursContextProvider>
+                <TelechargementsContextProvider>
+                  <Routes location={backgroundLocation || location}>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/etapes' element={<FirstVisit />} />
+                    <Route path='/articlesGrid' element={<ArticlesGrid />} />
                     <Route
-                      path='articles'
-                      element={
-                        <ListeArticles
-                          setModifArticle={setModifArticle}
-                          setDeleteData={setDeleteData}
-                          deleteData={deleteData}
-                        />
-                      }
-                    />
-                    <Route path='articleForm' element={<ArticleForm />} />
-                    <Route
-                      path='categories'
-                      element={
-                        <ListeCategorie
-                          // setModifArticle={setModifArticle}
-                          setDeleteData={setDeleteData}
-                        />
-                      }
-                    />
-                    e
-                    <Route
-                      path='sousCategories'
-                      element={<ListeSousCat setDeleteData={setDeleteData} />}
-                    />
-                    <Route
-                      path='villes'
-                      element={<ListeVilles setDeleteData={setDeleteData} />}
-                    />
-                    <Route
-                      path='secteurs'
-                      element={<ListeSecteurs setDeleteData={setDeleteData} />}
-                    />
-                    <Route path='donnes' element={<ListeDonnees />} />
-                    <Route
-                      path='modification-article'
-                      element={
-                        <ModificationArticle
-                          modifArticle={modifArticle}
-                          setModifArticle={setModifArticle}
-                        />
-                      }
-                    />
-                  </Route>
-                </Routes>
-                {backgroundLocation && (
-                  <Routes>
+                      path='/articlesGrid/articleDetail/:id'
+                      element={<ArticleDetail />}
+                    ></Route>
                     <Route
                       path='/articlesGrid/articleDetail/:id/modalDL'
                       element={<ModalDL />}
-                    />
+                    ></Route>
                     <Route
-                      path='admin-controler/articles/modal/supprimer'
-                      element={
-                        <Suppression
-                          deleteData={deleteData}
-                          page={'articles'}
-                          action={'supprimer'}
-                        />
-                      }
-                    />
+                      path='admin'
+                      element={<IdentificationAdmin />}
+                    ></Route>
+                    <Route path='cgu' element={<Cgu />}></Route>
                     <Route
-                      path='admin-controler/articles/modal/visible'
+                      path='/admin-controler'
                       element={
-                        <Suppression
-                          deleteData={deleteData}
-                          page={'articles'}
-                          action={'visible'}
-                        />
+                        <RequireAuth>
+                          <PanelAdmin />
+                        </RequireAuth>
                       }
-                    />
-                    <Route
-                      path='admin-controler/categories/modal/supprimer'
-                      element={
-                        <Suppression
-                          deleteData={deleteData}
-                          page={'categories'}
-                          action={'supprimer'}
-                        />
-                      }
-                    />
-                    <Route
-                      path='admin-controler/sousCategories/modal/supprimer'
-                      element={
-                        <Suppression
-                          deleteData={deleteData}
-                          page={'souscategories'}
-                          action={'supprimer'}
-                        />
-                      }
-                    />
-                    <Route
-                      path='admin-controler/secteurs/modal/supprimer'
-                      element={
-                        <Suppression
-                          deleteData={deleteData}
-                          page={'secteurs'}
-                          action={'supprimer'}
-                        />
-                      }
-                    />
-                    <Route
-                      path='admin-controler/villes/modal/supprimer'
-                      element={
-                        <Suppression
-                          deleteData={deleteData}
-                          page={'villes'}
-                          action={'supprimer'}
-                        />
-                      }
-                    />
-                    <Route
-                      path='admin-controler/categories/modal/editer'
-                      element={
-                        <EditName
-                          deleteData={deleteData}
-                          page={'categories'}
-                          edit={'nom_categorie'}
-                        />
-                      }
-                    />
-                    <Route
-                      path='admin-controler/sousCategories/modal/editer'
-                      element={
-                        <EditName
-                          deleteData={deleteData}
-                          page={'sousCategories'}
-                          edit={'nom_sous_categorie'}
-                          edit2={'categorie_id'}
-                          select={true}
-                          name={'la catégorie'}
-                          result={categories}
-                          value2={idCategorie}
-                          set={setIdCategorie}
-                        />
-                      }
-                    />
-                    <Route
-                      path='admin-controler/secteurs/modal/editer'
-                      element={
-                        <EditName
-                          deleteData={deleteData}
-                          page={'secteurs'}
-                          edit={'nom_secteur'}
-                        />
-                      }
-                    />
-                    <Route
-                      path='admin-controler/villes/modal/editer'
-                      element={
-                        <EditName
-                          deleteData={deleteData}
-                          page={'villes'}
-                          edit={'nom_ville'}
-                          edit2={'region_id'}
-                          select={true}
-                          name={'la région'}
-                          result={regions}
-                          value2={idRegion}
-                          set={setIdRegion}
-                        />
-                      }
-                    />
+                    >
+                      <Route
+                        path='articles'
+                        element={
+                          <ListeArticles
+                            setModifArticle={setModifArticle}
+                            setDeleteData={setDeleteData}
+                            deleteData={deleteData}
+                          />
+                        }
+                      />
+                      <Route path='articleForm' element={<ArticleForm />} />
+                      <Route
+                        path='categories'
+                        element={
+                          <ListeCategorie
+                            // setModifArticle={setModifArticle}
+                            setDeleteData={setDeleteData}
+                          />
+                        }
+                      />
+                      e
+                      <Route
+                        path='sousCategories'
+                        element={<ListeSousCat setDeleteData={setDeleteData} />}
+                      />
+                      <Route
+                        path='villes'
+                        element={<ListeVilles setDeleteData={setDeleteData} />}
+                      />
+                      <Route
+                        path='secteurs'
+                        element={
+                          <ListeSecteurs setDeleteData={setDeleteData} />
+                        }
+                      />
+                      <Route path='donnes' element={<ListeDonnees />} />
+                      <Route
+                        path='modification-article'
+                        element={
+                          <ModificationArticle
+                            modifArticle={modifArticle}
+                            setModifArticle={setModifArticle}
+                          />
+                        }
+                      />
+                    </Route>
                   </Routes>
-                )}
-              </TelechargementsContextProvider>
-            </SecteursContextProvider>
-          </VillesContextProvider>
-        </SousCategoriesContextProvider>
+                  {backgroundLocation && (
+                    <Routes>
+                      <Route
+                        path='/articlesGrid/articleDetail/:id/modalDL'
+                        element={<ModalDL />}
+                      />
+                      <Route
+                        path='admin-controler/articles/modal/supprimer'
+                        element={
+                          <Suppression
+                            deleteData={deleteData}
+                            page={'articles'}
+                            action={'supprimer'}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/articles/modal/visible'
+                        element={
+                          <Suppression
+                            deleteData={deleteData}
+                            page={'articles'}
+                            action={'visible'}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/categories/modal/supprimer'
+                        element={
+                          <Suppression
+                            deleteData={deleteData}
+                            page={'categories'}
+                            action={'supprimer'}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/sousCategories/modal/supprimer'
+                        element={
+                          <Suppression
+                            deleteData={deleteData}
+                            page={'souscategories'}
+                            action={'supprimer'}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/secteurs/modal/supprimer'
+                        element={
+                          <Suppression
+                            deleteData={deleteData}
+                            page={'secteurs'}
+                            action={'supprimer'}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/villes/modal/supprimer'
+                        element={
+                          <Suppression
+                            deleteData={deleteData}
+                            page={'villes'}
+                            action={'supprimer'}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/categories/modal/editer'
+                        element={
+                          <EditName
+                            deleteData={deleteData}
+                            page={'categories'}
+                            edit={'nom_categorie'}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/sousCategories/modal/editer'
+                        element={
+                          <EditName
+                            deleteData={deleteData}
+                            page={'sousCategories'}
+                            edit={'nom_sous_categorie'}
+                            edit2={'categorie_id'}
+                            select={true}
+                            name={'la catégorie'}
+                            result={categories}
+                            value2={idCategorie}
+                            set={setIdCategorie}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/secteurs/modal/editer'
+                        element={
+                          <EditName
+                            deleteData={deleteData}
+                            page={'secteurs'}
+                            edit={'nom_secteur'}
+                          />
+                        }
+                      />
+                      <Route
+                        path='admin-controler/villes/modal/editer'
+                        element={
+                          <EditName
+                            deleteData={deleteData}
+                            page={'villes'}
+                            edit={'nom_ville'}
+                            edit2={'region_id'}
+                            select={true}
+                            name={'la région'}
+                            result={regions}
+                            value2={idRegion}
+                            set={setIdRegion}
+                          />
+                        }
+                      />
+                    </Routes>
+                  )}
+                </TelechargementsContextProvider>
+              </SecteursContextProvider>
+            </VillesContextProvider>
+          </SousCategoriesContextProvider>
+        </AuthContextProvider>
       </ArticleContextProvider>
     </div>
   )

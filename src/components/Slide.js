@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-// import './Styles/Parcours.css'
 
 const Slide = ({
   idCategorie,
@@ -17,6 +16,8 @@ const Slide = ({
     classSlide += ' slide--next'
   } else if (parseInt(idCategorie) - 1 === parseInt(idSlide)) {
     classSlide += ' slide--previous'
+  } else {
+    return null
   }
 
   return (

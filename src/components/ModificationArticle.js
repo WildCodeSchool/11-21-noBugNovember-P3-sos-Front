@@ -1,34 +1,36 @@
-import "./Styles/ArticleForm.css";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import TinyArticle from "./TinyArticle";
-import Select, { StylesConfig } from "react-select";
+//*IMPORT CSS ET ASSETS//*
+import './Styles/ArticleForm.css'
+import BouttonPublier from './BouttonPublier'
 
-import BouttonPublier from "./BouttonPublier";
+//*IMPORT REACT//*
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import TinyArticle from './TinyArticle'
+import Select, { StylesConfig } from 'react-select'
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
   control: (styles) => ({
     ...styles,
-    backgroundColor: "white",
-    width: "20vw",
-    padding: ".5rem",
+    backgroundColor: 'white',
+    width: '20vw',
+    padding: '.5rem',
   }),
-};
+}
 const ModificationArticle = (props) => {
-  const { modifArticle, setModifArticle } = props;
-  const [article, setArticle] = useState({});
+  const { modifArticle, setModifArticle } = props
+  const [article, setArticle] = useState({})
 
-  const [selectSecteur, setSelectSecteur] = useState();
-  const [selectVille, setSelectVille] = useState();
-  const [selectCategorie, setSelectCategorie] = useState([]);
-  const [selectSousCategorie, setSelectSousCategorie] = useState();
+  const [selectSecteur, setSelectSecteur] = useState()
+  const [selectVille, setSelectVille] = useState()
+  const [selectCategorie, setSelectCategorie] = useState([])
+  const [selectSousCategorie, setSelectSousCategorie] = useState()
 
   // const [articleAvantage, setArticleAvantage] = useState("");
-  const [articleTitle, setArticleTitle] = useState("");
-  const [articleIntro, setArticleIntro] = useState("");
+  const [articleTitle, setArticleTitle] = useState('')
+  const [articleIntro, setArticleIntro] = useState('')
   // const [articleUrlImg, setArticleUrlImg] = useState("");
-  const [articleContent, setArticleContent] = useState("");
+  const [articleContent, setArticleContent] = useState('')
   // const [articleUrlTelechargement, setUrlTelechargement] = useState("");
   // const [articleLien1, setArticleLien1] = useState("");
   // const [articleLien2, setArticleLien2] = useState("");
@@ -42,7 +44,7 @@ const ModificationArticle = (props) => {
   // const [chooseSelectVille, setChooseSelectVille] = useState([]);
 
   const collectDatas = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     setArticle({
       titre: modifArticle.titre,
       intro: modifArticle.intro,
@@ -57,86 +59,86 @@ const ModificationArticle = (props) => {
       secteur_id: modifArticle.nom_secteur,
       sous_categorie_id: modifArticle.nom_sous_categorie,
       ville_id: modifArticle.nom_ville,
-    });
-    console.log("ARTICLE DE MERDE A LA CON", article);
+    })
+    console.log('ARTICLE DE MERDE A LA CON', article)
     axios
       .put(`http://localhost:4242/articles/${modifArticle.id}`, { ...article })
-      .then((response) => console.log("RESPONSE REQUETE", response))
+      .then((response) => console.log('RESPONSE REQUETE', response))
       .catch((error) =>
         console.error(
-          "---Erreur modification article--- ",
+          '---Erreur modification article--- ',
           error.validationErrors
         )
-      );
-  };
+      )
+  }
 
   const handleChangeTitle = (e) => {
-    setModifArticle({ ...modifArticle, titre: e.target.value });
+    setModifArticle({ ...modifArticle, titre: e.target.value })
     // setArticleTitle(e.target.value);
-  };
+  }
   const handleChangeIntro = (e) => {
-    setModifArticle({ ...modifArticle, intro: e.target.value });
+    setModifArticle({ ...modifArticle, intro: e.target.value })
     // setArticleIntro(e.target.value);
-  };
+  }
   const handleChangeUrlImg = (e) => {
-    setModifArticle({ ...modifArticle, image: e.target.value });
-  };
+    setModifArticle({ ...modifArticle, image: e.target.value })
+  }
   const handleChangeAvantage = (e) => {
-    setModifArticle({ ...modifArticle, avantage: e.target.value });
-  };
+    setModifArticle({ ...modifArticle, avantage: e.target.value })
+  }
   const handleChangeLien1 = (e) => {
-    setModifArticle({ ...modifArticle, lien1: e.target.value });
-  };
+    setModifArticle({ ...modifArticle, lien1: e.target.value })
+  }
   const handleChangeLien2 = (e) => {
-    setModifArticle({ ...modifArticle, lien2: e.target.value });
-  };
+    setModifArticle({ ...modifArticle, lien2: e.target.value })
+  }
   const handleChangeLien3 = (e) => {
-    setModifArticle({ ...modifArticle, lien2: e.target.value });
-  };
+    setModifArticle({ ...modifArticle, lien2: e.target.value })
+  }
 
   const handleChangeCategorie = (value) => {
-    const { id } = value;
-    setModifArticle({ ...modifArticle, nom_categorie: id });
-  };
+    const { id } = value
+    setModifArticle({ ...modifArticle, nom_categorie: id })
+  }
   const handleChangeSecteur = (value) => {
-    let extractedValue = [];
+    let extractedValue = []
     for (let i = 0; i < value.length; i++) {
-      extractedValue.push(value[i].id);
+      extractedValue.push(value[i].id)
     }
-    setModifArticle({ ...modifArticle, nom_secteur: extractedValue });
-  };
+    setModifArticle({ ...modifArticle, nom_secteur: extractedValue })
+  }
   const handleChangeSousCategorie = (value) => {
-    let extractedValue = [];
+    let extractedValue = []
     for (let i = 0; i < value.length; i++) {
-      extractedValue.push(value[i].id);
+      extractedValue.push(value[i].id)
     }
-    setModifArticle({ ...modifArticle, nom_sous_categorie: extractedValue });
-  };
+    setModifArticle({ ...modifArticle, nom_sous_categorie: extractedValue })
+  }
   const handleChangeVille = (value) => {
-    let extractedValue = [];
+    let extractedValue = []
     for (let i = 0; i < value.length; i++) {
-      extractedValue.push(value[i].id);
+      extractedValue.push(value[i].id)
     }
-    setModifArticle({ ...modifArticle, nom_ville: extractedValue });
-  };
+    setModifArticle({ ...modifArticle, nom_ville: extractedValue })
+  }
   const recup = () => {
     axios
-      .get("http://localhost:4242/categories")
-      .then((response) => setSelectCategorie(response.data));
-  };
+      .get('http://localhost:4242/categories')
+      .then((response) => setSelectCategorie(response.data))
+  }
   useEffect(() => {
     axios
-      .get("http://localhost:4242/secteurs")
-      .then((response) => setSelectSecteur(response.data));
+      .get('http://localhost:4242/secteurs')
+      .then((response) => setSelectSecteur(response.data))
     axios
-      .get("http://localhost:4242/categories")
-      .then((response) => setSelectCategorie(response.data));
+      .get('http://localhost:4242/categories')
+      .then((response) => setSelectCategorie(response.data))
     axios
-      .get("http://localhost:4242/sousCategories")
-      .then((response) => setSelectSousCategorie(response.data));
+      .get('http://localhost:4242/sousCategories')
+      .then((response) => setSelectSousCategorie(response.data))
     axios
-      .get("http://localhost:4242/villes")
-      .then((response) => setSelectVille(response.data));
+      .get('http://localhost:4242/villes')
+      .then((response) => setSelectVille(response.data))
 
     // else {
     //   selectCategorie.foreach((categorie) => {
@@ -147,34 +149,34 @@ const ModificationArticle = (props) => {
     //   })
     //   console.log('CATEGORIETAB',modifArticle.nom_categorie)
     // }
-  }, []);
+  }, [])
 
   return (
     <>
-      <h2 className="bjr-user">Bonjour [userName],</h2>
+      <h2 className='bjr-user'>Bonjour Rachid,</h2>
 
-      <div className="articles-and-types">
+      <div className='articles-and-types'>
         {/* BLOC DE GAUCHE = ARTICLE */}
-        <form className="bloc-content-row">
-          <div className="bloc-article">
-            <h3 className="titreMenu">Modifier l'article</h3>
+        <form className='bloc-content-row'>
+          <div className='bloc-article'>
+            <h3 className='titreMenu'>Modifier l'article</h3>
 
-            <div className="article-form">
+            <div className='article-form'>
               <input
-                className="input-article-title"
+                className='input-article-title'
                 placeholder="Titre de l'article"
                 value={modifArticle.titre}
                 onChange={handleChangeTitle}
               />
               <input
-                className="input-article-intro"
+                className='input-article-intro'
                 placeholder="Intro de l'article"
                 value={modifArticle.intro}
                 onChange={handleChangeIntro}
               />
               <input
                 placeholder="Url de l'image"
-                type="url"
+                type='url'
                 value={modifArticle.image}
                 onChange={handleChangeUrlImg}
               />
@@ -183,43 +185,43 @@ const ModificationArticle = (props) => {
                 modifArticle={modifArticle.para1}
               />
               <input
-                className="input-article-intro"
+                className='input-article-intro'
                 placeholder="Texte présentant les avantages de l'article"
                 value={modifArticle.avantage}
                 onChange={handleChangeAvantage}
               />
               <input
-                placeholder="URL du lien à télécharger N°1"
+                placeholder='URL du lien à télécharger N°1'
                 value={modifArticle.lien1}
                 onChange={handleChangeLien1}
               />
               <input
-                placeholder="URL du lien à télécharger N°2"
+                placeholder='URL du lien à télécharger N°2'
                 value={modifArticle.lien2}
                 onChange={handleChangeLien2}
               />
               <input
-                placeholder="URL du lien à télécharger N°3"
+                placeholder='URL du lien à télécharger N°3'
                 value={modifArticle.lien3}
                 onChange={handleChangeLien3}
               />
             </div>
           </div>
 
-          <div className="types-articles">
-            <h3 className="titreMenu">Type d'article</h3>
-            <div className="bloc-deroulant-publier">
-              <div className="drop-down-type">
-                <div className="selectDiv">
+          <div className='types-articles'>
+            <h3 className='titreMenu'>Type d'article</h3>
+            <div className='bloc-deroulant-publier'>
+              <div className='drop-down-type'>
+                <div className='selectDiv'>
                   {console.log(modifArticle.nom_categorie)}
 
                   <Select
-                    placeholder="Choix de la catégorie"
+                    placeholder='Choix de la catégorie'
                     value={modifArticle.nom_categorie}
                     // CHANGEMENT A FAIRE ICI VIA LA DOC
                     options={selectCategorie}
-                    className="basic-multi-select"
-                    classNamePrefix="select"
+                    className='basic-multi-select'
+                    classNamePrefix='select'
                     closeMenuOnSelect={true}
                     onChange={(value) => handleChangeCategorie(value)}
                     onClick={recup}
@@ -229,14 +231,14 @@ const ModificationArticle = (props) => {
                       borderRadius: 0,
                       colors: {
                         ...theme.colors,
-                        primary25: "rgba(228, 144, 114, 0.659)",
-                        primary: "rgba(228, 144, 114, 0.659)",
+                        primary25: 'rgba(228, 144, 114, 0.659)',
+                        primary: 'rgba(228, 144, 114, 0.659)',
                       },
                     })}
                   />
                 </div>
 
-                <div className="selectDiv">
+                <div className='selectDiv'>
                   <Select
                     isMulti
                     selectOption={modifArticle.nom_sous_categorie}
@@ -245,10 +247,10 @@ const ModificationArticle = (props) => {
                       { label: modifArticle.nom_sous_categorie, value: 2 },
                       { label: modifArticle.nom_sous_categorie, value: 3 },
                     ]}
-                    placeholder="Choix de sous-catégorie(s)"
+                    placeholder='Choix de sous-catégorie(s)'
                     options={selectSousCategorie}
-                    className="basic-multi-select"
-                    classNamePrefix="select"
+                    className='basic-multi-select'
+                    classNamePrefix='select'
                     closeMenuOnSelect={true}
                     onChange={(value) => handleChangeSousCategorie(value)}
                     styles={colourStyles}
@@ -257,20 +259,20 @@ const ModificationArticle = (props) => {
                       borderRadius: 0,
                       colors: {
                         ...theme.colors,
-                        primary25: "rgba(228, 144, 114, 0.659)",
-                        primary: "rgba(228, 144, 114, 0.659)",
+                        primary25: 'rgba(228, 144, 114, 0.659)',
+                        primary: 'rgba(228, 144, 114, 0.659)',
                       },
                     })}
                   />
                 </div>
-                <div className="selectDiv">
+                <div className='selectDiv'>
                   <Select
                     isMulti
                     defaultInputValue={modifArticle.nom_secteur}
-                    placeholder="Choix de secteur(s)"
+                    placeholder='Choix de secteur(s)'
                     options={selectSecteur}
-                    className="basic-multi-select"
-                    classNamePrefix="select"
+                    className='basic-multi-select'
+                    classNamePrefix='select'
                     closeMenuOnSelect={true}
                     onChange={(value) => handleChangeSecteur(value)}
                     styles={colourStyles}
@@ -279,20 +281,20 @@ const ModificationArticle = (props) => {
                       borderRadius: 0,
                       colors: {
                         ...theme.colors,
-                        primary25: "rgba(228, 144, 114, 0.659)",
-                        primary: "rgba(228, 144, 114, 0.659)",
+                        primary25: 'rgba(228, 144, 114, 0.659)',
+                        primary: 'rgba(228, 144, 114, 0.659)',
                       },
                     })}
                   />
                 </div>
-                <div className="selectDiv">
+                <div className='selectDiv'>
                   <Select
                     isMulti
                     defaultInputValue={modifArticle.nom_ville}
-                    placeholder="Choix de ville(s)"
+                    placeholder='Choix de ville(s)'
                     options={selectVille}
-                    className="basic-multi-select"
-                    classNamePrefix="select"
+                    className='basic-multi-select'
+                    classNamePrefix='select'
                     closeMenuOnSelect={true}
                     onChange={(value) => handleChangeVille(value)}
                     styles={colourStyles}
@@ -301,13 +303,13 @@ const ModificationArticle = (props) => {
                       borderRadius: 0,
                       colors: {
                         ...theme.colors,
-                        primary25: "rgba(228, 144, 114, 0.659)",
-                        primary: "rgba(228, 144, 114, 0.659)",
+                        primary25: 'rgba(228, 144, 114, 0.659)',
+                        primary: 'rgba(228, 144, 114, 0.659)',
                       },
                     })}
                   />
                 </div>
-                <div className="publishButton">
+                <div className='publishButton'>
                   <BouttonPublier
                     article={article}
                     collectDatas={collectDatas}
@@ -318,8 +320,8 @@ const ModificationArticle = (props) => {
           </div>
         </form>
       </div>
-      {console.log("RECUP ARTICLE", modifArticle)}
+      {console.log('RECUP ARTICLE', modifArticle)}
     </>
-  );
-};
-export default ModificationArticle;
+  )
+}
+export default ModificationArticle

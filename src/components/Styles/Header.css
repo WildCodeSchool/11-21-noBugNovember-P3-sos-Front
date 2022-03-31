@@ -1,7 +1,7 @@
 .headerWrapperLogo {
   display: flex;
   justify-content: space-between;
-  align-items: top;
+  align-items: center;
 }
 
 .headerWrapperLogo h5 {
@@ -12,4 +12,11 @@
   left: 0;
   width: 20rem;
   margin: 2rem;
+}
+
+.sousNav {
+  display: flex;
+  flex-direction: row;
+  width: 12em;
+  justify-content: space-around;
 }
