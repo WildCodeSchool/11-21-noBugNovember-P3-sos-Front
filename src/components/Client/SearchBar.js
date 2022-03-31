@@ -5,10 +5,10 @@ import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons";
 
 //*IMPORT REACT//*
 import { useContext } from "react";
-import { ArticleContext } from "../context/ArticleContext";
-import { CategoriesContext } from "../context/CategoriesContext";
-import { SousCategoriesContext } from "../context/SousCategoriesContext";
-import { VillesContext } from "../context/VillesContext";
+import { ArticleContext } from "../../context/ArticleContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
+import { SousCategoriesContext } from "../../context/SousCategoriesContext";
+import { VillesContext } from "../../context/VillesContext";
 import Select from "./Select";
 
 const SearchBar = (props) => {

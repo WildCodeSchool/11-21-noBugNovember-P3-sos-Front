@@ -1,9 +1,9 @@
 import {useContext} from 'react'
-import Parcours from "../components/Parcours";
+import Parcours from "../components/Client/Parcours";
 import "./Styles/FirstVisit.css";
-import Header from "../components/Header.js";
+import Header from "../components/Client/Header.js";
 import { VillesContext } from "../context/VillesContext";
-import Select from '../components/Select'
+import Select from '../components/Client/Select'
 
 
 const FirstVisit = () => {

@@ -1,5 +1,5 @@
 import "./Styles/PanelAdmin.css";
-import Adminsidebar from "../components/Adminsidebar";
+import Adminsidebar from "./Adminsidebar";
 import { Outlet } from "react-router-dom";
 
 const PanelAdmin = () => {

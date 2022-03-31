@@ -1,8 +1,8 @@
 import "./Styles/Connexion.css";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const Connexion = () => {
   const { email, setEmail, password, setPassword, handleSubmit,access } =

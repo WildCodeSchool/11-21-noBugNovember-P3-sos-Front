@@ -4,7 +4,7 @@ import { Dialog } from "@reach/dialog";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { VillesContext } from "../context/VillesContext";
+import { VillesContext } from "../../context/VillesContext";
 
 function ModalDL() {
   let navigate = useNavigate();

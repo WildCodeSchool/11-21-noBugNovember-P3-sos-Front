@@ -1,5 +1,5 @@
 import React from "react";
-import Connexion from "../components/Connexion";
+import Connexion from "../components/Client/Connexion";
 import "./Styles/IdentificationAdmin.css";
 
 function IdentificationAdmin() {

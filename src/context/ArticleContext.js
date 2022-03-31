@@ -91,7 +91,7 @@ const ArticleContextProvider = (props) => {
       .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
       .then((res) => setArticles(res.data));
   };
-
+    
   // Bouton Recherche
   const searchLaunch = () => {
     console.log(filters);

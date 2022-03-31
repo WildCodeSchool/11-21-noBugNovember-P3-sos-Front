@@ -1,5 +1,5 @@
-import SearchBar from '../components/SearchBar'
-import Header from '../components/Header'
+import SearchBar from '../components/Client/SearchBar'
+import Header from '../components/Client/Header'
 import './Styles/Home.css'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'

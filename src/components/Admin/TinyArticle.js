@@ -2,15 +2,15 @@ import "./Styles/TinyArticle.css";
 import React, { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
-export default function TinyArticle(props) {
-  const { setArticleContent, modifArticle } = props;
+export default function TinyArticle( { setArticleContent, modifArticle }) {
   const editorRef = useRef(null);
 
   return (
     <>
       <Editor
+        // name="articleContent"
         apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
-        onEditorChange={(newValue, editor) => setArticleContent(newValue)}
+        onEditorChange={(newValue, editor) => setArticleContent(newValue,"para1")}
         onInit={(evt, editor) => (editorRef.current = editor)}
         initialValue={modifArticle}
         init={{
