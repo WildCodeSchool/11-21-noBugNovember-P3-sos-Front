@@ -565,13 +565,13 @@ function Cgu() {
           dommages directs avérés que Vous aurez subis.
         </p>
         <h4>11. </h4>
-        <p>Notre propriété{' 
-          intellectuelle Les systèmes, logiciels, structures, infrastructures,
-          bases de données et contenus de toute nature (textes, images, visuels,
-          musiques, logos, marques, base de données, etc …) que Nous exploitons
-          au sein de nos Sites sont protégés par tous droits de propriété
-          intellectuelle ou droits des producteurs de bases de données en
-          vigueur. Tous désassemblages, décompilations, décryptages,
+        <p>
+          Notre propriété intellectuelle Les systèmes, logiciels, structures,
+          infrastructures, bases de données et contenus de toute nature (textes,
+          images, visuels, musiques, logos, marques, base de données, etc …) que
+          Nous exploitons au sein de nos Sites sont protégés par tous droits de
+          propriété intellectuelle ou droits des producteurs de bases de données
+          en vigueur. Tous désassemblages, décompilations, décryptages,
           extractions, réutilisations, copies et plus généralement, tous actes
           de reproduction, représentation, diffusion et utilisation de l’un
           quelconque de ces éléments, en tout ou partie, sans notre autorisation
