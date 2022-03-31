@@ -9,11 +9,10 @@ const AuthContextProvider = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4242/auth/login", {
+      .post(`http://localhost:${process.env.REACT_APP_PORT}/auth/login`, {
         mail: email,
         password: password,
       })

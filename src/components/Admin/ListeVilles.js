@@ -33,7 +33,9 @@ const ListeVilles = (props) => {
 
   const nouvelleVille = () => {
     axios
-      .post(`http://localhost:4242/villes`, { ...newCity })
+      .post(`http://localhost:${process.env.REACT_APP_PORT}/villes`, {
+        ...newCity,
+      })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .then(setReloadVilles(!reloadVilles))
       .catch((error) =>
@@ -62,9 +64,12 @@ const ListeVilles = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4242/regions")
-      .then((response) => console.log(response.data)||setSelectRegion(response.data));
-      }, []);
+      .get(`http://localhost:${process.env.REACT_APP_PORT}/regions`)
+      .then(
+        (response) =>
+          console.log(response.data) || setSelectRegion(response.data)
+      );
+  }, []);
 
   // COLLECT ET ENVOI DES DONNEES
   const collectDatas = (event) => {
@@ -76,7 +81,9 @@ const ListeVilles = (props) => {
 
     console.warn("COLLECT DATAS ======>", newCity);
     axios
-      .post(`http://localhost:4242/souscategories`, { ...newCity })
+      .post(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`, {
+        ...newCity,
+      })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
         console.error(

@@ -9,7 +9,7 @@ const VillesContextProvider = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4242/villes")
+      .get(`http://localhost:${process.env.REACT_APP_PORT}/villes`)
       .then((res) => setVilles(res.data));
   }, [reloadVilles]);
   return (

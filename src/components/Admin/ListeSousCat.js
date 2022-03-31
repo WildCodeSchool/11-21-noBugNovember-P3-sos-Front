@@ -39,7 +39,9 @@ const ListeSousCategories = ({ setDeleteData }) => {
 
   const nouvelleSousCategorie = () => {
     axios
-      .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
+      .post(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`, {
+        ...newSousCategorie,
+      })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .then(setReloadSousCat(!reloadSousCat))
       .catch((error) =>
@@ -74,7 +76,7 @@ const ListeSousCategories = ({ setDeleteData }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4242/categories")
+      .get(`http://localhost:${process.env.REACT_APP_PORT}/categories`)
       .then((response) => setSelectCategorie(response.data));
   }, []);
 
@@ -88,7 +90,9 @@ const ListeSousCategories = ({ setDeleteData }) => {
     });
     console.warn("COLLECT DATAS ======>", newSousCategorie);
     axios
-      .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
+      .post(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`, {
+        ...newSousCategorie,
+      })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .catch((error) =>
         console.error(

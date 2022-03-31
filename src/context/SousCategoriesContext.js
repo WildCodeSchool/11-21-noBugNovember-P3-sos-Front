@@ -4,43 +4,22 @@ import { ArticleContext } from "./ArticleContext";
 
 export const SousCategoriesContext = createContext();
 const SousCategoriesContextProvider = (props) => {
-  const [filters, setFilters] = useState("");
-  const [idCatSousCat, setIdCatSousCat] = useState();
+  // const [filters, setFilters] = useState("");
+  // const [idCatSousCat, setIdCatSousCat] = useState();
   const [sousCategories, setSousCategories] = useState([]);
   const [reloadSousCat, setReloadSousCat] = useState(true);
   const { idCategorie } = useContext(ArticleContext);
 
-  // useEffect(() => {
-  //   let filter = [];
-  //   idCatSousCat && filter.push(`categorie=${idCatSousCat}`);
-  //   // sousCategories&& filter.push(`id=${sousCategories}`)
-  //   setFilters(`?${filter.join("&")}`);
-  // }, [idCatSousCat]);
-
-  // const sousCatSet = (id) => {
-  //   setIdCatSousCat(id);
-  //   axios
-  //     .get(`http://localhost:4242/souscategories/?categorie=${idCatSousCat}`)
-  //     .then((res) => setSousCategories(res.data));
-  // };
-  // useEffect(
-  //   () => {
-  //     axios
-  //       .get(`http://localhost:4242/souscategories${filters}`)
-  //       .then((res) => setSousCategories(res.data));
-  //   },
-  //   [filters],
-  //   console.log("amonde", filters)
-  // );
-
   useEffect(() => {
     if (idCategorie) {
       axios
-        .get(`http://localhost:4242/souscategories/?categorie=${idCategorie}`)
+        .get(
+          `http://localhost:${process.env.REACT_APP_PORT}/souscategories/?categorie=${idCategorie}`
+        )
         .then((res) => setSousCategories(res.data));
     } else {
       axios
-        .get(`http://localhost:4242/souscategories`)
+        .get(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`)
         .then((res) => setSousCategories(res.data));
     }
   }, [idCategorie, reloadSousCat]);

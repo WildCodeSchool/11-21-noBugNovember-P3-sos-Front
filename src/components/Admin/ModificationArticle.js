@@ -1,15 +1,22 @@
+//*IMPORT CSS ET ASSETS//*
 import "./Styles/ArticleForm.css";
+
+//*IMPORT REACT//*
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import TinyArticle from "./TinyArticle";
 import Select, { StylesConfig } from "react-select";
+
+//*IMPORT COMPONENTS//*
+import BouttonPublier from "./BouttonPublier";
+
+//*IMPORT CONTEXT//*
 import { ArticleContext } from "../../context/ArticleContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
 import { SecteursContext } from "../../context/SecteursContext";
 import { SousCategoriesContext } from "../../context/SousCategoriesContext";
 import { VillesContext } from "../../context/VillesContext";
-import { CategoriesContext } from "../../context/CategoriesContext";
-
-import BouttonPublier from "./BouttonPublier";
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -20,28 +27,29 @@ const colourStyles: StylesConfig = {
     padding: ".5rem",
   }),
 };
-const ModificationArticle = ({modifyId}) => {
-
+const ModificationArticle = ({ modifyId }) => {
   //Rappel des Context
-  const { idCategorie, setIdCategorie, reloadArticle, setReloadArticle } = useContext(ArticleContext);
+  const { idCategorie, setIdCategorie, reloadArticle, setReloadArticle } =
+    useContext(ArticleContext);
   const { secteurs } = useContext(SecteursContext);
   const { sousCategories } = useContext(SousCategoriesContext);
   const { categories } = useContext(CategoriesContext);
   const { villes } = useContext(VillesContext);
- 
+
+  let navigate = useNavigate();
+
   //  Fonction pour modifier les données
   const modifDatas = (event) => {
     event.preventDefault();
     axios
-      .put(`http://localhost:4242/articles/${modifyId}`, { ...article })
+      .put(
+        `http://localhost:${process.env.REACT_APP_PORT}/articles/${modifyId}`,
+        { ...article }
+      )
       .then((response) => console.log("RESPONSE REQUETE", response))
-      .then(() => setReloadArticle(!reloadArticle))
-      .catch((error) =>
-        console.error(
-          "---Erreur modification article--- ",
-          error.validationErrors
-        )
-      );
+      .then(() => setReloadArticle(!reloadArticle));
+    navigate(-1);
+    setIdCategorie("");
   };
 
   // Modifier l'Id de la catégorie pour avoir les sous Cat en fonction
@@ -49,7 +57,7 @@ const ModificationArticle = ({modifyId}) => {
     const { id } = value;
     setIdCategorie(id);
   };
- 
+
   //States pour les select
   const [villesPara, setVillesPara] = useState();
   const [sousCatPara, setSousCatPara] = useState();
@@ -74,8 +82,8 @@ const ModificationArticle = ({modifyId}) => {
       .then((response) => setSecteursPara(response.data));
   }, []);
 
-   //Données de Modifications
-   const [article, setArticle] = useState({});
+  //Données de Modifications
+  const [article, setArticle] = useState({});
 
   useEffect(() => {
     axios
@@ -83,9 +91,7 @@ const ModificationArticle = ({modifyId}) => {
       .then((res) => setArticle(res.data));
   }, []);
 
-  
   const handleChange = (e, name, select) => {
-
     if (select) {
       let extractedValue = [];
       for (let i = 0; i < e.length; i++) {
@@ -176,7 +182,6 @@ const ModificationArticle = ({modifyId}) => {
             <div className="bloc-deroulant-publier">
               <div className="drop-down-type">
                 <div className="selectDiv">
-
                   <Select
                     placeholder="Choix de la catégorie"
                     options={categories}

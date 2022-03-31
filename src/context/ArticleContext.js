@@ -38,7 +38,6 @@ const ArticleContextProvider = (props) => {
     resetSearch();
   };
 
-
   //Supprimer recherche sur page HOme
   const deleteSearchHome = () => {
     setIdville("");
@@ -46,12 +45,11 @@ const ArticleContextProvider = (props) => {
     setIdCategorie("");
   };
 
-
   //Supprimer sousCat en modifiant les catégorie du slider
 
   const deleteSousCat = () => {
     setIdsousCategorie("");
-  }
+  };
   // Récupération de la liste filtrée
   // useEffect(() => {
   //   if (filters.length === 0) {
@@ -81,22 +79,24 @@ const ArticleContextProvider = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4242/articles${filters}`)
+      .get(`http://localhost:${process.env.REACT_APP_PORT}/articles${filters}`)
       .then((res) => setArticles(res.data));
   }, [filters, reloadArticle, stateVisible]);
 
   //Liste Entière
   const resetSearch = () => {
     axios
-      .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
+      .get(
+        `http://localhost:${process.env.REACT_APP_PORT}/articles/?categorie=${idCategorie}`
+      )
       .then((res) => setArticles(res.data));
   };
-    
+
   // Bouton Recherche
   const searchLaunch = () => {
     console.log(filters);
     axios
-      .get(`http://localhost:4242/articles${filters}`)
+      .get(`http://localhost:${process.env.REACT_APP_PORT}/articles${filters}`)
       .then((res) => setArticles(res.data));
   };
 
@@ -119,7 +119,7 @@ const ArticleContextProvider = (props) => {
         setReloadArticle,
         setStateVisible,
         stateVisible,
-        deleteSousCat
+        deleteSousCat,
       }}
     >
       {props.children}

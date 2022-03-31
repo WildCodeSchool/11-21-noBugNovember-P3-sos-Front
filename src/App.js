@@ -7,6 +7,7 @@ import { useState, useContext } from "react";
 
 //*IMPORT COMPONENTS //*
 import ArticleForm from "./components/Admin/ArticleForm";
+import EditName from "./components/Admin/EditName";
 import ModalDL from "./components/Client/ModalDL";
 import ModificationArticle from "./components/Admin/ModificationArticle";
 import ListeArticles from "./components/Admin/ListeArticles";
@@ -15,8 +16,8 @@ import ListeSecteurs from "./components/Admin/ListeSecteurs";
 import ListeSousCat from "./components/Admin/ListeSousCat";
 import ListeVilles from "./components/Admin/ListeVilles";
 import ListeDonnees from "./components/Admin/ListeDonnees";
+import RequireAuth from "./components/Client/RequireAuth";
 import Suppression from "./components/Admin/Suppression";
-import EditName from "./components/Admin/EditName";
 
 //*IMPORT SCREENS //*
 
@@ -34,7 +35,6 @@ import CategoriesContextProvider from "./context/CategoriesContext";
 import SecteursContextProvider from "./context/SecteursContext";
 import SousCategoriesContextProvider from "./context/SousCategoriesContext";
 import VillesContextProvider from "./context/VillesContext";
-import RequireAuth from "./components/Client/RequireAuth";
 import TelechargementsContextProvider from "./context/TelechargementsContext";
 
 //*IMPORT CONTEXT //* ajout rom
@@ -98,7 +98,7 @@ function App() {
                         path="articles"
                         element={
                           <ListeArticles
-                            modifyId={modifyId} 
+                            modifyId={modifyId}
                             setModifyId={setModifyId}
                             setModifArticle={setModifArticle}
                             modifArticle={modifArticle}
@@ -137,8 +137,8 @@ function App() {
                         path="modification-article"
                         element={
                           <ModificationArticle
-                           modifyId={modifyId} 
-                           setModifyId={setModifyId}
+                            modifyId={modifyId}
+                            setModifyId={setModifyId}
                             modifArticle={modifArticle}
                             setModifArticle={setModifArticle}
                           />

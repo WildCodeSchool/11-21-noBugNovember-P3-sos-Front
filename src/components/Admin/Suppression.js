@@ -30,7 +30,9 @@ function Suppression({ deleteData, page, action }) {
 
   const handleDeletData = () => {
     axios
-      .delete(`http://localhost:4242/${page}/${deleteData.id}`)
+      .delete(
+        `http://localhost:${process.env.REACT_APP_PORT}/${page}/${deleteData.id}`
+      )
       .then((response) => console.log("RESPONSE REQUETE", response))
       .then(
         setReloadArticle(!reloadArticle),
@@ -44,9 +46,12 @@ function Suppression({ deleteData, page, action }) {
 
   const putData = (bol) => {
     axios
-      .put(`http://localhost:4242/articles/${deleteData.id}`, {
-        visible: bol,
-      })
+      .put(
+        `http://localhost:${process.env.REACT_APP_PORT}/articles/${deleteData.id}`,
+        {
+          visible: bol,
+        }
+      )
       .then((response) => console.log("RESPONSE REQUETE", response));
   };
   const handleVisible = () => {

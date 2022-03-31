@@ -1,31 +1,32 @@
-import './Styles/ArticlesGrid.css'
+import "./Styles/ArticlesGrid.css";
 
 import { useContext } from "react";
-import { Link} from "react-router-dom";
-// import CarouselCat from "../components/CarouselCat.js";
-
-import CardArticle from '../components/Client/CardArticle.js'
-import Header from '../components/Client/Header.js'
-// import ArtSearchBar from "../components/ArtSearchBar.js";
-import SearchBar from '../components/Client/SearchBar.js'
-
+import { Link } from "react-router-dom";
 import { ArticleContext } from "../context/ArticleContext";
-// import { Slider } from "@mui/material";
+
+import CardArticle from "../components/Client/CardArticle.js";
+import Header from "../components/Client/Header.js";
+import SearchBar from "../components/Client/SearchBar.js";
 import Slider from "../components/Client/Slider";
 
 const ArticlesGrid = () => {
-  const { articles } = useContext(ArticleContext)
+  const { articles } = useContext(ArticleContext);
 
   // const idCat = useParams()
 
   return (
     <>
       <Header />
-      <div className='articleGridBgGreen'>
-        <div className='articleGridHolderSearchBar'>
-          <div className='articleGridSearchBar'>
+      <div className="articleGridBgGreen">
+        <div className="articleGridHolderSearchBar">
+          <div className="articleGridSearchBar">
             {/* <ArtSearchBar /> */}
-            <SearchBar isVille={true} isSousCat={true} isCat={false} isButtonGrid={true}/> 
+            <SearchBar
+              isVille={true}
+              isSousCat={true}
+              isCat={false}
+              isButtonGrid={true}
+            />
             <Slider />
           </div>
         </div>
@@ -49,11 +50,11 @@ const ArticlesGrid = () => {
                     nom_secteur={result.nom_secteur}
                   />
                 </Link>
-              )
+              );
             })}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ArticlesGrid
+export default ArticlesGrid;

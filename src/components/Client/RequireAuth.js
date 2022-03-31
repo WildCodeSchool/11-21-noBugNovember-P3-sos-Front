@@ -9,7 +9,7 @@ function RequireAuth(props) {
     const token = localStorage.getItem("token");
     axios({
       method: "POST",
-      url: "http://localhost:4242/auth/protected",
+      url: `http://localhost:${process.env.REACT_APP_PORT}/auth/protected`,
       headers: {
         Authorization: `Bearer ${token}`,
       },

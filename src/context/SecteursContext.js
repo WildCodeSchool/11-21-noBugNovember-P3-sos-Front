@@ -8,7 +8,7 @@ const SecteursContextProvider = (props) => {
   const [reloadSecteurs, setReloadSecteurs] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:4242/secteurs")
+      .get(`http://localhost:${process.env.REACT_APP_PORT}/secteurs`)
       .then((res) => setSecteurs(res.data));
   }, [reloadSecteurs]);
   return (

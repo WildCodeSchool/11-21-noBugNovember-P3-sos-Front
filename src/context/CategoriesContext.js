@@ -10,7 +10,7 @@ const CategoriesContextProvider = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4242/categories")
+      .get(`http://localhost:${process.env.REACT_APP_PORT}/categories`)
       .then((res) => setCategories(res.data));
   }, [reloadCategories]);
   return (
