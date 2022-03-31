@@ -1,11 +1,14 @@
-import { ArticleContext } from '../context/ArticleContext'
+//*IMPORT CSS ET ASSETS//*
+import './Styles/ArticleDetail.css'
+import fleche from '../assets/icones/flecheCercle.png'
+
+//*IMPORT REACT//*
 import Header from '../components/Client/Header'
 import { useContext } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
-import './Styles/ArticleDetail.css'
-import fleche from '../assets/icones/flecheCercle.png'
-import ModalDL from '../components/Client/ModalDL'
+
+//*IMPORT CONTEXT//*
+import { ArticleContext } from '../context/ArticleContext'
 
 const ArticleDetail = (
   isActive,
@@ -16,11 +19,11 @@ const ArticleDetail = (
   ...props
 ) => {
   const { articles } = useContext(ArticleContext)
-  let location = useLocation()
   let { id } = useParams()
-  
+  let location = useLocation()
+
   function createMarkup(result) {
-    return {__html: `${result}`};
+    return { __html: `${result}` }
   }
   return (
     <>
@@ -58,28 +61,56 @@ const ArticleDetail = (
                     ></img>
                   </div>
                   <div className='articleDetailFirst'>
-                    <div className='boutonTelechargementDoc'>
-                      <Link
-                        to={`/articlesGrid/articleDetail/${id}/modalDL`}
-                        state={{ backgroundLocation: location }}
-                      >
-                        <button className='buttonGreen '>Télécharger</button>
-                      </Link>
-                    </div>
+                    {result.lien1 && (
+                      <div className='boutonTelechargementDoc'>
+                        <Link
+                          to={`/articlesGrid/articleDetail/${id}/modalDL`}
+                          state={{
+                            backgroundLocation: location,
+                            linkUpload: result.lien1,
+                          }}
+                        >
+                          <button className='buttonGreen'>Télécharger</button>
+                        </Link>
+                      </div>
+                    )}
                     <div className='articleDetailPara'>
-                    <p id="articleDetailPara" dangerouslySetInnerHTML={createMarkup(result.para1)}></p>
+                      <p
+                        id='articleDetailPara'
+                        dangerouslySetInnerHTML={createMarkup(result.para1)}
+                      ></p>
                     </div>
+                    {result.lien2 && (
+                      <div className='boutonTelechargementDoc'>
+                        <Link
+                          to={`/articlesGrid/articleDetail/${id}/modalDL`}
+                          state={{
+                            backgroundLocation: location,
+                            linkUpload: result.lien2,
+                          }}
+                          idArticle={result.id}
+                        >
+                          <button className='buttonGreen'>Télécharger</button>
+                        </Link>
+                      </div>
+                    )}
                     <div className='articleDetailPara'>
                       <p id='articleDetailPara'>{result.avantage}</p>
                     </div>
-                    <div className='boutonTelechargementDoc'>
-                      <Link
-                        to={`/articlesGrid/articleDetail/${id}/modalDL`}
-                        state={{ backgroundLocation: location }}
-                      >
-                        <button className='buttonGreen '>Télécharger</button>
-                      </Link>
-                    </div>
+                    {result.lien3 && (
+                      <div className='boutonTelechargementDoc'>
+                        <Link
+                          to={`/articlesGrid/articleDetail/${id}/modalDL`}
+                          state={{
+                            backgroundLocation: location,
+                            linkUpload: result.lien3,
+                          }}
+                          idArticle={result.id}
+                        >
+                          <button className='buttonGreen'>Télécharger</button>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </>
               )

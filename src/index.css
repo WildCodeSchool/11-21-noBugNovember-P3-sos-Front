@@ -49,20 +49,7 @@ html {
   --ff-body: "Work Sans", sans-serif;
 }
 
-/******* Tablet *******/
-@media screen and (max-width: 45em) {
-  :root {
-    /* font-sizes */
-    --fs-h2: 4rem;
-  }
-}
 
-/******* Phone *******/
-@media screen and (max-width: 35em) {
-  :root {
-    /* font-sizes */
-  }
-}
 
 /* --------------------- */
 /*      Reset            */
@@ -136,7 +123,7 @@ h1 {
 
 h2 {
   color: var(--clr-white);
-   font-size: clamp(2rem, 1.3571rem + 2.8571vw, 3.5rem);;
+   font-size: clamp(2rem, 1.3571rem + 2.8571vw, 3rem);;
 }
 
 h3 {
@@ -231,4 +218,22 @@ p {
 
 .css-i4bv87-MuiSvgIcon-root {
   display: none !important;
+}
+
+/******* Tablet *******/
+@media screen and (max-width: 45em) {
+  :root {
+    /* font-sizes */
+    --fs-h2: 4rem;
+  }
+}
+
+/******* Phone *******/
+@media screen and (max-width: 35em) {
+  :root {
+    /* font-sizes */
+  }
+  .buttonGreen {
+    width: 14rem
+  }
 }

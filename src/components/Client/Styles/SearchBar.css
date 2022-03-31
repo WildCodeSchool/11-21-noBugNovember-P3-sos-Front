@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  background: var(--clr-green3);
+  background: var(--clr-orange2);
   height: 5.5rem;
   align-items: center;
   margin: 1rem 0 1rem 0;
@@ -16,7 +16,8 @@
 .SearchBar input {
   height: 4rem;
   border-radius: 0 2rem;
-  padding: 0 1rem 0 2rem;
+  padding: 0 1rem 0 1rem;
+  width: 20%;
 }
 
 .SearchBar select {
@@ -25,6 +26,7 @@
   padding: 0 1rem 0 2rem;
   appearance: none;
   width: 16rem;
+  cursor: pointer;
 }
 
 .SearchButtons {
@@ -36,24 +38,33 @@
 
 .HolderReloadIcon {
   background: none;
+  cursor: pointer;
 }
 
 .gridSearchButtons {
   background: none;
+  cursor: pointer;
 }
 
 /******* Large Tablet *******/
 @media screen and (max-width: 60em) {
   .SearchBar {
-    width: 90%;
+    width: 80%;
+    margin: auto;
   }
 }
 
 @media screen and (max-width: 40em) {
-  .holderSearchBar {
+  .homeSplitOrange > .holderSearchBar {
     width: auto;
     height: auto;
+    margin: 0;
   }
+  .holderSearchBar {
+    width: 80%;
+    margin: auto;
+  }
+
   .SearchBar .ArtSearchBar {
     display: flex;
     justify-content: space-around;
@@ -67,7 +78,33 @@
     flex-direction: column;
   }
 
+  .SearchBar {
+    height: auto;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .SearchBar select {
+    width: 25rem;
+  }
+  .SearchBar input {
+    height: 4rem;
+    border-radius: 0 2rem;
+    padding: 0 1rem 0 1rem;
+    width: 25rem;
+  }
+
   .SearchBar > * {
     margin: 0.4em;
+  }
+}
+
+@media screen and (max-width: 35em) {
+  .SearchBar input {
+    width: 15rem;
+  }
+
+  .SearchBar select {
+    width: 15rem;
   }
 }

@@ -1,22 +1,20 @@
+//*IMPORT CSS//*
 import './Styles/ArticlesGrid.css'
 
-import { useContext } from "react";
-import { Link} from "react-router-dom";
-// import CarouselCat from "../components/CarouselCat.js";
+//*IMPORT REACT & CONTEXT//*
+import { ArticleContext } from '../context/ArticleContext'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 
+//*IMPORT COMPOSANTS //*
 import CardArticle from '../components/Client/CardArticle.js'
 import Header from '../components/Client/Header.js'
-// import ArtSearchBar from "../components/ArtSearchBar.js";
 import SearchBar from '../components/Client/SearchBar.js'
 
-import { ArticleContext } from "../context/ArticleContext";
-// import { Slider } from "@mui/material";
-import Slider from "../components/Client/Slider";
+import Slider from '../components/Client/Slider'
 
 const ArticlesGrid = () => {
   const { articles } = useContext(ArticleContext)
-
-  // const idCat = useParams()
 
   return (
     <>
@@ -24,9 +22,13 @@ const ArticlesGrid = () => {
       <div className='articleGridBgGreen'>
         <div className='articleGridHolderSearchBar'>
           <div className='articleGridSearchBar'>
-            {/* <ArtSearchBar /> */}
-            <SearchBar isVille={true} isSousCat={true} isCat={false} isButtonGrid={true}/> 
             <Slider />
+            <SearchBar
+              isVille={true}
+              isSousCat={true}
+              isCat={false}
+              isButtonGrid={true}
+            />
           </div>
         </div>
         {articles &&
