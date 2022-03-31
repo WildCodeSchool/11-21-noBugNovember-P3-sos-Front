@@ -6,17 +6,17 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useState, useContext } from "react";
 
 //*IMPORT COMPONENTS //*
-import ArticleForm from "./components/ArticleForm";
-import ModalDL from "./components/ModalDL";
-import ModificationArticle from "./components/ModificationArticle";
+import ArticleForm from "./components/Admin/ArticleForm";
+import ModalDL from "./components/Client/ModalDL";
+import ModificationArticle from "./components/Admin/ModificationArticle";
 import ListeArticles from "./components/Admin/ListeArticles";
 import ListeCategorie from "./components/Admin/ListeCategorie";
 import ListeSecteurs from "./components/Admin/ListeSecteurs";
 import ListeSousCat from "./components/Admin/ListeSousCat";
 import ListeVilles from "./components/Admin/ListeVilles";
 import ListeDonnees from "./components/Admin/ListeDonnees";
-import Suppression from "./components/Suppression";
-import EditName from "./components/EditName";
+import Suppression from "./components/Admin/Suppression";
+import EditName from "./components/Admin/EditName";
 
 //*IMPORT SCREENS //*
 
@@ -25,7 +25,7 @@ import ArticlesGrid from "./screens/ArticlesGrid";
 import FirstVisit from "./screens/FirstVisit";
 import Home from "./screens/Home";
 import IdentificationAdmin from "./screens/IdentificationAdmin";
-import PanelAdmin from "./screens/PanelAdmin";
+import PanelAdmin from "./components/Admin/PanelAdmin";
 
 //*IMPORT CONTEXT PROVIDER //*
 import ArticleContextProvider from "./context/ArticleContext";
@@ -34,7 +34,7 @@ import CategoriesContextProvider from "./context/CategoriesContext";
 import SecteursContextProvider from "./context/SecteursContext";
 import SousCategoriesContextProvider from "./context/SousCategoriesContext";
 import VillesContextProvider from "./context/VillesContext";
-import RequireAuth from "./components/RequireAuth";
+import RequireAuth from "./components/Client/RequireAuth";
 import TelechargementsContextProvider from "./context/TelechargementsContext";
 
 //*IMPORT CONTEXT //* ajout rom

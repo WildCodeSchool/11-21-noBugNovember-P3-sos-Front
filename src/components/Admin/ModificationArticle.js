@@ -1,11 +1,15 @@
 import "./Styles/ArticleForm.css";
 import axios from "axios";
-import BouttonPublier from "./BouttonPublier";
 import { useState, useEffect, useContext } from "react";
 import TinyArticle from "./TinyArticle";
 import Select, { StylesConfig } from "react-select";
-import { ArticleContext } from "../context/ArticleContext";
-import { SousCategoriesContext } from "../context/SousCategoriesContext";
+import { ArticleContext } from "../../context/ArticleContext";
+import { SecteursContext } from "../../context/SecteursContext";
+import { SousCategoriesContext } from "../../context/SousCategoriesContext";
+import { VillesContext } from "../../context/VillesContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
+
+import BouttonPublier from "./BouttonPublier";
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -14,98 +18,74 @@ const colourStyles: StylesConfig = {
     backgroundColor: "white",
     width: "20vw",
     padding: ".5rem",
-    //  height: "5rem" FOU LE BORDEL
   }),
 };
-const ArticleForm = () => {
-  const [article, setArticle] = useState({visible:false, user_id:1});
+const ModificationArticle = ({modifyId}) => {
 
-  const [selectSecteur, setSelectSecteur] = useState();
-  const [selectVille, setSelectVille] = useState();
-  const [selectCategorie, setSelectCategorie] = useState();
-  const [selectSousCategorie, setSelectSousCategorie] = useState();
-
-  const [articleAvantage, setArticleAvantage] = useState("");
-  const [articleTitle, setArticleTitle] = useState("");
-  const [articleIntro, setArticleIntro] = useState("");
-  const [articleUrlImg, setArticleUrlImg] = useState("");
-  const [articleContent, setArticleContent] = useState("");
-  const [articleUrlTelechargement, setUrlTelechargement] = useState("");
-  const [articleLien1, setArticleLien1] = useState("");
-  const [articleLien2, setArticleLien2] = useState("");
-  const [articleLien3, setArticleLien3] = useState("");
-
-  const [chooseSelectCategorie, setChooseSelectCategorie] = useState();
-  const [chooseSelectSousCategorie, setChooseSelectSousCategorie] = useState(
-    []
-  );
-  const [chooseSelectSecteur, setChooseSelectSecteur] = useState([]);
-  const [chooseSelectVille, setChooseSelectVille] = useState([]);
-
+  //Rappel des Context
+  const { idCategorie, setIdCategorie, reloadArticle, setReloadArticle } = useContext(ArticleContext);
+  const { secteurs } = useContext(SecteursContext);
   const { sousCategories } = useContext(SousCategoriesContext);
-  const { idCategorie, setIdCategorie } = useContext(ArticleContext);
-
-  const collectDatas = (event) => {
+  const { categories } = useContext(CategoriesContext);
+  const { villes } = useContext(VillesContext);
+ 
+  //  Fonction pour modifier les données
+  const modifDatas = (event) => {
     event.preventDefault();
-    // setArticle({
-    //   titre: articleTitle,
-    //   intro: articleIntro,
-    //   para1: articleContent,
-    //   avantage: articleAvantage,
-    //   lien1: articleLien1,
-    //   lien2: articleLien2,
-    //   lien3: articleLien3,
-    //   image: articleUrlImg,
-    //   visible: false,
-    //   user_id: 1,
-    //   secteur_id: chooseSelectSecteur,
-    //   sous_categorie_id: chooseSelectSousCategorie,
-    //   ville_id: chooseSelectVille,
-    // });
-
-    console.warn("COLLECT DATAS ======>", article);
     axios
-      .post(`http://localhost:4242/articles`,{...article})
+      .put(`http://localhost:4242/articles/${modifyId}`, { ...article })
       .then((response) => console.log("RESPONSE REQUETE", response))
+      .then(() => setReloadArticle(!reloadArticle))
       .catch((error) =>
-        console.error("---Erreur envoi article--- ", error)
+        console.error(
+          "---Erreur modification article--- ",
+          error.validationErrors
+        )
       );
   };
 
-  // useEffect(() => {
-  //   setArticle({
-  //     titre: articleTitle,
-  //     intro: articleIntro,
-  //     para1: articleContent,
-  //     avantage: articleAvantage,
-  //     lien1: articleLien1,
-  //     lien2: articleLien2,
-  //     lien3: articleLien3,
-  //     image: articleUrlImg,
-  //     visible: false,
-  //     user_id: 1,
-  //     secteur_id: chooseSelectSecteur,
-  //     sous_categorie_id: chooseSelectSousCategorie,
-  //     ville_id: chooseSelectVille,
+  // Modifier l'Id de la catégorie pour avoir les sous Cat en fonction
+  const handleChangeCategorie = (value) => {
+    const { id } = value;
+    setIdCategorie(id);
+  };
+ 
+  //States pour les select
+  const [villesPara, setVillesPara] = useState();
+  const [sousCatPara, setSousCatPara] = useState();
+  const [secteursPara, setSecteursPara] = useState();
 
-  //   });
-  // }, [
-  //   articleTitle,
-  //   articleIntro,
-  //   articleContent,
-  //   articleAvantage,
-  //   articleLien1,
-  //   articleLien2,
-  //   articleLien3,
-  //   articleUrlImg,
-  //   chooseSelectSecteur,
-  //   chooseSelectSousCategorie,
-  //   chooseSelectVille,
-  // ]);
+  // Récuperer les données
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4242/articles/villes/${modifyId}`)
+      .then((response) => setVillesPara(response.data));
+  }, []);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4242/articles/sousCat/${modifyId}`)
+      .then((response) => setSousCatPara(response.data));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4242/articles/secteurs/${modifyId}`)
+      .then((response) => setSecteursPara(response.data));
+  }, []);
+
+   //Données de Modifications
+   const [article, setArticle] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4242/articles/details/${modifyId}`)
+      .then((res) => setArticle(res.data));
+  }, []);
+
+  
   const handleChange = (e, name, select) => {
-    //  setArticleTitle(`titre: ${e.target.value}`);
-    // setArticleTitle(e.target.value);
+
     if (select) {
       let extractedValue = [];
       for (let i = 0; i < e.length; i++) {
@@ -127,139 +107,64 @@ const ArticleForm = () => {
       });
     }
   };
-  // const handleChangeIntro = (e) => {
-  //   setArticleIntro(e.target.value);
-  // };
-  // const handleChangeUrlImg = (e) => {
-  //   setArticleUrlImg(e.target.value);
-  // };
-  // const handleChangeAvantage = (e) => {
-  //   setArticleAvantage(e.target.value);
-  // };
-  // const handleChangeLien1 = (e) => {
-  //   setArticleLien1(e.target.value);
-  // };
-  // const handleChangeLien2 = (e) => {
-  //   setArticleLien2(e.target.value);
-  // };
-  // const handleChangeLien3 = (e) => {
-  //   setArticleLien3(e.target.value);
-  // };
 
-  const handleChangeCategorie = (value) => {
-    const { id } = value;
-    setIdCategorie(id);
-    // console.log("VALUEEEEEEEEEEE", id);
-    setChooseSelectCategorie(id);
-  };
-
-  // const handleChangeTableau = (value) => {
-  //   let extractedValue = [];
-  //   for (let i = 0; i < value.length; i++) {
-  //     extractedValue.push(value[i].id);
-  //   }
-  //   setChooseSelectSecteur(extractedValue);
-  // };
-
-  // const handleChangeSecteur = (value) => {
-  //   let extractedValue = [];
-  //   for (let i = 0; i < value.length; i++) {
-  //     extractedValue.push(value[i].id);
-  //   }
-  //   setChooseSelectSecteur(extractedValue);
-  // };
-
-  // const handleChangeSousCategorie = (value) => {
-  //   let extractedValue = [];
-  //   for (let i = 0; i < value.length; i++) {
-  //     extractedValue.push(value[i].id);
-  //   }
-  //   setChooseSelectSousCategorie(extractedValue);
-  // };
-
-  // const handleChangeVille = (value) => {
-  //   let extractedValue = [];
-  //   for (let i = 0; i < value.length; i++) {
-  //     extractedValue.push(value[i].id);
-  //   }
-  //   setChooseSelectVille(extractedValue);
-  // };
-  useEffect(() => {
-    axios
-      .get("http://localhost:4242/secteurs")
-      .then((response) => setSelectSecteur(response.data));
-    axios
-      .get("http://localhost:4242/categories")
-      .then((response) => setSelectCategorie(response.data));
-    axios
-      .get("http://localhost:4242/sousCategories")
-      .then((response) => setSelectSousCategorie(response.data));
-    axios
-      .get("http://localhost:4242/villes")
-      .then((response) => setSelectVille(response.data));
-  }, []);
-
-  //   articleTitle,
-  //   articleIntro,
-  //   articleContent,
-  //   articleAvantage,
-  //   articleLien1,
-  //   articleLien2,
-  //   articleLien3,
-  //   articleUrlImg,
-  //   chooseSelectSecteur,
-  //   chooseSelectSousCategorie,
-  //   chooseSelectVille,
   return (
     <>
-      {console.log("wesh alors", article)};
       <h2 className="bjr-user">Bonjour [userName],</h2>
       <div className="articles-and-types">
         {/* BLOC DE GAUCHE = ARTICLE */}
         <form className="bloc-content-row">
           <div className="bloc-article">
-            <h3 className="titreMenu">Nouvel article</h3>
+            <h3 className="titreMenu">Modifier l'article</h3>
 
             <div className="article-form">
               <input
                 className="input-article-title"
                 placeholder="Titre de l'article"
+                value={article.titre && article.titre}
                 name="titre"
                 onChange={(e) => handleChange(e)}
               />
               <input
                 className="input-article-intro"
                 placeholder="Intro de l'article"
+                value={article.intro ? article.intro : ""}
                 name="intro"
                 onChange={(e) => handleChange(e)}
               />
               <input
                 placeholder="Url de l'image"
                 type="url"
+                value={article.image ? article.image : ""}
                 name="image"
                 onChange={(e) => handleChange(e)}
               />
-
-              <TinyArticle setArticleContent={handleChange} />
-              {/* setArticleContent={setArticleContent} /> */}
+              <TinyArticle
+                modifArticle={article.para1 && article.para1}
+                setArticleContent={handleChange}
+              />
               <input
                 className="input-article-intro"
                 placeholder="Texte présentant les avantages de l'article"
+                value={article.avantage ? article.avantage : ""}
                 name="avantage"
                 onChange={(e) => handleChange(e)}
               />
               <input
                 placeholder="URL du lien à télécharger N°1"
+                value={article.lien1 ? article.lien1 : ""}
                 onChange={(e) => handleChange(e)}
                 name="lien1"
               />
               <input
                 placeholder="URL du lien à télécharger N°2"
+                value={article.lien2 ? article.lien2 : ""}
                 onChange={(e) => handleChange(e)}
                 name="lien2"
               />
               <input
                 placeholder="URL du lien à télécharger N°3"
+                value={article.lien3 ? article.lien3 : ""}
                 onChange={(e) => handleChange(e)}
                 name="lien3"
               />
@@ -271,9 +176,10 @@ const ArticleForm = () => {
             <div className="bloc-deroulant-publier">
               <div className="drop-down-type">
                 <div className="selectDiv">
+
                   <Select
                     placeholder="Choix de la catégorie"
-                    options={selectCategorie}
+                    options={categories}
                     className="basic-multi-select"
                     classNamePrefix="select"
                     closeMenuOnSelect={true}
@@ -290,16 +196,17 @@ const ArticleForm = () => {
                     })}
                   />
                 </div>
-
                 <div className="selectDiv">
                   <Select
                     isMulti
                     placeholder="Choix de sous-catégorie(s)"
-                    options={sousCategories}
+                    options={idCategorie && sousCategories}
                     className="basic-multi-select"
                     classNamePrefix="select"
                     closeMenuOnSelect={true}
-                    onChange={(value) => handleChange(value, "sous_categorie_id", true)}
+                    onChange={(value) =>
+                      handleChange(value, "sous_categorie_id", true)
+                    }
                     styles={colourStyles}
                     theme={(theme) => ({
                       ...theme,
@@ -311,16 +218,19 @@ const ArticleForm = () => {
                       },
                     })}
                   />
+                  <p>{sousCatPara && sousCatPara}</p>
                 </div>
                 <div className="selectDiv">
                   <Select
                     isMulti
                     placeholder="Choix de secteur(s)"
-                    options={selectSecteur}
+                    options={secteurs}
                     className="basic-multi-select"
                     classNamePrefix="select"
                     closeMenuOnSelect={true}
-                    onChange={(value) => handleChange(value, "secteur_id", true)}
+                    onChange={(value) =>
+                      handleChange(value, "secteur_id", true)
+                    }
                     styles={colourStyles}
                     theme={(theme) => ({
                       ...theme,
@@ -332,12 +242,13 @@ const ArticleForm = () => {
                       },
                     })}
                   />
+                  <p>{secteursPara && secteursPara}</p>
                 </div>
                 <div className="selectDiv">
                   <Select
                     isMulti
                     placeholder="Choix de ville(s)"
-                    options={selectVille}
+                    options={villes}
                     className="basic-multi-select"
                     classNamePrefix="select"
                     closeMenuOnSelect={true}
@@ -353,11 +264,13 @@ const ArticleForm = () => {
                       },
                     })}
                   />
+                  <p>{villesPara && villesPara}</p>
                 </div>
                 <div className="publishButton">
                   <BouttonPublier
                     article={article}
-                    collectDatas={collectDatas}
+                    collectDatas={modifDatas}
+                    type={"Modifier"}
                   />
                 </div>
               </div>
@@ -368,4 +281,4 @@ const ArticleForm = () => {
     </>
   );
 };
-export default ArticleForm;
+export default ModificationArticle;

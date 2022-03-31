@@ -7,13 +7,13 @@ import axios from "axios";
 import { Dialog } from "@reach/dialog";
 import React, { useContext, useState } from "react"; //Modif par le STATE
 import { useNavigate } from "react-router-dom";
-import Select from "./Select";
+import Select from "../Client/Select";
 
 //*IMPORT CONTEXTS //*
-import { CategoriesContext } from "../context/CategoriesContext";
-import { SousCategoriesContext } from "../context/SousCategoriesContext";
-import { SecteursContext } from "../context/SecteursContext";
-import { VillesContext } from "../context/VillesContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
+import { SousCategoriesContext } from "../../context/SousCategoriesContext";
+import { SecteursContext } from "../../context/SecteursContext";
+import { VillesContext } from "../../context/VillesContext";
 
 function EditName({
   deleteData,

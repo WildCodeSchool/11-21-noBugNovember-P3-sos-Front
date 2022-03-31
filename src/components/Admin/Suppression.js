@@ -9,11 +9,11 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 //*IMPORT CONTEXTS //*
-import { ArticleContext } from "../context/ArticleContext";
-import { CategoriesContext } from "../context/CategoriesContext";
-import { SecteursContext } from "../context/SecteursContext";
-import { SousCategoriesContext } from "../context/SousCategoriesContext";
-import { VillesContext } from "../context/VillesContext";
+import { ArticleContext } from "../../context/ArticleContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
+import { SecteursContext } from "../../context/SecteursContext";
+import { SousCategoriesContext } from "../../context/SousCategoriesContext";
+import { VillesContext } from "../../context/VillesContext";
 
 function Suppression({ deleteData, page, action }) {
   let navigate = useNavigate();

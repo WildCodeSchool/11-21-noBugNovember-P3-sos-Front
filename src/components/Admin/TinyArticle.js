@@ -2,8 +2,7 @@ import "./Styles/TinyArticle.css";
 import React, { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
-export default function TinyArticle(props) {
-  const { setArticleContent, modifArticle } = props;
+export default function TinyArticle( { setArticleContent, modifArticle }) {
   const editorRef = useRef(null);
 
   return (

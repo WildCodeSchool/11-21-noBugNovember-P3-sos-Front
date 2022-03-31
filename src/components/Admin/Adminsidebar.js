@@ -1,7 +1,7 @@
 import "./Styles/Adminsidebar.css";
-import logo from "../assets/logoW.png";
+import logo from "../../assets/logoW.png";
 import { Link } from "react-router-dom";
-import { ArticleContext } from "../context/ArticleContext";
+import { ArticleContext } from "../../context/ArticleContext";
 import { useContext } from "react";
 
 function Adminsidebar() {

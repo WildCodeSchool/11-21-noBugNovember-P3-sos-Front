@@ -3,9 +3,9 @@ import "./Styles/Slider.scss";
 import Slide from "./Slide.js";
 import { useContext } from "react";
 
-import { ArticleContext } from "../context/ArticleContext";
-import { CategoriesContext } from "../context/CategoriesContext";
-import { SousCategoriesContext } from "../context/SousCategoriesContext";
+import { ArticleContext } from "../../context/ArticleContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
+import { SousCategoriesContext } from "../../context/SousCategoriesContext";
 
 const Slider = () => {
   const { categories } = useContext(CategoriesContext);
