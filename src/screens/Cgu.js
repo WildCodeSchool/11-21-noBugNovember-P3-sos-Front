@@ -565,8 +565,7 @@ function Cgu() {
           dommages directs avérés que Vous aurez subis.
         </p>
         <h4>11. </h4>
-        Notre propriété{' '}
-        <p>
+        <p>Notre propriété{' 
           intellectuelle Les systèmes, logiciels, structures, infrastructures,
           bases de données et contenus de toute nature (textes, images, visuels,
           musiques, logos, marques, base de données, etc …) que Nous exploitons
