@@ -2,11 +2,17 @@
 
 ## 📂 Installation :
 Ce projet a était créé avec [Create React App](https://github.com/facebook/create-react-app).<br>
-<br>
+
 ▶ Pour cloner le projet sur votre machine dans votre terminal utilisez la commande ```Git clone``` suivit du lien ```git@github.com:WildCodeSchool/11-21-noBugNovember-P3-sos-Front.git```
 
+▶ Renseignez vos variables d'environement en créant un fichier ```.env``` à l'aide du sample ```.env.sample``` comportant le port du Backend ainsi que la clé d'API pour le "TinyMCE" en créant un compte afin d'avoir une clé juste [ici](https://www.tiny.cloud/)<br>
+
 ▶ Ensuite utilisez la commande ```npm i``` afin d'installer toutes les dépendances (composants externes utilisés).<br>
-<br>
+
+Une fois l'installation terminée votre fichier ```package.json``` doit contenir ces dépendences ci : <br>
+
+![3f8a2ae28861dad855a0f411c8e66329](https://user-images.githubusercontent.com/89353029/161015164-9c28b7ea-44db-410d-bc3f-4fc32581a380.png)
+
 ▶ Enfin utilisez la commande ```npm start``` pour lancer le projet en local.
 
 Veillez à ce que le serveur Backend tourne également sur votre machine que vous pouvez récupérer juste [ici](https://github.com/WildCodeSchool/11-21-noBugNovember-P3-sos-back)
