@@ -3,7 +3,7 @@ import './Styles/ArticleDetail.css'
 import fleche from '../assets/icones/flecheCercle.png'
 
 //*IMPORT REACT//*
-import Header from '../components/Header'
+import Header from '../components/Client/Header'
 import { useContext } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
 

@@ -8,10 +8,10 @@ import Select from './Select'
 import { useContext } from 'react'
 
 //*IMPORT CONTEXT//*
-import { ArticleContext } from '../context/ArticleContext'
-import { CategoriesContext } from '../context/CategoriesContext'
-import { SousCategoriesContext } from '../context/SousCategoriesContext'
-import { VillesContext } from '../context/VillesContext'
+import { ArticleContext } from '../../context/ArticleContext'
+import { CategoriesContext } from '../../context/CategoriesContext'
+import { SousCategoriesContext } from '../../context/SousCategoriesContext'
+import { VillesContext } from '../../context/VillesContext'
 
 const SearchBar = (props) => {
   // Listes des données

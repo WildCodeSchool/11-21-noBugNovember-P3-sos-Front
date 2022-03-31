@@ -47,9 +47,6 @@ const ListeVilles = (props) => {
   }
 
   // PARTIE REGION
-  const { regions } = useContext(RegionsContext)
-
-  const [region, setRegion] = useState({})
 
   const [selectRegion, setSelectRegion] = useState()
   const [chooseSelectRegion, setChooseSelectRegion] = useState()
@@ -65,27 +62,6 @@ const ListeVilles = (props) => {
       .get('http://localhost:4242/regions')
       .then((response) => setSelectRegion(response.data))
   }, [])
-
-  // COLLECT ET ENVOI DES DONNEES
-  const collectDatas = (event) => {
-    event.preventDefault()
-    setRegion({
-      categorie_id: chooseSelectRegion,
-      nom_sous_categorie: newCity,
-    })
-
-    console.warn('COLLECT DATAS ======>', newCity)
-    axios
-      .post(`http://localhost:4242/souscategories`, { ...newCity })
-      .then((response) => console.log('RESPONSE REQUETE', response))
-      .catch((error) =>
-        console.error(
-          '---Erreur envoi nouvelle ville--- ',
-          error.validationErrors
-        )
-      )
-  }
-  // FIN DE LA COLLECTE
 
   return (
     <>
@@ -217,7 +193,7 @@ const ListeVilles = (props) => {
                 size='30'
                 required
                 onChange={handleChangeNewCity}
-              ></input>
+              />
 
               <button
                 className='button2 adminSousCatButton'

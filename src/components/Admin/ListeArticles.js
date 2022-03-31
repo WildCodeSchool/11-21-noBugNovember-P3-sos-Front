@@ -14,11 +14,15 @@ import { useContext } from 'react'
 
 //*IMPORT CONTEXT//*
 import { ArticleContext } from '../../context/ArticleContext'
-import { CategoriesContext } from '../../context/CategoriesContext'
 
-const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
+const ListArticles = ({
+  setModifArticle,
+  setDeleteData,
+  deleteData,
+  modifArticle,
+  setModifyId,
+}) => {
   const { articles } = useContext(ArticleContext)
-  const { categorie } = useContext(CategoriesContext)
   let location = useLocation()
 
   return (
@@ -119,7 +123,6 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
               renderCell: (field) => (
                 <div className='actionIcon'>
                   <Link to='/admin-controler/modification-article'>
-                    {/* Lien de renvoi page modif article/id specifique, mettre a jour l'id (params) */}
                     <FontAwesomeIcon
                       icon={faPencil}
                       size='1x'
@@ -166,7 +169,9 @@ const ListArticles = ({ setModifArticle, setDeleteData, deleteData }) => {
             '& .MuiDataGrid-cell:hover': {},
           }}
           onRowClick={(datas) => {
-            setDeleteData(datas.row) || setModifArticle(datas.row)
+            setDeleteData(datas.row) ||
+              setModifArticle(datas.row) ||
+              setModifyId(datas.row.id)
           }}
           rows={articles && articles}
           rowsPerPageOptions={[5, 10, 20, 30, 50, 100]}

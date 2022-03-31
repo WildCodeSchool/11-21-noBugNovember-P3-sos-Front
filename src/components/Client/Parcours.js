@@ -1,6 +1,6 @@
 import './Styles/Parcours.css'
-import { ArticleContext } from '../context/ArticleContext'
-import { CategoriesContext } from '../context/CategoriesContext'
+import { ArticleContext } from '../../context/ArticleContext'
+import { CategoriesContext } from '../../context/CategoriesContext'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 
@@ -15,17 +15,17 @@ const Parcours = () => {
         <div className='holderArrow'>
           <img
             className='snakeArrow'
-            src={require('../assets/icones/arrow.png')}
+            src={require('../../assets/icones/arrow.png')}
             alt='arrow'
           />
           <img
             className='snakeArrow'
-            src={require('../assets/icones/arrow.png')}
+            src={require('../../assets/icones/arrow.png')}
             alt='arrow'
           />
           <img
             className='snakeArrow'
-            src={require('../assets/icones/arrow.png')}
+            src={require('../../assets/icones/arrow.png')}
             alt='arrow'
           />
         </div>

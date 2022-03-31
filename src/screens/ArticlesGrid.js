@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 
 //*IMPORT COMPOSANTS //*
-import CardArticle from '../components/CardArticle.js'
-import Header from '../components/Header.js'
-import SearchBar from '../components/SearchBar.js'
-import Slider from '../components/Slider'
+import CardArticle from '../components/Client/CardArticle.js'
+import Header from '../components/Client/Header.js'
+import SearchBar from '../components/Client/SearchBar.js'
+
+import Slider from '../components/Client/Slider'
 
 const ArticlesGrid = () => {
   const { articles } = useContext(ArticleContext)

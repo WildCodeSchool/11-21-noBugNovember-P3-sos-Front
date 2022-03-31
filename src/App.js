@@ -6,26 +6,27 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useState, useContext } from 'react'
 
 //*IMPORT COMPONENTS //*
-import ArticleForm from './components/ArticleForm'
-import EditName from './components/EditName'
+import ArticleForm from './components/Admin/ArticleForm'
+import ModalDL from './components/Client/ModalDL'
+import ModificationArticle from './components/Admin/ModificationArticle'
 import ListeArticles from './components/Admin/ListeArticles'
 import ListeCategorie from './components/Admin/ListeCategorie'
 import ListeSecteurs from './components/Admin/ListeSecteurs'
 import ListeSousCat from './components/Admin/ListeSousCat'
 import ListeVilles from './components/Admin/ListeVilles'
 import ListeDonnees from './components/Admin/ListeDonnees'
-import ModalDL from './components/ModalDL'
-import ModificationArticle from './components/ModificationArticle'
-import Suppression from './components/Suppression'
+import PanelAdmin from './components/Admin/PanelAdmin'
+import Suppression from './components/Admin/Suppression'
+import EditName from './components/Admin/EditName'
 
 //*IMPORT SCREENS //*
+
 import ArticleDetail from './screens/ArticleDetail'
 import ArticlesGrid from './screens/ArticlesGrid'
-import Cgu from './screens/Cgu'
 import FirstVisit from './screens/FirstVisit'
 import Home from './screens/Home'
 import IdentificationAdmin from './screens/IdentificationAdmin'
-import PanelAdmin from './screens/PanelAdmin'
+import Cgu from './screens/Cgu'
 
 //*IMPORT CONTEXT PROVIDER //*
 import ArticleContextProvider from './context/ArticleContext'
@@ -33,7 +34,7 @@ import AuthContextProvider from './context/AuthContext'
 import SecteursContextProvider from './context/SecteursContext'
 import SousCategoriesContextProvider from './context/SousCategoriesContext'
 import VillesContextProvider from './context/VillesContext'
-import RequireAuth from './components/RequireAuth'
+import RequireAuth from './components/Client/RequireAuth'
 import TelechargementsContextProvider from './context/TelechargementsContext'
 
 //*IMPORT CONTEXT DEPUIS INDEX //*
@@ -45,12 +46,15 @@ function App() {
 
   let backgroundLocation = location.state && location.state.backgroundLocation
 
+  const [modifArticle, setModifArticle] = useState({})
+  const [deleteData, setDeleteData] = useState('')
+
   const { regions, idRegion, setIdRegion } = useContext(RegionsContext)
   const { categories, idCategorie, setIdCategorie } =
     useContext(CategoriesContext)
 
-  const [modifArticle, setModifArticle] = useState('')
-  const [deleteData, setDeleteData] = useState('')
+  const [modifyId, setModifyId] = useState('')
+
   return (
     <div className='App'>
       <ArticleContextProvider>
@@ -88,7 +92,10 @@ function App() {
                         path='articles'
                         element={
                           <ListeArticles
+                            modifyId={modifyId}
+                            setModifyId={setModifyId}
                             setModifArticle={setModifArticle}
+                            modifArticle={modifArticle}
                             setDeleteData={setDeleteData}
                             deleteData={deleteData}
                           />
@@ -124,6 +131,8 @@ function App() {
                         path='modification-article'
                         element={
                           <ModificationArticle
+                            modifyId={modifyId}
+                            setModifyId={setModifyId}
                             modifArticle={modifArticle}
                             setModifArticle={setModifArticle}
                           />

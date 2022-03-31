@@ -1,5 +1,5 @@
-import { ArticleContext } from '../context/ArticleContext'
-import { CategoriesContext } from '../context/CategoriesContext'
+import { ArticleContext } from '../../context/ArticleContext'
+import { CategoriesContext } from '../../context/CategoriesContext'
 
 import { useContext } from 'react'
 import Slide from './Slide.js'

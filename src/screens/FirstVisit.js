@@ -1,18 +1,11 @@
 //*IMPORT CSS//*
 import './Styles/FirstVisit.css'
 
-//*IMPORT REACT//*
-import { useContext } from 'react'
-
-//*IMPORT CONTEXTS //*
-import { VillesContext } from '../context/VillesContext'
-
 //*IMPORT COMPOSANTS //*
-import Header from '../components/Header.js'
-import Parcours from '../components/Parcours'
+import Header from '../components/Client/Header.js'
+import Parcours from '../components/Client/Parcours'
 
 const FirstVisit = () => {
-  const { villes } = useContext(VillesContext)
   return (
     <>
       <Header />

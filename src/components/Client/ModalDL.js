@@ -4,13 +4,13 @@ import './Styles/ModalDL.css'
 
 //*IMPORT REACT//*
 import axios from 'axios'
-import { ArticleContext } from '../context/ArticleContext'
 import { Dialog } from '@reach/dialog'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { useContext, useState } from 'react'
 
 //*IMPORT CONTEXT//*
-import { VillesContext } from '../context/VillesContext'
+import { ArticleContext } from '../../context/ArticleContext'
+import { VillesContext } from '../../context/VillesContext'
 
 function ModalDL(props) {
   let navigate = useNavigate()
