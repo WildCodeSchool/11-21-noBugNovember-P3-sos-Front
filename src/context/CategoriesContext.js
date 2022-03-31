@@ -1,12 +1,12 @@
-import { useEffect, useState, createContext } from "react";
 import axios from "axios";
+import { useEffect, useState, createContext } from "react";
 
 export const CategoriesContext = createContext();
 
 const CategoriesContextProvider = (props) => {
   const [categories, setCategories] = useState([]);
-  const [reloadCategories, setReloadCategories] = useState(true);
   const [idCategorie, setIdCategorie] = useState("");
+  const [reloadCategories, setReloadCategories] = useState(true);
 
   useEffect(() => {
     axios

@@ -7,7 +7,6 @@ import { useState, useContext } from "react";
 
 //*IMPORT COMPONENTS //*
 import ArticleForm from "./components/Admin/ArticleForm";
-import EditName from "./components/Admin/EditName";
 import ModalDL from "./components/Client/ModalDL";
 import ModificationArticle from "./components/Admin/ModificationArticle";
 import ListeArticles from "./components/Admin/ListeArticles";
@@ -16,8 +15,9 @@ import ListeSecteurs from "./components/Admin/ListeSecteurs";
 import ListeSousCat from "./components/Admin/ListeSousCat";
 import ListeVilles from "./components/Admin/ListeVilles";
 import ListeDonnees from "./components/Admin/ListeDonnees";
-import RequireAuth from "./components/Client/RequireAuth";
+import PanelAdmin from "./components/Admin/PanelAdmin";
 import Suppression from "./components/Admin/Suppression";
+import EditName from "./components/Admin/EditName";
 
 //*IMPORT SCREENS //*
 
@@ -26,20 +26,19 @@ import ArticlesGrid from "./screens/ArticlesGrid";
 import FirstVisit from "./screens/FirstVisit";
 import Home from "./screens/Home";
 import IdentificationAdmin from "./screens/IdentificationAdmin";
-import PanelAdmin from "./components/Admin/PanelAdmin";
+import Cgu from "./screens/Cgu";
 
 //*IMPORT CONTEXT PROVIDER //*
 import ArticleContextProvider from "./context/ArticleContext";
 import AuthContextProvider from "./context/AuthContext";
-import CategoriesContextProvider from "./context/CategoriesContext";
 import SecteursContextProvider from "./context/SecteursContext";
 import SousCategoriesContextProvider from "./context/SousCategoriesContext";
 import VillesContextProvider from "./context/VillesContext";
+import RequireAuth from "./components/Client/RequireAuth";
 import TelechargementsContextProvider from "./context/TelechargementsContext";
 
-//*IMPORT CONTEXT //* ajout rom
+//*IMPORT CONTEXT DEPUIS INDEX //*
 import { RegionsContext } from "./context/RegionsContext";
-//*IMPORT CONTEXT //* ajout rom 23h
 import { CategoriesContext } from "./context/CategoriesContext";
 
 function App() {
@@ -50,15 +49,9 @@ function App() {
   const [modifArticle, setModifArticle] = useState({});
   const [deleteData, setDeleteData] = useState("");
 
-  //Ajout rom REGIONS
-  const { regions } = useContext(RegionsContext);
-  const { idRegion } = useContext(RegionsContext);
-  const { setIdRegion } = useContext(RegionsContext);
-
-  //Ajout rom CATEGORIES 23h
-  const { categories } = useContext(CategoriesContext);
-  const { idCategorie } = useContext(CategoriesContext);
-  const { setIdCategorie } = useContext(CategoriesContext);
+  const { regions, idRegion, setIdRegion } = useContext(RegionsContext);
+  const { categories, idCategorie, setIdCategorie } =
+    useContext(CategoriesContext);
 
   const [modifyId, setModifyId] = useState("");
 
@@ -86,6 +79,7 @@ function App() {
                       path="admin"
                       element={<IdentificationAdmin />}
                     ></Route>
+                    <Route path="cgu" element={<Cgu />}></Route>
                     <Route
                       path="/admin-controler"
                       element={

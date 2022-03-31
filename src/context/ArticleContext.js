@@ -1,5 +1,5 @@
-import { useEffect, useState, createContext } from "react";
 import axios from "axios";
+import { useEffect, useState, createContext } from "react";
 
 export const ArticleContext = createContext();
 
@@ -7,7 +7,6 @@ const ArticleContextProvider = (props) => {
   //State Liste des Articles
   const [articles, setArticles] = useState([]);
 
-  // console.log(articles)
   // State pour les filtres et Select
   const [filters, setFilters] = useState("");
   const [idCategorie, setIdCategorie] = useState();
@@ -50,30 +49,6 @@ const ArticleContextProvider = (props) => {
   const deleteSousCat = () => {
     setIdsousCategorie("");
   };
-  // Récupération de la liste filtrée
-  // useEffect(() => {
-  //   if (filters.length === 0) {
-  //     console.log("vide", filters);
-
-  //     axios
-  //       .get(`http://localhost:4242/articles`)
-  //       .then((res) => setArticles(res.data));
-  //   } else if (
-  //     filters.includes("ville") ||
-  //     filters.includes("sousCategorie") ||
-  //     filters.includes("search")
-  //   ) {
-  //     console.log("recherce", filters);
-  //     axios
-  //       .get(`http://localhost:4242/articles${filters}`)
-  //       .then((res) => setArticles(res.data));
-  //   } else {
-  //     console.log("catt", filters);
-  //     axios
-  //       .get(`http://localhost:4242/articles/?categorie=${idCategorie}`)
-  //       .then((res) => setArticles(res.data));
-  //   }
-  // }, [filters, idCategorie]);
 
   // Changement liste En fonciton de idCAtegorie
 

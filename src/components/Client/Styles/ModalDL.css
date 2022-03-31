@@ -54,8 +54,20 @@
   appearance: none;
 }
 
-.citySelectDl {
-  cursor: pointer;
+input:valid {
+  border: 2px solid transparent;
+}
+
+input:invalid {
+  border: 2px solid red;
+}
+
+.coordoneDl select {
+  height: 4rem;
+  border-radius: 0 2rem;
+  padding: 0 1rem 0 2rem;
+  appearance: none;
+  width: 16rem;
 }
 
 [data-reach-dialog-content] {
@@ -64,4 +76,15 @@
 
 [data-reach-dialog-overlay] {
   background: none;
+}
+
+@media screen and (max-width: 40em) {
+  .popUpModal {
+    width: 85%;
+  }
+
+  .nameDl {
+    flex-direction: column;
+    height: 10rem;
+  }
 }

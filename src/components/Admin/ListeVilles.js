@@ -11,7 +11,6 @@ import Select, { StylesConfig } from "react-select";
 import { useContext, useState, useEffect } from "react";
 
 //*IMPORT CONTEXTS //*
-import { RegionsContext } from "../../context/RegionsContext";
 import { VillesContext } from "../../context/VillesContext";
 
 // STYLES CONFIG SELECT
@@ -49,9 +48,6 @@ const ListeVilles = (props) => {
   };
 
   // PARTIE REGION
-  const { regions } = useContext(RegionsContext);
-
-  const [region, setRegion] = useState({});
 
   const [selectRegion, setSelectRegion] = useState();
   const [chooseSelectRegion, setChooseSelectRegion] = useState();
@@ -64,45 +60,18 @@ const ListeVilles = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:${process.env.REACT_APP_PORT}/regions`)
-      .then(
-        (response) =>
-          console.log(response.data) || setSelectRegion(response.data)
-      );
+      .get("http://localhost:4242/regions")
+      .then((response) => setSelectRegion(response.data));
   }, []);
-
-  // COLLECT ET ENVOI DES DONNEES
-  const collectDatas = (event) => {
-    event.preventDefault();
-    setRegion({
-      categorie_id: chooseSelectRegion,
-      nom_sous_categorie: newCity,
-    });
-
-    console.warn("COLLECT DATAS ======>", newCity);
-    axios
-      .post(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`, {
-        ...newCity,
-      })
-      .then((response) => console.log("RESPONSE REQUETE", response))
-      .catch((error) =>
-        console.error(
-          "---Erreur envoi nouvelle ville--- ",
-          error.validationErrors
-        )
-      );
-  };
-  // FIN DE LA COLLECTE
 
   return (
     <>
       {" "}
       <div className="firstContent">
-        <h2 className="bjr-user">Bonjour [userName],</h2>
+        <h2 className="bjr-user">Bonjour Rachid,</h2>
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des villes</h3>
-        {/* {console.log("console log de ville : ", villes)} */}
         <DataGrid
           style={{ height: 500 }}
           columns={[

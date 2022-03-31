@@ -11,7 +11,6 @@ const Home = () => {
         <div className="homeWrapRaw">
           <h1>
             Les mêmes chances pour tous <br />
-            Découvrez ...
           </h1>
           <div className="homeSplitWrap">
             <div className="homeSplitOrange">
@@ -28,27 +27,37 @@ const Home = () => {
                 isCat={true}
                 isButtonHome={true}
               />
-              {/* <Link to="/articlesGrid" onClick ={() => recupFilters() }> */}
-              {/* <Link to="/articlesGrid" onClick ={() => {searchLaunch(); sousCatSet(idCategorie) }}> */}
+
               <Link to={"/articlesGrid"}>
                 <button className="buttonGreen">Chercher</button>
               </Link>
             </div>
             <div className="homeSplitGreen">
               <div className="pHolder">
+                {" "}
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat
+                  SOS JEUNES POUSSES vise à faciliter l’identification des
+                  talents pour les assister dans la formulation et la
+                  préparation de leur projet, à la création d’activité, à
+                  renforcer l'accès à l’offre d’accompagnement en orientant les
+                  candidats vers les dispositifs et acteurs de l'écosystème,
+                  qu’ils soient porteurs de projets, créateurs ou en
+                  reconversion professionnelle.{" "}
                 </p>
                 <p>
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat
+                  Notre mission: Sensibilisation, détection et préparation des
+                  porteurs de projets perdus dans leurs parcours à agir et
+                  contribuer aux initiatives locales solidaires et responsables.
                 </p>
                 <p>
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat
+                  À Entreprendre afin de naviguer dans les écosystème et
+                  rééquilibrer les chances de cette population à accéder aux
+                  informations et aux bons interlocuteurs pour leurs projets. Le
+                  projet vise à les mettre en relation directe dans leurs
+                  parcours de création d’activité, à être suivis de manière
+                  optimale, à obtenir un référent, un point d’ancrage afin de
+                  solliciter plus facilement l’écosystème territorial. Et
+                  favoriser les coopérations entre acteurs.
                 </p>
               </div>
             </div>

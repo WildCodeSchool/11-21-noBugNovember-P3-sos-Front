@@ -1,18 +1,20 @@
+//*IMPORT CSS//*
 import "./Styles/ArticlesGrid.css";
 
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+//*IMPORT REACT & CONTEXT//*
 import { ArticleContext } from "../context/ArticleContext";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 
+//*IMPORT COMPOSANTS //*
 import CardArticle from "../components/Client/CardArticle.js";
 import Header from "../components/Client/Header.js";
 import SearchBar from "../components/Client/SearchBar.js";
+
 import Slider from "../components/Client/Slider";
 
 const ArticlesGrid = () => {
   const { articles } = useContext(ArticleContext);
-
-  // const idCat = useParams()
 
   return (
     <>
@@ -20,14 +22,13 @@ const ArticlesGrid = () => {
       <div className="articleGridBgGreen">
         <div className="articleGridHolderSearchBar">
           <div className="articleGridSearchBar">
-            {/* <ArtSearchBar /> */}
+            <Slider />
             <SearchBar
               isVille={true}
               isSousCat={true}
               isCat={false}
               isButtonGrid={true}
             />
-            <Slider />
           </div>
         </div>
         {articles &&

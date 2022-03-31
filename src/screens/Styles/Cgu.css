@@ -1,0 +1,23 @@
+.contentCgu {
+  width: 80%;
+  margin: auto;
+}
+
+.contentCgu * {
+  margin: 18px;
+}
+
+.contentCgu h1 {
+  text-align: center;
+}
+
+.contentCgu > p {
+  text-align: justify;
+}
+
+.dateCGU {
+  font-style: italic;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 5rem;
+}

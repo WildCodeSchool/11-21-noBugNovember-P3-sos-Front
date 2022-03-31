@@ -1,22 +1,14 @@
-//*IMPORT CSS ET ASSETS//*
 import "./Styles/ArticleForm.css";
-
-//*IMPORT REACT//*
 import axios from "axios";
+import BouttonPublier from "./BouttonPublier";
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import TinyArticle from "./TinyArticle";
 import Select, { StylesConfig } from "react-select";
-
-//*IMPORT COMPONENTS//*
-import BouttonPublier from "./BouttonPublier";
-
-//*IMPORT CONTEXT//*
 import { ArticleContext } from "../../context/ArticleContext";
-import { CategoriesContext } from "../../context/CategoriesContext";
 import { SecteursContext } from "../../context/SecteursContext";
 import { SousCategoriesContext } from "../../context/SousCategoriesContext";
 import { VillesContext } from "../../context/VillesContext";
+import { CategoriesContext } from "../../context/CategoriesContext";
 
 // STYLES CONFIG SELECT
 const colourStyles: StylesConfig = {
@@ -24,8 +16,6 @@ const colourStyles: StylesConfig = {
     ...styles,
     backgroundColor: "white",
     width: "20vw",
-    padding: ".5rem",
-    //  height: "5rem" FOU LE BORDEL
   }),
 };
 const ArticleForm = () => {
@@ -37,22 +27,16 @@ const ArticleForm = () => {
   const { categories } = useContext(CategoriesContext);
   const { villes } = useContext(VillesContext);
 
-  let navigate = useNavigate();
-
   //Création state ajour article avec valeurs pas défault
   const [article, setArticle] = useState({ visible: false, user_id: 1 });
 
   const ajoutDatas = (event) => {
     event.preventDefault();
     axios
-      .post(`http://localhost:${process.env.REACT_APP_PORT}/articles`, {
-        ...article,
-      })
+      .post(`http://localhost:4242/articles`, { ...article })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .then(() => setReloadArticle(!reloadArticle))
       .catch((error) => console.error("---Erreur envoi article--- ", error));
-    navigate(-1);
-    setIdCategorie("");
   };
 
   //Ajout des infos dans la state
@@ -87,7 +71,7 @@ const ArticleForm = () => {
 
   return (
     <>
-      <h2 className="bjr-user">Bonjour [userName],</h2>
+      <h2 className="bjr-user">Bonjour Rachid,</h2>
       <div className="articles-and-types">
         {/* BLOC DE GAUCHE = ARTICLE */}
         <form className="bloc-content-row">

@@ -13,7 +13,6 @@ import { useState, useEffect, useContext } from "react";
 
 //*IMPORT CONTEXT//*
 import { SousCategoriesContext } from "../../context/SousCategoriesContext";
-import { CategoriesContext } from "../../context/CategoriesContext";
 
 // RAJOUT DES IMPORTS POUR FAIRE LE LIEN AVEC CATG
 
@@ -39,9 +38,7 @@ const ListeSousCategories = ({ setDeleteData }) => {
 
   const nouvelleSousCategorie = () => {
     axios
-      .post(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`, {
-        ...newSousCategorie,
-      })
+      .post(`http://localhost:4242/souscategories`, { ...newSousCategorie })
       .then((response) => console.log("RESPONSE REQUETE", response))
       .then(setReloadSousCat(!reloadSousCat))
       .catch((error) =>
@@ -61,9 +58,6 @@ const ListeSousCategories = ({ setDeleteData }) => {
   };
 
   // PARTIE CATEGORIE
-  const { categories } = useContext(CategoriesContext);
-
-  const [categorie, setCategorie] = useState({});
 
   const [selectCategorie, setSelectCategorie] = useState();
   const [chooseSelectCategorie, setChooseSelectCategorie] = useState();
@@ -80,34 +74,11 @@ const ListeSousCategories = ({ setDeleteData }) => {
       .then((response) => setSelectCategorie(response.data));
   }, []);
 
-  // COLLECT ET ENVOI DES DONNEES
-  const collectDatas = (event) => {
-    event.preventDefault();
-    setCategorie({
-      categorie_id: chooseSelectCategorie,
-      nom_sous_categorie: newSousCategorie,
-      // Comment faire la connection categorie_id de sous cat ???
-    });
-    console.warn("COLLECT DATAS ======>", newSousCategorie);
-    axios
-      .post(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`, {
-        ...newSousCategorie,
-      })
-      .then((response) => console.log("RESPONSE REQUETE", response))
-      .catch((error) =>
-        console.error(
-          "---Erreur envoi nouvelle catégorie--- ",
-          error.validationErrors
-        )
-      );
-  };
-  // FIN DE LA COLLECTE
-
   return (
     <>
       {" "}
       <div className="firstContent">
-        <h2 className="bjr-user">Bonjour [userName],</h2>
+        <h2 className="bjr-user">Bonjour Rachid,</h2>
       </div>
       <div className="bloc-content-column">
         <h3 className="titreMenu">Liste des sous-categories</h3>

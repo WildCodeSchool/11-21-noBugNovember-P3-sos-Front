@@ -5,7 +5,7 @@ import "./Styles/Suppression.css";
 //*IMPORT REACT//*
 import axios from "axios";
 import { Dialog } from "@reach/dialog";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 //*IMPORT CONTEXTS //*
@@ -18,14 +18,10 @@ import { VillesContext } from "../../context/VillesContext";
 function Suppression({ deleteData, page, action }) {
   let navigate = useNavigate();
   const { reloadArticle, setReloadArticle } = useContext(ArticleContext);
-
   const { reloadCategories, setReloadCategories } =
     useContext(CategoriesContext);
-
   const { reloadSecteurs, setReloadSecteurs } = useContext(SecteursContext);
-
   const { reloadSousCat, setReloadSousCat } = useContext(SousCategoriesContext);
-
   const { reloadVilles, setReloadVilles } = useContext(VillesContext);
 
   const handleDeletData = () => {
@@ -64,14 +60,13 @@ function Suppression({ deleteData, page, action }) {
 
   return (
     <Dialog>
-      {" "}
       <div className="fragmentContainer">
         <div className="backContainerAdmin" onClick={() => navigate(-1)}></div>
         <div className="popUpModalDelet">
           <div className="modalContainer">
             <h2>
-              Êtes-vous sûr de vouloir{" "}
-              {action === "supprimer" ? "supprimer" : "changer la visibilité"}{" "}
+              Êtes-vous sûr de vouloir
+              {action === "supprimer" ? "supprimer" : "changer la visibilité"}
               {deleteData.value} ?
             </h2>
             <div className="buttonModalDelet">

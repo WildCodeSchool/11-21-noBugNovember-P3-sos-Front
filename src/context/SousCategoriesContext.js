@@ -1,14 +1,13 @@
-import { useEffect, useState, createContext, useContext } from "react";
 import axios from "axios";
+import { useEffect, useState, createContext, useContext } from "react";
 import { ArticleContext } from "./ArticleContext";
 
 export const SousCategoriesContext = createContext();
+
 const SousCategoriesContextProvider = (props) => {
-  // const [filters, setFilters] = useState("");
-  // const [idCatSousCat, setIdCatSousCat] = useState();
+  const { idCategorie } = useContext(ArticleContext);
   const [sousCategories, setSousCategories] = useState([]);
   const [reloadSousCat, setReloadSousCat] = useState(true);
-  const { idCategorie } = useContext(ArticleContext);
 
   useEffect(() => {
     if (idCategorie) {

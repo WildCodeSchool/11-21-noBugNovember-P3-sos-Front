@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import Parcours from "../components/Client/Parcours";
+//*IMPORT CSS//*
 import "./Styles/FirstVisit.css";
+
+//*IMPORT COMPOSANTS //*
 import Header from "../components/Client/Header.js";
-import { VillesContext } from "../context/VillesContext";
+import Parcours from "../components/Client/Parcours";
 
 const FirstVisit = () => {
-  const { villes } = useContext(VillesContext);
   return (
     <>
       <Header />
@@ -16,13 +16,6 @@ const FirstVisit = () => {
             Clic sur une étape pour connaître les sous-catégories et les
             articles
           </p>
-          {/* <div className="WrapSearchBar">
-            <h3>Selectionner</h3>
-            <Select
-          name={'Ville'}
-          result={villes}
-          />
-          </div> */}
         </div>
         <Parcours />
       </div>
