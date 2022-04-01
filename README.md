@@ -15,7 +15,7 @@ Une fois l'installation terminée votre fichier ```package.json``` doit contenir
 
 ▶ Enfin utilisez la commande ```npm start``` pour lancer le projet en local.
 
-Veillez à ce que le serveur Backend tourne également sur votre machine que vous pouvez récupérer juste [ici](https://github.com/WildCodeSchool/11-21-noBugNovember-P3-sos-back)
+Veillez à ce que le serveur Backend tourne également sur votre machine. Si vous ne l'avez pas déjà fait, [cliquez ici pour accéder au repo Frontend](https://github.com/WildCodeSchool/11-21-noBugNovember-P3-sos-back) et cloner son contenu sur votre machine.
 
 ## 📝 Description :
 Création d'un site internet proposant un accompagnement à la création de projet professionnel.
