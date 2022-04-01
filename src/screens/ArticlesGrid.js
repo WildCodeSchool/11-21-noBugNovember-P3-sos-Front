@@ -1,27 +1,27 @@
 //*IMPORT CSS//*
-import './Styles/ArticlesGrid.css'
+import "./Styles/ArticlesGrid.css";
 
 //*IMPORT REACT & CONTEXT//*
-import { ArticleContext } from '../context/ArticleContext'
-import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { ArticleContext } from "../context/ArticleContext";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 //*IMPORT COMPOSANTS //*
-import CardArticle from '../components/Client/CardArticle.js'
-import Header from '../components/Client/Header.js'
-import SearchBar from '../components/Client/SearchBar.js'
+import CardArticle from "../components/Client/CardArticle.js";
+import Header from "../components/Client/Header.js";
+import SearchBar from "../components/Client/SearchBar.js";
 
-import Slider from '../components/Client/Slider'
+import Slider from "../components/Client/Slider";
 
 const ArticlesGrid = () => {
-  const { articles } = useContext(ArticleContext)
+  const { articles } = useContext(ArticleContext);
 
   return (
     <>
       <Header />
-      <div className='articleGridBgGreen'>
-        <div className='articleGridHolderSearchBar'>
-          <div className='articleGridSearchBar'>
+      <div className="articleGridBgGreen">
+        <div className="articleGridHolderSearchBar">
+          <div className="articleGridSearchBar">
             <Slider />
             <SearchBar
               isVille={true}
@@ -51,11 +51,11 @@ const ArticlesGrid = () => {
                     nom_secteur={result.nom_secteur}
                   />
                 </Link>
-              )
+              );
             })}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ArticlesGrid
+export default ArticlesGrid;

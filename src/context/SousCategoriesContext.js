@@ -1,25 +1,27 @@
-import axios from 'axios'
-import { useEffect, useState, createContext, useContext } from 'react'
-import { ArticleContext } from './ArticleContext'
+import axios from "axios";
+import { useEffect, useState, createContext, useContext } from "react";
+import { ArticleContext } from "./ArticleContext";
 
-export const SousCategoriesContext = createContext()
+export const SousCategoriesContext = createContext();
 
 const SousCategoriesContextProvider = (props) => {
-  const { idCategorie } = useContext(ArticleContext)
-  const [sousCategories, setSousCategories] = useState([])
-  const [reloadSousCat, setReloadSousCat] = useState(true)
+  const { idCategorie } = useContext(ArticleContext);
+  const [sousCategories, setSousCategories] = useState([]);
+  const [reloadSousCat, setReloadSousCat] = useState(true);
 
   useEffect(() => {
     if (idCategorie) {
       axios
-        .get(`http://localhost:4242/souscategories/?categorie=${idCategorie}`)
-        .then((res) => setSousCategories(res.data))
+        .get(
+          `http://localhost:${process.env.REACT_APP_PORT}/souscategories/?categorie=${idCategorie}`
+        )
+        .then((res) => setSousCategories(res.data));
     } else {
       axios
-        .get(`http://localhost:4242/souscategories`)
-        .then((res) => setSousCategories(res.data))
+        .get(`http://localhost:${process.env.REACT_APP_PORT}/souscategories`)
+        .then((res) => setSousCategories(res.data));
     }
-  }, [idCategorie, reloadSousCat])
+  }, [idCategorie, reloadSousCat]);
 
   return (
     <SousCategoriesContext.Provider
@@ -27,7 +29,7 @@ const SousCategoriesContextProvider = (props) => {
     >
       {props.children}
     </SousCategoriesContext.Provider>
-  )
-}
+  );
+};
 
-export default SousCategoriesContextProvider
+export default SousCategoriesContextProvider;

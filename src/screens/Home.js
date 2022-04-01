@@ -1,23 +1,23 @@
-import SearchBar from '../components/Client/SearchBar'
-import Header from '../components/Client/Header'
-import './Styles/Home.css'
-import { Link } from 'react-router-dom'
+import SearchBar from "../components/Client/SearchBar";
+import Header from "../components/Client/Header";
+import "./Styles/Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <div className='homeWrapper'>
-        <div className='homeWrapRaw'>
+      <div className="homeWrapper">
+        <div className="homeWrapRaw">
           <h1>
             Les mêmes chances pour tous <br />
           </h1>
-          <div className='homeSplitWrap'>
-            <div className='homeSplitOrange'>
-              <div className='homeHolderBtn'>
+          <div className="homeSplitWrap">
+            <div className="homeSplitOrange">
+              <div className="homeHolderBtn">
                 <h2>Première Visite ?</h2>
-                <Link to='/etapes'>
-                  <button className=' buttonGreen'> Commencer</button>
+                <Link to="/etapes">
+                  <button className=" buttonGreen"> Commencer</button>
                 </Link>
               </div>
               <h2>Tu connais la plate-forme ?</h2>
@@ -28,13 +28,13 @@ const Home = () => {
                 isButtonHome={true}
               />
 
-              <Link to={'/articlesGrid'}>
-                <button className='buttonGreen'>Chercher</button>
+              <Link to={"/articlesGrid"}>
+                <button className="buttonGreen">Chercher</button>
               </Link>
             </div>
-            <div className='homeSplitGreen'>
-              <div className='pHolder'>
-                {' '}
+            <div className="homeSplitGreen">
+              <div className="pHolder">
+                {" "}
                 <p>
                   SOS JEUNES POUSSES vise à faciliter l’identification des
                   talents pour les assister dans la formulation et la
@@ -42,7 +42,7 @@ const Home = () => {
                   renforcer l'accès à l’offre d’accompagnement en orientant les
                   candidats vers les dispositifs et acteurs de l'écosystème,
                   qu’ils soient porteurs de projets, créateurs ou en
-                  reconversion professionnelle.{' '}
+                  reconversion professionnelle.{" "}
                 </p>
                 <p>
                   Notre mission: Sensibilisation, détection et préparation des
@@ -65,7 +65,7 @@ const Home = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

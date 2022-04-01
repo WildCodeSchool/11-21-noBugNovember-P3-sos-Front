@@ -1,14 +1,14 @@
 //*IMPORT CSS ET ASSETS//*
-import './Styles/ArticleDetail.css'
-import fleche from '../assets/icones/flecheCercle.png'
+import "./Styles/ArticleDetail.css";
+import fleche from "../assets/icones/flecheCercle.png";
 
 //*IMPORT REACT//*
-import Header from '../components/Client/Header'
-import { useContext } from 'react'
-import { useParams, Link, useLocation } from 'react-router-dom'
+import Header from "../components/Client/Header";
+import { useContext } from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
 
 //*IMPORT CONTEXT//*
-import { ArticleContext } from '../context/ArticleContext'
+import { ArticleContext } from "../context/ArticleContext";
 
 const ArticleDetail = (
   isActive,
@@ -18,51 +18,51 @@ const ArticleDetail = (
   isShowing,
   ...props
 ) => {
-  const { articles } = useContext(ArticleContext)
-  let { id } = useParams()
-  let location = useLocation()
+  const { articles } = useContext(ArticleContext);
+  let { id } = useParams();
+  let location = useLocation();
 
   function createMarkup(result) {
-    return { __html: `${result}` }
+    return { __html: `${result}` };
   }
   return (
     <>
       <Header />
-      <div className='detailArticlegGreen'>
-        <div className='stateCatArticlesDet'>
-          <Link to='/articlesGrid'>
-            <button className='buttonGreen btn-green-form2'>Retour</button>
+      <div className="detailArticlegGreen">
+        <div className="stateCatArticlesDet">
+          <Link to="/articlesGrid">
+            <button className="buttonGreen btn-green-form2">Retour</button>
           </Link>
         </div>
-        <div className='articleDetailWrapper'>
+        <div className="articleDetailWrapper">
           {articles
             .filter((el) => el.id === parseInt(id))
             .map((result) => {
               return (
                 <>
-                  <div className='stateCatArticlesCat'>
-                    <Link to='/articlesGrid' className='btnDetail '>
+                  <div className="stateCatArticlesCat">
+                    <Link to="/articlesGrid" className="btnDetail ">
                       <div>{result.nom_categorie}</div>
                     </Link>
-                    <img src={fleche} alt='fleche' className='gridArrow' />
-                    <Link to='/articlesGrid' className='btnDetail '>
+                    <img src={fleche} alt="fleche" className="gridArrow" />
+                    <Link to="/articlesGrid" className="btnDetail ">
                       <div>{result.nom_sous_categorie}</div>
                     </Link>
                   </div>
-                  <h2 className='articleTitreH2'>{result.titre} </h2>
-                  <div className='articleDetailIntro'>
-                    <p id='articleDetailIntro'>{result.intro}</p>
+                  <h2 className="articleTitreH2">{result.titre} </h2>
+                  <div className="articleDetailIntro">
+                    <p id="articleDetailIntro">{result.intro}</p>
                   </div>
-                  <div className='articleDetailImage'>
+                  <div className="articleDetailImage">
                     <img
                       src={result.image}
                       alt={result.tire}
-                      className='articleImage'
+                      className="articleImage"
                     ></img>
                   </div>
-                  <div className='articleDetailFirst'>
+                  <div className="articleDetailFirst">
                     {result.lien1 && (
-                      <div className='boutonTelechargementDoc'>
+                      <div className="boutonTelechargementDoc">
                         <Link
                           to={`/articlesGrid/articleDetail/${id}/modalDL`}
                           state={{
@@ -70,18 +70,18 @@ const ArticleDetail = (
                             linkUpload: result.lien1,
                           }}
                         >
-                          <button className='buttonGreen'>Télécharger</button>
+                          <button className="buttonGreen">Télécharger</button>
                         </Link>
                       </div>
                     )}
-                    <div className='articleDetailPara'>
+                    <div className="articleDetailPara">
                       <p
-                        id='articleDetailPara'
+                        id="articleDetailPara"
                         dangerouslySetInnerHTML={createMarkup(result.para1)}
                       ></p>
                     </div>
                     {result.lien2 && (
-                      <div className='boutonTelechargementDoc'>
+                      <div className="boutonTelechargementDoc">
                         <Link
                           to={`/articlesGrid/articleDetail/${id}/modalDL`}
                           state={{
@@ -90,15 +90,15 @@ const ArticleDetail = (
                           }}
                           idArticle={result.id}
                         >
-                          <button className='buttonGreen'>Télécharger</button>
+                          <button className="buttonGreen">Télécharger</button>
                         </Link>
                       </div>
                     )}
-                    <div className='articleDetailPara'>
-                      <p id='articleDetailPara'>{result.avantage}</p>
+                    <div className="articleDetailPara">
+                      <p id="articleDetailPara">{result.avantage}</p>
                     </div>
                     {result.lien3 && (
-                      <div className='boutonTelechargementDoc'>
+                      <div className="boutonTelechargementDoc">
                         <Link
                           to={`/articlesGrid/articleDetail/${id}/modalDL`}
                           state={{
@@ -107,18 +107,18 @@ const ArticleDetail = (
                           }}
                           idArticle={result.id}
                         >
-                          <button className='buttonGreen'>Télécharger</button>
+                          <button className="buttonGreen">Télécharger</button>
                         </Link>
                       </div>
                     )}
                   </div>
                 </>
-              )
+              );
             })}
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ArticleDetail
+export default ArticleDetail;

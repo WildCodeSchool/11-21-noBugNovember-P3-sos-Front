@@ -1,18 +1,18 @@
-import axios from 'axios'
-import { useEffect, useState, createContext } from 'react'
+import axios from "axios";
+import { useEffect, useState, createContext } from "react";
 
-export const CategoriesContext = createContext()
+export const CategoriesContext = createContext();
 
 const CategoriesContextProvider = (props) => {
-  const [categories, setCategories] = useState([])
-  const [idCategorie, setIdCategorie] = useState('')
-  const [reloadCategories, setReloadCategories] = useState(true)
+  const [categories, setCategories] = useState([]);
+  const [idCategorie, setIdCategorie] = useState("");
+  const [reloadCategories, setReloadCategories] = useState(true);
 
   useEffect(() => {
     axios
-      .get('http://localhost:4242/categories')
-      .then((res) => setCategories(res.data))
-  }, [reloadCategories])
+      .get(`http://localhost:${process.env.REACT_APP_PORT}/categories`)
+      .then((res) => setCategories(res.data));
+  }, [reloadCategories]);
   return (
     <CategoriesContext.Provider
       value={{
@@ -25,7 +25,7 @@ const CategoriesContextProvider = (props) => {
     >
       {props.children}
     </CategoriesContext.Provider>
-  )
-}
+  );
+};
 
-export default CategoriesContextProvider
+export default CategoriesContextProvider;
