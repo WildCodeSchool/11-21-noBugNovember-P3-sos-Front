@@ -1,4 +1,4 @@
-# 💻 "SOS JEUNES POUSSES" - Projet de groupe #3 - Wild Code School
+# 💻 "SOS JEUNES POUSSES" - Projet de groupe N°3 - Wild Code School
 
 ## 📂 Installation :
 Ce projet a été créé avec [Create React App](https://github.com/facebook/create-react-app).<br>
