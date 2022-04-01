@@ -9,7 +9,7 @@ Ce projet a été créé avec [Create React App](https://github.com/facebook/cre
 
 ▶ Ensuite utilisez la commande ```npm i``` afin d'installer toutes les dépendances (composants externes utilisés).<br>
 
-Une fois l'installation terminée votre fichier ```package.json``` doit contenir ces dépendances ci : <br>
+Une fois l'installation terminée, votre fichier ```package.json``` doit contenir les dépendances suivantes : <br>
 
 ![3f8a2ae28861dad855a0f411c8e66329](https://user-images.githubusercontent.com/89353029/161015164-9c28b7ea-44db-410d-bc3f-4fc32581a380.png)
 
