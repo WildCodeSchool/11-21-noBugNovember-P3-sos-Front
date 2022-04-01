@@ -65,8 +65,8 @@ function Suppression({ deleteData, page, action }) {
         <div className="popUpModalDelet">
           <div className="modalContainer">
             <h2>
-              Êtes-vous sûr de vouloir
-              {action === "supprimer" ? "supprimer" : "changer la visibilité"}
+              Êtes-vous sûr de vouloir{" "}
+              {action === "supprimer" ? "supprimer" : "changer la visibilité"}{" "}
               {deleteData.value} ?
             </h2>
             <div className="buttonModalDelet">
