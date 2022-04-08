@@ -1,0 +1,22 @@
+.headerWrapperLogo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerWrapperLogo h5 {
+  color: var(--clr-green);
+}
+
+.headerLogoHolder {
+  left: 0;
+  width: 20rem;
+  margin: 2rem;
+}
+
+.sousNav {
+  display: flex;
+  flex-direction: row;
+  width: 12em;
+  justify-content: space-around;
+}

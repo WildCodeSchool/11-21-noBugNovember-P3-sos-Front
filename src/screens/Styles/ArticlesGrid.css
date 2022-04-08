@@ -1,0 +1,43 @@
+.articleGridHolderSearchBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.articleGridSearchBar {
+  width: 40%;
+}
+
+.articleGridBgGreen {
+  background-color: var(--clr-bg-green);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.holderSlider {
+  width: 80%;
+  margin: auto;
+}
+
+.slick-initialized .slick-slide {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 100em) {
+  .articleGridSearchBar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 75em) {
+  .articleGridSearchBar {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 60em) {
+  .articleGridSearchBar {
+    width: 80%;
+  }
+}

@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# 💻 "SOS JEUNES POUSSES" - Projet N°3 - Wild Code School
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📂 Installation :
+Ce projet a été créé avec [Create React App](https://github.com/facebook/create-react-app).<br>
 
-## Available Scripts
+▶ Pour cloner le projet sur votre machine dans votre terminal utilisez la commande ```Git clone``` suivi du lien ```git@github.com:WildCodeSchool/11-21-noBugNovember-P3-sos-Front.git```
 
-In the project directory, you can run:
+▶ Renseignez vos variables d'environnement en créant un fichier ```.env``` à l'aide du sample ```.env.sample``` comportant le port du Backend ainsi que la clé d'API pour le "TinyMCE" en créant un compte afin d'avoir une clé juste [ici](https://www.tiny.cloud/)<br>
 
-### `npm start`
+▶ Ensuite utilisez la commande ```npm i``` afin d'installer toutes les dépendances (composants externes utilisés).<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Une fois l'installation terminée, votre fichier ```package.json``` doit contenir les dépendances suivantes : <br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![3f8a2ae28861dad855a0f411c8e66329](https://user-images.githubusercontent.com/89353029/161015164-9c28b7ea-44db-410d-bc3f-4fc32581a380.png)
 
-### `npm test`
+▶ Enfin utilisez la commande ```npm start``` pour lancer le projet en local.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Veillez à ce que le serveur Backend tourne également sur votre machine. Si vous ne l'avez pas déjà fait, [cliquez ici pour accéder au repo Frontend](https://github.com/WildCodeSchool/11-21-noBugNovember-P3-sos-back) et cloner son contenu sur votre machine.
 
-### `npm run build`
+## 📝 Description :
+Création d'un site internet proposant un accompagnement à la création de projet professionnel.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+L'association SOS JEUNES POUSSES à pour but de délivrer des informations et d'accompagner tout individu désirant créer un projet entrepreunarial.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Avec le site SOS JEUNES POUSSES, chaque utilisateur aura la possibilité de consulter des articles lui permettant de s'informer selon son niveau d'avancé dans la création de projet.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🌐 Navigation Utilisateur :
 
-### `npm run eject`
+#### Premier pas sur le site
+Lors de sa premiere visite sur le site, l'utilisateur aura la possibilité de découvrir ce qu'est " Le parcours type de l'utilisateur " et ainsi accéder à tous les articles rattachés à chaque étape (catégorie) du parcours de création de projet. Cela lui permettra d'être guidé, étape par étape, dans son parcours entrepreunarial.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Une recherche ciblée
+Egalement, si l'utilisateur a déjà utilisé le site, il pourra dès la page d'accueil procéder à une recherche d'article ciblant une étape bien précise du projet de création. Pour se faire, il devra remplir des critères de recherche dans la barre prévue à cet effet. Cela lui permettra d'accéder à des articles en lien avec les critères de recherche saisis.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Accéder à la totalité des articles
+Si aucune information n'est remplie dans la barre de recherche, l'utilisateur sera redirigé vers la liste intégrale des articles. Cela lui permettra de naviguer entre les différents articles et de choisir d'acceder à l'article de son choix.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Un accès à l'information
+En selectionnant une des cartes de la liste, l'utilisateur sera renvoyé sur la page de l'article en question ce qui lui permettra d'obtenir des informations claires et détaillées au sujet d'un thème bien précis.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Obtenir des informations complémentaires
+Lors de la consultation d'article, l'utilisateur aura , selon les articles, l'occasion d'obtenir des informations plus poussées en cliquant sur un bouton le redirigeant vers un site proposant un complément d'informations.
 
-## Learn More
+#### Téléchargement de fichiers
+Lors de la consultation d'article, l'utilisateur aura , selon les articles, l'occasion de télécharger des fichiers lui permettant d'avoir en sa possession des documents traitant du thème exploité par l'article. A partir de là, l'information sera rendu possible en tout lieu, tout moment.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔰 Administration :
+#### Une connexion sécurisée
+Une interface admin a été mise en place afin de permettre aux gestionnaires du site d'effectuer diverses manoeuvres sur le site. Pour accéder à l'interface admin, l'utilisateur devra avoir en sa possession les informations - login & password - lui permettant de s'authentifier auprès du système de sécurité Auth0 mis en place.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Une interface admin fonctionnelle
+Depuis l'interface admin, il sera possible de :
 
-### Code Splitting
+- Créer des articles
+Titre, Introduction, Illustration, Contenu principal formatable, Avantage de l'article, Lien(s) de téléchargement(s), Lien de redirection, Choix des catégories/sous-catégories/secteurs d'activités/villes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Gérer les articles
+Modifier, supprimer ou rendre non visible un article spécifique.
 
-### Analyzing the Bundle Size
+- Agir sur les composants indispensables des articles
+Il est possible de créer, modifier voir de supprimer les appelations des différentes catégories, sous-catégories, secteurs et villes par l'intermédiaire de boutons d'appellations prévu à cet effet.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# 📸 ScreenShots :
 
-### Making a Progressive Web App
+![1](https://user-images.githubusercontent.com/89353029/161101641-40f359cc-3716-4e69-9026-7c73c3f638e5.png)
+![2](https://user-images.githubusercontent.com/89353029/161101753-41f1e14a-42fc-4dd0-ac5b-c26d06ec9228.png)
+![3](https://user-images.githubusercontent.com/89353029/161101786-20858851-2b8e-4947-aadb-ed8d7c849a2d.png)
+![9](https://user-images.githubusercontent.com/89353029/161101913-ec2940c6-2b13-4ea1-8667-707490107b43.png)
+![4](https://user-images.githubusercontent.com/89353029/161101823-8239d64d-84a2-48fa-8bf4-f1d7fd9b2e26.png)
+![5](https://user-images.githubusercontent.com/89353029/161101853-760e22b6-3e6f-4760-8e95-3af076710d8d.png)
+![6](https://user-images.githubusercontent.com/89353029/161101870-2cf2a167-f9d7-43b1-ba2b-807b0e067d39.png)
+![7](https://user-images.githubusercontent.com/89353029/161101887-b6f0afef-51eb-493f-bf82-a26ddf01fbe9.png)
+![8](https://user-images.githubusercontent.com/89353029/161101904-519af59e-3b1f-45e8-93c4-1cae5537cf92.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# 🎥 Démo :
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+https://user-images.githubusercontent.com/89353029/161222908-25481be7-038f-47c6-8e3e-5dd69794f084.mp4
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👨‍👨‍👦‍👦 Equipe :
+[Clara](https://github.com/Liax)&emsp; 
+[Déo](https://github.com/Summercoder4)&emsp; 
+[Julien](https://github.com/jartacho)&emsp; 
+[Léo](https://github.com/leoPinchon)&emsp; 
+[Lyndia](https://github.com/DataLyla)&emsp; 
+[Romain](https://github.com/MSX-R)&emsp; 
+[Milhan](https://github.com/Pimpuss)&emsp; 

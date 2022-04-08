@@ -1,0 +1,170 @@
+.homeWrapper {
+  width: 95vw;
+  height: 100%;
+  margin: auto;
+}
+
+.homeLogoHolder {
+  left: 0;
+  width: 20rem;
+}
+
+.homeLogoHolder img {
+  width: 100%;
+}
+
+.homeWrapRaw {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  position: relative;
+  height: 80vh;
+}
+
+.homeWrapRaw h1 {
+  text-align: left;
+  color: var(--clr-orange);
+}
+
+.homeSplitWrap {
+  height: 70vh;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 3rem;
+}
+
+.homeSplitOrange .SearchBar {
+  background: var(--clr-green3);
+}
+.homeSplitOrange {
+  width: 40%;
+  background-color: var(--clr-orange);
+  height: 70%;
+  border-radius: 0 25rem 0 0;
+  padding: 6rem 2rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.homeHolderBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.homeSplitGreen {
+  width: 55%;
+  background-color: var(--clr-green);
+  background-image: url(../../assets/illus.png);
+  /* background-position: -914% -56%; */
+  background-repeat: no-repeat;
+  height: 100%;
+  border-radius: 25rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 13.5rem;
+  color: var(--clr-white);
+}
+.pHolder {
+  padding-left: 50px;
+}
+
+.homeSplitGreen p {
+  margin: 3rem 0rem;
+}
+/******* Small computer *******/
+@media screen and (max-width: 80em) {
+  .homeSplitGreen {
+    width: 40%;
+    padding: 0 3.5rem;
+  }
+
+  .homeSplitGreen p {
+    margin: 1rem 0rem;
+  }
+
+  .homeSplitOrange {
+    width: 55%;
+  }
+}
+/******* Large Tablet *******/
+@media screen and (max-width: 60em) {
+  .homeWrapRaw h1 {
+    text-align: center;
+  }
+  .homeSplitOrange .SearchBar {
+    margin: 0;
+  }
+  .homeSplitWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 80vh;
+  }
+  .homeSplitOrange,
+  .homeSplitGreen {
+    width: 90%;
+    margin-top: 3em;
+    padding-top: 6rem;
+  }
+
+  .homeSplitOrange {
+    border-radius: 0 0 25rem 0;
+    padding: 0rem 0 0 2rem;
+  }
+}
+
+/******* Mobile *******/
+
+@media screen and (max-width: 40em) {
+  .homeWrapRaw {
+    align-items: center;
+  }
+
+  .pHolder {
+    padding-left: 1em;
+  }
+
+  .homeHolderBtn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .homeSplitWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 80vh;
+    width: 90%;
+  }
+
+  .homeSplitGreen {
+    width: 100%;
+    margin-top: 3em;
+    height: auto;
+    justify-content: flex-end;
+    padding-bottom: 2em;
+    padding-top: 5em;
+  }
+
+  .homeSplitOrange {
+    border-radius: 0 0 25rem 0;
+    padding: 3rem 0 3rem 3rem;
+    width: 100%;
+    margin-top: 3em;
+    justify-content: space-around;
+    min-height: 60vh;
+  }
+}

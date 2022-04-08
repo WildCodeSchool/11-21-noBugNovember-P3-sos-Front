@@ -1,0 +1,24 @@
+.firstContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.firstContent img {
+  width: 55%;
+}
+
+.liste-articles {
+  padding: 1rem;
+  /* border: 3px solid blue; */
+  width: 100%;
+  text-align: center;
+}
+
+.liste-titre,
+.liste-categorie,
+.liste-souscategorie,
+.liste-telechargement,
+.liste-actions {
+  background-color: white;
+}

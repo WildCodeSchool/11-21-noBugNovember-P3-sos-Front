@@ -1,0 +1,24 @@
+.panel-admin-container{
+    display: flex;
+    flex-direction: row;
+    background : #C8DBDA;
+    height: 100%;
+    min-height: 100vh;
+
+}
+
+
+.content-container{
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+    padding: 3rem;
+}
+
+.bjr-user{
+    font-size: var(--fs-h1);
+    color:var(--clr-green);
+    margin-bottom : 8rem;
+    } 
+
+
